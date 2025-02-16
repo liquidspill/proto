@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+package nexus.v1;
+
+// import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/liquidspill/proto/go/proto/nexus/v1;nexusv1";
+
+service NexusService {
+  // ===== Management operations =====
+  rpc CreateBucket(CreateBucketRequest) returns (CreateBucketResponse) {}
+
+  // ===== Data operations =====
+  rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
+  rpc ListPartitions(ListPartitionsRequest) returns (ListPartitionsResponse) {}
+}
+
+// ===== Management definitions =====
+
+message CreateBucketRequest {
+  string name = 1;
+}
+
+message CreateBucketResponse {
+  google.protobuf.Timestamp created_at = 1;
+  string name = 2;
+}
+
+// ==== Data definitions =====
+
+message CreatePartitionRequest {
+  string key = 1;
+  Partition partition = 2;
+}
+
+message CreatePartitionResponse {
+  google.protobuf.Timestamp created_at = 1;
+  Partition partition = 2;
+}
+
+message ListPartitionsRequest {
+  uint64 tenant_id = 1;
+  uint64 environment_id = 2;
+
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+}
+
+message ListPartitionsResponse {
+  google.protobuf.Timestamp start_time = 1;
+  google.protobuf.Timestamp end_time = 2;
+  repeated Partition partitions = 3;
+}
+
+// Immutable metadata describing a partition stored in object storage
+message Partition {
+  string key = 1;
+  // The key used to cluster the data into partitions. This is
+  // used to increase data locality, with the idea being that it
+  // helps process queries faster
+  ClusterKey cluster_key = 2;
+
+  // The size in bytes of the Parquet file
+  uint64 size = 3;
+  uint64 row_count = 4;
+
+  // Time the partition was created
+  google.protobuf.Timestamp created_at = 5;
+
+  map<string, Column> columns = 6;
+}
+
+message Column {
+  string name = 1;
+  Statistics statistics = 2;
+  Type type = 3;
+
+  enum Type {
+    INT8 = 0;
+    INT16 = 1;
+    INT32 = 2;
+    INT64 = 3;
+    UINT8 = 4;
+    UINT16 = 5;
+    UINT32 = 6;
+    UINT64 = 7;
+    STRING = 8;
+    BOOLEAN = 9;
+    TIMESTAMP = 10;
+  }
+}
+
+message Statistics {
+  bytes min = 1;
+  bytes max = 2;
+  bytes filter = 3;
+}
+
+message ClusterKey {
+  // The timestamp is the time that the flow was received
+  google.protobuf.Timestamp timestamp = 1;
+  // The ID of the device the flow belongs to
+  uint64 device_id = 2;
+}
+
+// Metadata and data stored for a given value
+message Value {
+  // int32 enc = 2; // encoding of the raw data -- store as enums
+  google.protobuf.Timestamp created_at = 1;
+  google.protobuf.Timestamp updated_at = 2;
+  Compression comp = 3;
+  bytes raw = 4;
+
+  enum Compression {
+    ZSTD = 0;
+    LZ4 = 1;
+    SNAPPY = 2;
+  }
+}
