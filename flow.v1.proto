@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+package flow.v1;
+
+option go_package = "github.com/liquidspill/proto/go/flow/v1;flowv1";
+
+message Flow {
+  string fluid_version = 1;
+
+  enum FlowType {
+    FLOWUNKNOWN = 0;
+    SFLOW_5 = 1;
+    NETFLOW_V5 = 2;
+    NETFLOW_V9 = 3;
+    IPFIX = 4;
+  }
+  FlowType type = 2;
+
+  int64 time_received = 3;
+  uint32 sequence = 4;
+  uint32 sampling_rate = 5;
+  uint32 direction = 6;
+
+  // Sampler information
+  bytes sampler_address = 7; // Fixed 16 byte array
+
+  // Flow timing
+  int64 flow_start_time = 8;
+  int64 flow_end_time = 9;
+
+  // Size metrics
+  uint32 bytes = 10;
+  uint32 packets = 11;
+
+  // Network addresses
+  bytes src_addr = 12; // Fixed 16 byte array
+  bytes dst_addr = 13; // Fixed 16 byte array
+
+  string ethertype = 14;
+  uint32 protocol = 15;
+
+  // Ports
+  uint32 src_port = 16;
+  uint32 dst_port = 17;
+
+  // Interfaces
+  uint32 in_interface = 18;
+  uint32 out_interface = 19;
+
+  // Ethernet information
+  uint64 src_mac = 20;
+  uint64 dst_mac = 21;
+
+  // VLAN information
+  uint32 src_vlan = 22;
+  uint32 dst_vlan = 23;
+  uint32 vlan_id = 24;
+
+  // VRF information
+  uint32 ingress_vrf_id = 25;
+  uint32 egress_vrf_id = 26;
+
+  // IP and TCP flags
+  uint32 ip_tos = 27;
+  uint32 ip_ttl = 28;
+  uint32 tcp_flags = 29;
+  uint32 icmp_type = 30;
+  uint32 icmp_code = 31;
+  uint32 ipv6_flow_label = 32;
+  uint32 forwarding_status = 33;
+
+  // Fragment information
+  uint32 fragment_id = 34;
+  uint32 fragment_offset = 35;
+  uint32 bi_flow_direction = 36;
+
+  // AS information
+  string src_as = 37;
+  uint32 src_asn = 38;
+  string dst_as = 39;
+  uint32 dst_asn = 40;
+  uint32 nexthop_as = 41;
+  bytes nexthop = 42; // Fixed 16 byte array
+
+  // Geo information
+  string src_city = 43;
+  string src_country = 44;
+  string dst_city = 45;
+  string dst_country = 46;
+
+  // Network prefix
+  uint32 src_net = 47;
+  uint32 dst_net = 48;
+
+  // Encapsulation information
+  bool has_encap = 49;
+  bytes src_addr_encap = 50; // Fixed 16 byte array
+  bytes dst_addr_encap = 51; // Fixed 16 byte array
+  uint32 proto_encap = 52;
+  uint32 ethertype_encap = 53;
+  uint32 ip_tos_encap = 54;
+  uint32 ip_ttl_encap = 55;
+  uint32 ipv6_flow_label_encap = 56;
+  uint32 fragment_id_encap = 57;
+  uint32 fragment_offset_encap = 58;
+
+  // MPLS information
+  repeated uint32 mpls_ttl = 80;
+  repeated uint32 mpls_label = 81;
+  repeated bytes mpls_ip = 82;
+
+  // PPP information
+  bool has_ppp = 71;
+  uint32 ppp_address_control = 72;
+
+  // BGP information
+  bytes bgp_next_hop = 73;
+  repeated uint32 bgp_communities = 74;
+  repeated uint32 as_path = 75;
+}

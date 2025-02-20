@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nexus.v1;
 
-// import "buf/validate/validate.proto";
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/liquidspill/proto/go/nexus/v1;nexusv1";
@@ -93,9 +93,31 @@ message Column {
 }
 
 message Statistics {
-  bytes min = 1;
-  bytes max = 2;
-  bytes filter = 3;
+  oneof min {
+    // Handles int8, int16, int32
+    int32 min_int32 = 1;
+    int64 min_int64 = 2;
+    // Handles uint8, uint16, uint32
+    uint32 min_uint32 = 3;
+    uint64 min_uint64 = 4;
+    bool min_bool = 5;
+    string min_string = 6;
+    bytes min_bytes = 7;
+    google.protobuf.Timestamp min_timestamp = 8;
+  }
+  oneof max {
+    // Handles int8, int16, int32
+    int32 min_int32 = 9;
+    int64 min_int64 = 10;
+    // Handles uint8, uint16, uint32
+    uint32 min_uint32 = 11;
+    uint64 min_uint64 = 12;
+    bool min_bool = 13;
+    string min_string = 14;
+    bytes min_bytes = 15;
+    google.protobuf.Timestamp min_timestamp = 16;
+  }
+  bytes filter = 17;
 }
 
 message ClusterKey {
