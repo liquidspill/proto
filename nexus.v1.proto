@@ -107,15 +107,15 @@ message Statistics {
   }
   oneof max {
     // Handles int8, int16, int32
-    int32 min_int32 = 9;
-    int64 min_int64 = 10;
+    int32 max_int32 = 9;
+    int64 max_int64 = 10;
     // Handles uint8, uint16, uint32
-    uint32 min_uint32 = 11;
-    uint64 min_uint64 = 12;
-    bool min_bool = 13;
-    string min_string = 14;
-    bytes min_bytes = 15;
-    google.protobuf.Timestamp min_timestamp = 16;
+    uint32 max_uint32 = 11;
+    uint64 max_uint64 = 12;
+    bool max_bool = 13;
+    string max_string = 14;
+    bytes max_bytes = 15;
+    google.protobuf.Timestamp max_timestamp = 16;
   }
   bytes filter = 17;
 }
