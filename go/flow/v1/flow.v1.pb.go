@@ -77,7 +77,7 @@ func (Flow_FlowType) EnumDescriptor() ([]byte, []int) {
 }
 
 type Flow struct {
-	state        protoimpl.MessageState `protogen:"open.v1"`
+	state        protoimpl.MessageState `protogen:"open.v1" parquet:"-"`
 	FluidVersion string                 `protobuf:"bytes,1,opt,name=fluid_version,json=fluidVersion,proto3" json:"fluid_version,omitempty"`
 	Type         Flow_FlowType          `protobuf:"varint,2,opt,name=type,proto3,enum=flow.v1.Flow_FlowType" json:"type,omitempty"`
 	TimeReceived int64                  `protobuf:"varint,3,opt,name=time_received,json=timeReceived,proto3" json:"time_received,omitempty"`
@@ -162,8 +162,8 @@ type Flow struct {
 	BgpNextHop     []byte   `protobuf:"bytes,73,opt,name=bgp_next_hop,json=bgpNextHop,proto3" json:"bgp_next_hop,omitempty"`
 	BgpCommunities []uint32 `protobuf:"varint,74,rep,packed,name=bgp_communities,json=bgpCommunities,proto3" json:"bgp_communities,omitempty"`
 	AsPath         []uint32 `protobuf:"varint,75,rep,packed,name=as_path,json=asPath,proto3" json:"as_path,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	unknownFields  protoimpl.UnknownFields `parquet:"-"`
+	sizeCache      protoimpl.SizeCache `parquet:"-"`
 }
 
 func (x *Flow) Reset() {
