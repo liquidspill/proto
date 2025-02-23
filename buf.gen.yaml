@@ -1,12 +1,20 @@
 version: v2
 plugins:
   - local: protoc-gen-go
-    out: go
+    # go-staging stores the output of the first round of code generation.
+    # After that, it's passed to the final plugin (currently gotag) which
+    # stores the data in the correct final location
+    out: staging
     opt:
       - paths=import
       - module=github.com/liquidspill/proto/go
   - local: protoc-gen-connect-go
-    out: go
+    out: staging
     opt:
       - paths=import
       - module=github.com/liquidspill/proto/go
+  - local: protoc-gen-gotag
+    out: .
+    opt:
+      - paths=import
+      - module=github.com/liquidspill/proto
