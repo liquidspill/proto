@@ -22,7 +22,7 @@ message CreateQueryResponse {
   string id = 1;
   // The time series data. If many fields are queried at once e.g select bytes, src_ip
   // each field will have its own series
-  repeated Series series = 2;
+  Series series = 2;
   // This the "raw" data i.e the rows returned by the query. Used to show the raw data
   // in the UI
   Result result = 3;
@@ -115,10 +115,13 @@ message OrderBy {
 }
 
 message Series {
+  repeated google.protobuf.Timestamp timestamps = 1;
+  repeated SeriesData data = 2;
+}
+
+message SeriesData {
   // The name of the series. This is the field that was queried
   string name = 1;
-
-  repeated google.protobuf.Timestamp timestamps = 2;
   repeated int64 values = 3;
 }
 
