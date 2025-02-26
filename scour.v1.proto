@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package scour.v1;
+
+// import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/liquidspill/proto/go/scour/v1;scourv1";
+
+service ScourService {
+  // TODO: Convert to streaming
+  rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse) {}
+}
+
+// ===== Query definitions =====
+
+message CreateQueryRequest {
+  Query query = 1;
+}
+
+message CreateQueryResponse {
+  string id = 1;
+  // The time series data. If many fields are queried at once e.g select bytes, src_ip
+  // each field will have its own series
+  repeated Series series = 2;
+  // This the "raw" data i.e the rows returned by the query. Used to show the raw data
+  // in the UI
+  Result result = 3;
+}
+
+message Query {
+  string organisation_id = 1;
+  string environment = 2;
+  string dataset = 3;
+  Visualise visualise = 4;
+  Where where = 5;
+  repeated string group_by = 6;
+  repeated OrderBy order_by = 7;
+  uint32 limit = 8;
+  Clause having = 9;
+  int64 start_time = 10;
+  int64 end_time = 11;
+}
+
+message Visualise {
+  enum VisOp {
+    UNSPECIFIED = 0;
+    COUNT = 1;
+    COUNT_DISTINCT = 2;
+    SUM = 3;
+    AVG = 4;
+    MAX = 5;
+    MIN = 6;
+    // Unsupported
+    P001 = 7;
+    P01 = 8;
+    P05 = 9;
+    P10 = 10;
+    P25 = 11;
+    P50 = 12;
+    P75 = 13;
+    P90 = 14;
+    P95 = 15;
+    P99 = 16;
+    P999 = 17;
+    RATE_AVG = 18;
+    RATE_SUM = 19;
+    RATE_MAX = 20;
+  }
+  
+  VisOp op = 1;
+  string field = 2;
+}
+
+message Where {
+  enum WhereOp {
+    UNSPECIFIED = 0;
+    AND = 1;
+    OR = 2;
+  }
+  
+  WhereOp op = 1;
+  repeated Clause clauses = 2;
+}
+
+message Clause {
+  enum CompareOp {
+    UNSPECIFIED = 0;
+    EQUAL = 1;
+    NOT_EQUAL = 2;
+    GREATER_THAN = 3;
+    GREATER_THAN_OR_EQUAL = 4;
+    LESS_THAN = 5;
+    LESS_THAN_OR_EQUAL = 6;
+    CONTAINS = 7;
+    DOES_NOT_CONTAIN = 8;
+    IN = 9;
+    NOT_IN = 10;
+  }
+  
+  string field = 1;
+  string value = 2;
+  CompareOp op = 3;
+}
+
+message OrderBy {
+  enum Order {
+    UNSPECIFIED = 0;
+    ASC = 1;
+    DESC = 2;
+  }
+  
+  string field = 1;
+  Order order = 2;
+}
+
+message Series {
+  // The name of the series. This is the field that was queried
+  string name = 1;
+
+  repeated google.protobuf.Timestamp timestamps = 2;
+  repeated int64 values = 3;
+}
+
+message Result {
+  repeated string fields = 1;
+  repeated Row rows = 2;
+}
+
+message Row {
+  repeated Value values = 1;
+}
+
+message Value {
+  oneof kind {
+    int32 int32_value = 1;
+    int64 int64_value = 2;
+    uint32 uint32_value = 3;
+    uint64 uint64_value = 4;
+    bool bool_value = 5;
+    string string_value = 6;
+    bytes bytes_value = 7;
+    google.protobuf.Timestamp timestamp_value = 8;
+  }
+}
+
+

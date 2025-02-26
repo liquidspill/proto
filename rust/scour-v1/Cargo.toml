@@ -1,0 +1,13 @@
+[package]
+name = "scour-v1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tonic = "0.12.3"
+prost = "0.13.4"
+prost-types = "0.13.4"
+chrono = "0.4.39"
+
+[build-dependencies]
+tonic-build = "*"
