@@ -283,7 +283,8 @@ message Compression {
     LZO = 3;
     BROTLI = 4;
     LZ4 = 5;
-    ZSTD = 6;
+    LZ4RAW = 6;
+    ZSTD = 7;
   }
   CompressionAlgorithm type = 1;
   int32 level = 2;
