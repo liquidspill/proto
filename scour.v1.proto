@@ -67,7 +67,7 @@ message Visualise {
     RATE_SUM = 19;
     RATE_MAX = 20;
   }
-  
+
   VisOp op = 1;
   string field = 2;
 }
@@ -78,7 +78,7 @@ message Where {
     AND = 1;
     OR = 2;
   }
-  
+
   WhereOp op = 1;
   repeated Clause clauses = 2;
 }
@@ -97,7 +97,7 @@ message Clause {
     IN = 9;
     NOT_IN = 10;
   }
-  
+
   string field = 1;
   string value = 2;
   CompareOp op = 3;
@@ -109,7 +109,7 @@ message OrderBy {
     ASC = 1;
     DESC = 2;
   }
-  
+
   string field = 1;
   Order order = 2;
 }
@@ -122,7 +122,7 @@ message Series {
 message SeriesData {
   // The name of the series. This is the field that was queried
   string name = 1;
-  repeated int64 values = 3;
+  repeated int64 values = 2;
 }
 
 message Result {
@@ -147,4 +147,260 @@ message Value {
   }
 }
 
+// ===== Parquet defintions =====
 
+// These are used to convert data from Rust structs into Protobufs so we can store
+// them in our cache. The below set of structs is generated from the ParquetMetadata
+// in parquet-rs (https://docs.rs/parquet)
+
+message ParquetMetaData {
+  FileMetaData file_metadata = 1;
+  repeated RowGroupMetaData row_groups = 2;
+  ParquetColumnIndex column_index = 3;
+  ParquetOffsetIndex offset_index = 4;
+}
+
+message FileMetaData {
+  int32 version = 1;
+  int64 num_rows = 2;
+  string created_by = 3;
+  repeated KeyValue key_value_metadata = 4;
+  SchemaDescriptor schema_descr = 5;
+  repeated ColumnOrder column_orders = 6;
+}
+
+message KeyValue {
+  string key = 1;
+  string value = 2;
+}
+
+message SchemaDescriptor {
+  SchemaType root_schema = 1;
+  repeated ColumnDescriptor columns = 2;
+}
+
+message SchemaType {
+  string name = 1;
+}
+
+message ColumnDescriptor {
+  ColumnPath path = 1;
+  Type physical_type = 2;
+}
+
+message ColumnPath {
+  repeated string path = 1;
+}
+
+enum Type {
+  BOOLEAN = 0;
+  INT32 = 1;
+  INT64 = 2;
+  INT96 = 3;
+  FLOAT = 4;
+  DOUBLE = 5;
+  BYTE_ARRAY = 6;
+  FIXED_LEN_BYTE_ARRAY = 7;
+}
+
+message ColumnOrder {
+  enum OrderType {
+    UNDEFINED = 0;
+    TYPE_DEFINED_ORDER = 1;
+  }
+
+  OrderType type = 1;
+  SortOrder sort_order = 2;
+}
+
+enum SortOrder {
+  SIGNED = 0;
+  UNSIGNED = 1;
+  UNDEFINED = 2;
+}
+
+message RowGroupMetaData {
+  repeated ColumnChunkMetaData columns = 1;
+  int64 num_rows = 2;
+  repeated SortingColumn sorting_columns = 3;
+  int64 total_byte_size = 4;
+  int64 file_offset = 5;
+  int32 ordinal = 6;
+}
+
+message SortingColumn {
+  int32 column_idx = 1;
+  bool descending = 2;
+  bool nulls_first = 3;
+}
+
+message ColumnChunkMetaData {
+  ColumnDescPtr column_descr = 1;
+  repeated Encoding encodings = 2;
+  string file_path = 3;
+  int64 file_offset = 4;
+  int64 num_values = 5;
+  Compression compression = 6;
+  int64 total_compressed_size = 7;
+  int64 total_uncompressed_size = 8;
+  int64 data_page_offset = 9;
+  int64 index_page_offset = 10;
+  int64 dictionary_page_offset = 11;
+  Statistics statistics = 12;
+  repeated PageEncodingStats encoding_stats = 13;
+  int64 bloom_filter_offset = 14;
+  int32 bloom_filter_length = 15;
+  int64 offset_index_offset = 16;
+  int32 offset_index_length = 17;
+  int64 column_index_offset = 18;
+  int32 column_index_length = 19;
+  int64 unencoded_byte_array_data_bytes = 20;
+  LevelHistogram repetition_level_histogram = 21;
+  LevelHistogram definition_level_histogram = 22;
+}
+
+message ColumnDescPtr {
+  ColumnDescriptor column_descriptor = 1;
+}
+
+enum Encoding {
+  PLAIN = 0;
+  PLAIN_DICTIONARY = 1;
+  RLE = 2;
+  BIT_PACKED = 3;
+  DELTA_BINARY_PACKED = 4;
+  DELTA_LENGTH_BYTE_ARRAY = 5;
+  DELTA_BYTE_ARRAY = 6;
+  RLE_DICTIONARY = 7;
+  BYTE_STREAM_SPLIT = 8;
+}
+
+enum Compression {
+  UNCOMPRESSED = 0;
+  SNAPPY = 1;
+  GZIP = 2;
+  LZO = 3;
+  BROTLI = 4;
+  LZ4 = 5;
+  ZSTD = 6;
+}
+
+message Statistics {
+  bytes min_value = 1;
+  bytes max_value = 2;
+  int64 null_count = 3;
+  int64 distinct_count = 4;
+  bool has_min_max = 5;
+}
+
+message PageEncodingStats {
+  PageType page_type = 1;
+  Encoding encoding = 2;
+  int32 count = 3;
+}
+
+enum PageType {
+  DATA_PAGE = 0;
+  INDEX_PAGE = 1;
+  DICTIONARY_PAGE = 2;
+  DATA_PAGE_V2 = 3;
+}
+
+message LevelHistogram {
+  repeated int64 values = 1;
+}
+
+message ParquetColumnIndex {
+  repeated ColumnChunkIndexes row_group_indexes = 1;
+}
+
+message ColumnChunkIndexes {
+  repeated Index indexes = 1;
+}
+
+message Index {
+  oneof index_type {
+    bool none = 1;
+    NativeBooleanIndex boolean = 2;
+    NativeInt32Index int32 = 3;
+    NativeInt64Index int64 = 4;
+    NativeInt96Index int96 = 5;
+    NativeFloatIndex float = 6;
+    NativeDoubleIndex double = 7;
+    NativeByteArrayIndex byte_array = 8;
+    NativeFixedLenByteArrayIndex fixed_len_byte_array = 9;
+  }
+}
+
+message PageIndex {
+  bytes min = 1;
+  bytes max = 2;
+  int64 null_count = 3;
+  LevelHistogram repetition_level_histogram = 4;
+  LevelHistogram definition_level_histogram = 5;
+}
+
+message NativeBooleanIndex {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeInt32Index {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeInt64Index {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeInt96Index {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeFloatIndex {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeDoubleIndex {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeByteArrayIndex {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+message NativeFixedLenByteArrayIndex {
+  repeated PageIndex indexes = 1;
+  BoundaryOrder boundary_order = 2;
+}
+
+enum BoundaryOrder {
+  UNORDERED = 0;
+  ASCENDING = 1;
+  DESCENDING = 2;
+}
+
+message ParquetOffsetIndex {
+  repeated RowGroupOffsetIndexes row_group_offset_indexes = 1;
+}
+
+message RowGroupOffsetIndexes {
+  repeated OffsetIndexMetaData offset_indexes = 1;
+}
+
+message OffsetIndexMetaData {
+  repeated PageLocation page_locations = 1;
+  repeated int64 unencoded_byte_array_data_bytes = 2;
+}
+
+message PageLocation {
+  int64 offset = 1;
+  int32 compressed_page_size = 2;
+  int64 first_row_index = 3;
+}
