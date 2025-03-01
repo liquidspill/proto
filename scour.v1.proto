@@ -275,8 +275,8 @@ enum Encoding {
   BYTE_STREAM_SPLIT = 8;
 }
 
-message CompressionInfo {
-  enum Compression {
+message Compression {
+  enum CompressionAlgorithm {
     UNCOMPRESSED = 0;
     SNAPPY = 1;
     GZIP = 2;
@@ -285,7 +285,7 @@ message CompressionInfo {
     LZ4 = 5;
     ZSTD = 6;
   }
-  Compression type = 1;
+  CompressionAlgorithm type = 1;
   int32 level = 2;
 }
 
