@@ -287,15 +287,14 @@ message Compression {
     ZSTD = 7;
   }
   CompressionAlgorithm type = 1;
-  int32 level = 2;
+  optional int32 level = 2;
 }
 
 message Statistics {
-  bytes min_value = 1;
-  bytes max_value = 2;
-  int64 null_count = 3;
-  int64 distinct_count = 4;
-  bool has_min_max = 5;
+  optional bytes min_value = 1;
+  optional bytes max_value = 2;
+  optional int64 null_count = 3;
+  optional int64 distinct_count = 4;
 }
 
 message PageEncodingStats {
