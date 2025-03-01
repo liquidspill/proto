@@ -293,8 +293,8 @@ message Compression {
 message Statistics {
   optional bytes min_value = 1;
   optional bytes max_value = 2;
-  optional int64 null_count = 3;
-  optional int64 distinct_count = 4;
+  optional uint64 null_count = 3;
+  optional uint64 distinct_count = 4;
 }
 
 message PageEncodingStats {
