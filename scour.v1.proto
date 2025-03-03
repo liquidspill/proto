@@ -179,17 +179,17 @@ message KeyValue {
 }
 
 message ColumnOrder {
-  enum OrderType {
+  OrderType type = 1;
+  SortOrder sort_order = 2;
+}
+
+enum OrderType {
     UNDEFINED = 0;
     TYPE_DEFINED_ORDER = 1;
-  }
+}
 
-  OrderType type = 1;
-
-  enum SortOrder {
+enum SortOrder {
     SIGNED = 0;
     UNSIGNED = 1;
     UNDEFINED = 2;
   }
-  SortOrder sort_order = 2;
-}
