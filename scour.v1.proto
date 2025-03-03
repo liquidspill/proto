@@ -43,75 +43,74 @@ message Query {
 }
 
 message Visualise {
-  enum VisOp {
-    UNSPECIFIED = 0;
-    COUNT = 1;
-    COUNT_DISTINCT = 2;
-    SUM = 3;
-    AVG = 4;
-    MAX = 5;
-    MIN = 6;
-    // Unsupported
-    P001 = 7;
-    P01 = 8;
-    P05 = 9;
-    P10 = 10;
-    P25 = 11;
-    P50 = 12;
-    P75 = 13;
-    P90 = 14;
-    P95 = 15;
-    P99 = 16;
-    P999 = 17;
-    RATE_AVG = 18;
-    RATE_SUM = 19;
-    RATE_MAX = 20;
-  }
-
   VisOp op = 1;
   string field = 2;
 }
 
-message Where {
-  enum WhereOp {
-    UNSPECIFIED = 0;
-    AND = 1;
-    OR = 2;
-  }
+enum VisOp {
+  VIS_OP_UNSPECIFIED = 0;
+  VIS_OP_COUNT = 1;
+  VIS_OP_COUNT_DISTINCT = 2;
+  VIS_OP_SUM = 3;
+  VIS_OP_AVG = 4;
+  VIS_OP_MAX = 5;
+  VIS_OP_MIN = 6;
+  // Unsupported
+  VIS_OP_P001 = 7;
+  VIS_OP_P01 = 8;
+  VIS_OP_P05 = 9;
+  VIS_OP_P10 = 10;
+  VIS_OP_P25 = 11;
+  VIS_OP_P50 = 12;
+  VIS_OP_P75 = 13;
+  VIS_OP_P90 = 14;
+  VIS_OP_P95 = 15;
+  VIS_OP_P99 = 16;
+  VIS_OP_P999 = 17;
+  VIS_OP_RATE_AVG = 18;
+  VIS_OP_RATE_SUM = 19;
+  VIS_OP_RATE_MAX = 20;
+}
 
+message Where {
   WhereOp op = 1;
   repeated Clause clauses = 2;
 }
 
-message Clause {
-  enum CompareOp {
-    UNSPECIFIED = 0;
-    EQUAL = 1;
-    NOT_EQUAL = 2;
-    GREATER_THAN = 3;
-    GREATER_THAN_OR_EQUAL = 4;
-    LESS_THAN = 5;
-    LESS_THAN_OR_EQUAL = 6;
-    CONTAINS = 7;
-    DOES_NOT_CONTAIN = 8;
-    IN = 9;
-    NOT_IN = 10;
-  }
+enum WhereOp {
+  WHERE_OP_UNSPECIFIED = 0;
+  WHERE_OP_AND = 1;
+  WHERE_OP_OR = 2;
+}
 
+message Clause {
   string field = 1;
   string value = 2;
   CompareOp op = 3;
 }
 
-message OrderBy {
-  enum Order {
-    UNSPECIFIED = 0;
-    ASC = 1;
-    DESC = 2;
-  }
+enum CompareOp {
+  COMPARE_OP_UNSPECIFIED = 0;
+  COMPARE_OP_EQUAL = 1;
+  COMPARE_OP_NOT_EQUAL = 2;
+  COMPARE_OP_GREATER_THAN = 3;
+  COMPARE_OP_GREATER_THAN_OR_EQUAL = 4;
+  COMPARE_OP_LESS_THAN = 5;
+  COMPARE_OP_LESS_THAN_OR_EQUAL = 6;
+  COMPARE_OP_CONTAINS = 7;
+  COMPARE_OP_DOES_NOT_CONTAIN = 8;
+  COMPARE_OP_IN = 9;
+  COMPARE_OP_NOT_IN = 10; }
 
+message OrderBy {
   string field = 1;
-  Order order = 2;
+  OrderOp order = 2;
+}
+
+enum OrderOp {
+  ORDER_OP_UNSPECIFIED = 0;
+  ORDER_OP_ASC = 1;
+  ORDER_OP_DESC = 2;
 }
 
 message Series {
@@ -154,10 +153,8 @@ message Value {
 // in parquet-rs (https://docs.rs/parquet)
 
 message ParquetMetadata {
-  FileMetaData file_metadata = 1;
+  FileMetadata file_metadata = 1;
   repeated Thrift row_groups = 2;
-  ParquetColumnIndex column_index = 3;
-  ParquetOffsetIndex offset_index = 4;
 }
 
 message Thrift {
@@ -184,12 +181,12 @@ message ColumnOrder {
 }
 
 enum OrderType {
-    UNDEFINED = 0;
-    TYPE_DEFINED_ORDER = 1;
+  ORDER_TYPE_UNDEFINED = 0;
+  ORDER_TYPE_TYPE_DEFINED_ORDER = 1;
 }
 
 enum SortOrder {
-    SIGNED = 0;
-    UNSIGNED = 1;
-    UNDEFINED = 2;
-  }
+  SORT_ORDER_UNDEFINED = 0;
+  SORT_ORDER_SIGNED = 1;
+  SORT_ORDER_UNSIGNED = 2;
+}
