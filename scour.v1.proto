@@ -164,15 +164,15 @@ message Thrift {
 message FileMetadata {
   int32 version = 1;
   int64 num_rows = 2;
-  string created_by = 3;
-  repeated KeyValue key_value_metadata = 4;
+  optional string created_by = 3;
+  optional repeated KeyValue key_value_metadata = 4;
   repeated Thrift schema_descriptor = 5;
-  repeated ColumnOrder column_orders = 6;
+  optional repeated ColumnOrder column_orders = 6;
 }
 
 message KeyValue {
   string key = 1;
-  string value = 2;
+  optional string value = 2;
 }
 
 message ColumnOrder {
