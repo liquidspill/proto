@@ -166,7 +166,7 @@ message FileMetadata {
   int64 num_rows = 2;
   string created_by = 3;
   repeated KeyValue key_value_metadata = 4;
-  Thrift schema_descriptor = 5;
+  repeated Thrift schema_descriptor = 5;
   repeated ColumnOrder column_orders = 6;
 }
 
