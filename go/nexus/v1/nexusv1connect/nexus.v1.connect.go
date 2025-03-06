@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// NexusServiceCreateBucketProcedure is the fully-qualified name of the NexusService's CreateBucket
+	// NexusServiceCreateTenantProcedure is the fully-qualified name of the NexusService's CreateTenant
 	// RPC.
-	NexusServiceCreateBucketProcedure = "/nexus.v1.NexusService/CreateBucket"
+	NexusServiceCreateTenantProcedure = "/nexus.v1.NexusService/CreateTenant"
 	// NexusServiceCreatePartitionProcedure is the fully-qualified name of the NexusService's
 	// CreatePartition RPC.
 	NexusServiceCreatePartitionProcedure = "/nexus.v1.NexusService/CreatePartition"
@@ -47,7 +47,7 @@ const (
 // NexusServiceClient is a client for the nexus.v1.NexusService service.
 type NexusServiceClient interface {
 	// ===== Management operations =====
-	CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error)
+	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -64,10 +64,10 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 	baseURL = strings.TrimRight(baseURL, "/")
 	nexusServiceMethods := v1.File_nexus_v1_proto.Services().ByName("NexusService").Methods()
 	return &nexusServiceClient{
-		createBucket: connect.NewClient[v1.CreateBucketRequest, v1.CreateBucketResponse](
+		createTenant: connect.NewClient[v1.CreateTenantRequest, v1.CreateTenantResponse](
 			httpClient,
-			baseURL+NexusServiceCreateBucketProcedure,
-			connect.WithSchema(nexusServiceMethods.ByName("CreateBucket")),
+			baseURL+NexusServiceCreateTenantProcedure,
+			connect.WithSchema(nexusServiceMethods.ByName("CreateTenant")),
 			connect.WithClientOptions(opts...),
 		),
 		createPartition: connect.NewClient[v1.CreatePartitionRequest, v1.CreatePartitionResponse](
@@ -87,14 +87,14 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 
 // nexusServiceClient implements NexusServiceClient.
 type nexusServiceClient struct {
-	createBucket    *connect.Client[v1.CreateBucketRequest, v1.CreateBucketResponse]
+	createTenant    *connect.Client[v1.CreateTenantRequest, v1.CreateTenantResponse]
 	createPartition *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
 	listPartitions  *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
 }
 
-// CreateBucket calls nexus.v1.NexusService.CreateBucket.
-func (c *nexusServiceClient) CreateBucket(ctx context.Context, req *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error) {
-	return c.createBucket.CallUnary(ctx, req)
+// CreateTenant calls nexus.v1.NexusService.CreateTenant.
+func (c *nexusServiceClient) CreateTenant(ctx context.Context, req *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
+	return c.createTenant.CallUnary(ctx, req)
 }
 
 // CreatePartition calls nexus.v1.NexusService.CreatePartition.
@@ -110,7 +110,7 @@ func (c *nexusServiceClient) ListPartitions(ctx context.Context, req *connect.Re
 // NexusServiceHandler is an implementation of the nexus.v1.NexusService service.
 type NexusServiceHandler interface {
 	// ===== Management operations =====
-	CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error)
+	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -123,10 +123,10 @@ type NexusServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	nexusServiceMethods := v1.File_nexus_v1_proto.Services().ByName("NexusService").Methods()
-	nexusServiceCreateBucketHandler := connect.NewUnaryHandler(
-		NexusServiceCreateBucketProcedure,
-		svc.CreateBucket,
-		connect.WithSchema(nexusServiceMethods.ByName("CreateBucket")),
+	nexusServiceCreateTenantHandler := connect.NewUnaryHandler(
+		NexusServiceCreateTenantProcedure,
+		svc.CreateTenant,
+		connect.WithSchema(nexusServiceMethods.ByName("CreateTenant")),
 		connect.WithHandlerOptions(opts...),
 	)
 	nexusServiceCreatePartitionHandler := connect.NewUnaryHandler(
@@ -143,8 +143,8 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 	)
 	return "/nexus.v1.NexusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case NexusServiceCreateBucketProcedure:
-			nexusServiceCreateBucketHandler.ServeHTTP(w, r)
+		case NexusServiceCreateTenantProcedure:
+			nexusServiceCreateTenantHandler.ServeHTTP(w, r)
 		case NexusServiceCreatePartitionProcedure:
 			nexusServiceCreatePartitionHandler.ServeHTTP(w, r)
 		case NexusServiceListPartitionsProcedure:
@@ -158,8 +158,8 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedNexusServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedNexusServiceHandler struct{}
 
-func (UnimplementedNexusServiceHandler) CreateBucket(context.Context, *connect.Request[v1.CreateBucketRequest]) (*connect.Response[v1.CreateBucketResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.CreateBucket is not implemented"))
+func (UnimplementedNexusServiceHandler) CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.CreateTenant is not implemented"))
 }
 
 func (UnimplementedNexusServiceHandler) CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
