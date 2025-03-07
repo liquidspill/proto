@@ -42,6 +42,9 @@ const (
 	// NexusServiceListPartitionsProcedure is the fully-qualified name of the NexusService's
 	// ListPartitions RPC.
 	NexusServiceListPartitionsProcedure = "/nexus.v1.NexusService/ListPartitions"
+	// NexusServiceValidateMetadataVersionProcedure is the fully-qualified name of the NexusService's
+	// ValidateMetadataVersion RPC.
+	NexusServiceValidateMetadataVersionProcedure = "/nexus.v1.NexusService/ValidateMetadataVersion"
 )
 
 // NexusServiceClient is a client for the nexus.v1.NexusService service.
@@ -51,6 +54,7 @@ type NexusServiceClient interface {
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
+	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
 }
 
 // NewNexusServiceClient constructs a client for the nexus.v1.NexusService service. By default, it
@@ -82,14 +86,21 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(nexusServiceMethods.ByName("ListPartitions")),
 			connect.WithClientOptions(opts...),
 		),
+		validateMetadataVersion: connect.NewClient[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse](
+			httpClient,
+			baseURL+NexusServiceValidateMetadataVersionProcedure,
+			connect.WithSchema(nexusServiceMethods.ByName("ValidateMetadataVersion")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // nexusServiceClient implements NexusServiceClient.
 type nexusServiceClient struct {
-	createTenant    *connect.Client[v1.CreateTenantRequest, v1.CreateTenantResponse]
-	createPartition *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
-	listPartitions  *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
+	createTenant            *connect.Client[v1.CreateTenantRequest, v1.CreateTenantResponse]
+	createPartition         *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
+	listPartitions          *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
+	validateMetadataVersion *connect.Client[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse]
 }
 
 // CreateTenant calls nexus.v1.NexusService.CreateTenant.
@@ -107,6 +118,11 @@ func (c *nexusServiceClient) ListPartitions(ctx context.Context, req *connect.Re
 	return c.listPartitions.CallUnary(ctx, req)
 }
 
+// ValidateMetadataVersion calls nexus.v1.NexusService.ValidateMetadataVersion.
+func (c *nexusServiceClient) ValidateMetadataVersion(ctx context.Context, req *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
+	return c.validateMetadataVersion.CallUnary(ctx, req)
+}
+
 // NexusServiceHandler is an implementation of the nexus.v1.NexusService service.
 type NexusServiceHandler interface {
 	// ===== Management operations =====
@@ -114,6 +130,7 @@ type NexusServiceHandler interface {
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
+	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
 }
 
 // NewNexusServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -141,6 +158,12 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(nexusServiceMethods.ByName("ListPartitions")),
 		connect.WithHandlerOptions(opts...),
 	)
+	nexusServiceValidateMetadataVersionHandler := connect.NewUnaryHandler(
+		NexusServiceValidateMetadataVersionProcedure,
+		svc.ValidateMetadataVersion,
+		connect.WithSchema(nexusServiceMethods.ByName("ValidateMetadataVersion")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/nexus.v1.NexusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case NexusServiceCreateTenantProcedure:
@@ -149,6 +172,8 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 			nexusServiceCreatePartitionHandler.ServeHTTP(w, r)
 		case NexusServiceListPartitionsProcedure:
 			nexusServiceListPartitionsHandler.ServeHTTP(w, r)
+		case NexusServiceValidateMetadataVersionProcedure:
+			nexusServiceValidateMetadataVersionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -168,4 +193,8 @@ func (UnimplementedNexusServiceHandler) CreatePartition(context.Context, *connec
 
 func (UnimplementedNexusServiceHandler) ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.ListPartitions is not implemented"))
+}
+
+func (UnimplementedNexusServiceHandler) ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.ValidateMetadataVersion is not implemented"))
 }
