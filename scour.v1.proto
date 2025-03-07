@@ -100,7 +100,8 @@ enum CompareOp {
   COMPARE_OP_CONTAINS = 7;
   COMPARE_OP_DOES_NOT_CONTAIN = 8;
   COMPARE_OP_IN = 9;
-  COMPARE_OP_NOT_IN = 10; }
+  COMPARE_OP_NOT_IN = 10;
+}
 
 message OrderBy {
   string field = 1;
@@ -165,9 +166,9 @@ message FileMetadata {
   int32 version = 1;
   int64 num_rows = 2;
   optional string created_by = 3;
-  optional repeated KeyValue key_value_metadata = 4;
+  repeated KeyValue key_value_metadata = 4;
   repeated Thrift schema_descriptor = 5;
-  optional repeated ColumnOrder column_orders = 6;
+  repeated ColumnOrder column_orders = 6;
 }
 
 message KeyValue {
