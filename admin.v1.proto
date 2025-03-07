@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package admin.v1;
+
+// import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/liquidspill/proto/go/admin/v1;adminv1";
+
+service AdminService {
+  // ===== Database operations (staff protected) =====
+  rpc DatabaseGet(DatabaseGetRequest) returns (DatabaseGetResponse) {}
+  rpc DatabaseScan(DatabaseScanRequest) returns (DatabaseScanResponse) {}
+}
+
+// ===== Database definitions =====
+
+message DatabaseGetRequest {
+  repeated Variant table = 1;
+  repeated Variant keys = 2;
+}
+
+message DatabaseGetResponse {
+  repeated Variant values = 1;
+}
+
+message DatabaseScanRequest {
+  repeated Variant table = 1;
+  Variant start = 2;
+  Variant end = 3;
+}
+
+message DatabaseScanResponse {
+  repeated Variant values = 1;
+}
+
+message Variant {
+  oneof variant {
+    int32 int32_variant = 1;
+    int64 int64_variant = 2;
+    uint32 uint32_variant = 3;
+    uint64 uint64_variant = 4;
+    bool bool_variant = 5;
+    string string_variant = 6;
+    bytes bytes_variant = 7;
+    google.protobuf.Timestamp timestamp_variant = 8;
+  }
+}
