@@ -16,22 +16,30 @@ service AdminService {
 // ===== Database definitions =====
 
 message DatabaseGetRequest {
-  repeated Variant table = 1;
-  repeated Variant keys = 2;
+  uint64 tenant_id = 1;
+  uint64 environment_id = 2;
+  repeated Variant table = 3;
+  repeated Variant keys = 4;
 }
 
 message DatabaseGetResponse {
-  repeated Variant values = 1;
+  uint64 tenant_id = 1;
+  uint64 environment_id = 2;
+  repeated Variant values = 3;
 }
 
 message DatabaseScanRequest {
-  repeated Variant table = 1;
-  Variant start = 2;
-  Variant end = 3;
+  uint64 tenant_id = 1;
+  uint64 environment_id = 2;
+  repeated Variant table = 3;
+  Variant start = 4;
+  Variant end = 5;
 }
 
 message DatabaseScanResponse {
-  repeated Variant values = 1;
+  uint64 tenant_id = 1;
+  uint64 environment_id = 2;
+  repeated Variant values = 3;
 }
 
 message Variant {
