@@ -38,8 +38,9 @@ message CreateTenantResponse {
 message DatabaseGetRequest {
   uint64 tenant_id = 1;
   uint64 environment_id = 2;
-  repeated Variant table = 3;
-  repeated Variant keys = 4;
+  string table = 3;
+  repeated Variant table_path = 4;
+  repeated Variant keys = 5;
 }
 
 message DatabaseGetResponse {
@@ -51,9 +52,10 @@ message DatabaseGetResponse {
 message DatabaseScanRequest {
   uint64 tenant_id = 1;
   uint64 environment_id = 2;
-  repeated Variant table = 3;
-  Variant start = 4;
-  Variant end = 5;
+  string table = 3;
+  repeated Variant table_path = 4;
+  Variant start = 5;
+  Variant end = 6;
 }
 
 message DatabaseScanResponse {
