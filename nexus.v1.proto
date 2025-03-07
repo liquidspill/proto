@@ -14,6 +14,7 @@ service NexusService {
   // ===== Data operations =====
   rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
   rpc ListPartitions(ListPartitionsRequest) returns (ListPartitionsResponse) {}
+  rpc ValidateMetadataVersion(ValidateMetadataVersionRequest) returns (ValidateMetadataVersionResponse) {}
 }
 
 // ===== Management definitions =====
@@ -53,6 +54,19 @@ message ListPartitionsResponse {
   repeated Partition partitions = 3;
 }
 
+message ValidateMetadataVersionRequest {
+  repeated Validate versions = 1;
+}
+
+message ValidateMetadataVersionResponse {
+  repeated bool valid = 1;
+}
+
+message Validate {
+  google.protobuf.Timestamp window = 1;
+  bytes version = 2;
+}
+
 // Immutable metadata describing a partition stored in object storage
 message Partition {
   string key = 1;
@@ -74,22 +88,23 @@ message Partition {
 message Column {
   string name = 1;
   Statistics statistics = 2;
-  Type type = 3;
+  ColumnType type = 3;
+}
 
-  enum Type {
-    INT8 = 0;
-    INT16 = 1;
-    INT32 = 2;
-    INT64 = 3;
-    UINT8 = 4;
-    UINT16 = 5;
-    UINT32 = 6;
-    UINT64 = 7;
-    STRING = 8;
-    BOOLEAN = 9;
-    TIMESTAMP = 10;
-    BYTES = 11;
-  }
+enum ColumnType {
+  COLUMN_TYPE_UNSPECIFIED = 0;
+  COLUMN_TYPE_INT8 = 1;
+  COLUMN_TYPE_INT16 = 2;
+  COLUMN_TYPE_INT32 = 3;
+  COLUMN_TYPE_INT64 = 4;
+  COLUMN_TYPE_UINT8 = 5;
+  COLUMN_TYPE_UINT16 = 6;
+  COLUMN_TYPE_UINT32 = 7;
+  COLUMN_TYPE_UINT64 = 8;
+  COLUMN_TYPE_STRING = 9;
+  COLUMN_TYPE_BOOLEAN = 10;
+  COLUMN_TYPE_TIMESTAMP = 11;
+  COLUMN_TYPE_BYTES = 12;
 }
 
 message Statistics {
@@ -134,10 +149,11 @@ message Value {
   google.protobuf.Timestamp updated_at = 2;
   Compression comp = 3;
   bytes raw = 4;
+}
 
-  enum Compression {
-    ZSTD = 0;
-    LZ4 = 1;
-    SNAPPY = 2;
-  }
+enum Compression {
+  COMPRESSION_UNSPECIFIED = 0;
+  COMPRESSION_ZSTD = 1;
+  COMPRESSION_LZ4 = 2;
+  COMPRESSION_SNAPPY = 3;
 }
