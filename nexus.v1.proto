@@ -67,7 +67,8 @@ message ListMetadataVersionsRequest {
 }
 
 message ListMetadataVersionsResponse {
-  repeated bytes versions = 1;
+  repeated google.protobuf.Timestamp windows = 1;
+  repeated bytes versions = 2;
 }
 
 message ListPartitionsResponse {
