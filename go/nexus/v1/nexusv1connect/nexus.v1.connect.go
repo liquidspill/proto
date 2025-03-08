@@ -45,12 +45,12 @@ const (
 	// NexusServiceValidateMetadataVersionProcedure is the fully-qualified name of the NexusService's
 	// ValidateMetadataVersion RPC.
 	NexusServiceValidateMetadataVersionProcedure = "/nexus.v1.NexusService/ValidateMetadataVersion"
-	// NexusServiceDatabaseGetProcedure is the fully-qualified name of the NexusService's DatabaseGet
-	// RPC.
-	NexusServiceDatabaseGetProcedure = "/nexus.v1.NexusService/DatabaseGet"
-	// NexusServiceDatabaseScanProcedure is the fully-qualified name of the NexusService's DatabaseScan
-	// RPC.
-	NexusServiceDatabaseScanProcedure = "/nexus.v1.NexusService/DatabaseScan"
+	// NexusServiceGetMetadataVersionProcedure is the fully-qualified name of the NexusService's
+	// GetMetadataVersion RPC.
+	NexusServiceGetMetadataVersionProcedure = "/nexus.v1.NexusService/GetMetadataVersion"
+	// NexusServiceListMetadataVersionsProcedure is the fully-qualified name of the NexusService's
+	// ListMetadataVersions RPC.
+	NexusServiceListMetadataVersionsProcedure = "/nexus.v1.NexusService/ListMetadataVersions"
 )
 
 // NexusServiceClient is a client for the nexus.v1.NexusService service.
@@ -61,10 +61,8 @@ type NexusServiceClient interface {
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
 	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
-	// TODO: MOVE TO A NEXUS ADMIN SERVICE
-	// ===== Database operations (staff protected) =====
-	DatabaseGet(context.Context, *connect.Request[v1.DatabaseGetRequest]) (*connect.Response[v1.DatabaseGetResponse], error)
-	DatabaseScan(context.Context, *connect.Request[v1.DatabaseScanRequest]) (*connect.Response[v1.DatabaseScanResponse], error)
+	GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error)
+	ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error)
 }
 
 // NewNexusServiceClient constructs a client for the nexus.v1.NexusService service. By default, it
@@ -102,16 +100,16 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(nexusServiceMethods.ByName("ValidateMetadataVersion")),
 			connect.WithClientOptions(opts...),
 		),
-		databaseGet: connect.NewClient[v1.DatabaseGetRequest, v1.DatabaseGetResponse](
+		getMetadataVersion: connect.NewClient[v1.GetMetadataVersionRequest, v1.GetMetadataVersionResponse](
 			httpClient,
-			baseURL+NexusServiceDatabaseGetProcedure,
-			connect.WithSchema(nexusServiceMethods.ByName("DatabaseGet")),
+			baseURL+NexusServiceGetMetadataVersionProcedure,
+			connect.WithSchema(nexusServiceMethods.ByName("GetMetadataVersion")),
 			connect.WithClientOptions(opts...),
 		),
-		databaseScan: connect.NewClient[v1.DatabaseScanRequest, v1.DatabaseScanResponse](
+		listMetadataVersions: connect.NewClient[v1.ListMetadataVersionsRequest, v1.ListMetadataVersionsResponse](
 			httpClient,
-			baseURL+NexusServiceDatabaseScanProcedure,
-			connect.WithSchema(nexusServiceMethods.ByName("DatabaseScan")),
+			baseURL+NexusServiceListMetadataVersionsProcedure,
+			connect.WithSchema(nexusServiceMethods.ByName("ListMetadataVersions")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -123,8 +121,8 @@ type nexusServiceClient struct {
 	createPartition         *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
 	listPartitions          *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
 	validateMetadataVersion *connect.Client[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse]
-	databaseGet             *connect.Client[v1.DatabaseGetRequest, v1.DatabaseGetResponse]
-	databaseScan            *connect.Client[v1.DatabaseScanRequest, v1.DatabaseScanResponse]
+	getMetadataVersion      *connect.Client[v1.GetMetadataVersionRequest, v1.GetMetadataVersionResponse]
+	listMetadataVersions    *connect.Client[v1.ListMetadataVersionsRequest, v1.ListMetadataVersionsResponse]
 }
 
 // CreateTenant calls nexus.v1.NexusService.CreateTenant.
@@ -147,14 +145,14 @@ func (c *nexusServiceClient) ValidateMetadataVersion(ctx context.Context, req *c
 	return c.validateMetadataVersion.CallUnary(ctx, req)
 }
 
-// DatabaseGet calls nexus.v1.NexusService.DatabaseGet.
-func (c *nexusServiceClient) DatabaseGet(ctx context.Context, req *connect.Request[v1.DatabaseGetRequest]) (*connect.Response[v1.DatabaseGetResponse], error) {
-	return c.databaseGet.CallUnary(ctx, req)
+// GetMetadataVersion calls nexus.v1.NexusService.GetMetadataVersion.
+func (c *nexusServiceClient) GetMetadataVersion(ctx context.Context, req *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
+	return c.getMetadataVersion.CallUnary(ctx, req)
 }
 
-// DatabaseScan calls nexus.v1.NexusService.DatabaseScan.
-func (c *nexusServiceClient) DatabaseScan(ctx context.Context, req *connect.Request[v1.DatabaseScanRequest]) (*connect.Response[v1.DatabaseScanResponse], error) {
-	return c.databaseScan.CallUnary(ctx, req)
+// ListMetadataVersions calls nexus.v1.NexusService.ListMetadataVersions.
+func (c *nexusServiceClient) ListMetadataVersions(ctx context.Context, req *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
+	return c.listMetadataVersions.CallUnary(ctx, req)
 }
 
 // NexusServiceHandler is an implementation of the nexus.v1.NexusService service.
@@ -165,10 +163,8 @@ type NexusServiceHandler interface {
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
 	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
-	// TODO: MOVE TO A NEXUS ADMIN SERVICE
-	// ===== Database operations (staff protected) =====
-	DatabaseGet(context.Context, *connect.Request[v1.DatabaseGetRequest]) (*connect.Response[v1.DatabaseGetResponse], error)
-	DatabaseScan(context.Context, *connect.Request[v1.DatabaseScanRequest]) (*connect.Response[v1.DatabaseScanResponse], error)
+	GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error)
+	ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error)
 }
 
 // NewNexusServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -202,16 +198,16 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(nexusServiceMethods.ByName("ValidateMetadataVersion")),
 		connect.WithHandlerOptions(opts...),
 	)
-	nexusServiceDatabaseGetHandler := connect.NewUnaryHandler(
-		NexusServiceDatabaseGetProcedure,
-		svc.DatabaseGet,
-		connect.WithSchema(nexusServiceMethods.ByName("DatabaseGet")),
+	nexusServiceGetMetadataVersionHandler := connect.NewUnaryHandler(
+		NexusServiceGetMetadataVersionProcedure,
+		svc.GetMetadataVersion,
+		connect.WithSchema(nexusServiceMethods.ByName("GetMetadataVersion")),
 		connect.WithHandlerOptions(opts...),
 	)
-	nexusServiceDatabaseScanHandler := connect.NewUnaryHandler(
-		NexusServiceDatabaseScanProcedure,
-		svc.DatabaseScan,
-		connect.WithSchema(nexusServiceMethods.ByName("DatabaseScan")),
+	nexusServiceListMetadataVersionsHandler := connect.NewUnaryHandler(
+		NexusServiceListMetadataVersionsProcedure,
+		svc.ListMetadataVersions,
+		connect.WithSchema(nexusServiceMethods.ByName("ListMetadataVersions")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/nexus.v1.NexusService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -224,10 +220,10 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 			nexusServiceListPartitionsHandler.ServeHTTP(w, r)
 		case NexusServiceValidateMetadataVersionProcedure:
 			nexusServiceValidateMetadataVersionHandler.ServeHTTP(w, r)
-		case NexusServiceDatabaseGetProcedure:
-			nexusServiceDatabaseGetHandler.ServeHTTP(w, r)
-		case NexusServiceDatabaseScanProcedure:
-			nexusServiceDatabaseScanHandler.ServeHTTP(w, r)
+		case NexusServiceGetMetadataVersionProcedure:
+			nexusServiceGetMetadataVersionHandler.ServeHTTP(w, r)
+		case NexusServiceListMetadataVersionsProcedure:
+			nexusServiceListMetadataVersionsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -253,10 +249,10 @@ func (UnimplementedNexusServiceHandler) ValidateMetadataVersion(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.ValidateMetadataVersion is not implemented"))
 }
 
-func (UnimplementedNexusServiceHandler) DatabaseGet(context.Context, *connect.Request[v1.DatabaseGetRequest]) (*connect.Response[v1.DatabaseGetResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.DatabaseGet is not implemented"))
+func (UnimplementedNexusServiceHandler) GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.GetMetadataVersion is not implemented"))
 }
 
-func (UnimplementedNexusServiceHandler) DatabaseScan(context.Context, *connect.Request[v1.DatabaseScanRequest]) (*connect.Response[v1.DatabaseScanResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.DatabaseScan is not implemented"))
+func (UnimplementedNexusServiceHandler) ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.ListMetadataVersions is not implemented"))
 }

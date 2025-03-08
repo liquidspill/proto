@@ -16,10 +16,8 @@ service NexusService {
   rpc ListPartitions(ListPartitionsRequest) returns (ListPartitionsResponse) {}
   rpc ValidateMetadataVersion(ValidateMetadataVersionRequest) returns (ValidateMetadataVersionResponse) {}
 
-  // TODO: MOVE TO A NEXUS ADMIN SERVICE
-  // ===== Database operations (staff protected) =====
-  rpc DatabaseGet(DatabaseGetRequest) returns (DatabaseGetResponse) {}
-  rpc DatabaseScan(DatabaseScanRequest) returns (DatabaseScanResponse) {}
+  rpc GetMetadataVersion(GetMetadataVersionRequest) returns (GetMetadataVersionResponse) {}
+  rpc ListMetadataVersions(ListMetadataVersionsRequest) returns (ListMetadataVersionsResponse) {}
 }
 
 // ===== Management definitions =====
@@ -31,37 +29,6 @@ message CreateTenantRequest {
 message CreateTenantResponse {
   google.protobuf.Timestamp created_at = 1;
   uint64 id = 2;
-}
-
-// ===== Database definitions =====
-
-message DatabaseGetRequest {
-  uint64 tenant_id = 1;
-  uint64 environment_id = 2;
-  string table = 3;
-  repeated Variant table_path = 4;
-  repeated Variant keys = 5;
-}
-
-message DatabaseGetResponse {
-  uint64 tenant_id = 1;
-  uint64 environment_id = 2;
-  repeated Variant values = 3;
-}
-
-message DatabaseScanRequest {
-  uint64 tenant_id = 1;
-  uint64 environment_id = 2;
-  string table = 3;
-  repeated Variant table_path = 4;
-  Variant start = 5;
-  Variant end = 6;
-}
-
-message DatabaseScanResponse {
-  uint64 tenant_id = 1;
-  uint64 environment_id = 2;
-  repeated Variant values = 3;
 }
 
 // ==== Data definitions =====
@@ -82,6 +49,25 @@ message ListPartitionsRequest {
 
   google.protobuf.Timestamp start_time = 3;
   google.protobuf.Timestamp end_time = 4;
+}
+
+message GetMetadataVersionRequest {
+  uint32 window_size = 1;
+  google.protobuf.Timestamp window = 2;
+}
+
+message GetMetadataVersionResponse {
+  bytes version = 1;
+}
+
+message ListMetadataVersionsRequest {
+  uint32 window_size = 1;
+  google.protobuf.Timestamp window_start = 2;
+  google.protobuf.Timestamp window_end = 3;
+}
+
+message ListMetadataVersionsResponse {
+  repeated bytes versions = 1;
 }
 
 message ListPartitionsResponse {
