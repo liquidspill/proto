@@ -105,6 +105,7 @@ message Partition {
   // Time the partition was created
   google.protobuf.Timestamp created_at = 5;
 
+  // Metadata describing the columns in the partition
   map<string, Column> columns = 6;
 }
 

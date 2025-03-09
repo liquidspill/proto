@@ -841,8 +841,9 @@ type Partition struct {
 	Size     uint64 `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
 	RowCount uint64 `protobuf:"varint,4,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
 	// Time the partition was created
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Columns       map[string]*Column     `protobuf:"bytes,6,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Metadata describing the columns in the partition
+	Columns       map[string]*Column `protobuf:"bytes,6,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
