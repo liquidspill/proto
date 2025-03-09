@@ -10,6 +10,7 @@ option go_package = "github.com/liquidspill/proto/go/nexus/v1;nexusv1";
 service NexusService {
   // ===== Management operations =====
   rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {}
+  rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {}
 
   // ===== Data operations =====
   rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
@@ -28,6 +29,15 @@ message CreateTenantRequest {
 
 message CreateTenantResponse {
   google.protobuf.Timestamp created_at = 1;
+  uint64 id = 2;
+}
+
+message DeleteTenantRequest {
+  uint64 id = 1;
+}
+
+message DeleteTenantResponse {
+  google.protobuf.Timestamp deleted_at = 1;
   uint64 id = 2;
 }
 

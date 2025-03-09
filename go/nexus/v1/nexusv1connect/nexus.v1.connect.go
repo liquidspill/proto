@@ -36,6 +36,9 @@ const (
 	// NexusServiceCreateTenantProcedure is the fully-qualified name of the NexusService's CreateTenant
 	// RPC.
 	NexusServiceCreateTenantProcedure = "/nexus.v1.NexusService/CreateTenant"
+	// NexusServiceDeleteTenantProcedure is the fully-qualified name of the NexusService's DeleteTenant
+	// RPC.
+	NexusServiceDeleteTenantProcedure = "/nexus.v1.NexusService/DeleteTenant"
 	// NexusServiceCreatePartitionProcedure is the fully-qualified name of the NexusService's
 	// CreatePartition RPC.
 	NexusServiceCreatePartitionProcedure = "/nexus.v1.NexusService/CreatePartition"
@@ -57,6 +60,7 @@ const (
 type NexusServiceClient interface {
 	// ===== Management operations =====
 	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
+	DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -80,6 +84,12 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			httpClient,
 			baseURL+NexusServiceCreateTenantProcedure,
 			connect.WithSchema(nexusServiceMethods.ByName("CreateTenant")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteTenant: connect.NewClient[v1.DeleteTenantRequest, v1.DeleteTenantResponse](
+			httpClient,
+			baseURL+NexusServiceDeleteTenantProcedure,
+			connect.WithSchema(nexusServiceMethods.ByName("DeleteTenant")),
 			connect.WithClientOptions(opts...),
 		),
 		createPartition: connect.NewClient[v1.CreatePartitionRequest, v1.CreatePartitionResponse](
@@ -118,6 +128,7 @@ func NewNexusServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 // nexusServiceClient implements NexusServiceClient.
 type nexusServiceClient struct {
 	createTenant            *connect.Client[v1.CreateTenantRequest, v1.CreateTenantResponse]
+	deleteTenant            *connect.Client[v1.DeleteTenantRequest, v1.DeleteTenantResponse]
 	createPartition         *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
 	listPartitions          *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
 	validateMetadataVersion *connect.Client[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse]
@@ -128,6 +139,11 @@ type nexusServiceClient struct {
 // CreateTenant calls nexus.v1.NexusService.CreateTenant.
 func (c *nexusServiceClient) CreateTenant(ctx context.Context, req *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
 	return c.createTenant.CallUnary(ctx, req)
+}
+
+// DeleteTenant calls nexus.v1.NexusService.DeleteTenant.
+func (c *nexusServiceClient) DeleteTenant(ctx context.Context, req *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error) {
+	return c.deleteTenant.CallUnary(ctx, req)
 }
 
 // CreatePartition calls nexus.v1.NexusService.CreatePartition.
@@ -159,6 +175,7 @@ func (c *nexusServiceClient) ListMetadataVersions(ctx context.Context, req *conn
 type NexusServiceHandler interface {
 	// ===== Management operations =====
 	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
+	DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -178,6 +195,12 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 		NexusServiceCreateTenantProcedure,
 		svc.CreateTenant,
 		connect.WithSchema(nexusServiceMethods.ByName("CreateTenant")),
+		connect.WithHandlerOptions(opts...),
+	)
+	nexusServiceDeleteTenantHandler := connect.NewUnaryHandler(
+		NexusServiceDeleteTenantProcedure,
+		svc.DeleteTenant,
+		connect.WithSchema(nexusServiceMethods.ByName("DeleteTenant")),
 		connect.WithHandlerOptions(opts...),
 	)
 	nexusServiceCreatePartitionHandler := connect.NewUnaryHandler(
@@ -214,6 +237,8 @@ func NewNexusServiceHandler(svc NexusServiceHandler, opts ...connect.HandlerOpti
 		switch r.URL.Path {
 		case NexusServiceCreateTenantProcedure:
 			nexusServiceCreateTenantHandler.ServeHTTP(w, r)
+		case NexusServiceDeleteTenantProcedure:
+			nexusServiceDeleteTenantHandler.ServeHTTP(w, r)
 		case NexusServiceCreatePartitionProcedure:
 			nexusServiceCreatePartitionHandler.ServeHTTP(w, r)
 		case NexusServiceListPartitionsProcedure:
@@ -235,6 +260,10 @@ type UnimplementedNexusServiceHandler struct{}
 
 func (UnimplementedNexusServiceHandler) CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.CreateTenant is not implemented"))
+}
+
+func (UnimplementedNexusServiceHandler) DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.v1.NexusService.DeleteTenant is not implemented"))
 }
 
 func (UnimplementedNexusServiceHandler) CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
