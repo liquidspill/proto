@@ -34,7 +34,7 @@ message CreateTenantResponse {
 // ==== Data definitions =====
 
 message CreatePartitionRequest {
-  string key = 1;
+  string id = 1;
   Partition partition = 2;
 }
 
@@ -92,7 +92,7 @@ message Validate {
 
 // Immutable metadata describing a partition stored in object storage
 message Partition {
-  string key = 1;
+  string id = 1;
   // The key used to cluster the data into partitions. This is
   // used to increase data locality, with the idea being that it
   // helps process queries faster
