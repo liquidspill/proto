@@ -45,12 +45,12 @@ message DeleteTenantResponse {
 
 message CreatePartitionRequest {
   string id = 1;
-  Partition partition = 2;
+  PartitionMetadata partition_metadata = 2;
 }
 
 message CreatePartitionResponse {
   google.protobuf.Timestamp created_at = 1;
-  Partition partition = 2;
+  PartitionMetadata partition_metadata = 2;
 }
 
 message ListPartitionsRequest {
@@ -84,7 +84,7 @@ message ListMetadataVersionsResponse {
 message ListPartitionsResponse {
   google.protobuf.Timestamp start_time = 1;
   google.protobuf.Timestamp end_time = 2;
-  repeated Partition partitions = 3;
+  repeated PartitionMetadata partition_metadata = 3;
 }
 
 message ValidateMetadataVersionRequest {
@@ -101,7 +101,7 @@ message Validate {
 }
 
 // Immutable metadata describing a partition stored in object storage
-message Partition {
+message PartitionMetadata {
   string id = 1;
   // The key used to cluster the data into partitions. This is
   // used to increase data locality, with the idea being that it
