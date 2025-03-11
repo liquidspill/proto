@@ -181,7 +181,7 @@ message Compaction {
   google.protobuf.Timestamp created_at = 1;
   CompactionLevel level = 2;
   Window window = 3;
-  uint32 size = 4;
+  uint64 size = 4;
 }
 
 message Window {
