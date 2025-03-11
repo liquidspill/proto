@@ -176,6 +176,26 @@ message ClusterKey {
   uint64 device_id = 2;
 }
 
+// TODO: Add metrics we care about?
+message Compaction {
+  google.protobuf.Timestamp created_at = 1;
+  CompactionLevel level = 2;
+  Window window = 3;
+  uint32 size = 4;
+}
+
+message Window {
+  uint32 size = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+}
+
+enum CompactionLevel {
+  COMPACTION_LEVEL_UNSPECIFIED = 0;
+  COMPACTION_LEVEL_ZERO = 1;
+  COMPACTION_LEVEL_ONE = 2;
+}
+
 // Metadata and data stored for a given value
 message Value {
   // int32 enc = 2; // encoding of the raw data -- store as enums
