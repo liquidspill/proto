@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@bufbuild/buf": "^1.50.1",
+    "@bufbuild/protobuf": "^2.2.3",
+    "@bufbuild/protoc-gen-es": "^2.2.3",
+    "@connectrpc/connect": "^2.0.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
