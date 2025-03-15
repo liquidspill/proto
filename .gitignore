@@ -2,3 +2,5 @@
 target/
 
 /staging
+
+node_modules
