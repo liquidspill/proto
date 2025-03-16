@@ -108,15 +108,17 @@ message PartitionMetadata {
   // helps process queries faster
   ClusterKey cluster_key = 2;
 
+  repeated string segments = 3;
+
   // The size in bytes of the Parquet file
-  uint64 size = 3;
-  uint64 row_count = 4;
+  uint64 size = 4;
+  uint64 row_count = 5;
 
   // Time the partition was created
-  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp created_at = 6;
 
   // Metadata describing the columns in the partition
-  map<string, Column> columns = 6;
+  map<string, Column> columns = 7;
 }
 
 message Column {

@@ -2,15 +2,9 @@ syntax = "proto3";
 
 package scour.v1;
 
-// import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/liquidspill/proto/go/scour/v1;scourv1";
-
-service ScourService {
-  // TODO: Convert to streaming
-  rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse) {}
-}
 
 // ===== Query definitions =====
 
@@ -29,17 +23,14 @@ message CreateQueryResponse {
 }
 
 message Query {
-  string organisation_id = 1;
-  string environment = 2;
-  string dataset = 3;
-  Visualise visualise = 4;
-  Where where = 5;
-  repeated string group_by = 6;
-  repeated OrderBy order_by = 7;
-  uint32 limit = 8;
-  Clause having = 9;
-  int64 start_time = 10;
-  int64 end_time = 11;
+  Visualise visualise = 1;
+  Where where = 2;
+  repeated string group_by = 3;
+  repeated OrderBy order_by = 4;
+  uint32 limit = 5;
+  Clause having = 6;
+  int64 start_time = 7;
+  int64 end_time = 8;
 }
 
 message Visualise {
@@ -182,12 +173,14 @@ message ColumnOrder {
 }
 
 enum OrderType {
-  ORDER_TYPE_UNDEFINED = 0;
-  ORDER_TYPE_TYPE_DEFINED_ORDER = 1;
+  ORDER_TYPE_UNSPECIFIED = 0;
+  ORDER_TYPE_UNDEFINED = 1;
+  ORDER_TYPE_TYPE_DEFINED_ORDER = 2;
 }
 
 enum SortOrder {
-  SORT_ORDER_UNDEFINED = 0;
-  SORT_ORDER_SIGNED = 1;
-  SORT_ORDER_UNSIGNED = 2;
+  SORT_ORDER_UNSPECIFIED = 0;
+  SORT_ORDER_UNDEFINED = 1;
+  SORT_ORDER_SIGNED = 2;
+  SORT_ORDER_UNSIGNED = 3;
 }

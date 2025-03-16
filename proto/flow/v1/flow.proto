@@ -10,11 +10,11 @@ message Flow {
   string fluid_version = 1 [(tagger.tags) = 'parquet:"fluid_version,dict" fluid:"minmax"'];
 
   enum FlowType {
-    FLOWUNKNOWN = 0;
-    SFLOW_5 = 1;
-    NETFLOW_V5 = 2;
-    NETFLOW_V9 = 3;
-    IPFIX = 4;
+    FLOW_TYPE_UNSPECIFIED = 0;
+    FLOW_TYPE_SFLOW_5 = 1;
+    FLOW_TYPE_NETFLOW_V5 = 2;
+    FLOW_TYPE_NETFLOW_V9 = 3;
+    FLOW_TYPE_IPFIX = 4;
   }
   FlowType type = 2 [(tagger.tags) = 'parquet:"type,dict" fluid:"bloom"'];
 
@@ -119,4 +119,7 @@ message Flow {
   bytes bgp_next_hop = 73 [(tagger.tags) = 'parquet:"bgp_next_hop"'];
   repeated uint32 bgp_communities = 74 [(tagger.tags) = 'parquet:"bgp_communities"'];
   repeated uint32 as_path = 75 [(tagger.tags) = 'parquet:"as_path"'];
+
+  // Spilled additional metadata
+  repeated string segments = 76 [(tagger.tags) = 'parquet:"segments,dict" fluid:"bloom"'];
 }
