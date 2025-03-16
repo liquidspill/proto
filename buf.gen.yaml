@@ -1,21 +1,18 @@
 version: v2
 plugins:
-  - local: protoc-gen-go
+  - remote: buf.build/protocolbuffers/go
     out: go
-    opt:
-      - paths=import
-      - module=github.com/liquidspill/proto/go
-  - local: protoc-gen-connect-go
+    opt: paths=source_relative
+  - remote: buf.build/connectrpc/go
     out: go
-    opt:
-      - paths=import
-      - module=github.com/liquidspill/proto/go
-  - local: protoc-gen-es
+    opt: paths=source_relative
+  - remote: buf.build/bufbuild/es
     out: js
     include_imports: true
     opt: target=ts
   # - local: protoc-gen-gotag
-  #   out: .
+  #   out: go
+  #   opt: paths=source_relative
   #   opt:
   #     - paths=import
   #     - module=github.com/liquidspill/proto
