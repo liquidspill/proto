@@ -1,6 +1,6 @@
 {
   "name": "@liquidspill/protojs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "@bufbuild/buf": "^1.50.1",
     "@bufbuild/protobuf": "^2.2.3",

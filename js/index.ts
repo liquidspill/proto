@@ -1,1 +1,1 @@
-export * from './scour.v1_pb';
+export * from './scour/v1/scour_pb';
