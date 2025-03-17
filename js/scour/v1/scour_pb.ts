@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file scour/v1/scour.proto.
  */
 export const file_scour_v1_scour: GenFile = /*@__PURE__*/
-  fileDesc("ChRzY291ci92MS9zY291ci5wcm90bxIIc2NvdXIudjEiNAoSQ3JlYXRlUXVlcnlSZXF1ZXN0Eh4KBXF1ZXJ5GAEgASgLMg8uc2NvdXIudjEuUXVlcnkiZQoTQ3JlYXRlUXVlcnlSZXNwb25zZRIKCgJpZBgBIAEoCRIgCgZzZXJpZXMYAiABKAsyEC5zY291ci52MS5TZXJpZXMSIAoGcmVzdWx0GAMgASgLMhAuc2NvdXIudjEuUmVzdWx0It0BCgVRdWVyeRImCgl2aXN1YWxpc2UYASABKAsyEy5zY291ci52MS5WaXN1YWxpc2USHgoFd2hlcmUYAiABKAsyDy5zY291ci52MS5XaGVyZRIQCghncm91cF9ieRgDIAMoCRIjCghvcmRlcl9ieRgEIAMoCzIRLnNjb3VyLnYxLk9yZGVyQnkSDQoFbGltaXQYBSABKA0SIAoGaGF2aW5nGAYgASgLMhAuc2NvdXIudjEuQ2xhdXNlEhIKCnN0YXJ0X3RpbWUYByABKAMSEAoIZW5kX3RpbWUYCCABKAMiNwoJVmlzdWFsaXNlEhsKAm9wGAEgASgOMg8uc2NvdXIudjEuVmlzT3ASDQoFZmllbGQYAiABKAkiSQoFV2hlcmUSHQoCb3AYASABKA4yES5zY291ci52MS5XaGVyZU9wEiEKB2NsYXVzZXMYAiADKAsyEC5zY291ci52MS5DbGF1c2UiRwoGQ2xhdXNlEg0KBWZpZWxkGAEgASgJEg0KBXZhbHVlGAIgASgJEh8KAm9wGAMgASgOMhMuc2NvdXIudjEuQ29tcGFyZU9wIjoKB09yZGVyQnkSDQoFZmllbGQYASABKAkSIAoFb3JkZXIYAiABKA4yES5zY291ci52MS5PcmRlck9wIlwKBlNlcmllcxIuCgp0aW1lc3RhbXBzGAEgAygLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIiCgRkYXRhGAIgAygLMhQuc2NvdXIudjEuU2VyaWVzRGF0YSIqCgpTZXJpZXNEYXRhEgwKBG5hbWUYASABKAkSDgoGdmFsdWVzGAIgAygDIjUKBlJlc3VsdBIOCgZmaWVsZHMYASADKAkSGwoEcm93cxgCIAMoCzINLnNjb3VyLnYxLlJvdyImCgNSb3cSHwoGdmFsdWVzGAEgAygLMg8uc2NvdXIudjEuVmFsdWUi6QEKBVZhbHVlEhUKC2ludDMyX3ZhbHVlGAEgASgFSAASFQoLaW50NjRfdmFsdWUYAiABKANIABIWCgx1aW50MzJfdmFsdWUYAyABKA1IABIWCgx1aW50NjRfdmFsdWUYBCABKARIABIUCgpib29sX3ZhbHVlGAUgASgISAASFgoMc3RyaW5nX3ZhbHVlGAYgASgJSAASFQoLYnl0ZXNfdmFsdWUYByABKAxIABI1Cg90aW1lc3RhbXBfdmFsdWUYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSABCBgoEa2luZCJmCg9QYXJxdWV0TWV0YWRhdGESLQoNZmlsZV9tZXRhZGF0YRgBIAEoCzIWLnNjb3VyLnYxLkZpbGVNZXRhZGF0YRIkCgpyb3dfZ3JvdXBzGAIgAygLMhAuc2NvdXIudjEuVGhyaWZ0IhcKBlRocmlmdBINCgVieXRlcxgBIAEoDCLkAQoMRmlsZU1ldGFkYXRhEg8KB3ZlcnNpb24YASABKAUSEAoIbnVtX3Jvd3MYAiABKAMSFwoKY3JlYXRlZF9ieRgDIAEoCUgAiAEBEi4KEmtleV92YWx1ZV9tZXRhZGF0YRgEIAMoCzISLnNjb3VyLnYxLktleVZhbHVlEisKEXNjaGVtYV9kZXNjcmlwdG9yGAUgAygLMhAuc2NvdXIudjEuVGhyaWZ0EiwKDWNvbHVtbl9vcmRlcnMYBiADKAsyFS5zY291ci52MS5Db2x1bW5PcmRlckINCgtfY3JlYXRlZF9ieSI1CghLZXlWYWx1ZRILCgNrZXkYASABKAkSEgoFdmFsdWUYAiABKAlIAIgBAUIICgZfdmFsdWUiWQoLQ29sdW1uT3JkZXISIQoEdHlwZRgBIAEoDjITLnNjb3VyLnYxLk9yZGVyVHlwZRInCgpzb3J0X29yZGVyGAIgASgOMhMuc2NvdXIudjEuU29ydE9yZGVyKv0CCgVWaXNPcBIWChJWSVNfT1BfVU5TUEVDSUZJRUQQABIQCgxWSVNfT1BfQ09VTlQQARIZChVWSVNfT1BfQ09VTlRfRElTVElOQ1QQAhIOCgpWSVNfT1BfU1VNEAMSDgoKVklTX09QX0FWRxAEEg4KClZJU19PUF9NQVgQBRIOCgpWSVNfT1BfTUlOEAYSDwoLVklTX09QX1AwMDEQBxIOCgpWSVNfT1BfUDAxEAgSDgoKVklTX09QX1AwNRAJEg4KClZJU19PUF9QMTAQChIOCgpWSVNfT1BfUDI1EAsSDgoKVklTX09QX1A1MBAMEg4KClZJU19PUF9QNzUQDRIOCgpWSVNfT1BfUDkwEA4SDgoKVklTX09QX1A5NRAPEg4KClZJU19PUF9QOTkQEBIPCgtWSVNfT1BfUDk5ORAREhMKD1ZJU19PUF9SQVRFX0FWRxASEhMKD1ZJU19PUF9SQVRFX1NVTRATEhMKD1ZJU19PUF9SQVRFX01BWBAUKkYKB1doZXJlT3ASGAoUV0hFUkVfT1BfVU5TUEVDSUZJRUQQABIQCgxXSEVSRV9PUF9BTkQQARIPCgtXSEVSRV9PUF9PUhACKrsCCglDb21wYXJlT3ASGgoWQ09NUEFSRV9PUF9VTlNQRUNJRklFRBAAEhQKEENPTVBBUkVfT1BfRVFVQUwQARIYChRDT01QQVJFX09QX05PVF9FUVVBTBACEhsKF0NPTVBBUkVfT1BfR1JFQVRFUl9USEFOEAMSJAogQ09NUEFSRV9PUF9HUkVBVEVSX1RIQU5fT1JfRVFVQUwQBBIYChRDT01QQVJFX09QX0xFU1NfVEhBThAFEiEKHUNPTVBBUkVfT1BfTEVTU19USEFOX09SX0VRVUFMEAYSFwoTQ09NUEFSRV9PUF9DT05UQUlOUxAHEh8KG0NPTVBBUkVfT1BfRE9FU19OT1RfQ09OVEFJThAIEhEKDUNPTVBBUkVfT1BfSU4QCRIVChFDT01QQVJFX09QX05PVF9JThAKKkgKB09yZGVyT3ASGAoUT1JERVJfT1BfVU5TUEVDSUZJRUQQABIQCgxPUkRFUl9PUF9BU0MQARIRCg1PUkRFUl9PUF9ERVNDEAIqZAoJT3JkZXJUeXBlEhoKFk9SREVSX1RZUEVfVU5TUEVDSUZJRUQQABIYChRPUkRFUl9UWVBFX1VOREVGSU5FRBABEiEKHU9SREVSX1RZUEVfVFlQRV9ERUZJTkVEX09SREVSEAIqcQoJU29ydE9yZGVyEhoKFlNPUlRfT1JERVJfVU5TUEVDSUZJRUQQABIYChRTT1JUX09SREVSX1VOREVGSU5FRBABEhUKEVNPUlRfT1JERVJfU0lHTkVEEAISFwoTU09SVF9PUkRFUl9VTlNJR05FRBADQjJaMGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vc2NvdXIvdjE7c2NvdXJ2MWIGcHJvdG8z", [file_google_protobuf_timestamp]);
+  fileDesc("ChRzY291ci92MS9zY291ci5wcm90bxIIc2NvdXIudjEiNAoSQ3JlYXRlUXVlcnlSZXF1ZXN0Eh4KBXF1ZXJ5GAEgASgLMg8uc2NvdXIudjEuUXVlcnkiZQoTQ3JlYXRlUXVlcnlSZXNwb25zZRIKCgJpZBgBIAEoCRIgCgZzZXJpZXMYAiABKAsyEC5zY291ci52MS5TZXJpZXMSIAoGcmVzdWx0GAMgASgLMhAuc2NvdXIudjEuUmVzdWx0ItsBCgVRdWVyeRImCgl2aXN1YWxpc2UYASADKAsyEy5zY291ci52MS5WaXN1YWxpc2USHgoFd2hlcmUYAiABKAsyDy5zY291ci52MS5XaGVyZRIQCghncm91cF9ieRgDIAMoCRIhCghvcmRlcl9ieRgEIAMoCzIPLnNjb3VyLnYxLk9yZGVyEg0KBWxpbWl0GAUgASgNEiAKBmhhdmluZxgGIAEoCzIQLnNjb3VyLnYxLkNsYXVzZRISCgpzdGFydF90aW1lGAcgASgDEhAKCGVuZF90aW1lGAggASgDIj0KCVZpc3VhbGlzZRIhCgJvcBgBIAEoDjIVLnNjb3VyLnYxLlZpc3VhbGlzZU9wEg0KBWZpZWxkGAIgASgJIkkKBVdoZXJlEh0KAm9wGAEgASgOMhEuc2NvdXIudjEuV2hlcmVPcBIhCgdjbGF1c2VzGAIgAygLMhAuc2NvdXIudjEuQ2xhdXNlIkcKBkNsYXVzZRINCgVmaWVsZBgBIAEoCRINCgV2YWx1ZRgCIAEoCRIfCgJvcBgDIAEoDjITLnNjb3VyLnYxLkNvbXBhcmVPcCI4CgVPcmRlchINCgVmaWVsZBgBIAEoCRIgCgVvcmRlchgCIAEoDjIRLnNjb3VyLnYxLk9yZGVyT3AiXAoGU2VyaWVzEi4KCnRpbWVzdGFtcHMYASADKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiIKBGRhdGEYAiADKAsyFC5zY291ci52MS5TZXJpZXNEYXRhIioKClNlcmllc0RhdGESDAoEbmFtZRgBIAEoCRIOCgZ2YWx1ZXMYAiADKAMiNQoGUmVzdWx0Eg4KBmZpZWxkcxgBIAMoCRIbCgRyb3dzGAIgAygLMg0uc2NvdXIudjEuUm93IiYKA1JvdxIfCgZ2YWx1ZXMYASADKAsyDy5zY291ci52MS5WYWx1ZSLpAQoFVmFsdWUSFQoLaW50MzJfdmFsdWUYASABKAVIABIVCgtpbnQ2NF92YWx1ZRgCIAEoA0gAEhYKDHVpbnQzMl92YWx1ZRgDIAEoDUgAEhYKDHVpbnQ2NF92YWx1ZRgEIAEoBEgAEhQKCmJvb2xfdmFsdWUYBSABKAhIABIWCgxzdHJpbmdfdmFsdWUYBiABKAlIABIVCgtieXRlc192YWx1ZRgHIAEoDEgAEjUKD3RpbWVzdGFtcF92YWx1ZRgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAEIGCgRraW5kImYKD1BhcnF1ZXRNZXRhZGF0YRItCg1maWxlX21ldGFkYXRhGAEgASgLMhYuc2NvdXIudjEuRmlsZU1ldGFkYXRhEiQKCnJvd19ncm91cHMYAiADKAsyEC5zY291ci52MS5UaHJpZnQiFwoGVGhyaWZ0Eg0KBWJ5dGVzGAEgASgMIuQBCgxGaWxlTWV0YWRhdGESDwoHdmVyc2lvbhgBIAEoBRIQCghudW1fcm93cxgCIAEoAxIXCgpjcmVhdGVkX2J5GAMgASgJSACIAQESLgoSa2V5X3ZhbHVlX21ldGFkYXRhGAQgAygLMhIuc2NvdXIudjEuS2V5VmFsdWUSKwoRc2NoZW1hX2Rlc2NyaXB0b3IYBSADKAsyEC5zY291ci52MS5UaHJpZnQSLAoNY29sdW1uX29yZGVycxgGIAMoCzIVLnNjb3VyLnYxLkNvbHVtbk9yZGVyQg0KC19jcmVhdGVkX2J5IjUKCEtleVZhbHVlEgsKA2tleRgBIAEoCRISCgV2YWx1ZRgCIAEoCUgAiAEBQggKBl92YWx1ZSJZCgtDb2x1bW5PcmRlchIhCgR0eXBlGAEgASgOMhMuc2NvdXIudjEuT3JkZXJUeXBlEicKCnNvcnRfb3JkZXIYAiABKA4yEy5zY291ci52MS5Tb3J0T3JkZXIqgQQKC1Zpc3VhbGlzZU9wEhwKGFZJU1VBTElTRV9PUF9VTlNQRUNJRklFRBAAEhYKElZJU1VBTElTRV9PUF9DT1VOVBABEh8KG1ZJU1VBTElTRV9PUF9DT1VOVF9ESVNUSU5DVBACEhQKEFZJU1VBTElTRV9PUF9TVU0QAxIUChBWSVNVQUxJU0VfT1BfQVZHEAQSFAoQVklTVUFMSVNFX09QX01BWBAFEhQKEFZJU1VBTElTRV9PUF9NSU4QBhIVChFWSVNVQUxJU0VfT1BfUDAwMRAHEhQKEFZJU1VBTElTRV9PUF9QMDEQCBIUChBWSVNVQUxJU0VfT1BfUDA1EAkSFAoQVklTVUFMSVNFX09QX1AxMBAKEhQKEFZJU1VBTElTRV9PUF9QMjUQCxIUChBWSVNVQUxJU0VfT1BfUDUwEAwSFAoQVklTVUFMSVNFX09QX1A3NRANEhQKEFZJU1VBTElTRV9PUF9QOTAQDhIUChBWSVNVQUxJU0VfT1BfUDk1EA8SFAoQVklTVUFMSVNFX09QX1A5ORAQEhUKEVZJU1VBTElTRV9PUF9QOTk5EBESGQoVVklTVUFMSVNFX09QX1JBVEVfQVZHEBISGQoVVklTVUFMSVNFX09QX1JBVEVfU1VNEBMSGQoVVklTVUFMSVNFX09QX1JBVEVfTUFYEBQqRgoHV2hlcmVPcBIYChRXSEVSRV9PUF9VTlNQRUNJRklFRBAAEhAKDFdIRVJFX09QX0FORBABEg8KC1dIRVJFX09QX09SEAIquwIKCUNvbXBhcmVPcBIaChZDT01QQVJFX09QX1VOU1BFQ0lGSUVEEAASFAoQQ09NUEFSRV9PUF9FUVVBTBABEhgKFENPTVBBUkVfT1BfTk9UX0VRVUFMEAISGwoXQ09NUEFSRV9PUF9HUkVBVEVSX1RIQU4QAxIkCiBDT01QQVJFX09QX0dSRUFURVJfVEhBTl9PUl9FUVVBTBAEEhgKFENPTVBBUkVfT1BfTEVTU19USEFOEAUSIQodQ09NUEFSRV9PUF9MRVNTX1RIQU5fT1JfRVFVQUwQBhIXChNDT01QQVJFX09QX0NPTlRBSU5TEAcSHwobQ09NUEFSRV9PUF9ET0VTX05PVF9DT05UQUlOEAgSEQoNQ09NUEFSRV9PUF9JThAJEhUKEUNPTVBBUkVfT1BfTk9UX0lOEAoqSAoHT3JkZXJPcBIYChRPUkRFUl9PUF9VTlNQRUNJRklFRBAAEhAKDE9SREVSX09QX0FTQxABEhEKDU9SREVSX09QX0RFU0MQAipkCglPcmRlclR5cGUSGgoWT1JERVJfVFlQRV9VTlNQRUNJRklFRBAAEhgKFE9SREVSX1RZUEVfVU5ERUZJTkVEEAESIQodT1JERVJfVFlQRV9UWVBFX0RFRklORURfT1JERVIQAipxCglTb3J0T3JkZXISGgoWU09SVF9PUkRFUl9VTlNQRUNJRklFRBAAEhgKFFNPUlRfT1JERVJfVU5ERUZJTkVEEAESFQoRU09SVF9PUkRFUl9TSUdORUQQAhIXChNTT1JUX09SREVSX1VOU0lHTkVEEANCMlowZ2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9zY291ci92MTtzY291cnYxYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message scour.v1.CreateQueryRequest
@@ -69,9 +69,9 @@ export const CreateQueryResponseSchema: GenMessage<CreateQueryResponse> = /*@__P
  */
 export type Query = Message<"scour.v1.Query"> & {
   /**
-   * @generated from field: scour.v1.Visualise visualise = 1;
+   * @generated from field: repeated scour.v1.Visualise visualise = 1;
    */
-  visualise?: Visualise;
+  visualise: Visualise[];
 
   /**
    * @generated from field: scour.v1.Where where = 2;
@@ -84,9 +84,9 @@ export type Query = Message<"scour.v1.Query"> & {
   groupBy: string[];
 
   /**
-   * @generated from field: repeated scour.v1.OrderBy order_by = 4;
+   * @generated from field: repeated scour.v1.Order order_by = 4;
    */
-  orderBy: OrderBy[];
+  orderBy: Order[];
 
   /**
    * @generated from field: uint32 limit = 5;
@@ -121,9 +121,9 @@ export const QuerySchema: GenMessage<Query> = /*@__PURE__*/
  */
 export type Visualise = Message<"scour.v1.Visualise"> & {
   /**
-   * @generated from field: scour.v1.VisOp op = 1;
+   * @generated from field: scour.v1.VisualiseOp op = 1;
    */
-  op: VisOp;
+  op: VisualiseOp;
 
   /**
    * @generated from field: string field = 2;
@@ -188,9 +188,9 @@ export const ClauseSchema: GenMessage<Clause> = /*@__PURE__*/
   messageDesc(file_scour_v1_scour, 5);
 
 /**
- * @generated from message scour.v1.OrderBy
+ * @generated from message scour.v1.Order
  */
-export type OrderBy = Message<"scour.v1.OrderBy"> & {
+export type Order = Message<"scour.v1.Order"> & {
   /**
    * @generated from field: string field = 1;
    */
@@ -203,10 +203,10 @@ export type OrderBy = Message<"scour.v1.OrderBy"> & {
 };
 
 /**
- * Describes the message scour.v1.OrderBy.
- * Use `create(OrderBySchema)` to create a new message.
+ * Describes the message scour.v1.Order.
+ * Use `create(OrderSchema)` to create a new message.
  */
-export const OrderBySchema: GenMessage<OrderBy> = /*@__PURE__*/
+export const OrderSchema: GenMessage<Order> = /*@__PURE__*/
   messageDesc(file_scour_v1_scour, 6);
 
 /**
@@ -485,121 +485,121 @@ export const ColumnOrderSchema: GenMessage<ColumnOrder> = /*@__PURE__*/
   messageDesc(file_scour_v1_scour, 16);
 
 /**
- * @generated from enum scour.v1.VisOp
+ * @generated from enum scour.v1.VisualiseOp
  */
-export enum VisOp {
+export enum VisualiseOp {
   /**
-   * @generated from enum value: VIS_OP_UNSPECIFIED = 0;
+   * @generated from enum value: VISUALISE_OP_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * @generated from enum value: VIS_OP_COUNT = 1;
+   * @generated from enum value: VISUALISE_OP_COUNT = 1;
    */
   COUNT = 1,
 
   /**
-   * @generated from enum value: VIS_OP_COUNT_DISTINCT = 2;
+   * @generated from enum value: VISUALISE_OP_COUNT_DISTINCT = 2;
    */
   COUNT_DISTINCT = 2,
 
   /**
-   * @generated from enum value: VIS_OP_SUM = 3;
+   * @generated from enum value: VISUALISE_OP_SUM = 3;
    */
   SUM = 3,
 
   /**
-   * @generated from enum value: VIS_OP_AVG = 4;
+   * @generated from enum value: VISUALISE_OP_AVG = 4;
    */
   AVG = 4,
 
   /**
-   * @generated from enum value: VIS_OP_MAX = 5;
+   * @generated from enum value: VISUALISE_OP_MAX = 5;
    */
   MAX = 5,
 
   /**
-   * @generated from enum value: VIS_OP_MIN = 6;
+   * @generated from enum value: VISUALISE_OP_MIN = 6;
    */
   MIN = 6,
 
   /**
    * Unsupported
    *
-   * @generated from enum value: VIS_OP_P001 = 7;
+   * @generated from enum value: VISUALISE_OP_P001 = 7;
    */
   P001 = 7,
 
   /**
-   * @generated from enum value: VIS_OP_P01 = 8;
+   * @generated from enum value: VISUALISE_OP_P01 = 8;
    */
   P01 = 8,
 
   /**
-   * @generated from enum value: VIS_OP_P05 = 9;
+   * @generated from enum value: VISUALISE_OP_P05 = 9;
    */
   P05 = 9,
 
   /**
-   * @generated from enum value: VIS_OP_P10 = 10;
+   * @generated from enum value: VISUALISE_OP_P10 = 10;
    */
   P10 = 10,
 
   /**
-   * @generated from enum value: VIS_OP_P25 = 11;
+   * @generated from enum value: VISUALISE_OP_P25 = 11;
    */
   P25 = 11,
 
   /**
-   * @generated from enum value: VIS_OP_P50 = 12;
+   * @generated from enum value: VISUALISE_OP_P50 = 12;
    */
   P50 = 12,
 
   /**
-   * @generated from enum value: VIS_OP_P75 = 13;
+   * @generated from enum value: VISUALISE_OP_P75 = 13;
    */
   P75 = 13,
 
   /**
-   * @generated from enum value: VIS_OP_P90 = 14;
+   * @generated from enum value: VISUALISE_OP_P90 = 14;
    */
   P90 = 14,
 
   /**
-   * @generated from enum value: VIS_OP_P95 = 15;
+   * @generated from enum value: VISUALISE_OP_P95 = 15;
    */
   P95 = 15,
 
   /**
-   * @generated from enum value: VIS_OP_P99 = 16;
+   * @generated from enum value: VISUALISE_OP_P99 = 16;
    */
   P99 = 16,
 
   /**
-   * @generated from enum value: VIS_OP_P999 = 17;
+   * @generated from enum value: VISUALISE_OP_P999 = 17;
    */
   P999 = 17,
 
   /**
-   * @generated from enum value: VIS_OP_RATE_AVG = 18;
+   * @generated from enum value: VISUALISE_OP_RATE_AVG = 18;
    */
   RATE_AVG = 18,
 
   /**
-   * @generated from enum value: VIS_OP_RATE_SUM = 19;
+   * @generated from enum value: VISUALISE_OP_RATE_SUM = 19;
    */
   RATE_SUM = 19,
 
   /**
-   * @generated from enum value: VIS_OP_RATE_MAX = 20;
+   * @generated from enum value: VISUALISE_OP_RATE_MAX = 20;
    */
   RATE_MAX = 20,
 }
 
 /**
- * Describes the enum scour.v1.VisOp.
+ * Describes the enum scour.v1.VisualiseOp.
  */
-export const VisOpSchema: GenEnum<VisOp> = /*@__PURE__*/
+export const VisualiseOpSchema: GenEnum<VisualiseOp> = /*@__PURE__*/
   enumDesc(file_scour_v1_scour, 0);
 
 /**

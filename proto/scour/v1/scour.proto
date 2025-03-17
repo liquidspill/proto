@@ -23,10 +23,10 @@ message CreateQueryResponse {
 }
 
 message Query {
-  Visualise visualise = 1;
+  repeated Visualise visualise = 1;
   Where where = 2;
   repeated string group_by = 3;
-  repeated OrderBy order_by = 4;
+  repeated Order order_by = 4;
   uint32 limit = 5;
   Clause having = 6;
   int64 start_time = 7;
@@ -34,33 +34,33 @@ message Query {
 }
 
 message Visualise {
-  VisOp op = 1;
+  VisualiseOp op = 1;
   string field = 2;
 }
 
-enum VisOp {
-  VIS_OP_UNSPECIFIED = 0;
-  VIS_OP_COUNT = 1;
-  VIS_OP_COUNT_DISTINCT = 2;
-  VIS_OP_SUM = 3;
-  VIS_OP_AVG = 4;
-  VIS_OP_MAX = 5;
-  VIS_OP_MIN = 6;
+enum VisualiseOp {
+  VISUALISE_OP_UNSPECIFIED = 0;
+  VISUALISE_OP_COUNT = 1;
+  VISUALISE_OP_COUNT_DISTINCT = 2;
+  VISUALISE_OP_SUM = 3;
+  VISUALISE_OP_AVG = 4;
+  VISUALISE_OP_MAX = 5;
+  VISUALISE_OP_MIN = 6;
   // Unsupported
-  VIS_OP_P001 = 7;
-  VIS_OP_P01 = 8;
-  VIS_OP_P05 = 9;
-  VIS_OP_P10 = 10;
-  VIS_OP_P25 = 11;
-  VIS_OP_P50 = 12;
-  VIS_OP_P75 = 13;
-  VIS_OP_P90 = 14;
-  VIS_OP_P95 = 15;
-  VIS_OP_P99 = 16;
-  VIS_OP_P999 = 17;
-  VIS_OP_RATE_AVG = 18;
-  VIS_OP_RATE_SUM = 19;
-  VIS_OP_RATE_MAX = 20;
+  VISUALISE_OP_P001 = 7;
+  VISUALISE_OP_P01 = 8;
+  VISUALISE_OP_P05 = 9;
+  VISUALISE_OP_P10 = 10;
+  VISUALISE_OP_P25 = 11;
+  VISUALISE_OP_P50 = 12;
+  VISUALISE_OP_P75 = 13;
+  VISUALISE_OP_P90 = 14;
+  VISUALISE_OP_P95 = 15;
+  VISUALISE_OP_P99 = 16;
+  VISUALISE_OP_P999 = 17;
+  VISUALISE_OP_RATE_AVG = 18;
+  VISUALISE_OP_RATE_SUM = 19;
+  VISUALISE_OP_RATE_MAX = 20;
 }
 
 message Where {
@@ -94,7 +94,7 @@ enum CompareOp {
   COMPARE_OP_NOT_IN = 10;
 }
 
-message OrderBy {
+message Order {
   string field = 1;
   OrderOp order = 2;
 }
