@@ -24,16 +24,16 @@ service NexusService {
 // ===== Management definitions =====
 
 message CreateTenantRequest {
-  uint64 id = 1;
+  string id = 1;
 }
 
 message CreateTenantResponse {
   google.protobuf.Timestamp created_at = 1;
-  uint64 id = 2;
+  string id = 2;
 }
 
 message DeleteTenantRequest {
-  uint64 id = 1;
+  string id = 1;
 }
 
 message DeleteTenantResponse {
