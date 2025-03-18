@@ -38,7 +38,7 @@ message DeleteTenantRequest {
 
 message DeleteTenantResponse {
   google.protobuf.Timestamp deleted_at = 1;
-  uint64 id = 2;
+  string id = 2;
 }
 
 // ==== Data definitions =====
