@@ -10,9 +10,3 @@ plugins:
     out: js
     include_imports: true
     opt: target=ts
-  # - local: protoc-gen-gotag
-  #   out: go
-  #   opt: paths=source_relative
-  #   opt:
-  #     - paths=import
-  #     - module=github.com/liquidspill/proto

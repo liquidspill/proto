@@ -92,6 +92,8 @@ enum CompareOp {
   COMPARE_OP_DOES_NOT_CONTAIN = 8;
   COMPARE_OP_IN = 9;
   COMPARE_OP_NOT_IN = 10;
+
+  // ADD exists, does-not-exist, starts-with, does-not-start-with, ends-with, does-not-end-with
 }
 
 message Order {
@@ -113,7 +115,7 @@ message Series {
 message SeriesData {
   // The name of the series. This is the field that was queried
   string name = 1;
-  repeated int64 values = 2;
+  repeated Value values = 2;
 }
 
 message Result {
