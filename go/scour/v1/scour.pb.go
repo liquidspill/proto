@@ -823,9 +823,15 @@ func (x *Order) GetOrder() OrderOp {
 }
 
 type Series struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Timestamps    []*timestamppb.Timestamp `protobuf:"bytes,1,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
-	Data          []*SeriesData            `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+	state      protoimpl.MessageState   `protogen:"open.v1"`
+	Timestamps []*timestamppb.Timestamp `protobuf:"bytes,1,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
+	// The series of data returned by our query
+	Data map[string]*SeriesData `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// The name of the columns that are visualisations of the data (i.e the
+	// operation on the data)
+	Visualisations []string `protobuf:"bytes,3,rep,name=visualisations,proto3" json:"visualisations,omitempty"`
+	// The names of the columns that are used to group the data
+	Groups        []string `protobuf:"bytes,4,rep,name=groups,proto3" json:"groups,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -867,9 +873,23 @@ func (x *Series) GetTimestamps() []*timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Series) GetData() []*SeriesData {
+func (x *Series) GetData() map[string]*SeriesData {
 	if x != nil {
 		return x.Data
+	}
+	return nil
+}
+
+func (x *Series) GetVisualisations() []string {
+	if x != nil {
+		return x.Visualisations
+	}
+	return nil
+}
+
+func (x *Series) GetGroups() []string {
+	if x != nil {
+		return x.Groups
 	}
 	return nil
 }
@@ -1518,12 +1538,17 @@ const file_scour_v1_scour_proto_rawDesc = "" +
 	"\x02op\x18\x03 \x01(\x0e2\x13.scour.v1.CompareOpR\x02op\"F\n" +
 	"\x05Order\x12\x14\n" +
 	"\x05field\x18\x01 \x01(\tR\x05field\x12'\n" +
-	"\x05order\x18\x02 \x01(\x0e2\x11.scour.v1.OrderOpR\x05order\"n\n" +
+	"\x05order\x18\x02 \x01(\x0e2\x11.scour.v1.OrderOpR\x05order\"\x83\x02\n" +
 	"\x06Series\x12:\n" +
 	"\n" +
 	"timestamps\x18\x01 \x03(\v2\x1a.google.protobuf.TimestampR\n" +
-	"timestamps\x12(\n" +
-	"\x04data\x18\x02 \x03(\v2\x14.scour.v1.SeriesDataR\x04data\"I\n" +
+	"timestamps\x12.\n" +
+	"\x04data\x18\x02 \x03(\v2\x1a.scour.v1.Series.DataEntryR\x04data\x12&\n" +
+	"\x0evisualisations\x18\x03 \x03(\tR\x0evisualisations\x12\x16\n" +
+	"\x06groups\x18\x04 \x03(\tR\x06groups\x1aM\n" +
+	"\tDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.scour.v1.SeriesDataR\x05value:\x028\x01\"I\n" +
 	"\n" +
 	"SeriesData\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
@@ -1637,7 +1662,7 @@ func file_scour_v1_scour_proto_rawDescGZIP() []byte {
 }
 
 var file_scour_v1_scour_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_scour_v1_scour_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_scour_v1_scour_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_scour_v1_scour_proto_goTypes = []any{
 	(VisualiseOp)(0),              // 0: scour.v1.VisualiseOp
 	(WhereOp)(0),                  // 1: scour.v1.WhereOp
@@ -1662,7 +1687,8 @@ var file_scour_v1_scour_proto_goTypes = []any{
 	(*FileMetadata)(nil),          // 20: scour.v1.FileMetadata
 	(*KeyValue)(nil),              // 21: scour.v1.KeyValue
 	(*ColumnOrder)(nil),           // 22: scour.v1.ColumnOrder
-	(*timestamppb.Timestamp)(nil), // 23: google.protobuf.Timestamp
+	nil,                           // 23: scour.v1.Series.DataEntry
+	(*timestamppb.Timestamp)(nil), // 24: google.protobuf.Timestamp
 }
 var file_scour_v1_scour_proto_depIdxs = []int32{
 	8,  // 0: scour.v1.CreateQueryRequest.query:type_name -> scour.v1.Query
@@ -1677,12 +1703,12 @@ var file_scour_v1_scour_proto_depIdxs = []int32{
 	11, // 9: scour.v1.Where.clauses:type_name -> scour.v1.Clause
 	2,  // 10: scour.v1.Clause.op:type_name -> scour.v1.CompareOp
 	3,  // 11: scour.v1.Order.order:type_name -> scour.v1.OrderOp
-	23, // 12: scour.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
-	14, // 13: scour.v1.Series.data:type_name -> scour.v1.SeriesData
+	24, // 12: scour.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
+	23, // 13: scour.v1.Series.data:type_name -> scour.v1.Series.DataEntry
 	17, // 14: scour.v1.SeriesData.values:type_name -> scour.v1.Value
 	16, // 15: scour.v1.Result.rows:type_name -> scour.v1.Row
 	17, // 16: scour.v1.Row.values:type_name -> scour.v1.Value
-	23, // 17: scour.v1.Value.timestamp_value:type_name -> google.protobuf.Timestamp
+	24, // 17: scour.v1.Value.timestamp_value:type_name -> google.protobuf.Timestamp
 	20, // 18: scour.v1.ParquetMetadata.file_metadata:type_name -> scour.v1.FileMetadata
 	19, // 19: scour.v1.ParquetMetadata.row_groups:type_name -> scour.v1.Thrift
 	21, // 20: scour.v1.FileMetadata.key_value_metadata:type_name -> scour.v1.KeyValue
@@ -1690,11 +1716,12 @@ var file_scour_v1_scour_proto_depIdxs = []int32{
 	22, // 22: scour.v1.FileMetadata.column_orders:type_name -> scour.v1.ColumnOrder
 	4,  // 23: scour.v1.ColumnOrder.type:type_name -> scour.v1.OrderType
 	5,  // 24: scour.v1.ColumnOrder.sort_order:type_name -> scour.v1.SortOrder
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	14, // 25: scour.v1.Series.DataEntry.value:type_name -> scour.v1.SeriesData
+	26, // [26:26] is the sub-list for method output_type
+	26, // [26:26] is the sub-list for method input_type
+	26, // [26:26] is the sub-list for extension type_name
+	26, // [26:26] is the sub-list for extension extendee
+	0,  // [0:26] is the sub-list for field type_name
 }
 
 func init() { file_scour_v1_scour_proto_init() }
@@ -1720,7 +1747,7 @@ func file_scour_v1_scour_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_scour_v1_scour_proto_rawDesc), len(file_scour_v1_scour_proto_rawDesc)),
 			NumEnums:      6,
-			NumMessages:   17,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

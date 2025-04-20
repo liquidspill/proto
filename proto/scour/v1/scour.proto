@@ -109,7 +109,13 @@ enum OrderOp {
 
 message Series {
   repeated google.protobuf.Timestamp timestamps = 1;
-  repeated SeriesData data = 2;
+  // The series of data returned by our query
+  map<string, SeriesData> data = 2;
+  // The name of the columns that are visualisations of the data (i.e the
+  // operation on the data)
+  repeated string visualisations = 3;
+  // The names of the columns that are used to group the data
+  repeated string groups = 4;
 }
 
 message SeriesData {
