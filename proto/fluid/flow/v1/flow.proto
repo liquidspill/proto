@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package flow.v1;
+
+import "tagger/tagger.proto";
+
+option go_package = "github.com/liquidspill/proto/go/fluid/flow/v1;flowv1";
+
+message Flow {
+  string fluid_version = 1 [(tagger.tags) = 'parquet:"fluid_version,dict" fluid:"minmax"'];
+
+  enum FlowType {
+    FLOW_TYPE_UNSPECIFIED = 0;
+    FLOW_TYPE_SFLOW_5 = 1;
+    FLOW_TYPE_NETFLOW_V5 = 2;
+    FLOW_TYPE_NETFLOW_V9 = 3;
+    FLOW_TYPE_IPFIX = 4;
+  }
+  FlowType type = 2 [(tagger.tags) = 'parquet:"type,dict" fluid:"bloom"'];
+
+  int64 time_received = 3 [(tagger.tags) = 'parquet:"time_received,timestamp,delta" fluid:"minmax"'];
+  uint32 sequence = 4 [(tagger.tags) = 'parquet:"sequence" fluid:"minmax"'];
+  uint32 sampling_rate = 5 [(tagger.tags) = 'parquet:"sampling_rate" fluid:"minmax"'];
+  uint32 direction = 6 [(tagger.tags) = 'parquet:"direction,dict" fluid:"bloom"'];
+
+  // Sampler information
+  bytes sampler_address = 7 [(tagger.tags) = 'parquet:"sampler_address" fluid:"minmax,ip"']; // Fixed 16 byte array
+
+  // Flow timing
+  int64 flow_start_time = 8 [(tagger.tags) = 'parquet:"flow_start_time,timestamp,delta" fluid:"minmax"'];
+  int64 flow_end_time = 9 [(tagger.tags) = 'parquet:"flow_end_time,timestamp,delta" fluid:"minmax"'];
+
+  // Size metrics
+  uint32 bytes = 10 [(tagger.tags) = 'parquet:"bytes" fluid:"minmax"'];
+  uint32 packets = 11 [(tagger.tags) = 'parquet:"packets" fluid:"minmax"'];
+
+  // Network addresses
+  bytes src_addr = 12 [(tagger.tags) = 'parquet:"src_addr" fluid:"minmax,ip"']; // Fixed 16 byte array
+  bytes dst_addr = 13 [(tagger.tags) = 'parquet:"dst_addr" fluid:"minmax,ip"']; // Fixed 16 byte array
+
+  string ethertype = 14 [(tagger.tags) = 'parquet:"ethertype,dict" fluid:"bloom"'];
+  uint32 protocol = 15 [(tagger.tags) = 'parquet:"protocol,dict" fluid:"bloom"'];
+
+  // Ports
+  uint32 src_port = 16 [(tagger.tags) = 'parquet:"src_port" fluid:"minmax"'];
+  uint32 dst_port = 17 [(tagger.tags) = 'parquet:"dst_port" fluid:"minmax"'];
+
+  // Interfaces
+  uint32 in_interface = 18 [(tagger.tags) = 'parquet:"in_interface" fluid:"minmax"'];
+  uint32 out_interface = 19 [(tagger.tags) = 'parquet:"out_interface" fluid:"minmax"'];
+
+  // Ethernet information
+  uint64 src_mac = 20 [(tagger.tags) = 'parquet:"src_mac" fluid:"minmax"'];
+  uint64 dst_mac = 21 [(tagger.tags) = 'parquet:"dst_mac" fluid:"minmax"'];
+
+  // VLAN information
+  uint32 src_vlan = 22 [(tagger.tags) = 'parquet:"src_vlan"'];
+  uint32 dst_vlan = 23 [(tagger.tags) = 'parquet:"dst_vlan"'];
+  uint32 vlan_id = 24 [(tagger.tags) = 'parquet:"vlan_id"'];
+
+  // VRF information
+  uint32 ingress_vrf_id = 25 [(tagger.tags) = 'parquet:"ingress_vrf_id"'];
+  uint32 egress_vrf_id = 26 [(tagger.tags) = 'parquet:"egress_vrf_id"'];
+
+  // IP and TCP flags
+  uint32 ip_tos = 27 [(tagger.tags) = 'parquet:"ip_tos"'];
+  uint32 ip_ttl = 28 [(tagger.tags) = 'parquet:"ip_ttl"'];
+  uint32 tcp_flags = 29 [(tagger.tags) = 'parquet:"tcp_flags,dict" fluid:"bloom"'];
+  uint32 icmp_type = 30 [(tagger.tags) = 'parquet:"icmp_type,dict" fluid:"bloom"'];
+  uint32 icmp_code = 31 [(tagger.tags) = 'parquet:"icmp_code,dict" fluid:"bloom"'];
+  uint32 ipv6_flow_label = 32 [(tagger.tags) = 'parquet:"ipv6_flow_label"'];
+  uint32 forwarding_status = 33 [(tagger.tags) = 'parquet:"forwarding_status"'];
+
+  // Fragment information
+  uint32 fragment_id = 34 [(tagger.tags) = 'parquet:"fragment_id"'];
+  uint32 fragment_offset = 35 [(tagger.tags) = 'parquet:"fragment_offset"'];
+  uint32 bi_flow_direction = 36 [(tagger.tags) = 'parquet:"bi_flow_direction"'];
+
+  // AS information
+  string src_as = 37 [(tagger.tags) = 'parquet:"src_as,dict" fluid:"bloom"'];
+  uint32 src_asn = 38 [(tagger.tags) = 'parquet:"src_asn,dict" fluid:"bloom"'];
+  string dst_as = 39 [(tagger.tags) = 'parquet:"dst_as,dict" fluid:"bloom"'];
+  uint32 dst_asn = 40 [(tagger.tags) = 'parquet:"dst_asn,dict" fluid:"bloom"'];
+  uint32 nexthop_as = 41 [(tagger.tags) = 'parquet:"nexthop_as"'];
+  bytes nexthop = 42 [(tagger.tags) = 'parquet:"nexthop" fluid:"minmax,ip"']; // Fixed 16 byte array
+
+  // Geo information
+  string src_city = 43 [(tagger.tags) = 'parquet:"src_city,dict" fluid:"bloom"'];
+  string src_country = 44 [(tagger.tags) = 'parquet:"src_country,dict" fluid:"bloom"'];
+  string dst_city = 45 [(tagger.tags) = 'parquet:"dst_city,dict" fluid:"bloom"'];
+  string dst_country = 46 [(tagger.tags) = 'parquet:"dst_country,dict" fluid:"bloom"'];
+
+  // Network prefix
+  uint32 src_net = 47 [(tagger.tags) = 'parquet:"src_net" fluid:"minmax"'];
+  uint32 dst_net = 48 [(tagger.tags) = 'parquet:"dst_net" fluid:"minmax"'];
+
+  // Encapsulation information
+  bool has_encap = 49 [(tagger.tags) = 'parquet:"has_encap"'];
+  bytes src_addr_encap = 50 [(tagger.tags) = 'parquet:"src_addr_encap" fluid:"minmax,ip"']; // Fixed 16 byte array
+  bytes dst_addr_encap = 51 [(tagger.tags) = 'parquet:"dst_addr_encap" fluid:"minmax,ip"']; // Fixed 16 byte array
+  uint32 proto_encap = 52 [(tagger.tags) = 'parquet:"proto_encap"'];
+  uint32 ethertype_encap = 53 [(tagger.tags) = 'parquet:"ethertype_encap"'];
+  uint32 ip_tos_encap = 54 [(tagger.tags) = 'parquet:"ip_tos_encap"'];
+  uint32 ip_ttl_encap = 55 [(tagger.tags) = 'parquet:"ip_ttl_encap"'];
+  uint32 ipv6_flow_label_encap = 56 [(tagger.tags) = 'parquet:"ipv6_flow_label_encap"'];
+  uint32 fragment_id_encap = 57 [(tagger.tags) = 'parquet:"fragment_id_encap"'];
+  uint32 fragment_offset_encap = 58 [(tagger.tags) = 'parquet:"fragment_offset_encap"'];
+
+  // MPLS information
+  repeated uint32 mpls_ttl = 80 [(tagger.tags) = 'parquet:"mpls_ttl"'];
+  repeated uint32 mpls_label = 81 [(tagger.tags) = 'parquet:"mpls_label"'];
+  repeated bytes mpls_ip = 82 [(tagger.tags) = 'parquet:"mpls_ip"'];
+
+  // PPP information
+  bool has_ppp = 71 [(tagger.tags) = 'parquet:"has_ppp"'];
+  uint32 ppp_address_control = 72 [(tagger.tags) = 'parquet:"ppp_address_control"'];
+
+  // BGP information
+  bytes bgp_next_hop = 73 [(tagger.tags) = 'parquet:"bgp_next_hop"'];
+  repeated uint32 bgp_communities = 74 [(tagger.tags) = 'parquet:"bgp_communities"'];
+  repeated uint32 as_path = 75 [(tagger.tags) = 'parquet:"as_path"'];
+
+  // Spilled additional metadata
+  repeated string segments = 76 [(tagger.tags) = 'parquet:"segments,dict" fluid:"bloom"'];
+}

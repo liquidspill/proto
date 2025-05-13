@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package controlplane.v1;
+
+import "google/protobuf/timestamp.proto";
+import "std/v1/std.proto";
+
+option go_package = "github.com/liquidspill/proto/go/fluid/controlplane/v1;controlplanev1";
+
+service ControlPlaneService {
+  rpc ExportTelemetry(ExportTelemetryRequest) returns (ExportTelemetryResponse) {}
+  rpc RegisterRule(RegisterRuleRequest) returns (RegisterRuleResponse) {}
+  rpc DeregisterRule(DeregisterRuleRequest) returns (DeregisterRuleResponse) {}
+}
+
+message ExportTelemetryRequest {
+    bool export = 1;
+}
+
+message ExportTelemetryResponse {
+    google.protobuf.Timestamp action_at = 1;
+    bool export = 2;
+}
+
+message RegisterRuleRequest {
+    Target target = 1;
+    Rule rule = 2;
+}
+
+message RegisterRuleResponse {
+    google.protobuf.Timestamp action_at = 1;
+    string rule_id = 2;
+    Target target = 3;
+    Rule rule = 4;
+}
+
+message Target {
+    oneof target {
+        Devices devices = 1;
+        DeviceDescriptor descriptor = 2;
+    }
+}
+
+message Devices {
+    repeated string device_ids = 1;
+}
+
+message DeviceDescriptor {
+    string vendor = 1;
+    string model = 2;
+    string os = 3;
+    repeated std.v1.KeyValue labels = 4;
+}
+
+message Rule {}
+
+message DeregisterRuleRequest {
+    string rule_id = 1;
+}
+
+message DeregisterRuleResponse {
+    google.protobuf.Timestamp action_at = 1;
+    string rule_id = 2;
+}
