@@ -14,7 +14,24 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file fluid/controlplane/v1/controlplane.proto.
  */
 export const file_fluid_controlplane_v1_controlplane: GenFile = /*@__PURE__*/
-  fileDesc("CihmbHVpZC9jb250cm9scGxhbmUvdjEvY29udHJvbHBsYW5lLnByb3RvEg9jb250cm9scGxhbmUudjEiKAoWRXhwb3J0VGVsZW1ldHJ5UmVxdWVzdBIOCgZleHBvcnQYASABKAgiWAoXRXhwb3J0VGVsZW1ldHJ5UmVzcG9uc2USLQoJYWN0aW9uX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIOCgZleHBvcnQYAiABKAgiYwoTUmVnaXN0ZXJSdWxlUmVxdWVzdBInCgZ0YXJnZXQYASABKAsyFy5jb250cm9scGxhbmUudjEuVGFyZ2V0EiMKBHJ1bGUYAiABKAsyFS5jb250cm9scGxhbmUudjEuUnVsZSKkAQoUUmVnaXN0ZXJSdWxlUmVzcG9uc2USLQoJYWN0aW9uX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIPCgdydWxlX2lkGAIgASgJEicKBnRhcmdldBgDIAEoCzIXLmNvbnRyb2xwbGFuZS52MS5UYXJnZXQSIwoEcnVsZRgEIAEoCzIVLmNvbnRyb2xwbGFuZS52MS5SdWxlIngKBlRhcmdldBIrCgdkZXZpY2VzGAEgASgLMhguY29udHJvbHBsYW5lLnYxLkRldmljZXNIABI3CgpkZXNjcmlwdG9yGAIgASgLMiEuY29udHJvbHBsYW5lLnYxLkRldmljZURlc2NyaXB0b3JIAEIICgZ0YXJnZXQiHQoHRGV2aWNlcxISCgpkZXZpY2VfaWRzGAEgAygJIl8KEERldmljZURlc2NyaXB0b3ISDgoGdmVuZG9yGAEgASgJEg0KBW1vZGVsGAIgASgJEgoKAm9zGAMgASgJEiAKBmxhYmVscxgEIAMoCzIQLnN0ZC52MS5LZXlWYWx1ZSIGCgRSdWxlIigKFURlcmVnaXN0ZXJSdWxlUmVxdWVzdBIPCgdydWxlX2lkGAEgASgJIlgKFkRlcmVnaXN0ZXJSdWxlUmVzcG9uc2USLQoJYWN0aW9uX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIPCgdydWxlX2lkGAIgASgJMsECChNDb250cm9sUGxhbmVTZXJ2aWNlEmYKD0V4cG9ydFRlbGVtZXRyeRInLmNvbnRyb2xwbGFuZS52MS5FeHBvcnRUZWxlbWV0cnlSZXF1ZXN0GiguY29udHJvbHBsYW5lLnYxLkV4cG9ydFRlbGVtZXRyeVJlc3BvbnNlIgASXQoMUmVnaXN0ZXJSdWxlEiQuY29udHJvbHBsYW5lLnYxLlJlZ2lzdGVyUnVsZVJlcXVlc3QaJS5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJSdWxlUmVzcG9uc2UiABJjCg5EZXJlZ2lzdGVyUnVsZRImLmNvbnRyb2xwbGFuZS52MS5EZXJlZ2lzdGVyUnVsZVJlcXVlc3QaJy5jb250cm9scGxhbmUudjEuRGVyZWdpc3RlclJ1bGVSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_timestamp, file_std_v1_std]);
+  fileDesc("CihmbHVpZC9jb250cm9scGxhbmUvdjEvY29udHJvbHBsYW5lLnByb3RvEg9jb250cm9scGxhbmUudjEiGAoGQ29uZmlnEg4KBmV4cG9ydBgBIAEoCCIoChZFeHBvcnRUZWxlbWV0cnlSZXF1ZXN0Eg4KBmV4cG9ydBgBIAEoCCJYChdFeHBvcnRUZWxlbWV0cnlSZXNwb25zZRItCglhY3Rpb25fYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg4KBmV4cG9ydBgCIAEoCCJjChNSZWdpc3RlclJ1bGVSZXF1ZXN0EicKBnRhcmdldBgBIAEoCzIXLmNvbnRyb2xwbGFuZS52MS5UYXJnZXQSIwoEcnVsZRgCIAEoCzIVLmNvbnRyb2xwbGFuZS52MS5SdWxlIqQBChRSZWdpc3RlclJ1bGVSZXNwb25zZRItCglhY3Rpb25fYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg8KB3J1bGVfaWQYAiABKAkSJwoGdGFyZ2V0GAMgASgLMhcuY29udHJvbHBsYW5lLnYxLlRhcmdldBIjCgRydWxlGAQgASgLMhUuY29udHJvbHBsYW5lLnYxLlJ1bGUieAoGVGFyZ2V0EisKB2RldmljZXMYASABKAsyGC5jb250cm9scGxhbmUudjEuRGV2aWNlc0gAEjcKCmRlc2NyaXB0b3IYAiABKAsyIS5jb250cm9scGxhbmUudjEuRGV2aWNlRGVzY3JpcHRvckgAQggKBnRhcmdldCIdCgdEZXZpY2VzEhIKCmRldmljZV9pZHMYASADKAkiXwoQRGV2aWNlRGVzY3JpcHRvchIOCgZ2ZW5kb3IYASABKAkSDQoFbW9kZWwYAiABKAkSCgoCb3MYAyABKAkSIAoGbGFiZWxzGAQgAygLMhAuc3RkLnYxLktleVZhbHVlIgYKBFJ1bGUiKAoVRGVyZWdpc3RlclJ1bGVSZXF1ZXN0Eg8KB3J1bGVfaWQYASABKAkiWAoWRGVyZWdpc3RlclJ1bGVSZXNwb25zZRItCglhY3Rpb25fYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg8KB3J1bGVfaWQYAiABKAkywQIKE0NvbnRyb2xQbGFuZVNlcnZpY2USZgoPRXhwb3J0VGVsZW1ldHJ5EicuY29udHJvbHBsYW5lLnYxLkV4cG9ydFRlbGVtZXRyeVJlcXVlc3QaKC5jb250cm9scGxhbmUudjEuRXhwb3J0VGVsZW1ldHJ5UmVzcG9uc2UiABJdCgxSZWdpc3RlclJ1bGUSJC5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJSdWxlUmVxdWVzdBolLmNvbnRyb2xwbGFuZS52MS5SZWdpc3RlclJ1bGVSZXNwb25zZSIAEmMKDkRlcmVnaXN0ZXJSdWxlEiYuY29udHJvbHBsYW5lLnYxLkRlcmVnaXN0ZXJSdWxlUmVxdWVzdBonLmNvbnRyb2xwbGFuZS52MS5EZXJlZ2lzdGVyUnVsZVJlc3BvbnNlIgBCRlpEZ2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9mbHVpZC9jb250cm9scGxhbmUvdjE7Y29udHJvbHBsYW5ldjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_std_v1_std]);
+
+/**
+ * @generated from message controlplane.v1.Config
+ */
+export type Config = Message<"controlplane.v1.Config"> & {
+  /**
+   * @generated from field: bool export = 1;
+   */
+  export: boolean;
+};
+
+/**
+ * Describes the message controlplane.v1.Config.
+ * Use `create(ConfigSchema)` to create a new message.
+ */
+export const ConfigSchema: GenMessage<Config> = /*@__PURE__*/
+  messageDesc(file_fluid_controlplane_v1_controlplane, 0);
 
 /**
  * @generated from message controlplane.v1.ExportTelemetryRequest
@@ -31,7 +48,7 @@ export type ExportTelemetryRequest = Message<"controlplane.v1.ExportTelemetryReq
  * Use `create(ExportTelemetryRequestSchema)` to create a new message.
  */
 export const ExportTelemetryRequestSchema: GenMessage<ExportTelemetryRequest> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 0);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 1);
 
 /**
  * @generated from message controlplane.v1.ExportTelemetryResponse
@@ -53,7 +70,7 @@ export type ExportTelemetryResponse = Message<"controlplane.v1.ExportTelemetryRe
  * Use `create(ExportTelemetryResponseSchema)` to create a new message.
  */
 export const ExportTelemetryResponseSchema: GenMessage<ExportTelemetryResponse> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 1);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 2);
 
 /**
  * @generated from message controlplane.v1.RegisterRuleRequest
@@ -75,7 +92,7 @@ export type RegisterRuleRequest = Message<"controlplane.v1.RegisterRuleRequest">
  * Use `create(RegisterRuleRequestSchema)` to create a new message.
  */
 export const RegisterRuleRequestSchema: GenMessage<RegisterRuleRequest> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 2);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 3);
 
 /**
  * @generated from message controlplane.v1.RegisterRuleResponse
@@ -107,7 +124,7 @@ export type RegisterRuleResponse = Message<"controlplane.v1.RegisterRuleResponse
  * Use `create(RegisterRuleResponseSchema)` to create a new message.
  */
 export const RegisterRuleResponseSchema: GenMessage<RegisterRuleResponse> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 3);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 4);
 
 /**
  * @generated from message controlplane.v1.Target
@@ -136,7 +153,7 @@ export type Target = Message<"controlplane.v1.Target"> & {
  * Use `create(TargetSchema)` to create a new message.
  */
 export const TargetSchema: GenMessage<Target> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 4);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 5);
 
 /**
  * @generated from message controlplane.v1.Devices
@@ -153,7 +170,7 @@ export type Devices = Message<"controlplane.v1.Devices"> & {
  * Use `create(DevicesSchema)` to create a new message.
  */
 export const DevicesSchema: GenMessage<Devices> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 5);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 6);
 
 /**
  * @generated from message controlplane.v1.DeviceDescriptor
@@ -185,7 +202,7 @@ export type DeviceDescriptor = Message<"controlplane.v1.DeviceDescriptor"> & {
  * Use `create(DeviceDescriptorSchema)` to create a new message.
  */
 export const DeviceDescriptorSchema: GenMessage<DeviceDescriptor> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 6);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 7);
 
 /**
  * @generated from message controlplane.v1.Rule
@@ -198,7 +215,7 @@ export type Rule = Message<"controlplane.v1.Rule"> & {
  * Use `create(RuleSchema)` to create a new message.
  */
 export const RuleSchema: GenMessage<Rule> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 7);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 8);
 
 /**
  * @generated from message controlplane.v1.DeregisterRuleRequest
@@ -215,7 +232,7 @@ export type DeregisterRuleRequest = Message<"controlplane.v1.DeregisterRuleReque
  * Use `create(DeregisterRuleRequestSchema)` to create a new message.
  */
 export const DeregisterRuleRequestSchema: GenMessage<DeregisterRuleRequest> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 8);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 9);
 
 /**
  * @generated from message controlplane.v1.DeregisterRuleResponse
@@ -237,7 +254,7 @@ export type DeregisterRuleResponse = Message<"controlplane.v1.DeregisterRuleResp
  * Use `create(DeregisterRuleResponseSchema)` to create a new message.
  */
 export const DeregisterRuleResponseSchema: GenMessage<DeregisterRuleResponse> = /*@__PURE__*/
-  messageDesc(file_fluid_controlplane_v1_controlplane, 9);
+  messageDesc(file_fluid_controlplane_v1_controlplane, 10);
 
 /**
  * @generated from service controlplane.v1.ControlPlaneService

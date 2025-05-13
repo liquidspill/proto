@@ -23,6 +23,50 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Config struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Export        bool                   `protobuf:"varint,1,opt,name=export,proto3" json:"export,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Config) Reset() {
+	*x = Config{}
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Config) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Config) ProtoMessage() {}
+
+func (x *Config) ProtoReflect() protoreflect.Message {
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Config.ProtoReflect.Descriptor instead.
+func (*Config) Descriptor() ([]byte, []int) {
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Config) GetExport() bool {
+	if x != nil {
+		return x.Export
+	}
+	return false
+}
+
 type ExportTelemetryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Export        bool                   `protobuf:"varint,1,opt,name=export,proto3" json:"export,omitempty"`
@@ -32,7 +76,7 @@ type ExportTelemetryRequest struct {
 
 func (x *ExportTelemetryRequest) Reset() {
 	*x = ExportTelemetryRequest{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[0]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +88,7 @@ func (x *ExportTelemetryRequest) String() string {
 func (*ExportTelemetryRequest) ProtoMessage() {}
 
 func (x *ExportTelemetryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[0]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +101,7 @@ func (x *ExportTelemetryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportTelemetryRequest.ProtoReflect.Descriptor instead.
 func (*ExportTelemetryRequest) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{0}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ExportTelemetryRequest) GetExport() bool {
@@ -77,7 +121,7 @@ type ExportTelemetryResponse struct {
 
 func (x *ExportTelemetryResponse) Reset() {
 	*x = ExportTelemetryResponse{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[1]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -89,7 +133,7 @@ func (x *ExportTelemetryResponse) String() string {
 func (*ExportTelemetryResponse) ProtoMessage() {}
 
 func (x *ExportTelemetryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[1]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -102,7 +146,7 @@ func (x *ExportTelemetryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportTelemetryResponse.ProtoReflect.Descriptor instead.
 func (*ExportTelemetryResponse) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{1}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ExportTelemetryResponse) GetActionAt() *timestamppb.Timestamp {
@@ -129,7 +173,7 @@ type RegisterRuleRequest struct {
 
 func (x *RegisterRuleRequest) Reset() {
 	*x = RegisterRuleRequest{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[2]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -141,7 +185,7 @@ func (x *RegisterRuleRequest) String() string {
 func (*RegisterRuleRequest) ProtoMessage() {}
 
 func (x *RegisterRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[2]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -154,7 +198,7 @@ func (x *RegisterRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRuleRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRuleRequest) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{2}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RegisterRuleRequest) GetTarget() *Target {
@@ -183,7 +227,7 @@ type RegisterRuleResponse struct {
 
 func (x *RegisterRuleResponse) Reset() {
 	*x = RegisterRuleResponse{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[3]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +239,7 @@ func (x *RegisterRuleResponse) String() string {
 func (*RegisterRuleResponse) ProtoMessage() {}
 
 func (x *RegisterRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[3]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +252,7 @@ func (x *RegisterRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRuleResponse.ProtoReflect.Descriptor instead.
 func (*RegisterRuleResponse) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{3}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RegisterRuleResponse) GetActionAt() *timestamppb.Timestamp {
@@ -252,7 +296,7 @@ type Target struct {
 
 func (x *Target) Reset() {
 	*x = Target{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[4]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -264,7 +308,7 @@ func (x *Target) String() string {
 func (*Target) ProtoMessage() {}
 
 func (x *Target) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[4]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +321,7 @@ func (x *Target) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Target.ProtoReflect.Descriptor instead.
 func (*Target) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{4}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Target) GetTarget() isTarget_Target {
@@ -330,7 +374,7 @@ type Devices struct {
 
 func (x *Devices) Reset() {
 	*x = Devices{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[5]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -342,7 +386,7 @@ func (x *Devices) String() string {
 func (*Devices) ProtoMessage() {}
 
 func (x *Devices) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[5]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +399,7 @@ func (x *Devices) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Devices.ProtoReflect.Descriptor instead.
 func (*Devices) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{5}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Devices) GetDeviceIds() []string {
@@ -377,7 +421,7 @@ type DeviceDescriptor struct {
 
 func (x *DeviceDescriptor) Reset() {
 	*x = DeviceDescriptor{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[6]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -389,7 +433,7 @@ func (x *DeviceDescriptor) String() string {
 func (*DeviceDescriptor) ProtoMessage() {}
 
 func (x *DeviceDescriptor) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[6]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -402,7 +446,7 @@ func (x *DeviceDescriptor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceDescriptor.ProtoReflect.Descriptor instead.
 func (*DeviceDescriptor) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{6}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DeviceDescriptor) GetVendor() string {
@@ -441,7 +485,7 @@ type Rule struct {
 
 func (x *Rule) Reset() {
 	*x = Rule{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[7]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -453,7 +497,7 @@ func (x *Rule) String() string {
 func (*Rule) ProtoMessage() {}
 
 func (x *Rule) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[7]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -466,7 +510,7 @@ func (x *Rule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Rule.ProtoReflect.Descriptor instead.
 func (*Rule) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{7}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{8}
 }
 
 type DeregisterRuleRequest struct {
@@ -478,7 +522,7 @@ type DeregisterRuleRequest struct {
 
 func (x *DeregisterRuleRequest) Reset() {
 	*x = DeregisterRuleRequest{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[8]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -490,7 +534,7 @@ func (x *DeregisterRuleRequest) String() string {
 func (*DeregisterRuleRequest) ProtoMessage() {}
 
 func (x *DeregisterRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[8]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -503,7 +547,7 @@ func (x *DeregisterRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeregisterRuleRequest.ProtoReflect.Descriptor instead.
 func (*DeregisterRuleRequest) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{8}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeregisterRuleRequest) GetRuleId() string {
@@ -523,7 +567,7 @@ type DeregisterRuleResponse struct {
 
 func (x *DeregisterRuleResponse) Reset() {
 	*x = DeregisterRuleResponse{}
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[9]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -535,7 +579,7 @@ func (x *DeregisterRuleResponse) String() string {
 func (*DeregisterRuleResponse) ProtoMessage() {}
 
 func (x *DeregisterRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[9]
+	mi := &file_fluid_controlplane_v1_controlplane_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -548,7 +592,7 @@ func (x *DeregisterRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeregisterRuleResponse.ProtoReflect.Descriptor instead.
 func (*DeregisterRuleResponse) Descriptor() ([]byte, []int) {
-	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{9}
+	return file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeregisterRuleResponse) GetActionAt() *timestamppb.Timestamp {
@@ -569,7 +613,9 @@ var File_fluid_controlplane_v1_controlplane_proto protoreflect.FileDescriptor
 
 const file_fluid_controlplane_v1_controlplane_proto_rawDesc = "" +
 	"\n" +
-	"(fluid/controlplane/v1/controlplane.proto\x12\x0fcontrolplane.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10std/v1/std.proto\"0\n" +
+	"(fluid/controlplane/v1/controlplane.proto\x12\x0fcontrolplane.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10std/v1/std.proto\" \n" +
+	"\x06Config\x12\x16\n" +
+	"\x06export\x18\x01 \x01(\bR\x06export\"0\n" +
 	"\x16ExportTelemetryRequest\x12\x16\n" +
 	"\x06export\x18\x01 \x01(\bR\x06export\"j\n" +
 	"\x17ExportTelemetryResponse\x127\n" +
@@ -620,38 +666,39 @@ func file_fluid_controlplane_v1_controlplane_proto_rawDescGZIP() []byte {
 	return file_fluid_controlplane_v1_controlplane_proto_rawDescData
 }
 
-var file_fluid_controlplane_v1_controlplane_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_fluid_controlplane_v1_controlplane_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_fluid_controlplane_v1_controlplane_proto_goTypes = []any{
-	(*ExportTelemetryRequest)(nil),  // 0: controlplane.v1.ExportTelemetryRequest
-	(*ExportTelemetryResponse)(nil), // 1: controlplane.v1.ExportTelemetryResponse
-	(*RegisterRuleRequest)(nil),     // 2: controlplane.v1.RegisterRuleRequest
-	(*RegisterRuleResponse)(nil),    // 3: controlplane.v1.RegisterRuleResponse
-	(*Target)(nil),                  // 4: controlplane.v1.Target
-	(*Devices)(nil),                 // 5: controlplane.v1.Devices
-	(*DeviceDescriptor)(nil),        // 6: controlplane.v1.DeviceDescriptor
-	(*Rule)(nil),                    // 7: controlplane.v1.Rule
-	(*DeregisterRuleRequest)(nil),   // 8: controlplane.v1.DeregisterRuleRequest
-	(*DeregisterRuleResponse)(nil),  // 9: controlplane.v1.DeregisterRuleResponse
-	(*timestamppb.Timestamp)(nil),   // 10: google.protobuf.Timestamp
-	(*v1.KeyValue)(nil),             // 11: std.v1.KeyValue
+	(*Config)(nil),                  // 0: controlplane.v1.Config
+	(*ExportTelemetryRequest)(nil),  // 1: controlplane.v1.ExportTelemetryRequest
+	(*ExportTelemetryResponse)(nil), // 2: controlplane.v1.ExportTelemetryResponse
+	(*RegisterRuleRequest)(nil),     // 3: controlplane.v1.RegisterRuleRequest
+	(*RegisterRuleResponse)(nil),    // 4: controlplane.v1.RegisterRuleResponse
+	(*Target)(nil),                  // 5: controlplane.v1.Target
+	(*Devices)(nil),                 // 6: controlplane.v1.Devices
+	(*DeviceDescriptor)(nil),        // 7: controlplane.v1.DeviceDescriptor
+	(*Rule)(nil),                    // 8: controlplane.v1.Rule
+	(*DeregisterRuleRequest)(nil),   // 9: controlplane.v1.DeregisterRuleRequest
+	(*DeregisterRuleResponse)(nil),  // 10: controlplane.v1.DeregisterRuleResponse
+	(*timestamppb.Timestamp)(nil),   // 11: google.protobuf.Timestamp
+	(*v1.KeyValue)(nil),             // 12: std.v1.KeyValue
 }
 var file_fluid_controlplane_v1_controlplane_proto_depIdxs = []int32{
-	10, // 0: controlplane.v1.ExportTelemetryResponse.action_at:type_name -> google.protobuf.Timestamp
-	4,  // 1: controlplane.v1.RegisterRuleRequest.target:type_name -> controlplane.v1.Target
-	7,  // 2: controlplane.v1.RegisterRuleRequest.rule:type_name -> controlplane.v1.Rule
-	10, // 3: controlplane.v1.RegisterRuleResponse.action_at:type_name -> google.protobuf.Timestamp
-	4,  // 4: controlplane.v1.RegisterRuleResponse.target:type_name -> controlplane.v1.Target
-	7,  // 5: controlplane.v1.RegisterRuleResponse.rule:type_name -> controlplane.v1.Rule
-	5,  // 6: controlplane.v1.Target.devices:type_name -> controlplane.v1.Devices
-	6,  // 7: controlplane.v1.Target.descriptor:type_name -> controlplane.v1.DeviceDescriptor
-	11, // 8: controlplane.v1.DeviceDescriptor.labels:type_name -> std.v1.KeyValue
-	10, // 9: controlplane.v1.DeregisterRuleResponse.action_at:type_name -> google.protobuf.Timestamp
-	0,  // 10: controlplane.v1.ControlPlaneService.ExportTelemetry:input_type -> controlplane.v1.ExportTelemetryRequest
-	2,  // 11: controlplane.v1.ControlPlaneService.RegisterRule:input_type -> controlplane.v1.RegisterRuleRequest
-	8,  // 12: controlplane.v1.ControlPlaneService.DeregisterRule:input_type -> controlplane.v1.DeregisterRuleRequest
-	1,  // 13: controlplane.v1.ControlPlaneService.ExportTelemetry:output_type -> controlplane.v1.ExportTelemetryResponse
-	3,  // 14: controlplane.v1.ControlPlaneService.RegisterRule:output_type -> controlplane.v1.RegisterRuleResponse
-	9,  // 15: controlplane.v1.ControlPlaneService.DeregisterRule:output_type -> controlplane.v1.DeregisterRuleResponse
+	11, // 0: controlplane.v1.ExportTelemetryResponse.action_at:type_name -> google.protobuf.Timestamp
+	5,  // 1: controlplane.v1.RegisterRuleRequest.target:type_name -> controlplane.v1.Target
+	8,  // 2: controlplane.v1.RegisterRuleRequest.rule:type_name -> controlplane.v1.Rule
+	11, // 3: controlplane.v1.RegisterRuleResponse.action_at:type_name -> google.protobuf.Timestamp
+	5,  // 4: controlplane.v1.RegisterRuleResponse.target:type_name -> controlplane.v1.Target
+	8,  // 5: controlplane.v1.RegisterRuleResponse.rule:type_name -> controlplane.v1.Rule
+	6,  // 6: controlplane.v1.Target.devices:type_name -> controlplane.v1.Devices
+	7,  // 7: controlplane.v1.Target.descriptor:type_name -> controlplane.v1.DeviceDescriptor
+	12, // 8: controlplane.v1.DeviceDescriptor.labels:type_name -> std.v1.KeyValue
+	11, // 9: controlplane.v1.DeregisterRuleResponse.action_at:type_name -> google.protobuf.Timestamp
+	1,  // 10: controlplane.v1.ControlPlaneService.ExportTelemetry:input_type -> controlplane.v1.ExportTelemetryRequest
+	3,  // 11: controlplane.v1.ControlPlaneService.RegisterRule:input_type -> controlplane.v1.RegisterRuleRequest
+	9,  // 12: controlplane.v1.ControlPlaneService.DeregisterRule:input_type -> controlplane.v1.DeregisterRuleRequest
+	2,  // 13: controlplane.v1.ControlPlaneService.ExportTelemetry:output_type -> controlplane.v1.ExportTelemetryResponse
+	4,  // 14: controlplane.v1.ControlPlaneService.RegisterRule:output_type -> controlplane.v1.RegisterRuleResponse
+	10, // 15: controlplane.v1.ControlPlaneService.DeregisterRule:output_type -> controlplane.v1.DeregisterRuleResponse
 	13, // [13:16] is the sub-list for method output_type
 	10, // [10:13] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -664,7 +711,7 @@ func file_fluid_controlplane_v1_controlplane_proto_init() {
 	if File_fluid_controlplane_v1_controlplane_proto != nil {
 		return
 	}
-	file_fluid_controlplane_v1_controlplane_proto_msgTypes[4].OneofWrappers = []any{
+	file_fluid_controlplane_v1_controlplane_proto_msgTypes[5].OneofWrappers = []any{
 		(*Target_Devices)(nil),
 		(*Target_Descriptor_)(nil),
 	}
@@ -674,7 +721,7 @@ func file_fluid_controlplane_v1_controlplane_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fluid_controlplane_v1_controlplane_proto_rawDesc), len(file_fluid_controlplane_v1_controlplane_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
