@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ControlPlaneServiceExportTelemetryProcedure is the fully-qualified name of the
-	// ControlPlaneService's ExportTelemetry RPC.
-	ControlPlaneServiceExportTelemetryProcedure = "/controlplane.v1.ControlPlaneService/ExportTelemetry"
+	// ControlPlaneServiceControlProcedure is the fully-qualified name of the ControlPlaneService's
+	// Control RPC.
+	ControlPlaneServiceControlProcedure = "/controlplane.v1.ControlPlaneService/Control"
 	// ControlPlaneServiceRegisterRuleProcedure is the fully-qualified name of the ControlPlaneService's
 	// RegisterRule RPC.
 	ControlPlaneServiceRegisterRuleProcedure = "/controlplane.v1.ControlPlaneService/RegisterRule"
@@ -46,7 +46,7 @@ const (
 
 // ControlPlaneServiceClient is a client for the controlplane.v1.ControlPlaneService service.
 type ControlPlaneServiceClient interface {
-	ExportTelemetry(context.Context, *connect.Request[v1.ExportTelemetryRequest]) (*connect.Response[v1.ExportTelemetryResponse], error)
+	Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error)
 	RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error)
 	DeregisterRule(context.Context, *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error)
 }
@@ -62,10 +62,10 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 	baseURL = strings.TrimRight(baseURL, "/")
 	controlPlaneServiceMethods := v1.File_fluid_controlplane_v1_controlplane_proto.Services().ByName("ControlPlaneService").Methods()
 	return &controlPlaneServiceClient{
-		exportTelemetry: connect.NewClient[v1.ExportTelemetryRequest, v1.ExportTelemetryResponse](
+		control: connect.NewClient[v1.ControlMessageRequest, v1.ControlMessageResponse](
 			httpClient,
-			baseURL+ControlPlaneServiceExportTelemetryProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("ExportTelemetry")),
+			baseURL+ControlPlaneServiceControlProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("Control")),
 			connect.WithClientOptions(opts...),
 		),
 		registerRule: connect.NewClient[v1.RegisterRuleRequest, v1.RegisterRuleResponse](
@@ -85,14 +85,14 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 
 // controlPlaneServiceClient implements ControlPlaneServiceClient.
 type controlPlaneServiceClient struct {
-	exportTelemetry *connect.Client[v1.ExportTelemetryRequest, v1.ExportTelemetryResponse]
-	registerRule    *connect.Client[v1.RegisterRuleRequest, v1.RegisterRuleResponse]
-	deregisterRule  *connect.Client[v1.DeregisterRuleRequest, v1.DeregisterRuleResponse]
+	control        *connect.Client[v1.ControlMessageRequest, v1.ControlMessageResponse]
+	registerRule   *connect.Client[v1.RegisterRuleRequest, v1.RegisterRuleResponse]
+	deregisterRule *connect.Client[v1.DeregisterRuleRequest, v1.DeregisterRuleResponse]
 }
 
-// ExportTelemetry calls controlplane.v1.ControlPlaneService.ExportTelemetry.
-func (c *controlPlaneServiceClient) ExportTelemetry(ctx context.Context, req *connect.Request[v1.ExportTelemetryRequest]) (*connect.Response[v1.ExportTelemetryResponse], error) {
-	return c.exportTelemetry.CallUnary(ctx, req)
+// Control calls controlplane.v1.ControlPlaneService.Control.
+func (c *controlPlaneServiceClient) Control(ctx context.Context, req *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error) {
+	return c.control.CallUnary(ctx, req)
 }
 
 // RegisterRule calls controlplane.v1.ControlPlaneService.RegisterRule.
@@ -108,7 +108,7 @@ func (c *controlPlaneServiceClient) DeregisterRule(ctx context.Context, req *con
 // ControlPlaneServiceHandler is an implementation of the controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
-	ExportTelemetry(context.Context, *connect.Request[v1.ExportTelemetryRequest]) (*connect.Response[v1.ExportTelemetryResponse], error)
+	Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error)
 	RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error)
 	DeregisterRule(context.Context, *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error)
 }
@@ -120,10 +120,10 @@ type ControlPlaneServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	controlPlaneServiceMethods := v1.File_fluid_controlplane_v1_controlplane_proto.Services().ByName("ControlPlaneService").Methods()
-	controlPlaneServiceExportTelemetryHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceExportTelemetryProcedure,
-		svc.ExportTelemetry,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("ExportTelemetry")),
+	controlPlaneServiceControlHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceControlProcedure,
+		svc.Control,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("Control")),
 		connect.WithHandlerOptions(opts...),
 	)
 	controlPlaneServiceRegisterRuleHandler := connect.NewUnaryHandler(
@@ -140,8 +140,8 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 	)
 	return "/controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ControlPlaneServiceExportTelemetryProcedure:
-			controlPlaneServiceExportTelemetryHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceControlProcedure:
+			controlPlaneServiceControlHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceRegisterRuleProcedure:
 			controlPlaneServiceRegisterRuleHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceDeregisterRuleProcedure:
@@ -155,8 +155,8 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 // UnimplementedControlPlaneServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedControlPlaneServiceHandler struct{}
 
-func (UnimplementedControlPlaneServiceHandler) ExportTelemetry(context.Context, *connect.Request[v1.ExportTelemetryRequest]) (*connect.Response[v1.ExportTelemetryResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("controlplane.v1.ControlPlaneService.ExportTelemetry is not implemented"))
+func (UnimplementedControlPlaneServiceHandler) Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("controlplane.v1.ControlPlaneService.Control is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error) {

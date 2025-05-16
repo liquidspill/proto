@@ -8,22 +8,32 @@ import "std/v1/std.proto";
 option go_package = "github.com/liquidspill/proto/go/fluid/controlplane/v1;controlplanev1";
 
 service ControlPlaneService {
-  rpc ExportTelemetry(ExportTelemetryRequest) returns (ExportTelemetryResponse) {}
+  rpc Control(ControlMessageRequest) returns (ControlMessageResponse) {}
   rpc RegisterRule(RegisterRuleRequest) returns (RegisterRuleResponse) {}
   rpc DeregisterRule(DeregisterRuleRequest) returns (DeregisterRuleResponse) {}
 }
 
+message ControlMessageRequest {
+    ControlMessage message = 1;
+}
+
+message ControlMessageResponse {
+    ControlMessage message = 1;
+    Config config = 2;
+}
+
+message ControlMessage {
+    oneof message {
+        ExportTelemetry export_telemetry = 1;
+    }
+}
+
+message ExportTelemetry {
+    bool export = 1;
+}
+
 message Config {
     bool export = 1;
-}
-
-message ExportTelemetryRequest {
-    bool export = 1;
-}
-
-message ExportTelemetryResponse {
-    google.protobuf.Timestamp action_at = 1;
-    bool export = 2;
 }
 
 message RegisterRuleRequest {
