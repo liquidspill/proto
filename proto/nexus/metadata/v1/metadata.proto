@@ -11,8 +11,10 @@ option go_package = "github.com/liquidspill/proto/go/nexus/metadata/v1;metadatav
 // the data stored in object storage.
 service MetadataService {
   // ===== Management operations =====
-  rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {}
-  rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {}
+  rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse) {}
+  rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse) {}
+  rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse) {}
+  rpc DeleteTeam(DeleteTeamRequest) returns (DeleteTeamResponse) {}
 
   // ===== Data operations =====
   rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
@@ -25,42 +27,85 @@ service MetadataService {
 
 // ===== Management definitions =====
 
-message CreateTenantRequest {
+message CreateOrganizationRequest {
   string id = 1;
 }
 
-message CreateTenantResponse {
-  google.protobuf.Timestamp created_at = 1;
-  string id = 2;
+message CreateOrganizationResponse {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
 }
 
-message DeleteTenantRequest {
+message DeleteOrganizationRequest {
   string id = 1;
 }
 
-message DeleteTenantResponse {
-  google.protobuf.Timestamp deleted_at = 1;
-  string id = 2;
+message DeleteOrganizationResponse {
+  string id = 1;
+  google.protobuf.Timestamp deleted_at = 2;
+}
+
+message CreateTeamRequest {
+  string id = 1;
+  string organization_id = 2;
+}
+
+message CreateTeamResponse {
+  string id = 1;
+  string organization_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message DeleteTeamRequest {
+  string id = 1;
+  string organization_id = 2;
+}
+
+message DeleteTeamResponse {
+  string id = 1;
+  string organization_id = 2;
+  google.protobuf.Timestamp deleted_at = 3;
 }
 
 // ==== Data definitions =====
 
 message CreatePartitionRequest {
-  string id = 1;
-  PartitionMetadata partition_metadata = 2;
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  string id = 4;
+  PartitionMetadata partition_metadata = 5;
 }
 
 message CreatePartitionResponse {
-  google.protobuf.Timestamp created_at = 1;
-  PartitionMetadata partition_metadata = 2;
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  string id = 4;
+  PartitionMetadata partition_metadata = 5;
+
+  google.protobuf.Timestamp created_at = 6;
 }
 
 message ListPartitionsRequest {
-  uint64 tenant_id = 1;
-  uint64 cluster_id = 2;
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
 
-  google.protobuf.Timestamp start_time = 3;
-  google.protobuf.Timestamp end_time = 4;
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+}
+
+message ListPartitionsResponse {
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+  repeated PartitionMetadata partition_metadata = 6;
 }
 
 message GetMetadataVersionRequest {
@@ -81,12 +126,6 @@ message ListMetadataVersionsRequest {
 message ListMetadataVersionsResponse {
   repeated google.protobuf.Timestamp windows = 1;
   repeated bytes versions = 2;
-}
-
-message ListPartitionsResponse {
-  google.protobuf.Timestamp start_time = 1;
-  google.protobuf.Timestamp end_time = 2;
-  repeated PartitionMetadata partition_metadata = 3;
 }
 
 message ValidateMetadataVersionRequest {
