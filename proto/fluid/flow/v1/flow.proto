@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package flow.v1;
+package fluid.flow.v1;
 
 import "tagger/tagger.proto";
 

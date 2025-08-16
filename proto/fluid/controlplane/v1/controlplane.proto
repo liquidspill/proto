@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package controlplane.v1;
+package fluid.controlplane.v1;
 
 import "google/protobuf/timestamp.proto";
 import "std/v1/std.proto";
@@ -11,6 +11,10 @@ service ControlPlaneService {
   rpc Control(ControlMessageRequest) returns (ControlMessageResponse) {}
   rpc RegisterRule(RegisterRuleRequest) returns (RegisterRuleResponse) {}
   rpc DeregisterRule(DeregisterRuleRequest) returns (DeregisterRuleResponse) {}
+}
+
+message Config {
+    bool export = 1;
 }
 
 message ControlMessageRequest {
@@ -29,10 +33,6 @@ message ControlMessage {
 }
 
 message ExportTelemetry {
-    bool export = 1;
-}
-
-message Config {
     bool export = 1;
 }
 

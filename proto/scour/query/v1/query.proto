@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package scour.v1;
+package scour.query.v1;
 
 import "google/protobuf/timestamp.proto";
 import "std/v1/std.proto";
