@@ -22,7 +22,7 @@ const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// MetadataServiceName is the fully-qualified name of the MetadataService service.
-	MetadataServiceName = "metadata.v1.MetadataService"
+	MetadataServiceName = "nexus.metadata.v1.MetadataService"
 )
 
 // These constants are the fully-qualified names of the RPCs defined in this package. They're
@@ -33,34 +33,42 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// MetadataServiceCreateTenantProcedure is the fully-qualified name of the MetadataService's
-	// CreateTenant RPC.
-	MetadataServiceCreateTenantProcedure = "/metadata.v1.MetadataService/CreateTenant"
-	// MetadataServiceDeleteTenantProcedure is the fully-qualified name of the MetadataService's
-	// DeleteTenant RPC.
-	MetadataServiceDeleteTenantProcedure = "/metadata.v1.MetadataService/DeleteTenant"
+	// MetadataServiceCreateOrganizationProcedure is the fully-qualified name of the MetadataService's
+	// CreateOrganization RPC.
+	MetadataServiceCreateOrganizationProcedure = "/nexus.metadata.v1.MetadataService/CreateOrganization"
+	// MetadataServiceDeleteOrganizationProcedure is the fully-qualified name of the MetadataService's
+	// DeleteOrganization RPC.
+	MetadataServiceDeleteOrganizationProcedure = "/nexus.metadata.v1.MetadataService/DeleteOrganization"
+	// MetadataServiceCreateTeamProcedure is the fully-qualified name of the MetadataService's
+	// CreateTeam RPC.
+	MetadataServiceCreateTeamProcedure = "/nexus.metadata.v1.MetadataService/CreateTeam"
+	// MetadataServiceDeleteTeamProcedure is the fully-qualified name of the MetadataService's
+	// DeleteTeam RPC.
+	MetadataServiceDeleteTeamProcedure = "/nexus.metadata.v1.MetadataService/DeleteTeam"
 	// MetadataServiceCreatePartitionProcedure is the fully-qualified name of the MetadataService's
 	// CreatePartition RPC.
-	MetadataServiceCreatePartitionProcedure = "/metadata.v1.MetadataService/CreatePartition"
+	MetadataServiceCreatePartitionProcedure = "/nexus.metadata.v1.MetadataService/CreatePartition"
 	// MetadataServiceListPartitionsProcedure is the fully-qualified name of the MetadataService's
 	// ListPartitions RPC.
-	MetadataServiceListPartitionsProcedure = "/metadata.v1.MetadataService/ListPartitions"
+	MetadataServiceListPartitionsProcedure = "/nexus.metadata.v1.MetadataService/ListPartitions"
 	// MetadataServiceValidateMetadataVersionProcedure is the fully-qualified name of the
 	// MetadataService's ValidateMetadataVersion RPC.
-	MetadataServiceValidateMetadataVersionProcedure = "/metadata.v1.MetadataService/ValidateMetadataVersion"
+	MetadataServiceValidateMetadataVersionProcedure = "/nexus.metadata.v1.MetadataService/ValidateMetadataVersion"
 	// MetadataServiceGetMetadataVersionProcedure is the fully-qualified name of the MetadataService's
 	// GetMetadataVersion RPC.
-	MetadataServiceGetMetadataVersionProcedure = "/metadata.v1.MetadataService/GetMetadataVersion"
+	MetadataServiceGetMetadataVersionProcedure = "/nexus.metadata.v1.MetadataService/GetMetadataVersion"
 	// MetadataServiceListMetadataVersionsProcedure is the fully-qualified name of the MetadataService's
 	// ListMetadataVersions RPC.
-	MetadataServiceListMetadataVersionsProcedure = "/metadata.v1.MetadataService/ListMetadataVersions"
+	MetadataServiceListMetadataVersionsProcedure = "/nexus.metadata.v1.MetadataService/ListMetadataVersions"
 )
 
-// MetadataServiceClient is a client for the metadata.v1.MetadataService service.
+// MetadataServiceClient is a client for the nexus.metadata.v1.MetadataService service.
 type MetadataServiceClient interface {
 	// ===== Management operations =====
-	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
-	DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error)
+	CreateOrganization(context.Context, *connect.Request[v1.CreateOrganizationRequest]) (*connect.Response[v1.CreateOrganizationResponse], error)
+	DeleteOrganization(context.Context, *connect.Request[v1.DeleteOrganizationRequest]) (*connect.Response[v1.DeleteOrganizationResponse], error)
+	CreateTeam(context.Context, *connect.Request[v1.CreateTeamRequest]) (*connect.Response[v1.CreateTeamResponse], error)
+	DeleteTeam(context.Context, *connect.Request[v1.DeleteTeamRequest]) (*connect.Response[v1.DeleteTeamResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -69,9 +77,9 @@ type MetadataServiceClient interface {
 	ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error)
 }
 
-// NewMetadataServiceClient constructs a client for the metadata.v1.MetadataService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
+// NewMetadataServiceClient constructs a client for the nexus.metadata.v1.MetadataService service.
+// By default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped
+// responses, and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
 // connect.WithGRPC() or connect.WithGRPCWeb() options.
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
@@ -80,16 +88,28 @@ func NewMetadataServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	metadataServiceMethods := v1.File_nexus_metadata_v1_metadata_proto.Services().ByName("MetadataService").Methods()
 	return &metadataServiceClient{
-		createTenant: connect.NewClient[v1.CreateTenantRequest, v1.CreateTenantResponse](
+		createOrganization: connect.NewClient[v1.CreateOrganizationRequest, v1.CreateOrganizationResponse](
 			httpClient,
-			baseURL+MetadataServiceCreateTenantProcedure,
-			connect.WithSchema(metadataServiceMethods.ByName("CreateTenant")),
+			baseURL+MetadataServiceCreateOrganizationProcedure,
+			connect.WithSchema(metadataServiceMethods.ByName("CreateOrganization")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteTenant: connect.NewClient[v1.DeleteTenantRequest, v1.DeleteTenantResponse](
+		deleteOrganization: connect.NewClient[v1.DeleteOrganizationRequest, v1.DeleteOrganizationResponse](
 			httpClient,
-			baseURL+MetadataServiceDeleteTenantProcedure,
-			connect.WithSchema(metadataServiceMethods.ByName("DeleteTenant")),
+			baseURL+MetadataServiceDeleteOrganizationProcedure,
+			connect.WithSchema(metadataServiceMethods.ByName("DeleteOrganization")),
+			connect.WithClientOptions(opts...),
+		),
+		createTeam: connect.NewClient[v1.CreateTeamRequest, v1.CreateTeamResponse](
+			httpClient,
+			baseURL+MetadataServiceCreateTeamProcedure,
+			connect.WithSchema(metadataServiceMethods.ByName("CreateTeam")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteTeam: connect.NewClient[v1.DeleteTeamRequest, v1.DeleteTeamResponse](
+			httpClient,
+			baseURL+MetadataServiceDeleteTeamProcedure,
+			connect.WithSchema(metadataServiceMethods.ByName("DeleteTeam")),
 			connect.WithClientOptions(opts...),
 		),
 		createPartition: connect.NewClient[v1.CreatePartitionRequest, v1.CreatePartitionResponse](
@@ -127,8 +147,10 @@ func NewMetadataServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // metadataServiceClient implements MetadataServiceClient.
 type metadataServiceClient struct {
-	createTenant            *connect.Client[v1.CreateTenantRequest, v1.CreateTenantResponse]
-	deleteTenant            *connect.Client[v1.DeleteTenantRequest, v1.DeleteTenantResponse]
+	createOrganization      *connect.Client[v1.CreateOrganizationRequest, v1.CreateOrganizationResponse]
+	deleteOrganization      *connect.Client[v1.DeleteOrganizationRequest, v1.DeleteOrganizationResponse]
+	createTeam              *connect.Client[v1.CreateTeamRequest, v1.CreateTeamResponse]
+	deleteTeam              *connect.Client[v1.DeleteTeamRequest, v1.DeleteTeamResponse]
 	createPartition         *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
 	listPartitions          *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
 	validateMetadataVersion *connect.Client[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse]
@@ -136,46 +158,58 @@ type metadataServiceClient struct {
 	listMetadataVersions    *connect.Client[v1.ListMetadataVersionsRequest, v1.ListMetadataVersionsResponse]
 }
 
-// CreateTenant calls metadata.v1.MetadataService.CreateTenant.
-func (c *metadataServiceClient) CreateTenant(ctx context.Context, req *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
-	return c.createTenant.CallUnary(ctx, req)
+// CreateOrganization calls nexus.metadata.v1.MetadataService.CreateOrganization.
+func (c *metadataServiceClient) CreateOrganization(ctx context.Context, req *connect.Request[v1.CreateOrganizationRequest]) (*connect.Response[v1.CreateOrganizationResponse], error) {
+	return c.createOrganization.CallUnary(ctx, req)
 }
 
-// DeleteTenant calls metadata.v1.MetadataService.DeleteTenant.
-func (c *metadataServiceClient) DeleteTenant(ctx context.Context, req *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error) {
-	return c.deleteTenant.CallUnary(ctx, req)
+// DeleteOrganization calls nexus.metadata.v1.MetadataService.DeleteOrganization.
+func (c *metadataServiceClient) DeleteOrganization(ctx context.Context, req *connect.Request[v1.DeleteOrganizationRequest]) (*connect.Response[v1.DeleteOrganizationResponse], error) {
+	return c.deleteOrganization.CallUnary(ctx, req)
 }
 
-// CreatePartition calls metadata.v1.MetadataService.CreatePartition.
+// CreateTeam calls nexus.metadata.v1.MetadataService.CreateTeam.
+func (c *metadataServiceClient) CreateTeam(ctx context.Context, req *connect.Request[v1.CreateTeamRequest]) (*connect.Response[v1.CreateTeamResponse], error) {
+	return c.createTeam.CallUnary(ctx, req)
+}
+
+// DeleteTeam calls nexus.metadata.v1.MetadataService.DeleteTeam.
+func (c *metadataServiceClient) DeleteTeam(ctx context.Context, req *connect.Request[v1.DeleteTeamRequest]) (*connect.Response[v1.DeleteTeamResponse], error) {
+	return c.deleteTeam.CallUnary(ctx, req)
+}
+
+// CreatePartition calls nexus.metadata.v1.MetadataService.CreatePartition.
 func (c *metadataServiceClient) CreatePartition(ctx context.Context, req *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
 	return c.createPartition.CallUnary(ctx, req)
 }
 
-// ListPartitions calls metadata.v1.MetadataService.ListPartitions.
+// ListPartitions calls nexus.metadata.v1.MetadataService.ListPartitions.
 func (c *metadataServiceClient) ListPartitions(ctx context.Context, req *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error) {
 	return c.listPartitions.CallUnary(ctx, req)
 }
 
-// ValidateMetadataVersion calls metadata.v1.MetadataService.ValidateMetadataVersion.
+// ValidateMetadataVersion calls nexus.metadata.v1.MetadataService.ValidateMetadataVersion.
 func (c *metadataServiceClient) ValidateMetadataVersion(ctx context.Context, req *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
 	return c.validateMetadataVersion.CallUnary(ctx, req)
 }
 
-// GetMetadataVersion calls metadata.v1.MetadataService.GetMetadataVersion.
+// GetMetadataVersion calls nexus.metadata.v1.MetadataService.GetMetadataVersion.
 func (c *metadataServiceClient) GetMetadataVersion(ctx context.Context, req *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
 	return c.getMetadataVersion.CallUnary(ctx, req)
 }
 
-// ListMetadataVersions calls metadata.v1.MetadataService.ListMetadataVersions.
+// ListMetadataVersions calls nexus.metadata.v1.MetadataService.ListMetadataVersions.
 func (c *metadataServiceClient) ListMetadataVersions(ctx context.Context, req *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
 	return c.listMetadataVersions.CallUnary(ctx, req)
 }
 
-// MetadataServiceHandler is an implementation of the metadata.v1.MetadataService service.
+// MetadataServiceHandler is an implementation of the nexus.metadata.v1.MetadataService service.
 type MetadataServiceHandler interface {
 	// ===== Management operations =====
-	CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error)
-	DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error)
+	CreateOrganization(context.Context, *connect.Request[v1.CreateOrganizationRequest]) (*connect.Response[v1.CreateOrganizationResponse], error)
+	DeleteOrganization(context.Context, *connect.Request[v1.DeleteOrganizationRequest]) (*connect.Response[v1.DeleteOrganizationResponse], error)
+	CreateTeam(context.Context, *connect.Request[v1.CreateTeamRequest]) (*connect.Response[v1.CreateTeamResponse], error)
+	DeleteTeam(context.Context, *connect.Request[v1.DeleteTeamRequest]) (*connect.Response[v1.DeleteTeamResponse], error)
 	// ===== Data operations =====
 	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
 	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
@@ -191,16 +225,28 @@ type MetadataServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewMetadataServiceHandler(svc MetadataServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	metadataServiceMethods := v1.File_nexus_metadata_v1_metadata_proto.Services().ByName("MetadataService").Methods()
-	metadataServiceCreateTenantHandler := connect.NewUnaryHandler(
-		MetadataServiceCreateTenantProcedure,
-		svc.CreateTenant,
-		connect.WithSchema(metadataServiceMethods.ByName("CreateTenant")),
+	metadataServiceCreateOrganizationHandler := connect.NewUnaryHandler(
+		MetadataServiceCreateOrganizationProcedure,
+		svc.CreateOrganization,
+		connect.WithSchema(metadataServiceMethods.ByName("CreateOrganization")),
 		connect.WithHandlerOptions(opts...),
 	)
-	metadataServiceDeleteTenantHandler := connect.NewUnaryHandler(
-		MetadataServiceDeleteTenantProcedure,
-		svc.DeleteTenant,
-		connect.WithSchema(metadataServiceMethods.ByName("DeleteTenant")),
+	metadataServiceDeleteOrganizationHandler := connect.NewUnaryHandler(
+		MetadataServiceDeleteOrganizationProcedure,
+		svc.DeleteOrganization,
+		connect.WithSchema(metadataServiceMethods.ByName("DeleteOrganization")),
+		connect.WithHandlerOptions(opts...),
+	)
+	metadataServiceCreateTeamHandler := connect.NewUnaryHandler(
+		MetadataServiceCreateTeamProcedure,
+		svc.CreateTeam,
+		connect.WithSchema(metadataServiceMethods.ByName("CreateTeam")),
+		connect.WithHandlerOptions(opts...),
+	)
+	metadataServiceDeleteTeamHandler := connect.NewUnaryHandler(
+		MetadataServiceDeleteTeamProcedure,
+		svc.DeleteTeam,
+		connect.WithSchema(metadataServiceMethods.ByName("DeleteTeam")),
 		connect.WithHandlerOptions(opts...),
 	)
 	metadataServiceCreatePartitionHandler := connect.NewUnaryHandler(
@@ -233,12 +279,16 @@ func NewMetadataServiceHandler(svc MetadataServiceHandler, opts ...connect.Handl
 		connect.WithSchema(metadataServiceMethods.ByName("ListMetadataVersions")),
 		connect.WithHandlerOptions(opts...),
 	)
-	return "/metadata.v1.MetadataService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	return "/nexus.metadata.v1.MetadataService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case MetadataServiceCreateTenantProcedure:
-			metadataServiceCreateTenantHandler.ServeHTTP(w, r)
-		case MetadataServiceDeleteTenantProcedure:
-			metadataServiceDeleteTenantHandler.ServeHTTP(w, r)
+		case MetadataServiceCreateOrganizationProcedure:
+			metadataServiceCreateOrganizationHandler.ServeHTTP(w, r)
+		case MetadataServiceDeleteOrganizationProcedure:
+			metadataServiceDeleteOrganizationHandler.ServeHTTP(w, r)
+		case MetadataServiceCreateTeamProcedure:
+			metadataServiceCreateTeamHandler.ServeHTTP(w, r)
+		case MetadataServiceDeleteTeamProcedure:
+			metadataServiceDeleteTeamHandler.ServeHTTP(w, r)
 		case MetadataServiceCreatePartitionProcedure:
 			metadataServiceCreatePartitionHandler.ServeHTTP(w, r)
 		case MetadataServiceListPartitionsProcedure:
@@ -258,30 +308,38 @@ func NewMetadataServiceHandler(svc MetadataServiceHandler, opts ...connect.Handl
 // UnimplementedMetadataServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMetadataServiceHandler struct{}
 
-func (UnimplementedMetadataServiceHandler) CreateTenant(context.Context, *connect.Request[v1.CreateTenantRequest]) (*connect.Response[v1.CreateTenantResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.CreateTenant is not implemented"))
+func (UnimplementedMetadataServiceHandler) CreateOrganization(context.Context, *connect.Request[v1.CreateOrganizationRequest]) (*connect.Response[v1.CreateOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.CreateOrganization is not implemented"))
 }
 
-func (UnimplementedMetadataServiceHandler) DeleteTenant(context.Context, *connect.Request[v1.DeleteTenantRequest]) (*connect.Response[v1.DeleteTenantResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.DeleteTenant is not implemented"))
+func (UnimplementedMetadataServiceHandler) DeleteOrganization(context.Context, *connect.Request[v1.DeleteOrganizationRequest]) (*connect.Response[v1.DeleteOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.DeleteOrganization is not implemented"))
+}
+
+func (UnimplementedMetadataServiceHandler) CreateTeam(context.Context, *connect.Request[v1.CreateTeamRequest]) (*connect.Response[v1.CreateTeamResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.CreateTeam is not implemented"))
+}
+
+func (UnimplementedMetadataServiceHandler) DeleteTeam(context.Context, *connect.Request[v1.DeleteTeamRequest]) (*connect.Response[v1.DeleteTeamResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.DeleteTeam is not implemented"))
 }
 
 func (UnimplementedMetadataServiceHandler) CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.CreatePartition is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.CreatePartition is not implemented"))
 }
 
 func (UnimplementedMetadataServiceHandler) ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.ListPartitions is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.ListPartitions is not implemented"))
 }
 
 func (UnimplementedMetadataServiceHandler) ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.ValidateMetadataVersion is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.ValidateMetadataVersion is not implemented"))
 }
 
 func (UnimplementedMetadataServiceHandler) GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.GetMetadataVersion is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.GetMetadataVersion is not implemented"))
 }
 
 func (UnimplementedMetadataServiceHandler) ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metadata.v1.MetadataService.ListMetadataVersions is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.metadata.v1.MetadataService.ListMetadataVersions is not implemented"))
 }
