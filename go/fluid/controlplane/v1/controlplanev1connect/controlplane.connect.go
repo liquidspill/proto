@@ -36,19 +36,11 @@ const (
 	// ControlPlaneServiceControlProcedure is the fully-qualified name of the ControlPlaneService's
 	// Control RPC.
 	ControlPlaneServiceControlProcedure = "/fluid.controlplane.v1.ControlPlaneService/Control"
-	// ControlPlaneServiceRegisterRuleProcedure is the fully-qualified name of the ControlPlaneService's
-	// RegisterRule RPC.
-	ControlPlaneServiceRegisterRuleProcedure = "/fluid.controlplane.v1.ControlPlaneService/RegisterRule"
-	// ControlPlaneServiceDeregisterRuleProcedure is the fully-qualified name of the
-	// ControlPlaneService's DeregisterRule RPC.
-	ControlPlaneServiceDeregisterRuleProcedure = "/fluid.controlplane.v1.ControlPlaneService/DeregisterRule"
 )
 
 // ControlPlaneServiceClient is a client for the fluid.controlplane.v1.ControlPlaneService service.
 type ControlPlaneServiceClient interface {
 	Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error)
-	RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error)
-	DeregisterRule(context.Context, *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error)
 }
 
 // NewControlPlaneServiceClient constructs a client for the
@@ -68,26 +60,12 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("Control")),
 			connect.WithClientOptions(opts...),
 		),
-		registerRule: connect.NewClient[v1.RegisterRuleRequest, v1.RegisterRuleResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceRegisterRuleProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("RegisterRule")),
-			connect.WithClientOptions(opts...),
-		),
-		deregisterRule: connect.NewClient[v1.DeregisterRuleRequest, v1.DeregisterRuleResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceDeregisterRuleProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("DeregisterRule")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // controlPlaneServiceClient implements ControlPlaneServiceClient.
 type controlPlaneServiceClient struct {
-	control        *connect.Client[v1.ControlMessageRequest, v1.ControlMessageResponse]
-	registerRule   *connect.Client[v1.RegisterRuleRequest, v1.RegisterRuleResponse]
-	deregisterRule *connect.Client[v1.DeregisterRuleRequest, v1.DeregisterRuleResponse]
+	control *connect.Client[v1.ControlMessageRequest, v1.ControlMessageResponse]
 }
 
 // Control calls fluid.controlplane.v1.ControlPlaneService.Control.
@@ -95,22 +73,10 @@ func (c *controlPlaneServiceClient) Control(ctx context.Context, req *connect.Re
 	return c.control.CallUnary(ctx, req)
 }
 
-// RegisterRule calls fluid.controlplane.v1.ControlPlaneService.RegisterRule.
-func (c *controlPlaneServiceClient) RegisterRule(ctx context.Context, req *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error) {
-	return c.registerRule.CallUnary(ctx, req)
-}
-
-// DeregisterRule calls fluid.controlplane.v1.ControlPlaneService.DeregisterRule.
-func (c *controlPlaneServiceClient) DeregisterRule(ctx context.Context, req *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error) {
-	return c.deregisterRule.CallUnary(ctx, req)
-}
-
 // ControlPlaneServiceHandler is an implementation of the fluid.controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
 	Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error)
-	RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error)
-	DeregisterRule(context.Context, *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error)
 }
 
 // NewControlPlaneServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -126,26 +92,10 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("Control")),
 		connect.WithHandlerOptions(opts...),
 	)
-	controlPlaneServiceRegisterRuleHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceRegisterRuleProcedure,
-		svc.RegisterRule,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("RegisterRule")),
-		connect.WithHandlerOptions(opts...),
-	)
-	controlPlaneServiceDeregisterRuleHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceDeregisterRuleProcedure,
-		svc.DeregisterRule,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("DeregisterRule")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/fluid.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ControlPlaneServiceControlProcedure:
 			controlPlaneServiceControlHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceRegisterRuleProcedure:
-			controlPlaneServiceRegisterRuleHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceDeregisterRuleProcedure:
-			controlPlaneServiceDeregisterRuleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -157,12 +107,4 @@ type UnimplementedControlPlaneServiceHandler struct{}
 
 func (UnimplementedControlPlaneServiceHandler) Control(context.Context, *connect.Request[v1.ControlMessageRequest]) (*connect.Response[v1.ControlMessageResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.Control is not implemented"))
-}
-
-func (UnimplementedControlPlaneServiceHandler) RegisterRule(context.Context, *connect.Request[v1.RegisterRuleRequest]) (*connect.Response[v1.RegisterRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.RegisterRule is not implemented"))
-}
-
-func (UnimplementedControlPlaneServiceHandler) DeregisterRule(context.Context, *connect.Request[v1.DeregisterRuleRequest]) (*connect.Response[v1.DeregisterRuleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.DeregisterRule is not implemented"))
 }

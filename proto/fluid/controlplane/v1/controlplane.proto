@@ -9,70 +9,72 @@ option go_package = "github.com/liquidspill/proto/go/fluid/controlplane/v1;contr
 
 service ControlPlaneService {
   rpc Control(ControlMessageRequest) returns (ControlMessageResponse) {}
-  rpc RegisterRule(RegisterRuleRequest) returns (RegisterRuleResponse) {}
-  rpc DeregisterRule(DeregisterRuleRequest) returns (DeregisterRuleResponse) {}
-}
-
-message Config {
-    bool export = 1;
 }
 
 message ControlMessageRequest {
-    ControlMessage message = 1;
+  ControlMessage message = 1;
 }
 
 message ControlMessageResponse {
-    ControlMessage message = 1;
-    Config config = 2;
+  ControlMessage message = 1;
 }
 
+// Control messages sent by the server. For each of them, since
+// we don't expect them to be changed often, we just send the
+// entire configuration on each change (for the given message)
 message ControlMessage {
-    oneof message {
-        ExportTelemetry export_telemetry = 1;
-    }
+  oneof message {
+    Telemetry telemetry = 1;
+    Devices devices = 2;
+  }
 }
 
-message ExportTelemetry {
-    bool export = 1;
+// Telemtry control messages
+message Telemetry {
+  // Whether or not to export telemetry data. This can be
+  // switched off to prevent data from being written to
+  // the catalogue and to blob storage.
+  bool export = 1;
 }
 
-message RegisterRuleRequest {
-    Target target = 1;
-    Rule rule = 2;
-}
-
-message RegisterRuleResponse {
-    google.protobuf.Timestamp action_at = 1;
-    string rule_id = 2;
-    Target target = 3;
-    Rule rule = 4;
-}
-
-message Target {
-    oneof target {
-        Devices devices = 1;
-        DeviceDescriptor descriptor = 2;
-    }
-}
-
+// Device control messages
 message Devices {
-    repeated string device_ids = 1;
+  oneof device {
+    // Generic device that sends flow data. All devices are generic
+    // devices, however in future we will support more specific dimensions
+    // from supported models
+    GenericDevice generic = 1;
+  }
 }
 
-message DeviceDescriptor {
-    string vendor = 1;
-    string model = 2;
-    string os = 3;
-    repeated std.v1.KeyValue labels = 4;
+message GenericDevice {
+  repeated GenericDeviceDescriptor devices = 1;
 }
 
-message Rule {}
+message GenericDeviceDescriptor {
+  // User-defined name for the device
+  string name = 1;
+  // Description of the device
+  string description = 2;
 
-message DeregisterRuleRequest {
-    string rule_id = 1;
+  string vendor = 3;
+  string model = 4;
+
+  // The IP addresses of the device. We use these to look
+  // up the relevant device to enrich our flow with its information.
+  repeated IpAddress addresses = 5;
+  // User-defined labels for the device. Used to add more metadata
+  // to query over.
+  repeated std.v1.KeyValue labels = 6;
 }
 
-message DeregisterRuleResponse {
-    google.protobuf.Timestamp action_at = 1;
-    string rule_id = 2;
+message IpAddress {
+  bytes address = 1;
+  IPVersion version = 2;
+}
+
+enum IPVersion {
+  IPVERSION_UNSPECIFIED = 0;
+  IPVERSION_IPV4 = 1;
+  IPVERSION_IPV6 = 2;
 }
