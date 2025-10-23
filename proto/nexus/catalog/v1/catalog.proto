@@ -1,0 +1,218 @@
+syntax = "proto3";
+
+package nexus.catalog.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/liquidspill/proto/go/nexus/catalog/v1;catalogv1";
+
+// This service is responsible for operations against our catalog store. The
+// catalog store holds partitions -- descriptors of data that exists in object
+// storage.
+service CatalogService {
+  rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
+  rpc ListPartitions(ListPartitionsRequest) returns (ListPartitionsResponse) {}
+  rpc ValidateMetadataVersion(ValidateMetadataVersionRequest) returns (ValidateMetadataVersionResponse) {}
+
+  rpc GetMetadataVersion(GetMetadataVersionRequest) returns (GetMetadataVersionResponse) {}
+  rpc ListMetadataVersions(ListMetadataVersionsRequest) returns (ListMetadataVersionsResponse) {}
+}
+
+message CreatePartitionRequest {
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  string id = 4;
+  Partition partition = 5;
+}
+
+message CreatePartitionResponse {
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  string id = 4;
+  Partition partition = 5;
+
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message ListPartitionsRequest {
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+}
+
+message ListPartitionsResponse {
+  string organization_id = 1;
+  string team_id = 2;
+  string cluster_id = 3;
+
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Timestamp end_time = 5;
+  repeated Partition partition = 6;
+}
+
+message GetMetadataVersionRequest {
+  uint32 window_size = 1;
+  google.protobuf.Timestamp window = 2;
+}
+
+message GetMetadataVersionResponse {
+  bytes version = 1;
+}
+
+message ListMetadataVersionsRequest {
+  uint32 window_size = 1;
+  google.protobuf.Timestamp window_start = 2;
+  google.protobuf.Timestamp window_end = 3;
+}
+
+message ListMetadataVersionsResponse {
+  repeated google.protobuf.Timestamp windows = 1;
+  repeated bytes versions = 2;
+}
+
+message ValidateMetadataVersionRequest {
+  repeated Validate versions = 1;
+}
+
+message ValidateMetadataVersionResponse {
+  repeated bool valid = 1;
+}
+
+message Validate {
+  google.protobuf.Timestamp window = 1;
+  bytes version = 2;
+}
+
+// Immutable metadata describing a partition stored in object storage
+message Partition {
+  string id = 1;
+  // The key used to cluster the data into partitions. This is
+  // used to increase data locality, with the idea being that it
+  // helps process queries faster
+  ClusterKey cluster_key = 2;
+
+  repeated string segments = 3;
+
+  // The size in bytes of the Parquet file
+  uint64 size = 4;
+  uint64 row_count = 5;
+
+  // Time the partition was created
+  google.protobuf.Timestamp created_at = 6;
+
+  // Metadata describing the columns in the partition
+  map<string, Column> columns = 7;
+}
+
+message Column {
+  string name = 1;
+  Statistics statistics = 2;
+  ColumnType type = 3;
+}
+
+enum ColumnType {
+  COLUMN_TYPE_UNSPECIFIED = 0;
+  COLUMN_TYPE_INT8 = 1;
+  COLUMN_TYPE_INT16 = 2;
+  COLUMN_TYPE_INT32 = 3;
+  COLUMN_TYPE_INT64 = 4;
+  COLUMN_TYPE_UINT8 = 5;
+  COLUMN_TYPE_UINT16 = 6;
+  COLUMN_TYPE_UINT32 = 7;
+  COLUMN_TYPE_UINT64 = 8;
+  COLUMN_TYPE_STRING = 9;
+  COLUMN_TYPE_BOOLEAN = 10;
+  COLUMN_TYPE_TIMESTAMP = 11;
+  COLUMN_TYPE_BYTES = 12;
+}
+
+message Statistics {
+  oneof min {
+    // Handles int8, int16, int32
+    int32 min_int32 = 1;
+    int64 min_int64 = 2;
+    // Handles uint8, uint16, uint32
+    uint32 min_uint32 = 3;
+    uint64 min_uint64 = 4;
+    bool min_bool = 5;
+    string min_string = 6;
+    bytes min_bytes = 7;
+    google.protobuf.Timestamp min_timestamp = 8;
+  }
+  oneof max {
+    // Handles int8, int16, int32
+    int32 max_int32 = 9;
+    int64 max_int64 = 10;
+    // Handles uint8, uint16, uint32
+    uint32 max_uint32 = 11;
+    uint64 max_uint64 = 12;
+    bool max_bool = 13;
+    string max_string = 14;
+    bytes max_bytes = 15;
+    google.protobuf.Timestamp max_timestamp = 16;
+  }
+  bytes filter = 17;
+}
+
+message ClusterKey {
+  // The timestamp is the time that the flow was received
+  google.protobuf.Timestamp timestamp = 1;
+  // The ID of the device the flow belongs to
+  uint64 device_id = 2;
+}
+
+// TODO: Add metrics we care about?
+message Compaction {
+  google.protobuf.Timestamp created_at = 1;
+  CompactionLevel level = 2;
+  Window window = 3;
+  uint64 size = 4;
+}
+
+message Window {
+  uint32 size = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+}
+
+enum CompactionLevel {
+  COMPACTION_LEVEL_UNSPECIFIED = 0;
+  COMPACTION_LEVEL_ZERO = 1;
+  COMPACTION_LEVEL_ONE = 2;
+}
+
+// Metadata and data stored for a given value
+message Value {
+  // int32 enc = 2; // encoding of the raw data -- store as enums
+  google.protobuf.Timestamp created_at = 1;
+  google.protobuf.Timestamp updated_at = 2;
+  Compression comp = 3;
+  bytes raw = 4;
+}
+
+enum Compression {
+  COMPRESSION_UNSPECIFIED = 0;
+  COMPRESSION_ZSTD = 1;
+  COMPRESSION_LZ4 = 2;
+  COMPRESSION_SNAPPY = 3;
+}
+
+message Variant {
+  oneof variant {
+    int32 int32_variant = 1;
+    int64 int64_variant = 2;
+    uint32 uint32_variant = 3;
+    uint64 uint64_variant = 4;
+    bool bool_variant = 5;
+    string string_variant = 6;
+    bytes bytes_variant = 7;
+    google.protobuf.Timestamp timestamp_variant = 8;
+  }
+}

@@ -1,0 +1,443 @@
+syntax = "proto3";
+
+package fluid.controlplane.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "std/v1/std.proto";
+
+option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1";
+
+// The control plane service manages all operational aspects of the system. This includes
+// owning the management of clusters, devices, queries, etc. Additionally, it manages the
+// lifecycle of our agents.
+service ControlPlaneService {
+  // Cluster management
+  rpc CreateCluster(CreateClusterRequest) returns (CreateClusterResponse) {}
+  rpc DeleteCluster(DeleteClusterRequest) returns (DeleteClusterResponse) {}
+  rpc ListClusters(ListClustersRequest) returns (ListClustersResponse) {}
+  rpc GetCluster(GetClusterRequest) returns (GetClusterResponse) {}
+
+  // Device management
+  rpc CreateDevice(CreateDeviceRequest) returns (CreateDeviceResponse) {}
+  rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse) {}
+  rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {}
+  rpc ListDevices(ListDevicesRequest) returns (ListDevicesResponse) {}
+  rpc GetDevice(GetDeviceRequest) returns (GetDeviceResponse) {}
+
+  // Query management
+  rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse) {}
+  // Starts a background job to execute the query
+  rpc StartQueryExecution(StartQueryExecutionRequest) returns (StartQueryExecutionResponse) {}
+  // Poll the query execution job. It will return a status and if complete, the
+  // result alongside it
+  rpc PollQueryExecution(PollQueryExecutionRequest) returns (PollQueryExecutionResponse) {}
+
+  // Agent lifecycle
+  rpc RegisterAgent(RegisterAgentRequest) returns (RegisterAgentResponse) {}
+  rpc DeregisterAgent(DeregisterAgentRequest) returns (DeregisterAgentResponse) {}
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
+}
+
+//===== CLUSTERS =====//
+
+message Cluster {
+  string id = 1;
+  string team_id = 2;
+  string name = 3;
+  ClusterType type = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateClusterRequest {
+  string name = 1;
+  ClusterType type = 2;
+}
+
+message CreateClusterResponse {
+  Cluster cluster = 1;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+enum ClusterType {
+  CLUSTER_TYPE_UNSPECIFIED = 0;
+  // The cluster runs in their own cloud
+  CLUSTER_TYPE_BYOC = 1;
+  // We run the cluster in our cloud, on behalf of the user
+  CLUSTER_TYPE_SERVERLESS = 2;
+}
+
+message DeleteClusterRequest {
+  string id = 1;
+}
+
+message DeleteClusterResponse {
+  string id = 1;
+  google.protobuf.Timestamp deleted_at = 2;
+}
+
+message ListClustersRequest {
+  string team_id = 1;
+}
+
+message ListClustersResponse {
+  repeated Cluster clusters = 1;
+}
+
+message GetClusterRequest {
+  string id = 1;
+}
+
+message GetClusterResponse {
+  Cluster cluster = 1;
+}
+
+//===== DEVICES =====//
+
+message Device {
+  string id = 1;
+  string organization_id = 2;
+  string team_id = 3;
+  // A "common name" for the device that the user can use
+  // to identify it.
+  string name = 4;
+  string description = 5;
+  oneof vendor {
+    // A known vendor that we explicitly support where
+    // support means we can populate device information
+    // with additional information that we know is specific
+    // to this vendor and/or model
+    Vendor known_vendor = 6;
+    // A generic vendor
+    string other_vendor = 7;
+  };
+  oneof model {
+    // A known model that we explicitly support
+    Model known_model = 8;
+    // A generic model
+    string other_model = 9;
+  };
+  // The IP addresses of the device. We use these to look
+  // up the relevant device to enrich our flow with its information.
+  repeated IpAddress addresses = 10;
+  // User-defined labels for the device. Used to add more metadata
+  // to query over.
+  repeated std.v1.KeyValue labels = 11;
+  // Additional information about the device, specific to known devices that
+  // we support (in future)
+  // oneof device_info {}
+}
+
+enum Vendor {
+  VENDOR_UNSPECIFIED = 0;
+}
+
+enum Model {
+  MODEL_UNSPECIFIED = 0;
+}
+
+message IpAddress {
+  bytes address = 1;
+  IPVersion version = 2;
+}
+
+enum IPVersion {
+  IPVERSION_UNSPECIFIED = 0;
+  IPVERSION_IPV4 = 1;
+  IPVERSION_IPV6 = 2;
+}
+
+message CreateDeviceRequest {
+  string name = 1;
+  string description = 2;
+  oneof vendor {
+    Vendor known_vendor = 3;
+    string other_vendor = 4;
+  };
+  oneof model {
+    Model known_model = 5;
+    string other_model = 6;
+  };
+  repeated IpAddress addresses = 7;
+  repeated std.v1.KeyValue labels = 8;
+}
+
+message CreateDeviceResponse {
+  Device device = 1;
+  google.protobuf.Timestamp created_at = 2;
+}
+
+message DeleteDeviceRequest {
+  string id = 1;
+}
+message DeleteDeviceResponse {
+  string id = 1;
+  google.protobuf.Timestamp deleted_at = 2;
+}
+
+message UpdateDeviceRequest {
+  string id = 1;
+  Device device = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateDeviceResponse {
+  string id = 1;
+  Device device = 2;
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message GetDeviceRequest {
+  string id = 1;
+}
+
+message GetDeviceResponse {
+  string id = 1;
+  Device device = 2;
+}
+
+message ListDevicesRequest {
+  string organization_id = 1;
+  string team_id = 2;
+}
+
+message ListDevicesResponse {
+  string organization_id = 1;
+  string team_id = 2;
+  repeated Device devices = 3;
+}
+
+//===== QUERIES =====//
+// TODO: MAKE SURE TO MAKE AN ASCII TEXT DIAGRAM EXPLAINING
+// THE SHAPE OF THE DATA RETURNED BY THE QUERIES, ITS CONFUSING
+
+message Query {
+  repeated Visualise visualise = 1;
+  Where where = 2;
+  repeated string group_by = 3;
+  repeated Order order_by = 4;
+  uint32 limit = 5;
+  Clause having = 6;
+  int64 start_time = 7;
+  int64 end_time = 8;
+}
+
+message Visualise {
+  VisualiseOp op = 1;
+  string field = 2;
+}
+
+enum VisualiseOp {
+  VISUALISE_OP_UNSPECIFIED = 0;
+  VISUALISE_OP_COUNT = 1;
+  VISUALISE_OP_COUNT_DISTINCT = 2;
+  VISUALISE_OP_SUM = 3;
+  VISUALISE_OP_AVG = 4;
+  VISUALISE_OP_MAX = 5;
+  VISUALISE_OP_MIN = 6;
+  // Unsupported
+  VISUALISE_OP_P001 = 7;
+  VISUALISE_OP_P01 = 8;
+  VISUALISE_OP_P05 = 9;
+  VISUALISE_OP_P10 = 10;
+  VISUALISE_OP_P25 = 11;
+  VISUALISE_OP_P50 = 12;
+  VISUALISE_OP_P75 = 13;
+  VISUALISE_OP_P90 = 14;
+  VISUALISE_OP_P95 = 15;
+  VISUALISE_OP_P99 = 16;
+  VISUALISE_OP_P999 = 17;
+  VISUALISE_OP_RATE_AVG = 18;
+  VISUALISE_OP_RATE_SUM = 19;
+  VISUALISE_OP_RATE_MAX = 20;
+}
+
+message Where {
+  WhereOp op = 1;
+  repeated Clause clauses = 2;
+}
+
+enum WhereOp {
+  WHERE_OP_UNSPECIFIED = 0;
+  WHERE_OP_AND = 1;
+  WHERE_OP_OR = 2;
+}
+
+message Clause {
+  string field = 1;
+  string value = 2;
+  CompareOp op = 3;
+}
+
+enum CompareOp {
+  COMPARE_OP_UNSPECIFIED = 0;
+  COMPARE_OP_EQUAL = 1;
+  COMPARE_OP_NOT_EQUAL = 2;
+  COMPARE_OP_GREATER_THAN = 3;
+  COMPARE_OP_GREATER_THAN_OR_EQUAL = 4;
+  COMPARE_OP_LESS_THAN = 5;
+  COMPARE_OP_LESS_THAN_OR_EQUAL = 6;
+  COMPARE_OP_CONTAINS = 7;
+  COMPARE_OP_DOES_NOT_CONTAIN = 8;
+  COMPARE_OP_IN = 9;
+  COMPARE_OP_NOT_IN = 10;
+
+  // ADD exists, does-not-exist, starts-with, does-not-start-with, ends-with, does-not-end-with
+}
+
+message Order {
+  string field = 1;
+  OrderOp order = 2;
+}
+
+enum OrderOp {
+  ORDER_OP_UNSPECIFIED = 0;
+  ORDER_OP_ASC = 1;
+  ORDER_OP_DESC = 2;
+}
+
+
+message Series {
+  repeated google.protobuf.Timestamp timestamps = 1;
+  // The series of data returned by our query
+  map<string, SeriesData> data = 2;
+  // The name of the columns that are visualisations of the data (i.e the
+  // operation on the data)
+  repeated string visualisations = 3;
+  // The names of the columns that are used to group the data
+  repeated string groups = 4;
+}
+
+message SeriesData {
+  // The name of the series. This is the field that was queried
+  string name = 1;
+  repeated std.v1.Value values = 2;
+}
+
+message Row {
+  repeated string fields = 1;
+  repeated RowValues row_values = 2;
+}
+
+message RowValues {
+  repeated std.v1.Value values = 1;
+}
+
+message CreateQueryRequest {
+  Query query = 1;
+}
+
+message CreateQueryResponse {
+  string id = 1;
+  Query query = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message StartQueryExecutionRequest {
+  string query_id = 1;
+}
+
+message StartQueryExecutionResponse {
+  // The ID of the query execution job. This ID is used later
+  // to poll for the results of the query.
+  string job_id = 1;
+  string query_id = 2;
+}
+
+message PollQueryExecutionRequest {
+  string job_id = 1;
+}
+
+message PollQueryExecutionResponse {
+  QueryExecutionStatus status = 1;
+  optional QueryExecutionResult result = 2;
+}
+
+enum QueryExecutionStatus {
+  QUERY_EXECUTION_STATUS_UNSPECIFIED = 0;
+  QUERY_EXECUTION_STATUS_PENDING = 1;
+  QUERY_EXECUTION_STATUS_RUNNING = 2;
+  QUERY_EXECUTION_STATUS_COMPLETED = 3;
+  QUERY_EXECUTION_STATUS_FAILED = 4;
+}
+
+message QueryExecutionResult {
+  // The time series data. If many fields are queried at once
+  // e.g select bytes, src_ip each field will have its own series
+  Series series = 1;
+  // This the "raw" data i.e the rows returned by the query.
+  // Used to show the raw data in the UI
+  repeated Row rows = 2;
+}
+
+message RegisterAgentRequest {
+  // The agent ID. These are generated by the agent themselves.
+  // They are of the form agt_{nanoid}
+  string id = 1;
+  string organization_id = 2;
+  string team_id = 3;
+  string cluster_id = 4;
+}
+
+message RegisterAgentResponse {
+  string id = 1;
+  string organization_id = 2;
+  string team_id = 3;
+  string cluster_id = 4;
+}
+
+message DeregisterAgentRequest {
+  string id = 1;
+}
+
+message DeregisterAgentResponse {
+  string id = 1;
+  google.protobuf.Timestamp deregistered_at = 2;
+}
+
+message HeartbeatRequest {
+  string id = 1;
+}
+
+message HeartbeatResponse {
+  string id = 1;
+}
+
+//===== CONTROL MESSAGES =====//
+//
+// Control messages sent by the server --> agents. For each of them,
+// since we don't expect them to be changed often, we just send the
+// entire configuration on each change (for the given message)
+
+message ControlMessageRequest {
+  string request_id = 1;
+  ControlMessage control = 2;
+}
+
+message ControlMessageResponse {
+  string request_id = 1;
+  ControlMessage control = 2;
+  bool success = 3;
+  string error = 4;
+}
+
+message ControlMessage {
+  oneof message {
+    TelemetryControl telemetry = 1;
+    DeviceControl devices = 2;
+  }
+}
+
+// Telemetry control messages
+message TelemetryControl {
+  // Whether or not to export telemetry data. This can be
+  // switched off to prevent data from being written to
+  // the catalogue and to blob storage.
+  bool export = 1;
+}
+
+// Device control messages
+message DeviceControl {
+  repeated Device devices = 1;
+}
