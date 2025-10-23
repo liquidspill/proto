@@ -626,8 +626,9 @@ func (x *Cluster) GetUpdatedAt() *timestamppb.Timestamp {
 
 type CreateClusterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Type          ClusterType            `protobuf:"varint,2,opt,name=type,proto3,enum=nexus.controlplane.v1.ClusterType" json:"type,omitempty"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Type          ClusterType            `protobuf:"varint,3,opt,name=type,proto3,enum=nexus.controlplane.v1.ClusterType" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -660,6 +661,13 @@ func (x *CreateClusterRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateClusterRequest.ProtoReflect.Descriptor instead.
 func (*CreateClusterRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateClusterRequest) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
 }
 
 func (x *CreateClusterRequest) GetName() string {
@@ -870,7 +878,8 @@ func (x *ListClustersRequest) GetTeamId() string {
 
 type ListClustersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Clusters      []*Cluster             `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Clusters      []*Cluster             `protobuf:"bytes,2,rep,name=clusters,proto3" json:"clusters,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -903,6 +912,13 @@ func (x *ListClustersResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListClustersResponse.ProtoReflect.Descriptor instead.
 func (*ListClustersResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListClustersResponse) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
 }
 
 func (x *ListClustersResponse) GetClusters() []*Cluster {
@@ -958,7 +974,8 @@ func (x *GetClusterRequest) GetId() string {
 
 type GetClusterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Cluster       *Cluster               `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Cluster       *Cluster               `protobuf:"bytes,2,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -991,6 +1008,13 @@ func (x *GetClusterResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetClusterResponse.ProtoReflect.Descriptor instead.
 func (*GetClusterResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetClusterResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *GetClusterResponse) GetCluster() *Cluster {
@@ -1251,8 +1275,9 @@ func (x *IpAddress) GetVersion() IPVersion {
 
 type CreateDeviceRequest struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
-	Name        string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Description string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	TeamId      string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Name        string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Types that are valid to be assigned to Vendor:
 	//
 	//	*CreateDeviceRequest_KnownVendor
@@ -1263,8 +1288,8 @@ type CreateDeviceRequest struct {
 	//	*CreateDeviceRequest_KnownModel
 	//	*CreateDeviceRequest_OtherModel
 	Model         isCreateDeviceRequest_Model `protobuf_oneof:"model"`
-	Addresses     []*IpAddress                `protobuf:"bytes,7,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	Labels        []*v1.KeyValue              `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty"`
+	Addresses     []*IpAddress                `protobuf:"bytes,8,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Labels        []*v1.KeyValue              `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1297,6 +1322,13 @@ func (x *CreateDeviceRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateDeviceRequest.ProtoReflect.Descriptor instead.
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreateDeviceRequest) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
 }
 
 func (x *CreateDeviceRequest) GetName() string {
@@ -1382,11 +1414,11 @@ type isCreateDeviceRequest_Vendor interface {
 }
 
 type CreateDeviceRequest_KnownVendor struct {
-	KnownVendor Vendor `protobuf:"varint,3,opt,name=known_vendor,json=knownVendor,proto3,enum=nexus.controlplane.v1.Vendor,oneof"`
+	KnownVendor Vendor `protobuf:"varint,4,opt,name=known_vendor,json=knownVendor,proto3,enum=nexus.controlplane.v1.Vendor,oneof"`
 }
 
 type CreateDeviceRequest_OtherVendor struct {
-	OtherVendor string `protobuf:"bytes,4,opt,name=other_vendor,json=otherVendor,proto3,oneof"`
+	OtherVendor string `protobuf:"bytes,5,opt,name=other_vendor,json=otherVendor,proto3,oneof"`
 }
 
 func (*CreateDeviceRequest_KnownVendor) isCreateDeviceRequest_Vendor() {}
@@ -1398,11 +1430,11 @@ type isCreateDeviceRequest_Model interface {
 }
 
 type CreateDeviceRequest_KnownModel struct {
-	KnownModel Model `protobuf:"varint,5,opt,name=known_model,json=knownModel,proto3,enum=nexus.controlplane.v1.Model,oneof"`
+	KnownModel Model `protobuf:"varint,6,opt,name=known_model,json=knownModel,proto3,enum=nexus.controlplane.v1.Model,oneof"`
 }
 
 type CreateDeviceRequest_OtherModel struct {
-	OtherModel string `protobuf:"bytes,6,opt,name=other_model,json=otherModel,proto3,oneof"`
+	OtherModel string `protobuf:"bytes,7,opt,name=other_model,json=otherModel,proto3,oneof"`
 }
 
 func (*CreateDeviceRequest_KnownModel) isCreateDeviceRequest_Model() {}
@@ -1411,8 +1443,9 @@ func (*CreateDeviceRequest_OtherModel) isCreateDeviceRequest_Model() {}
 
 type CreateDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Device        *Device                `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Device        *Device                `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1445,6 +1478,13 @@ func (x *CreateDeviceResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateDeviceResponse.ProtoReflect.Descriptor instead.
 func (*CreateDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CreateDeviceResponse) GetTeamId() string {
+	if x != nil {
+		return x.TeamId
+	}
+	return ""
 }
 
 func (x *CreateDeviceResponse) GetDevice() *Device {
@@ -1774,11 +1814,10 @@ func (x *GetDeviceResponse) GetDevice() *Device {
 }
 
 type ListDevicesRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListDevicesRequest) Reset() {
@@ -1811,13 +1850,6 @@ func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *ListDevicesRequest) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
 func (x *ListDevicesRequest) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
@@ -1826,12 +1858,11 @@ func (x *ListDevicesRequest) GetTeamId() string {
 }
 
 type ListDevicesResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	Devices        []*Device              `protobuf:"bytes,3,rep,name=devices,proto3" json:"devices,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Devices       []*Device              `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListDevicesResponse) Reset() {
@@ -1862,13 +1893,6 @@ func (x *ListDevicesResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListDevicesResponse.ProtoReflect.Descriptor instead.
 func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *ListDevicesResponse) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
 }
 
 func (x *ListDevicesResponse) GetTeamId() string {
@@ -2574,7 +2598,7 @@ type StartQueryExecutionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The ID of the query execution job. This ID is used later
 	// to poll for the results of the query.
-	JobId         string `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	QueryId       string `protobuf:"bytes,2,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2610,9 +2634,9 @@ func (*StartQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *StartQueryExecutionResponse) GetJobId() string {
+func (x *StartQueryExecutionResponse) GetId() string {
 	if x != nil {
-		return x.JobId
+		return x.Id
 	}
 	return ""
 }
@@ -2780,12 +2804,12 @@ type RegisterAgentRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The agent ID. These are generated by the agent themselves.
 	// They are of the form agt_{nanoid}
-	Id             string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrganizationId string `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string `protobuf:"bytes,3,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string `protobuf:"bytes,4,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// string organization_id = 2; // We can derive these?
+	// string team_id = 3;
+	ClusterId     string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterAgentRequest) Reset() {
@@ -2825,20 +2849,6 @@ func (x *RegisterAgentRequest) GetId() string {
 	return ""
 }
 
-func (x *RegisterAgentRequest) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *RegisterAgentRequest) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
-	}
-	return ""
-}
-
 func (x *RegisterAgentRequest) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
@@ -2847,13 +2857,13 @@ func (x *RegisterAgentRequest) GetClusterId() string {
 }
 
 type RegisterAgentResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,3,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string                 `protobuf:"bytes,4,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// string organization_id = 2;
+	// string team_id = 3;
+	ClusterId     string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterAgentResponse) Reset() {
@@ -2889,20 +2899,6 @@ func (*RegisterAgentResponse) Descriptor() ([]byte, []int) {
 func (x *RegisterAgentResponse) GetId() string {
 	if x != nil {
 		return x.Id
-	}
-	return ""
-}
-
-func (x *RegisterAgentResponse) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *RegisterAgentResponse) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
 	}
 	return ""
 }
@@ -3406,10 +3402,11 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"b\n" +
-	"\x14CreateClusterRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x126\n" +
-	"\x04type\x18\x02 \x01(\x0e2\".nexus.controlplane.v1.ClusterTypeR\x04type\"\x8c\x01\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"{\n" +
+	"\x14CreateClusterRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x126\n" +
+	"\x04type\x18\x03 \x01(\x0e2\".nexus.controlplane.v1.ClusterTypeR\x04type\"\x8c\x01\n" +
 	"\x15CreateClusterResponse\x128\n" +
 	"\acluster\x18\x01 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\x129\n" +
 	"\n" +
@@ -3421,13 +3418,15 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"deleted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\".\n" +
 	"\x13ListClustersRequest\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"R\n" +
-	"\x14ListClustersResponse\x12:\n" +
-	"\bclusters\x18\x01 \x03(\v2\x1e.nexus.controlplane.v1.ClusterR\bclusters\"#\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"k\n" +
+	"\x14ListClustersResponse\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12:\n" +
+	"\bclusters\x18\x02 \x03(\v2\x1e.nexus.controlplane.v1.ClusterR\bclusters\"#\n" +
 	"\x11GetClusterRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"N\n" +
-	"\x12GetClusterResponse\x128\n" +
-	"\acluster\x18\x01 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xda\x03\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"^\n" +
+	"\x12GetClusterResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x128\n" +
+	"\acluster\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xda\x03\n" +
 	"\x06Device\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
 	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x17\n" +
@@ -3447,24 +3446,26 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x05model\"a\n" +
 	"\tIpAddress\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\fR\aaddress\x12:\n" +
-	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\x95\x03\n" +
-	"\x13CreateDeviceRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12B\n" +
-	"\fknown_vendor\x18\x03 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
-	"\fother_vendor\x18\x04 \x01(\tH\x00R\votherVendor\x12?\n" +
-	"\vknown_model\x18\x05 \x01(\x0e2\x1c.nexus.controlplane.v1.ModelH\x01R\n" +
+	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\xae\x03\n" +
+	"\x13CreateDeviceRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12B\n" +
+	"\fknown_vendor\x18\x04 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
+	"\fother_vendor\x18\x05 \x01(\tH\x00R\votherVendor\x12?\n" +
+	"\vknown_model\x18\x06 \x01(\x0e2\x1c.nexus.controlplane.v1.ModelH\x01R\n" +
 	"knownModel\x12!\n" +
-	"\vother_model\x18\x06 \x01(\tH\x01R\n" +
+	"\vother_model\x18\a \x01(\tH\x01R\n" +
 	"otherModel\x12>\n" +
-	"\taddresses\x18\a \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
-	"\x06labels\x18\b \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\b\n" +
+	"\taddresses\x18\b \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
+	"\x06labels\x18\t \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\b\n" +
 	"\x06vendorB\a\n" +
-	"\x05model\"\x88\x01\n" +
-	"\x14CreateDeviceResponse\x125\n" +
-	"\x06device\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\x129\n" +
+	"\x05model\"\xa1\x01\n" +
+	"\x14CreateDeviceResponse\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x125\n" +
+	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\x129\n" +
 	"\n" +
-	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"%\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"%\n" +
 	"\x13DeleteDeviceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"a\n" +
 	"\x14DeleteDeviceResponse\x12\x0e\n" +
@@ -3485,14 +3486,12 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"Z\n" +
 	"\x11GetDeviceResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
-	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\"V\n" +
-	"\x12ListDevicesRequest\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\"\x90\x01\n" +
-	"\x13ListDevicesResponse\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x127\n" +
-	"\adevices\x18\x03 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\xd6\x02\n" +
+	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\"-\n" +
+	"\x12ListDevicesRequest\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"g\n" +
+	"\x13ListDevicesResponse\x12\x17\n" +
+	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x127\n" +
+	"\adevices\x18\x02 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\xd6\x02\n" +
 	"\x05Query\x12>\n" +
 	"\tvisualise\x18\x01 \x03(\v2 .nexus.controlplane.v1.VisualiseR\tvisualise\x122\n" +
 	"\x05where\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.WhereR\x05where\x12\x19\n" +
@@ -3544,9 +3543,9 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
 	"\x1aStartQueryExecutionRequest\x12\x19\n" +
-	"\bquery_id\x18\x01 \x01(\tR\aqueryId\"O\n" +
-	"\x1bStartQueryExecutionResponse\x12\x15\n" +
-	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12\x19\n" +
+	"\bquery_id\x18\x01 \x01(\tR\aqueryId\"H\n" +
+	"\x1bStartQueryExecutionResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
 	"\bquery_id\x18\x02 \x01(\tR\aqueryId\"2\n" +
 	"\x19PollQueryExecutionRequest\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\"\xb6\x01\n" +
@@ -3556,19 +3555,15 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\a_result\"}\n" +
 	"\x14QueryExecutionResult\x125\n" +
 	"\x06series\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x12.\n" +
-	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"\x87\x01\n" +
+	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"E\n" +
 	"\x14RegisterAgentRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
-	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x03 \x01(\tR\x06teamId\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"cluster_id\x18\x04 \x01(\tR\tclusterId\"\x88\x01\n" +
+	"cluster_id\x18\x02 \x01(\tR\tclusterId\"F\n" +
 	"\x15RegisterAgentResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
-	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x03 \x01(\tR\x06teamId\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"cluster_id\x18\x04 \x01(\tR\tclusterId\"(\n" +
+	"cluster_id\x18\x02 \x01(\tR\tclusterId\"(\n" +
 	"\x16DeregisterAgentRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"n\n" +
 	"\x17DeregisterAgentResponse\x12\x0e\n" +
