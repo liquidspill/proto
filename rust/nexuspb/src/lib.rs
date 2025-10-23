@@ -1,3 +1,3 @@
 tonic::include_proto!("mod");
 
-impl Eq for nexus::metadata::v1::PartitionMetadata {}
+impl Eq for nexus::catalog::v1::Partition {}

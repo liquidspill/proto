@@ -22,7 +22,7 @@ const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ControlPlaneServiceName is the fully-qualified name of the ControlPlaneService service.
-	ControlPlaneServiceName = "fluid.controlplane.v1.ControlPlaneService"
+	ControlPlaneServiceName = "nexus.controlplane.v1.ControlPlaneService"
 )
 
 // These constants are the fully-qualified names of the RPCs defined in this package. They're
@@ -35,52 +35,52 @@ const (
 const (
 	// ControlPlaneServiceCreateClusterProcedure is the fully-qualified name of the
 	// ControlPlaneService's CreateCluster RPC.
-	ControlPlaneServiceCreateClusterProcedure = "/fluid.controlplane.v1.ControlPlaneService/CreateCluster"
+	ControlPlaneServiceCreateClusterProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateCluster"
 	// ControlPlaneServiceDeleteClusterProcedure is the fully-qualified name of the
 	// ControlPlaneService's DeleteCluster RPC.
-	ControlPlaneServiceDeleteClusterProcedure = "/fluid.controlplane.v1.ControlPlaneService/DeleteCluster"
+	ControlPlaneServiceDeleteClusterProcedure = "/nexus.controlplane.v1.ControlPlaneService/DeleteCluster"
 	// ControlPlaneServiceListClustersProcedure is the fully-qualified name of the ControlPlaneService's
 	// ListClusters RPC.
-	ControlPlaneServiceListClustersProcedure = "/fluid.controlplane.v1.ControlPlaneService/ListClusters"
+	ControlPlaneServiceListClustersProcedure = "/nexus.controlplane.v1.ControlPlaneService/ListClusters"
 	// ControlPlaneServiceGetClusterProcedure is the fully-qualified name of the ControlPlaneService's
 	// GetCluster RPC.
-	ControlPlaneServiceGetClusterProcedure = "/fluid.controlplane.v1.ControlPlaneService/GetCluster"
+	ControlPlaneServiceGetClusterProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetCluster"
 	// ControlPlaneServiceCreateDeviceProcedure is the fully-qualified name of the ControlPlaneService's
 	// CreateDevice RPC.
-	ControlPlaneServiceCreateDeviceProcedure = "/fluid.controlplane.v1.ControlPlaneService/CreateDevice"
+	ControlPlaneServiceCreateDeviceProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateDevice"
 	// ControlPlaneServiceDeleteDeviceProcedure is the fully-qualified name of the ControlPlaneService's
 	// DeleteDevice RPC.
-	ControlPlaneServiceDeleteDeviceProcedure = "/fluid.controlplane.v1.ControlPlaneService/DeleteDevice"
+	ControlPlaneServiceDeleteDeviceProcedure = "/nexus.controlplane.v1.ControlPlaneService/DeleteDevice"
 	// ControlPlaneServiceUpdateDeviceProcedure is the fully-qualified name of the ControlPlaneService's
 	// UpdateDevice RPC.
-	ControlPlaneServiceUpdateDeviceProcedure = "/fluid.controlplane.v1.ControlPlaneService/UpdateDevice"
+	ControlPlaneServiceUpdateDeviceProcedure = "/nexus.controlplane.v1.ControlPlaneService/UpdateDevice"
 	// ControlPlaneServiceListDevicesProcedure is the fully-qualified name of the ControlPlaneService's
 	// ListDevices RPC.
-	ControlPlaneServiceListDevicesProcedure = "/fluid.controlplane.v1.ControlPlaneService/ListDevices"
+	ControlPlaneServiceListDevicesProcedure = "/nexus.controlplane.v1.ControlPlaneService/ListDevices"
 	// ControlPlaneServiceGetDeviceProcedure is the fully-qualified name of the ControlPlaneService's
 	// GetDevice RPC.
-	ControlPlaneServiceGetDeviceProcedure = "/fluid.controlplane.v1.ControlPlaneService/GetDevice"
+	ControlPlaneServiceGetDeviceProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetDevice"
 	// ControlPlaneServiceCreateQueryProcedure is the fully-qualified name of the ControlPlaneService's
 	// CreateQuery RPC.
-	ControlPlaneServiceCreateQueryProcedure = "/fluid.controlplane.v1.ControlPlaneService/CreateQuery"
+	ControlPlaneServiceCreateQueryProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateQuery"
 	// ControlPlaneServiceStartQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's StartQueryExecution RPC.
-	ControlPlaneServiceStartQueryExecutionProcedure = "/fluid.controlplane.v1.ControlPlaneService/StartQueryExecution"
+	ControlPlaneServiceStartQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/StartQueryExecution"
 	// ControlPlaneServicePollQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's PollQueryExecution RPC.
-	ControlPlaneServicePollQueryExecutionProcedure = "/fluid.controlplane.v1.ControlPlaneService/PollQueryExecution"
+	ControlPlaneServicePollQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/PollQueryExecution"
 	// ControlPlaneServiceRegisterAgentProcedure is the fully-qualified name of the
 	// ControlPlaneService's RegisterAgent RPC.
-	ControlPlaneServiceRegisterAgentProcedure = "/fluid.controlplane.v1.ControlPlaneService/RegisterAgent"
+	ControlPlaneServiceRegisterAgentProcedure = "/nexus.controlplane.v1.ControlPlaneService/RegisterAgent"
 	// ControlPlaneServiceDeregisterAgentProcedure is the fully-qualified name of the
 	// ControlPlaneService's DeregisterAgent RPC.
-	ControlPlaneServiceDeregisterAgentProcedure = "/fluid.controlplane.v1.ControlPlaneService/DeregisterAgent"
+	ControlPlaneServiceDeregisterAgentProcedure = "/nexus.controlplane.v1.ControlPlaneService/DeregisterAgent"
 	// ControlPlaneServiceHeartbeatProcedure is the fully-qualified name of the ControlPlaneService's
 	// Heartbeat RPC.
-	ControlPlaneServiceHeartbeatProcedure = "/fluid.controlplane.v1.ControlPlaneService/Heartbeat"
+	ControlPlaneServiceHeartbeatProcedure = "/nexus.controlplane.v1.ControlPlaneService/Heartbeat"
 )
 
-// ControlPlaneServiceClient is a client for the fluid.controlplane.v1.ControlPlaneService service.
+// ControlPlaneServiceClient is a client for the nexus.controlplane.v1.ControlPlaneService service.
 type ControlPlaneServiceClient interface {
 	// Cluster management
 	CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error)
@@ -107,7 +107,7 @@ type ControlPlaneServiceClient interface {
 }
 
 // NewControlPlaneServiceClient constructs a client for the
-// fluid.controlplane.v1.ControlPlaneService service. By default, it uses the Connect protocol with
+// nexus.controlplane.v1.ControlPlaneService service. By default, it uses the Connect protocol with
 // the binary Protobuf Codec, asks for gzipped responses, and sends uncompressed requests. To use
 // the gRPC or gRPC-Web protocols, supply the connect.WithGRPC() or connect.WithGRPCWeb() options.
 //
@@ -229,82 +229,82 @@ type controlPlaneServiceClient struct {
 	heartbeat           *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
 }
 
-// CreateCluster calls fluid.controlplane.v1.ControlPlaneService.CreateCluster.
+// CreateCluster calls nexus.controlplane.v1.ControlPlaneService.CreateCluster.
 func (c *controlPlaneServiceClient) CreateCluster(ctx context.Context, req *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error) {
 	return c.createCluster.CallUnary(ctx, req)
 }
 
-// DeleteCluster calls fluid.controlplane.v1.ControlPlaneService.DeleteCluster.
+// DeleteCluster calls nexus.controlplane.v1.ControlPlaneService.DeleteCluster.
 func (c *controlPlaneServiceClient) DeleteCluster(ctx context.Context, req *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error) {
 	return c.deleteCluster.CallUnary(ctx, req)
 }
 
-// ListClusters calls fluid.controlplane.v1.ControlPlaneService.ListClusters.
+// ListClusters calls nexus.controlplane.v1.ControlPlaneService.ListClusters.
 func (c *controlPlaneServiceClient) ListClusters(ctx context.Context, req *connect.Request[v1.ListClustersRequest]) (*connect.Response[v1.ListClustersResponse], error) {
 	return c.listClusters.CallUnary(ctx, req)
 }
 
-// GetCluster calls fluid.controlplane.v1.ControlPlaneService.GetCluster.
+// GetCluster calls nexus.controlplane.v1.ControlPlaneService.GetCluster.
 func (c *controlPlaneServiceClient) GetCluster(ctx context.Context, req *connect.Request[v1.GetClusterRequest]) (*connect.Response[v1.GetClusterResponse], error) {
 	return c.getCluster.CallUnary(ctx, req)
 }
 
-// CreateDevice calls fluid.controlplane.v1.ControlPlaneService.CreateDevice.
+// CreateDevice calls nexus.controlplane.v1.ControlPlaneService.CreateDevice.
 func (c *controlPlaneServiceClient) CreateDevice(ctx context.Context, req *connect.Request[v1.CreateDeviceRequest]) (*connect.Response[v1.CreateDeviceResponse], error) {
 	return c.createDevice.CallUnary(ctx, req)
 }
 
-// DeleteDevice calls fluid.controlplane.v1.ControlPlaneService.DeleteDevice.
+// DeleteDevice calls nexus.controlplane.v1.ControlPlaneService.DeleteDevice.
 func (c *controlPlaneServiceClient) DeleteDevice(ctx context.Context, req *connect.Request[v1.DeleteDeviceRequest]) (*connect.Response[v1.DeleteDeviceResponse], error) {
 	return c.deleteDevice.CallUnary(ctx, req)
 }
 
-// UpdateDevice calls fluid.controlplane.v1.ControlPlaneService.UpdateDevice.
+// UpdateDevice calls nexus.controlplane.v1.ControlPlaneService.UpdateDevice.
 func (c *controlPlaneServiceClient) UpdateDevice(ctx context.Context, req *connect.Request[v1.UpdateDeviceRequest]) (*connect.Response[v1.UpdateDeviceResponse], error) {
 	return c.updateDevice.CallUnary(ctx, req)
 }
 
-// ListDevices calls fluid.controlplane.v1.ControlPlaneService.ListDevices.
+// ListDevices calls nexus.controlplane.v1.ControlPlaneService.ListDevices.
 func (c *controlPlaneServiceClient) ListDevices(ctx context.Context, req *connect.Request[v1.ListDevicesRequest]) (*connect.Response[v1.ListDevicesResponse], error) {
 	return c.listDevices.CallUnary(ctx, req)
 }
 
-// GetDevice calls fluid.controlplane.v1.ControlPlaneService.GetDevice.
+// GetDevice calls nexus.controlplane.v1.ControlPlaneService.GetDevice.
 func (c *controlPlaneServiceClient) GetDevice(ctx context.Context, req *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error) {
 	return c.getDevice.CallUnary(ctx, req)
 }
 
-// CreateQuery calls fluid.controlplane.v1.ControlPlaneService.CreateQuery.
+// CreateQuery calls nexus.controlplane.v1.ControlPlaneService.CreateQuery.
 func (c *controlPlaneServiceClient) CreateQuery(ctx context.Context, req *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error) {
 	return c.createQuery.CallUnary(ctx, req)
 }
 
-// StartQueryExecution calls fluid.controlplane.v1.ControlPlaneService.StartQueryExecution.
+// StartQueryExecution calls nexus.controlplane.v1.ControlPlaneService.StartQueryExecution.
 func (c *controlPlaneServiceClient) StartQueryExecution(ctx context.Context, req *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error) {
 	return c.startQueryExecution.CallUnary(ctx, req)
 }
 
-// PollQueryExecution calls fluid.controlplane.v1.ControlPlaneService.PollQueryExecution.
+// PollQueryExecution calls nexus.controlplane.v1.ControlPlaneService.PollQueryExecution.
 func (c *controlPlaneServiceClient) PollQueryExecution(ctx context.Context, req *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {
 	return c.pollQueryExecution.CallUnary(ctx, req)
 }
 
-// RegisterAgent calls fluid.controlplane.v1.ControlPlaneService.RegisterAgent.
+// RegisterAgent calls nexus.controlplane.v1.ControlPlaneService.RegisterAgent.
 func (c *controlPlaneServiceClient) RegisterAgent(ctx context.Context, req *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error) {
 	return c.registerAgent.CallUnary(ctx, req)
 }
 
-// DeregisterAgent calls fluid.controlplane.v1.ControlPlaneService.DeregisterAgent.
+// DeregisterAgent calls nexus.controlplane.v1.ControlPlaneService.DeregisterAgent.
 func (c *controlPlaneServiceClient) DeregisterAgent(ctx context.Context, req *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error) {
 	return c.deregisterAgent.CallUnary(ctx, req)
 }
 
-// Heartbeat calls fluid.controlplane.v1.ControlPlaneService.Heartbeat.
+// Heartbeat calls nexus.controlplane.v1.ControlPlaneService.Heartbeat.
 func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return c.heartbeat.CallUnary(ctx, req)
 }
 
-// ControlPlaneServiceHandler is an implementation of the fluid.controlplane.v1.ControlPlaneService
+// ControlPlaneServiceHandler is an implementation of the nexus.controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
 	// Cluster management
@@ -428,7 +428,7 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("Heartbeat")),
 		connect.WithHandlerOptions(opts...),
 	)
-	return "/fluid.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	return "/nexus.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ControlPlaneServiceCreateClusterProcedure:
 			controlPlaneServiceCreateClusterHandler.ServeHTTP(w, r)
@@ -470,61 +470,61 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 type UnimplementedControlPlaneServiceHandler struct{}
 
 func (UnimplementedControlPlaneServiceHandler) CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.CreateCluster is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateCluster is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) DeleteCluster(context.Context, *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.DeleteCluster is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.DeleteCluster is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) ListClusters(context.Context, *connect.Request[v1.ListClustersRequest]) (*connect.Response[v1.ListClustersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.ListClusters is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.ListClusters is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) GetCluster(context.Context, *connect.Request[v1.GetClusterRequest]) (*connect.Response[v1.GetClusterResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.GetCluster is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetCluster is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) CreateDevice(context.Context, *connect.Request[v1.CreateDeviceRequest]) (*connect.Response[v1.CreateDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.CreateDevice is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateDevice is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) DeleteDevice(context.Context, *connect.Request[v1.DeleteDeviceRequest]) (*connect.Response[v1.DeleteDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.DeleteDevice is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.DeleteDevice is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) UpdateDevice(context.Context, *connect.Request[v1.UpdateDeviceRequest]) (*connect.Response[v1.UpdateDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.UpdateDevice is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.UpdateDevice is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) ListDevices(context.Context, *connect.Request[v1.ListDevicesRequest]) (*connect.Response[v1.ListDevicesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.ListDevices is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.ListDevices is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) GetDevice(context.Context, *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.GetDevice is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetDevice is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.CreateQuery is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateQuery is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.StartQueryExecution is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.StartQueryExecution is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.PollQueryExecution is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.PollQueryExecution is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) RegisterAgent(context.Context, *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.RegisterAgent is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.RegisterAgent is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) DeregisterAgent(context.Context, *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.DeregisterAgent is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.DeregisterAgent is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("fluid.controlplane.v1.ControlPlaneService.Heartbeat is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.Heartbeat is not implemented"))
 }
