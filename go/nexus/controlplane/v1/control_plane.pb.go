@@ -542,8 +542,8 @@ func (QueryExecutionStatus) EnumDescriptor() ([]byte, []int) {
 
 type Cluster struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	TeamId        string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,2,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Type          ClusterType            `protobuf:"varint,4,opt,name=type,proto3,enum=nexus.controlplane.v1.ClusterType" json:"type,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -582,16 +582,16 @@ func (*Cluster) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Cluster) GetId() string {
+func (x *Cluster) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
-func (x *Cluster) GetTeamId() string {
+func (x *Cluster) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -626,7 +626,7 @@ func (x *Cluster) GetUpdatedAt() *timestamppb.Timestamp {
 
 type CreateClusterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Type          ClusterType            `protobuf:"varint,3,opt,name=type,proto3,enum=nexus.controlplane.v1.ClusterType" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -663,9 +663,9 @@ func (*CreateClusterRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateClusterRequest) GetTeamId() string {
+func (x *CreateClusterRequest) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -738,7 +738,7 @@ func (x *CreateClusterResponse) GetCreatedAt() *timestamppb.Timestamp {
 
 type DeleteClusterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -773,16 +773,16 @@ func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *DeleteClusterRequest) GetId() string {
+func (x *DeleteClusterRequest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
 type DeleteClusterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -818,9 +818,9 @@ func (*DeleteClusterResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *DeleteClusterResponse) GetId() string {
+func (x *DeleteClusterResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -834,7 +834,7 @@ func (x *DeleteClusterResponse) GetDeletedAt() *timestamppb.Timestamp {
 
 type ListClustersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -869,16 +869,16 @@ func (*ListClustersRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ListClustersRequest) GetTeamId() string {
+func (x *ListClustersRequest) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
 
 type ListClustersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Clusters      []*Cluster             `protobuf:"bytes,2,rep,name=clusters,proto3" json:"clusters,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -914,9 +914,9 @@ func (*ListClustersResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ListClustersResponse) GetTeamId() string {
+func (x *ListClustersResponse) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -930,7 +930,7 @@ func (x *ListClustersResponse) GetClusters() []*Cluster {
 
 type GetClusterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -965,16 +965,16 @@ func (*GetClusterRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GetClusterRequest) GetId() string {
+func (x *GetClusterRequest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
 type GetClusterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	Cluster       *Cluster               `protobuf:"bytes,2,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1010,9 +1010,9 @@ func (*GetClusterResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetClusterResponse) GetId() string {
+func (x *GetClusterResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1025,10 +1025,10 @@ func (x *GetClusterResponse) GetCluster() *Cluster {
 }
 
 type Device struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,3,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Pid             string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
+	OrganizationPid string                 `protobuf:"bytes,2,opt,name=organization_pid,json=organizationPid,proto3" json:"organization_pid,omitempty"`
+	TeamPid         string                 `protobuf:"bytes,3,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	// A "common name" for the device that the user can use
 	// to identify it.
 	Name        string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
@@ -1083,23 +1083,23 @@ func (*Device) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *Device) GetId() string {
+func (x *Device) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
-func (x *Device) GetOrganizationId() string {
+func (x *Device) GetOrganizationPid() string {
 	if x != nil {
-		return x.OrganizationId
+		return x.OrganizationPid
 	}
 	return ""
 }
 
-func (x *Device) GetTeamId() string {
+func (x *Device) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -1275,7 +1275,7 @@ func (x *IpAddress) GetVersion() IPVersion {
 
 type CreateDeviceRequest struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
-	TeamId      string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid     string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name        string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Types that are valid to be assigned to Vendor:
@@ -1324,9 +1324,9 @@ func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *CreateDeviceRequest) GetTeamId() string {
+func (x *CreateDeviceRequest) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -1443,7 +1443,7 @@ func (*CreateDeviceRequest_OtherModel) isCreateDeviceRequest_Model() {}
 
 type CreateDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Device        *Device                `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1480,9 +1480,9 @@ func (*CreateDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *CreateDeviceResponse) GetTeamId() string {
+func (x *CreateDeviceResponse) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -1503,7 +1503,7 @@ func (x *CreateDeviceResponse) GetCreatedAt() *timestamppb.Timestamp {
 
 type DeleteDeviceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1538,16 +1538,16 @@ func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *DeleteDeviceRequest) GetId() string {
+func (x *DeleteDeviceRequest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
 type DeleteDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1583,9 +1583,9 @@ func (*DeleteDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *DeleteDeviceResponse) GetId() string {
+func (x *DeleteDeviceResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1599,7 +1599,7 @@ func (x *DeleteDeviceResponse) GetDeletedAt() *timestamppb.Timestamp {
 
 type UpdateDeviceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	Device        *Device                `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
 	UpdateMask    *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1636,9 +1636,9 @@ func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *UpdateDeviceRequest) GetId() string {
+func (x *UpdateDeviceRequest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1659,7 +1659,7 @@ func (x *UpdateDeviceRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 
 type UpdateDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	Device        *Device                `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1696,9 +1696,9 @@ func (*UpdateDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *UpdateDeviceResponse) GetId() string {
+func (x *UpdateDeviceResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1719,7 +1719,7 @@ func (x *UpdateDeviceResponse) GetUpdatedAt() *timestamppb.Timestamp {
 
 type GetDeviceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1754,16 +1754,16 @@ func (*GetDeviceRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetDeviceRequest) GetId() string {
+func (x *GetDeviceRequest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
 type GetDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	Device        *Device                `protobuf:"bytes,2,opt,name=device,proto3" json:"device,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1799,9 +1799,9 @@ func (*GetDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *GetDeviceResponse) GetId() string {
+func (x *GetDeviceResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1815,7 +1815,7 @@ func (x *GetDeviceResponse) GetDevice() *Device {
 
 type ListDevicesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1850,16 +1850,16 @@ func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *ListDevicesRequest) GetTeamId() string {
+func (x *ListDevicesRequest) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
 
 type ListDevicesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamId        string                 `protobuf:"bytes,1,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Devices       []*Device              `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1895,9 +1895,9 @@ func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *ListDevicesResponse) GetTeamId() string {
+func (x *ListDevicesResponse) GetTeamPid() string {
 	if x != nil {
-		return x.TeamId
+		return x.TeamPid
 	}
 	return ""
 }
@@ -2492,7 +2492,7 @@ func (x *CreateQueryRequest) GetQuery() *Query {
 
 type CreateQueryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	Query         *Query                 `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2529,9 +2529,9 @@ func (*CreateQueryResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *CreateQueryResponse) GetId() string {
+func (x *CreateQueryResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -2552,7 +2552,7 @@ func (x *CreateQueryResponse) GetCreatedAt() *timestamppb.Timestamp {
 
 type StartQueryExecutionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	QueryId       string                 `protobuf:"bytes,1,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
+	QueryPid      string                 `protobuf:"bytes,1,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2587,9 +2587,9 @@ func (*StartQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{32}
 }
 
-func (x *StartQueryExecutionRequest) GetQueryId() string {
+func (x *StartQueryExecutionRequest) GetQueryPid() string {
 	if x != nil {
-		return x.QueryId
+		return x.QueryPid
 	}
 	return ""
 }
@@ -2598,8 +2598,8 @@ type StartQueryExecutionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The ID of the query execution job. This ID is used later
 	// to poll for the results of the query.
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	QueryId       string `protobuf:"bytes,2,opt,name=query_id,json=queryId,proto3" json:"query_id,omitempty"`
+	Pid           string `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
+	QueryPid      string `protobuf:"bytes,2,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2634,23 +2634,23 @@ func (*StartQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{33}
 }
 
-func (x *StartQueryExecutionResponse) GetId() string {
+func (x *StartQueryExecutionResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
 
-func (x *StartQueryExecutionResponse) GetQueryId() string {
+func (x *StartQueryExecutionResponse) GetQueryPid() string {
 	if x != nil {
-		return x.QueryId
+		return x.QueryPid
 	}
 	return ""
 }
 
 type PollQueryExecutionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	JobId         string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	JobPid        string                 `protobuf:"bytes,1,opt,name=job_pid,json=jobPid,proto3" json:"job_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2685,9 +2685,9 @@ func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *PollQueryExecutionRequest) GetJobId() string {
+func (x *PollQueryExecutionRequest) GetJobPid() string {
 	if x != nil {
-		return x.JobId
+		return x.JobPid
 	}
 	return ""
 }
@@ -2805,9 +2805,9 @@ type RegisterAgentRequest struct {
 	// The agent ID. These are generated by the agent themselves.
 	// They are of the form agt_{nanoid}
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// string organization_id = 2; // We can derive these?
-	// string team_id = 3;
-	ClusterId     string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	// string organization_pid = 2; // We can derive these?
+	// string team_pid = 3;
+	ClusterPid    string `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2849,9 +2849,9 @@ func (x *RegisterAgentRequest) GetId() string {
 	return ""
 }
 
-func (x *RegisterAgentRequest) GetClusterId() string {
+func (x *RegisterAgentRequest) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -2859,9 +2859,9 @@ func (x *RegisterAgentRequest) GetClusterId() string {
 type RegisterAgentResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// string organization_id = 2;
-	// string team_id = 3;
-	ClusterId     string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	// string organization_pid = 2;
+	// string team_pid = 3;
+	ClusterPid    string `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2903,9 +2903,9 @@ func (x *RegisterAgentResponse) GetId() string {
 	return ""
 }
 
-func (x *RegisterAgentResponse) GetClusterId() string {
+func (x *RegisterAgentResponse) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -3393,44 +3393,44 @@ var File_nexus_controlplane_v1_control_plane_proto protoreflect.FileDescriptor
 
 const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
-	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a google/protobuf/field_mask.proto\x1a\x10std/v1/std.proto\"\xf4\x01\n" +
-	"\aCluster\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x12\n" +
+	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a google/protobuf/field_mask.proto\x1a\x10std/v1/std.proto\"\xf8\x01\n" +
+	"\aCluster\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
+	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x126\n" +
 	"\x04type\x18\x04 \x01(\x0e2\".nexus.controlplane.v1.ClusterTypeR\x04type\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"{\n" +
-	"\x14CreateClusterRequest\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12\x12\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"}\n" +
+	"\x14CreateClusterRequest\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x126\n" +
 	"\x04type\x18\x03 \x01(\x0e2\".nexus.controlplane.v1.ClusterTypeR\x04type\"\x8c\x01\n" +
 	"\x15CreateClusterResponse\x128\n" +
 	"\acluster\x18\x01 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"&\n" +
-	"\x14DeleteClusterRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"b\n" +
-	"\x15DeleteClusterResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"(\n" +
+	"\x14DeleteClusterRequest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\"d\n" +
+	"\x15DeleteClusterResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x129\n" +
 	"\n" +
-	"deleted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\".\n" +
-	"\x13ListClustersRequest\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"k\n" +
-	"\x14ListClustersResponse\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12:\n" +
-	"\bclusters\x18\x02 \x03(\v2\x1e.nexus.controlplane.v1.ClusterR\bclusters\"#\n" +
-	"\x11GetClusterRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"^\n" +
-	"\x12GetClusterResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x128\n" +
-	"\acluster\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xda\x03\n" +
-	"\x06Device\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
-	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x03 \x01(\tR\x06teamId\x12\x12\n" +
+	"deleted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"0\n" +
+	"\x13ListClustersRequest\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"m\n" +
+	"\x14ListClustersResponse\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12:\n" +
+	"\bclusters\x18\x02 \x03(\v2\x1e.nexus.controlplane.v1.ClusterR\bclusters\"%\n" +
+	"\x11GetClusterRequest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\"`\n" +
+	"\x12GetClusterResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x128\n" +
+	"\acluster\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xe0\x03\n" +
+	"\x06Device\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12)\n" +
+	"\x10organization_pid\x18\x02 \x01(\tR\x0forganizationPid\x12\x19\n" +
+	"\bteam_pid\x18\x03 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12B\n" +
 	"\fknown_vendor\x18\x06 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
@@ -3446,9 +3446,9 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x05model\"a\n" +
 	"\tIpAddress\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\fR\aaddress\x12:\n" +
-	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\xae\x03\n" +
-	"\x13CreateDeviceRequest\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x12\x12\n" +
+	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\xb0\x03\n" +
+	"\x13CreateDeviceRequest\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12B\n" +
 	"\fknown_vendor\x18\x04 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
@@ -3460,37 +3460,37 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\taddresses\x18\b \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
 	"\x06labels\x18\t \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\b\n" +
 	"\x06vendorB\a\n" +
-	"\x05model\"\xa1\x01\n" +
-	"\x14CreateDeviceResponse\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x125\n" +
+	"\x05model\"\xa3\x01\n" +
+	"\x14CreateDeviceResponse\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x125\n" +
 	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"%\n" +
-	"\x13DeleteDeviceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"a\n" +
-	"\x14DeleteDeviceResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x129\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"'\n" +
+	"\x13DeleteDeviceRequest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\"c\n" +
+	"\x14DeleteDeviceResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x129\n" +
 	"\n" +
-	"deleted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\x99\x01\n" +
-	"\x13UpdateDeviceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
+	"deleted_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\x9b\x01\n" +
+	"\x13UpdateDeviceRequest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x125\n" +
 	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\x12;\n" +
 	"\vupdate_mask\x18\x03 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
-	"updateMask\"\x98\x01\n" +
-	"\x14UpdateDeviceResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
+	"updateMask\"\x9a\x01\n" +
+	"\x14UpdateDeviceResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x125\n" +
 	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\"\n" +
-	"\x10GetDeviceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"Z\n" +
-	"\x11GetDeviceResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x125\n" +
-	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\"-\n" +
-	"\x12ListDevicesRequest\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\"g\n" +
-	"\x13ListDevicesResponse\x12\x17\n" +
-	"\ateam_id\x18\x01 \x01(\tR\x06teamId\x127\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"$\n" +
+	"\x10GetDeviceRequest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\"\\\n" +
+	"\x11GetDeviceResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x125\n" +
+	"\x06device\x18\x02 \x01(\v2\x1d.nexus.controlplane.v1.DeviceR\x06device\"/\n" +
+	"\x12ListDevicesRequest\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"i\n" +
+	"\x13ListDevicesResponse\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x127\n" +
 	"\adevices\x18\x02 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\xd6\x02\n" +
 	"\x05Query\x12>\n" +
 	"\tvisualise\x18\x01 \x03(\v2 .nexus.controlplane.v1.VisualiseR\tvisualise\x122\n" +
@@ -3536,34 +3536,34 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\tRowValues\x12%\n" +
 	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"H\n" +
 	"\x12CreateQueryRequest\x122\n" +
-	"\x05query\x18\x01 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\x94\x01\n" +
-	"\x13CreateQueryResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x122\n" +
+	"\x05query\x18\x01 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\x96\x01\n" +
+	"\x13CreateQueryResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x122\n" +
 	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
-	"\x1aStartQueryExecutionRequest\x12\x19\n" +
-	"\bquery_id\x18\x01 \x01(\tR\aqueryId\"H\n" +
-	"\x1bStartQueryExecutionResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
-	"\bquery_id\x18\x02 \x01(\tR\aqueryId\"2\n" +
-	"\x19PollQueryExecutionRequest\x12\x15\n" +
-	"\x06job_id\x18\x01 \x01(\tR\x05jobId\"\xb6\x01\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"9\n" +
+	"\x1aStartQueryExecutionRequest\x12\x1b\n" +
+	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"L\n" +
+	"\x1bStartQueryExecutionResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x1b\n" +
+	"\tquery_pid\x18\x02 \x01(\tR\bqueryPid\"4\n" +
+	"\x19PollQueryExecutionRequest\x12\x17\n" +
+	"\ajob_pid\x18\x01 \x01(\tR\x06jobPid\"\xb6\x01\n" +
 	"\x1aPollQueryExecutionResponse\x12C\n" +
 	"\x06status\x18\x01 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12H\n" +
 	"\x06result\x18\x02 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultH\x00R\x06result\x88\x01\x01B\t\n" +
 	"\a_result\"}\n" +
 	"\x14QueryExecutionResult\x125\n" +
 	"\x06series\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x12.\n" +
-	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"E\n" +
+	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"G\n" +
 	"\x14RegisterAgentRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x02 \x01(\tR\tclusterId\"F\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\"H\n" +
 	"\x15RegisterAgentResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x02 \x01(\tR\tclusterId\"(\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\"(\n" +
 	"\x16DeregisterAgentRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"n\n" +
 	"\x17DeregisterAgentResponse\x12\x0e\n" +
