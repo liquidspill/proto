@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package nexus.controlplane.v1;
 
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
 import "std/v1/std.proto";
 
 option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1";
@@ -106,39 +106,29 @@ message Device {
   // to identify it.
   string name = 4;
   string description = 5;
-  oneof vendor {
-    // A known vendor that we explicitly support where
-    // support means we can populate device information
-    // with additional information that we know is specific
-    // to this vendor and/or model
-    Vendor known_vendor = 6;
-    // A generic vendor
-    string other_vendor = 7;
-  };
   oneof model {
-    // A known model that we explicitly support
-    Model known_model = 8;
-    // A generic model
-    string other_model = 9;
-  };
+    GenericModel generic = 7;
+  }
   // The IP addresses of the device. We use these to look
   // up the relevant device to enrich our flow with its information.
-  repeated IpAddress addresses = 10;
+  repeated IpAddress addresses = 9;
   // User-defined labels for the device. Used to add more metadata
   // to query over.
-  repeated std.v1.KeyValue labels = 11;
-  // Additional information about the device, specific to known devices that
-  // we support (in future)
-  // oneof device_info {}
+  repeated std.v1.KeyValue labels = 10;
 }
 
-enum Vendor {
-  VENDOR_UNSPECIFIED = 0;
+message GenericModel {
+  string model = 1;
+  // It is possible that we have a known vendor (e.g Cisco or Arista)
+  oneof vendor {
+    string other_vendor = 2;
+    Cisco cisco = 3;
+    Arista arista = 4;
+  }
 }
 
-enum Model {
-  MODEL_UNSPECIFIED = 0;
-}
+message Cisco {}
+message Arista {}
 
 message IpAddress {
   bytes address = 1;
@@ -158,11 +148,11 @@ message CreateDeviceRequest {
   oneof vendor {
     Vendor known_vendor = 4;
     string other_vendor = 5;
-  };
+  }
   oneof model {
     Model known_model = 6;
     string other_model = 7;
-  };
+  }
   repeated IpAddress addresses = 8;
   repeated std.v1.KeyValue labels = 9;
 }
