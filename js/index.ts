@@ -1,2 +1,2 @@
-export * as Query from "./scour/query/v1/query_pb";
-export * as Metadata from "./nexus/metadata/v1/metadata_pb";
+export * as ControlPlane from "./nexus/controlplane/v1/control_plane_pb";
+export * as Catalog from "./nexus/catalog/v1/catalog_pb";
