@@ -75,92 +75,6 @@ func (ClusterType) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{0}
 }
 
-type Vendor int32
-
-const (
-	Vendor_VENDOR_UNSPECIFIED Vendor = 0
-)
-
-// Enum value maps for Vendor.
-var (
-	Vendor_name = map[int32]string{
-		0: "VENDOR_UNSPECIFIED",
-	}
-	Vendor_value = map[string]int32{
-		"VENDOR_UNSPECIFIED": 0,
-	}
-)
-
-func (x Vendor) Enum() *Vendor {
-	p := new(Vendor)
-	*p = x
-	return p
-}
-
-func (x Vendor) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Vendor) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[1].Descriptor()
-}
-
-func (Vendor) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[1]
-}
-
-func (x Vendor) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Vendor.Descriptor instead.
-func (Vendor) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{1}
-}
-
-type Model int32
-
-const (
-	Model_MODEL_UNSPECIFIED Model = 0
-)
-
-// Enum value maps for Model.
-var (
-	Model_name = map[int32]string{
-		0: "MODEL_UNSPECIFIED",
-	}
-	Model_value = map[string]int32{
-		"MODEL_UNSPECIFIED": 0,
-	}
-)
-
-func (x Model) Enum() *Model {
-	p := new(Model)
-	*p = x
-	return p
-}
-
-func (x Model) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Model) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[2].Descriptor()
-}
-
-func (Model) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[2]
-}
-
-func (x Model) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Model.Descriptor instead.
-func (Model) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{2}
-}
-
 type IPVersion int32
 
 const (
@@ -194,11 +108,11 @@ func (x IPVersion) String() string {
 }
 
 func (IPVersion) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[3].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[1].Descriptor()
 }
 
 func (IPVersion) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[3]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[1]
 }
 
 func (x IPVersion) Number() protoreflect.EnumNumber {
@@ -207,7 +121,7 @@ func (x IPVersion) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use IPVersion.Descriptor instead.
 func (IPVersion) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{3}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{1}
 }
 
 type VisualiseOp int32
@@ -298,11 +212,11 @@ func (x VisualiseOp) String() string {
 }
 
 func (VisualiseOp) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[4].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[2].Descriptor()
 }
 
 func (VisualiseOp) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[4]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[2]
 }
 
 func (x VisualiseOp) Number() protoreflect.EnumNumber {
@@ -311,7 +225,7 @@ func (x VisualiseOp) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use VisualiseOp.Descriptor instead.
 func (VisualiseOp) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{4}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{2}
 }
 
 type WhereOp int32
@@ -347,11 +261,11 @@ func (x WhereOp) String() string {
 }
 
 func (WhereOp) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[5].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[3].Descriptor()
 }
 
 func (WhereOp) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[5]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[3]
 }
 
 func (x WhereOp) Number() protoreflect.EnumNumber {
@@ -360,7 +274,7 @@ func (x WhereOp) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use WhereOp.Descriptor instead.
 func (WhereOp) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{5}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{3}
 }
 
 type CompareOp int32
@@ -420,11 +334,11 @@ func (x CompareOp) String() string {
 }
 
 func (CompareOp) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[6].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[4].Descriptor()
 }
 
 func (CompareOp) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[6]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[4]
 }
 
 func (x CompareOp) Number() protoreflect.EnumNumber {
@@ -433,7 +347,7 @@ func (x CompareOp) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use CompareOp.Descriptor instead.
 func (CompareOp) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{6}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{4}
 }
 
 type OrderOp int32
@@ -469,11 +383,11 @@ func (x OrderOp) String() string {
 }
 
 func (OrderOp) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[7].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[5].Descriptor()
 }
 
 func (OrderOp) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[7]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[5]
 }
 
 func (x OrderOp) Number() protoreflect.EnumNumber {
@@ -482,7 +396,7 @@ func (x OrderOp) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use OrderOp.Descriptor instead.
 func (OrderOp) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{7}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{5}
 }
 
 type QueryExecutionStatus int32
@@ -524,11 +438,11 @@ func (x QueryExecutionStatus) String() string {
 }
 
 func (QueryExecutionStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[8].Descriptor()
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[6].Descriptor()
 }
 
 func (QueryExecutionStatus) Type() protoreflect.EnumType {
-	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[8]
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[6]
 }
 
 func (x QueryExecutionStatus) Number() protoreflect.EnumNumber {
@@ -537,7 +451,7 @@ func (x QueryExecutionStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use QueryExecutionStatus.Descriptor instead.
 func (QueryExecutionStatus) EnumDescriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{8}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{6}
 }
 
 type Cluster struct {
@@ -1033,22 +947,16 @@ type Device struct {
 	// to identify it.
 	Name        string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	// Types that are valid to be assigned to Vendor:
-	//
-	//	*Device_KnownVendor
-	//	*Device_OtherVendor
-	Vendor isDevice_Vendor `protobuf_oneof:"vendor"`
 	// Types that are valid to be assigned to Model:
 	//
-	//	*Device_KnownModel
-	//	*Device_OtherModel
+	//	*Device_Generic
 	Model isDevice_Model `protobuf_oneof:"model"`
 	// The IP addresses of the device. We use these to look
 	// up the relevant device to enrich our flow with its information.
-	Addresses []*IpAddress `protobuf:"bytes,10,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Addresses []*IpAddress `protobuf:"bytes,7,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	// User-defined labels for the device. Used to add more metadata
 	// to query over.
-	Labels        []*v1.KeyValue `protobuf:"bytes,11,rep,name=labels,proto3" json:"labels,omitempty"`
+	Labels        []*v1.KeyValue `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1118,31 +1026,6 @@ func (x *Device) GetDescription() string {
 	return ""
 }
 
-func (x *Device) GetVendor() isDevice_Vendor {
-	if x != nil {
-		return x.Vendor
-	}
-	return nil
-}
-
-func (x *Device) GetKnownVendor() Vendor {
-	if x != nil {
-		if x, ok := x.Vendor.(*Device_KnownVendor); ok {
-			return x.KnownVendor
-		}
-	}
-	return Vendor_VENDOR_UNSPECIFIED
-}
-
-func (x *Device) GetOtherVendor() string {
-	if x != nil {
-		if x, ok := x.Vendor.(*Device_OtherVendor); ok {
-			return x.OtherVendor
-		}
-	}
-	return ""
-}
-
 func (x *Device) GetModel() isDevice_Model {
 	if x != nil {
 		return x.Model
@@ -1150,22 +1033,13 @@ func (x *Device) GetModel() isDevice_Model {
 	return nil
 }
 
-func (x *Device) GetKnownModel() Model {
+func (x *Device) GetGeneric() *GenericModel {
 	if x != nil {
-		if x, ok := x.Model.(*Device_KnownModel); ok {
-			return x.KnownModel
+		if x, ok := x.Model.(*Device_Generic); ok {
+			return x.Generic
 		}
 	}
-	return Model_MODEL_UNSPECIFIED
-}
-
-func (x *Device) GetOtherModel() string {
-	if x != nil {
-		if x, ok := x.Model.(*Device_OtherModel); ok {
-			return x.OtherModel
-		}
-	}
-	return ""
+	return nil
 }
 
 func (x *Device) GetAddresses() []*IpAddress {
@@ -1182,44 +1056,195 @@ func (x *Device) GetLabels() []*v1.KeyValue {
 	return nil
 }
 
-type isDevice_Vendor interface {
-	isDevice_Vendor()
-}
-
-type Device_KnownVendor struct {
-	// A known vendor that we explicitly support where
-	// support means we can populate device information
-	// with additional information that we know is specific
-	// to this vendor and/or model
-	KnownVendor Vendor `protobuf:"varint,6,opt,name=known_vendor,json=knownVendor,proto3,enum=nexus.controlplane.v1.Vendor,oneof"`
-}
-
-type Device_OtherVendor struct {
-	// A generic vendor
-	OtherVendor string `protobuf:"bytes,7,opt,name=other_vendor,json=otherVendor,proto3,oneof"`
-}
-
-func (*Device_KnownVendor) isDevice_Vendor() {}
-
-func (*Device_OtherVendor) isDevice_Vendor() {}
-
 type isDevice_Model interface {
 	isDevice_Model()
 }
 
-type Device_KnownModel struct {
-	// A known model that we explicitly support
-	KnownModel Model `protobuf:"varint,8,opt,name=known_model,json=knownModel,proto3,enum=nexus.controlplane.v1.Model,oneof"`
+type Device_Generic struct {
+	Generic *GenericModel `protobuf:"bytes,6,opt,name=generic,proto3,oneof"`
 }
 
-type Device_OtherModel struct {
-	// A generic model
-	OtherModel string `protobuf:"bytes,9,opt,name=other_model,json=otherModel,proto3,oneof"`
+func (*Device_Generic) isDevice_Model() {}
+
+type GenericModel struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Model string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
+	// It is possible that we have a known vendor (e.g Cisco or Arista)
+	//
+	// Types that are valid to be assigned to Vendor:
+	//
+	//	*GenericModel_OtherVendor
+	//	*GenericModel_Cisco
+	//	*GenericModel_Arista
+	Vendor        isGenericModel_Vendor `protobuf_oneof:"vendor"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (*Device_KnownModel) isDevice_Model() {}
+func (x *GenericModel) Reset() {
+	*x = GenericModel{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
 
-func (*Device_OtherModel) isDevice_Model() {}
+func (x *GenericModel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GenericModel) ProtoMessage() {}
+
+func (x *GenericModel) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GenericModel.ProtoReflect.Descriptor instead.
+func (*GenericModel) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GenericModel) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *GenericModel) GetVendor() isGenericModel_Vendor {
+	if x != nil {
+		return x.Vendor
+	}
+	return nil
+}
+
+func (x *GenericModel) GetOtherVendor() string {
+	if x != nil {
+		if x, ok := x.Vendor.(*GenericModel_OtherVendor); ok {
+			return x.OtherVendor
+		}
+	}
+	return ""
+}
+
+func (x *GenericModel) GetCisco() *Cisco {
+	if x != nil {
+		if x, ok := x.Vendor.(*GenericModel_Cisco); ok {
+			return x.Cisco
+		}
+	}
+	return nil
+}
+
+func (x *GenericModel) GetArista() *Arista {
+	if x != nil {
+		if x, ok := x.Vendor.(*GenericModel_Arista); ok {
+			return x.Arista
+		}
+	}
+	return nil
+}
+
+type isGenericModel_Vendor interface {
+	isGenericModel_Vendor()
+}
+
+type GenericModel_OtherVendor struct {
+	OtherVendor string `protobuf:"bytes,2,opt,name=other_vendor,json=otherVendor,proto3,oneof"`
+}
+
+type GenericModel_Cisco struct {
+	Cisco *Cisco `protobuf:"bytes,3,opt,name=cisco,proto3,oneof"`
+}
+
+type GenericModel_Arista struct {
+	Arista *Arista `protobuf:"bytes,4,opt,name=arista,proto3,oneof"`
+}
+
+func (*GenericModel_OtherVendor) isGenericModel_Vendor() {}
+
+func (*GenericModel_Cisco) isGenericModel_Vendor() {}
+
+func (*GenericModel_Arista) isGenericModel_Vendor() {}
+
+type Cisco struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Cisco) Reset() {
+	*x = Cisco{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Cisco) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Cisco) ProtoMessage() {}
+
+func (x *Cisco) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Cisco.ProtoReflect.Descriptor instead.
+func (*Cisco) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{11}
+}
+
+type Arista struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Arista) Reset() {
+	*x = Arista{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Arista) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Arista) ProtoMessage() {}
+
+func (x *Arista) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Arista.ProtoReflect.Descriptor instead.
+func (*Arista) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{12}
+}
 
 type IpAddress struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1231,7 +1256,7 @@ type IpAddress struct {
 
 func (x *IpAddress) Reset() {
 	*x = IpAddress{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[10]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1243,7 +1268,7 @@ func (x *IpAddress) String() string {
 func (*IpAddress) ProtoMessage() {}
 
 func (x *IpAddress) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[10]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1256,7 +1281,7 @@ func (x *IpAddress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IpAddress.ProtoReflect.Descriptor instead.
 func (*IpAddress) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{10}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *IpAddress) GetAddress() []byte {
@@ -1278,25 +1303,19 @@ type CreateDeviceRequest struct {
 	TeamPid     string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name        string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Types that are valid to be assigned to Vendor:
-	//
-	//	*CreateDeviceRequest_KnownVendor
-	//	*CreateDeviceRequest_OtherVendor
-	Vendor isCreateDeviceRequest_Vendor `protobuf_oneof:"vendor"`
 	// Types that are valid to be assigned to Model:
 	//
-	//	*CreateDeviceRequest_KnownModel
-	//	*CreateDeviceRequest_OtherModel
+	//	*CreateDeviceRequest_Generic
 	Model         isCreateDeviceRequest_Model `protobuf_oneof:"model"`
-	Addresses     []*IpAddress                `protobuf:"bytes,8,rep,name=addresses,proto3" json:"addresses,omitempty"`
-	Labels        []*v1.KeyValue              `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty"`
+	Addresses     []*IpAddress                `protobuf:"bytes,5,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Labels        []*v1.KeyValue              `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateDeviceRequest) Reset() {
 	*x = CreateDeviceRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[11]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1308,7 +1327,7 @@ func (x *CreateDeviceRequest) String() string {
 func (*CreateDeviceRequest) ProtoMessage() {}
 
 func (x *CreateDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[11]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1321,7 +1340,7 @@ func (x *CreateDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDeviceRequest.ProtoReflect.Descriptor instead.
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{11}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CreateDeviceRequest) GetTeamPid() string {
@@ -1345,31 +1364,6 @@ func (x *CreateDeviceRequest) GetDescription() string {
 	return ""
 }
 
-func (x *CreateDeviceRequest) GetVendor() isCreateDeviceRequest_Vendor {
-	if x != nil {
-		return x.Vendor
-	}
-	return nil
-}
-
-func (x *CreateDeviceRequest) GetKnownVendor() Vendor {
-	if x != nil {
-		if x, ok := x.Vendor.(*CreateDeviceRequest_KnownVendor); ok {
-			return x.KnownVendor
-		}
-	}
-	return Vendor_VENDOR_UNSPECIFIED
-}
-
-func (x *CreateDeviceRequest) GetOtherVendor() string {
-	if x != nil {
-		if x, ok := x.Vendor.(*CreateDeviceRequest_OtherVendor); ok {
-			return x.OtherVendor
-		}
-	}
-	return ""
-}
-
 func (x *CreateDeviceRequest) GetModel() isCreateDeviceRequest_Model {
 	if x != nil {
 		return x.Model
@@ -1377,22 +1371,13 @@ func (x *CreateDeviceRequest) GetModel() isCreateDeviceRequest_Model {
 	return nil
 }
 
-func (x *CreateDeviceRequest) GetKnownModel() Model {
+func (x *CreateDeviceRequest) GetGeneric() *GenericModel {
 	if x != nil {
-		if x, ok := x.Model.(*CreateDeviceRequest_KnownModel); ok {
-			return x.KnownModel
+		if x, ok := x.Model.(*CreateDeviceRequest_Generic); ok {
+			return x.Generic
 		}
 	}
-	return Model_MODEL_UNSPECIFIED
-}
-
-func (x *CreateDeviceRequest) GetOtherModel() string {
-	if x != nil {
-		if x, ok := x.Model.(*CreateDeviceRequest_OtherModel); ok {
-			return x.OtherModel
-		}
-	}
-	return ""
+	return nil
 }
 
 func (x *CreateDeviceRequest) GetAddresses() []*IpAddress {
@@ -1409,37 +1394,15 @@ func (x *CreateDeviceRequest) GetLabels() []*v1.KeyValue {
 	return nil
 }
 
-type isCreateDeviceRequest_Vendor interface {
-	isCreateDeviceRequest_Vendor()
-}
-
-type CreateDeviceRequest_KnownVendor struct {
-	KnownVendor Vendor `protobuf:"varint,4,opt,name=known_vendor,json=knownVendor,proto3,enum=nexus.controlplane.v1.Vendor,oneof"`
-}
-
-type CreateDeviceRequest_OtherVendor struct {
-	OtherVendor string `protobuf:"bytes,5,opt,name=other_vendor,json=otherVendor,proto3,oneof"`
-}
-
-func (*CreateDeviceRequest_KnownVendor) isCreateDeviceRequest_Vendor() {}
-
-func (*CreateDeviceRequest_OtherVendor) isCreateDeviceRequest_Vendor() {}
-
 type isCreateDeviceRequest_Model interface {
 	isCreateDeviceRequest_Model()
 }
 
-type CreateDeviceRequest_KnownModel struct {
-	KnownModel Model `protobuf:"varint,6,opt,name=known_model,json=knownModel,proto3,enum=nexus.controlplane.v1.Model,oneof"`
+type CreateDeviceRequest_Generic struct {
+	Generic *GenericModel `protobuf:"bytes,4,opt,name=generic,proto3,oneof"`
 }
 
-type CreateDeviceRequest_OtherModel struct {
-	OtherModel string `protobuf:"bytes,7,opt,name=other_model,json=otherModel,proto3,oneof"`
-}
-
-func (*CreateDeviceRequest_KnownModel) isCreateDeviceRequest_Model() {}
-
-func (*CreateDeviceRequest_OtherModel) isCreateDeviceRequest_Model() {}
+func (*CreateDeviceRequest_Generic) isCreateDeviceRequest_Model() {}
 
 type CreateDeviceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1452,7 +1415,7 @@ type CreateDeviceResponse struct {
 
 func (x *CreateDeviceResponse) Reset() {
 	*x = CreateDeviceResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[12]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1464,7 +1427,7 @@ func (x *CreateDeviceResponse) String() string {
 func (*CreateDeviceResponse) ProtoMessage() {}
 
 func (x *CreateDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[12]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1477,7 +1440,7 @@ func (x *CreateDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDeviceResponse.ProtoReflect.Descriptor instead.
 func (*CreateDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{12}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CreateDeviceResponse) GetTeamPid() string {
@@ -1510,7 +1473,7 @@ type DeleteDeviceRequest struct {
 
 func (x *DeleteDeviceRequest) Reset() {
 	*x = DeleteDeviceRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[13]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1522,7 +1485,7 @@ func (x *DeleteDeviceRequest) String() string {
 func (*DeleteDeviceRequest) ProtoMessage() {}
 
 func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[13]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1535,7 +1498,7 @@ func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{13}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteDeviceRequest) GetPid() string {
@@ -1555,7 +1518,7 @@ type DeleteDeviceResponse struct {
 
 func (x *DeleteDeviceResponse) Reset() {
 	*x = DeleteDeviceResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[14]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1567,7 +1530,7 @@ func (x *DeleteDeviceResponse) String() string {
 func (*DeleteDeviceResponse) ProtoMessage() {}
 
 func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[14]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1580,7 +1543,7 @@ func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{14}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteDeviceResponse) GetPid() string {
@@ -1608,7 +1571,7 @@ type UpdateDeviceRequest struct {
 
 func (x *UpdateDeviceRequest) Reset() {
 	*x = UpdateDeviceRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[15]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1620,7 +1583,7 @@ func (x *UpdateDeviceRequest) String() string {
 func (*UpdateDeviceRequest) ProtoMessage() {}
 
 func (x *UpdateDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[15]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1633,7 +1596,7 @@ func (x *UpdateDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{15}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateDeviceRequest) GetPid() string {
@@ -1668,7 +1631,7 @@ type UpdateDeviceResponse struct {
 
 func (x *UpdateDeviceResponse) Reset() {
 	*x = UpdateDeviceResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[16]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1680,7 +1643,7 @@ func (x *UpdateDeviceResponse) String() string {
 func (*UpdateDeviceResponse) ProtoMessage() {}
 
 func (x *UpdateDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[16]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1693,7 +1656,7 @@ func (x *UpdateDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{16}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateDeviceResponse) GetPid() string {
@@ -1726,7 +1689,7 @@ type GetDeviceRequest struct {
 
 func (x *GetDeviceRequest) Reset() {
 	*x = GetDeviceRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[17]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1738,7 +1701,7 @@ func (x *GetDeviceRequest) String() string {
 func (*GetDeviceRequest) ProtoMessage() {}
 
 func (x *GetDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[17]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1751,7 +1714,7 @@ func (x *GetDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDeviceRequest.ProtoReflect.Descriptor instead.
 func (*GetDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{17}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetDeviceRequest) GetPid() string {
@@ -1771,7 +1734,7 @@ type GetDeviceResponse struct {
 
 func (x *GetDeviceResponse) Reset() {
 	*x = GetDeviceResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[18]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1783,7 +1746,7 @@ func (x *GetDeviceResponse) String() string {
 func (*GetDeviceResponse) ProtoMessage() {}
 
 func (x *GetDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[18]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1796,7 +1759,7 @@ func (x *GetDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDeviceResponse.ProtoReflect.Descriptor instead.
 func (*GetDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{18}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetDeviceResponse) GetPid() string {
@@ -1822,7 +1785,7 @@ type ListDevicesRequest struct {
 
 func (x *ListDevicesRequest) Reset() {
 	*x = ListDevicesRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[19]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1834,7 +1797,7 @@ func (x *ListDevicesRequest) String() string {
 func (*ListDevicesRequest) ProtoMessage() {}
 
 func (x *ListDevicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[19]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1847,7 +1810,7 @@ func (x *ListDevicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDevicesRequest.ProtoReflect.Descriptor instead.
 func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{19}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListDevicesRequest) GetTeamPid() string {
@@ -1867,7 +1830,7 @@ type ListDevicesResponse struct {
 
 func (x *ListDevicesResponse) Reset() {
 	*x = ListDevicesResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[20]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1879,7 +1842,7 @@ func (x *ListDevicesResponse) String() string {
 func (*ListDevicesResponse) ProtoMessage() {}
 
 func (x *ListDevicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[20]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1892,7 +1855,7 @@ func (x *ListDevicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDevicesResponse.ProtoReflect.Descriptor instead.
 func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{20}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListDevicesResponse) GetTeamPid() string {
@@ -1925,7 +1888,7 @@ type Query struct {
 
 func (x *Query) Reset() {
 	*x = Query{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[21]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1937,7 +1900,7 @@ func (x *Query) String() string {
 func (*Query) ProtoMessage() {}
 
 func (x *Query) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[21]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1950,7 +1913,7 @@ func (x *Query) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Query.ProtoReflect.Descriptor instead.
 func (*Query) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{21}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Query) GetVisualise() []*Visualise {
@@ -2019,7 +1982,7 @@ type Visualise struct {
 
 func (x *Visualise) Reset() {
 	*x = Visualise{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[22]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2031,7 +1994,7 @@ func (x *Visualise) String() string {
 func (*Visualise) ProtoMessage() {}
 
 func (x *Visualise) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[22]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2044,7 +2007,7 @@ func (x *Visualise) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Visualise.ProtoReflect.Descriptor instead.
 func (*Visualise) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{22}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *Visualise) GetOp() VisualiseOp {
@@ -2071,7 +2034,7 @@ type Where struct {
 
 func (x *Where) Reset() {
 	*x = Where{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[23]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2083,7 +2046,7 @@ func (x *Where) String() string {
 func (*Where) ProtoMessage() {}
 
 func (x *Where) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[23]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2096,7 +2059,7 @@ func (x *Where) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Where.ProtoReflect.Descriptor instead.
 func (*Where) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{23}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *Where) GetOp() WhereOp {
@@ -2124,7 +2087,7 @@ type Clause struct {
 
 func (x *Clause) Reset() {
 	*x = Clause{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[24]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2136,7 +2099,7 @@ func (x *Clause) String() string {
 func (*Clause) ProtoMessage() {}
 
 func (x *Clause) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[24]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2149,7 +2112,7 @@ func (x *Clause) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Clause.ProtoReflect.Descriptor instead.
 func (*Clause) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{24}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *Clause) GetField() string {
@@ -2183,7 +2146,7 @@ type Order struct {
 
 func (x *Order) Reset() {
 	*x = Order{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[25]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2195,7 +2158,7 @@ func (x *Order) String() string {
 func (*Order) ProtoMessage() {}
 
 func (x *Order) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[25]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2208,7 +2171,7 @@ func (x *Order) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Order.ProtoReflect.Descriptor instead.
 func (*Order) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{25}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *Order) GetField() string {
@@ -2241,7 +2204,7 @@ type Series struct {
 
 func (x *Series) Reset() {
 	*x = Series{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[26]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2253,7 +2216,7 @@ func (x *Series) String() string {
 func (*Series) ProtoMessage() {}
 
 func (x *Series) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[26]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2266,7 +2229,7 @@ func (x *Series) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Series.ProtoReflect.Descriptor instead.
 func (*Series) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{26}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *Series) GetTimestamps() []*timestamppb.Timestamp {
@@ -2308,7 +2271,7 @@ type SeriesData struct {
 
 func (x *SeriesData) Reset() {
 	*x = SeriesData{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[27]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2320,7 +2283,7 @@ func (x *SeriesData) String() string {
 func (*SeriesData) ProtoMessage() {}
 
 func (x *SeriesData) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[27]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2333,7 +2296,7 @@ func (x *SeriesData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SeriesData.ProtoReflect.Descriptor instead.
 func (*SeriesData) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{27}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *SeriesData) GetName() string {
@@ -2360,7 +2323,7 @@ type Row struct {
 
 func (x *Row) Reset() {
 	*x = Row{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[28]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2372,7 +2335,7 @@ func (x *Row) String() string {
 func (*Row) ProtoMessage() {}
 
 func (x *Row) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[28]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2385,7 +2348,7 @@ func (x *Row) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Row.ProtoReflect.Descriptor instead.
 func (*Row) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{28}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *Row) GetFields() []string {
@@ -2411,7 +2374,7 @@ type RowValues struct {
 
 func (x *RowValues) Reset() {
 	*x = RowValues{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[29]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2423,7 +2386,7 @@ func (x *RowValues) String() string {
 func (*RowValues) ProtoMessage() {}
 
 func (x *RowValues) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[29]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2436,7 +2399,7 @@ func (x *RowValues) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RowValues.ProtoReflect.Descriptor instead.
 func (*RowValues) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{29}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *RowValues) GetValues() []*v1.Value {
@@ -2455,7 +2418,7 @@ type CreateQueryRequest struct {
 
 func (x *CreateQueryRequest) Reset() {
 	*x = CreateQueryRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[30]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2467,7 +2430,7 @@ func (x *CreateQueryRequest) String() string {
 func (*CreateQueryRequest) ProtoMessage() {}
 
 func (x *CreateQueryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[30]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2480,7 +2443,7 @@ func (x *CreateQueryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQueryRequest.ProtoReflect.Descriptor instead.
 func (*CreateQueryRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{30}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CreateQueryRequest) GetQuery() *Query {
@@ -2501,7 +2464,7 @@ type CreateQueryResponse struct {
 
 func (x *CreateQueryResponse) Reset() {
 	*x = CreateQueryResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[31]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2513,7 +2476,7 @@ func (x *CreateQueryResponse) String() string {
 func (*CreateQueryResponse) ProtoMessage() {}
 
 func (x *CreateQueryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[31]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2526,7 +2489,7 @@ func (x *CreateQueryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQueryResponse.ProtoReflect.Descriptor instead.
 func (*CreateQueryResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{31}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateQueryResponse) GetPid() string {
@@ -2559,7 +2522,7 @@ type StartQueryExecutionRequest struct {
 
 func (x *StartQueryExecutionRequest) Reset() {
 	*x = StartQueryExecutionRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[32]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2571,7 +2534,7 @@ func (x *StartQueryExecutionRequest) String() string {
 func (*StartQueryExecutionRequest) ProtoMessage() {}
 
 func (x *StartQueryExecutionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[32]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2584,7 +2547,7 @@ func (x *StartQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*StartQueryExecutionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{32}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *StartQueryExecutionRequest) GetQueryPid() string {
@@ -2606,7 +2569,7 @@ type StartQueryExecutionResponse struct {
 
 func (x *StartQueryExecutionResponse) Reset() {
 	*x = StartQueryExecutionResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[33]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2618,7 +2581,7 @@ func (x *StartQueryExecutionResponse) String() string {
 func (*StartQueryExecutionResponse) ProtoMessage() {}
 
 func (x *StartQueryExecutionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[33]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2631,7 +2594,7 @@ func (x *StartQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*StartQueryExecutionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{33}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *StartQueryExecutionResponse) GetPid() string {
@@ -2657,7 +2620,7 @@ type PollQueryExecutionRequest struct {
 
 func (x *PollQueryExecutionRequest) Reset() {
 	*x = PollQueryExecutionRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[34]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2669,7 +2632,7 @@ func (x *PollQueryExecutionRequest) String() string {
 func (*PollQueryExecutionRequest) ProtoMessage() {}
 
 func (x *PollQueryExecutionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[34]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2682,7 +2645,7 @@ func (x *PollQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{34}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *PollQueryExecutionRequest) GetJobPid() string {
@@ -2702,7 +2665,7 @@ type PollQueryExecutionResponse struct {
 
 func (x *PollQueryExecutionResponse) Reset() {
 	*x = PollQueryExecutionResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2714,7 +2677,7 @@ func (x *PollQueryExecutionResponse) String() string {
 func (*PollQueryExecutionResponse) ProtoMessage() {}
 
 func (x *PollQueryExecutionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2727,7 +2690,7 @@ func (x *PollQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{35}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *PollQueryExecutionResponse) GetStatus() QueryExecutionStatus {
@@ -2758,7 +2721,7 @@ type QueryExecutionResult struct {
 
 func (x *QueryExecutionResult) Reset() {
 	*x = QueryExecutionResult{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2770,7 +2733,7 @@ func (x *QueryExecutionResult) String() string {
 func (*QueryExecutionResult) ProtoMessage() {}
 
 func (x *QueryExecutionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2783,7 +2746,7 @@ func (x *QueryExecutionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryExecutionResult.ProtoReflect.Descriptor instead.
 func (*QueryExecutionResult) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{36}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *QueryExecutionResult) GetSeries() *Series {
@@ -2814,7 +2777,7 @@ type RegisterAgentRequest struct {
 
 func (x *RegisterAgentRequest) Reset() {
 	*x = RegisterAgentRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[37]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2826,7 +2789,7 @@ func (x *RegisterAgentRequest) String() string {
 func (*RegisterAgentRequest) ProtoMessage() {}
 
 func (x *RegisterAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[37]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2839,7 +2802,7 @@ func (x *RegisterAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterAgentRequest.ProtoReflect.Descriptor instead.
 func (*RegisterAgentRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{37}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *RegisterAgentRequest) GetId() string {
@@ -2868,7 +2831,7 @@ type RegisterAgentResponse struct {
 
 func (x *RegisterAgentResponse) Reset() {
 	*x = RegisterAgentResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2880,7 +2843,7 @@ func (x *RegisterAgentResponse) String() string {
 func (*RegisterAgentResponse) ProtoMessage() {}
 
 func (x *RegisterAgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2893,7 +2856,7 @@ func (x *RegisterAgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterAgentResponse.ProtoReflect.Descriptor instead.
 func (*RegisterAgentResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{38}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *RegisterAgentResponse) GetId() string {
@@ -2919,7 +2882,7 @@ type DeregisterAgentRequest struct {
 
 func (x *DeregisterAgentRequest) Reset() {
 	*x = DeregisterAgentRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2931,7 +2894,7 @@ func (x *DeregisterAgentRequest) String() string {
 func (*DeregisterAgentRequest) ProtoMessage() {}
 
 func (x *DeregisterAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2944,7 +2907,7 @@ func (x *DeregisterAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeregisterAgentRequest.ProtoReflect.Descriptor instead.
 func (*DeregisterAgentRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{39}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *DeregisterAgentRequest) GetId() string {
@@ -2964,7 +2927,7 @@ type DeregisterAgentResponse struct {
 
 func (x *DeregisterAgentResponse) Reset() {
 	*x = DeregisterAgentResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2976,7 +2939,7 @@ func (x *DeregisterAgentResponse) String() string {
 func (*DeregisterAgentResponse) ProtoMessage() {}
 
 func (x *DeregisterAgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2989,7 +2952,7 @@ func (x *DeregisterAgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeregisterAgentResponse.ProtoReflect.Descriptor instead.
 func (*DeregisterAgentResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{40}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DeregisterAgentResponse) GetId() string {
@@ -3015,7 +2978,7 @@ type HeartbeatRequest struct {
 
 func (x *HeartbeatRequest) Reset() {
 	*x = HeartbeatRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3027,7 +2990,7 @@ func (x *HeartbeatRequest) String() string {
 func (*HeartbeatRequest) ProtoMessage() {}
 
 func (x *HeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3040,7 +3003,7 @@ func (x *HeartbeatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*HeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{41}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *HeartbeatRequest) GetId() string {
@@ -3059,7 +3022,7 @@ type HeartbeatResponse struct {
 
 func (x *HeartbeatResponse) Reset() {
 	*x = HeartbeatResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3071,7 +3034,7 @@ func (x *HeartbeatResponse) String() string {
 func (*HeartbeatResponse) ProtoMessage() {}
 
 func (x *HeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3084,7 +3047,7 @@ func (x *HeartbeatResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*HeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{42}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *HeartbeatResponse) GetId() string {
@@ -3104,7 +3067,7 @@ type ControlMessageRequest struct {
 
 func (x *ControlMessageRequest) Reset() {
 	*x = ControlMessageRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3116,7 +3079,7 @@ func (x *ControlMessageRequest) String() string {
 func (*ControlMessageRequest) ProtoMessage() {}
 
 func (x *ControlMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3129,7 +3092,7 @@ func (x *ControlMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessageRequest.ProtoReflect.Descriptor instead.
 func (*ControlMessageRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{43}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *ControlMessageRequest) GetRequestId() string {
@@ -3158,7 +3121,7 @@ type ControlMessageResponse struct {
 
 func (x *ControlMessageResponse) Reset() {
 	*x = ControlMessageResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3170,7 +3133,7 @@ func (x *ControlMessageResponse) String() string {
 func (*ControlMessageResponse) ProtoMessage() {}
 
 func (x *ControlMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3183,7 +3146,7 @@ func (x *ControlMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessageResponse.ProtoReflect.Descriptor instead.
 func (*ControlMessageResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{44}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *ControlMessageResponse) GetRequestId() string {
@@ -3227,7 +3190,7 @@ type ControlMessage struct {
 
 func (x *ControlMessage) Reset() {
 	*x = ControlMessage{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3239,7 +3202,7 @@ func (x *ControlMessage) String() string {
 func (*ControlMessage) ProtoMessage() {}
 
 func (x *ControlMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3252,7 +3215,7 @@ func (x *ControlMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessage.ProtoReflect.Descriptor instead.
 func (*ControlMessage) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{45}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ControlMessage) GetMessage() isControlMessage_Message {
@@ -3309,7 +3272,7 @@ type TelemetryControl struct {
 
 func (x *TelemetryControl) Reset() {
 	*x = TelemetryControl{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3321,7 +3284,7 @@ func (x *TelemetryControl) String() string {
 func (*TelemetryControl) ProtoMessage() {}
 
 func (x *TelemetryControl) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3334,7 +3297,7 @@ func (x *TelemetryControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TelemetryControl.ProtoReflect.Descriptor instead.
 func (*TelemetryControl) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{46}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *TelemetryControl) GetExport() bool {
@@ -3354,7 +3317,7 @@ type DeviceControl struct {
 
 func (x *DeviceControl) Reset() {
 	*x = DeviceControl{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3366,7 +3329,7 @@ func (x *DeviceControl) String() string {
 func (*DeviceControl) ProtoMessage() {}
 
 func (x *DeviceControl) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3379,7 +3342,7 @@ func (x *DeviceControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceControl.ProtoReflect.Descriptor instead.
 func (*DeviceControl) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{47}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DeviceControl) GetDevices() []*Device {
@@ -3393,7 +3356,7 @@ var File_nexus_controlplane_v1_control_plane_proto protoreflect.FileDescriptor
 
 const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
-	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a google/protobuf/field_mask.proto\x1a\x10std/v1/std.proto\"\xf8\x01\n" +
+	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10std/v1/std.proto\"\xf8\x01\n" +
 	"\aCluster\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
 	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x12\n" +
@@ -3426,40 +3389,35 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\"`\n" +
 	"\x12GetClusterResponse\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x128\n" +
-	"\acluster\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xe0\x03\n" +
+	"\acluster\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.ClusterR\acluster\"\xca\x02\n" +
 	"\x06Device\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12)\n" +
 	"\x10organization_pid\x18\x02 \x01(\tR\x0forganizationPid\x12\x19\n" +
 	"\bteam_pid\x18\x03 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x05 \x01(\tR\vdescription\x12B\n" +
-	"\fknown_vendor\x18\x06 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
-	"\fother_vendor\x18\a \x01(\tH\x00R\votherVendor\x12?\n" +
-	"\vknown_model\x18\b \x01(\x0e2\x1c.nexus.controlplane.v1.ModelH\x01R\n" +
-	"knownModel\x12!\n" +
-	"\vother_model\x18\t \x01(\tH\x01R\n" +
-	"otherModel\x12>\n" +
-	"\taddresses\x18\n" +
-	" \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
-	"\x06labels\x18\v \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\b\n" +
-	"\x06vendorB\a\n" +
-	"\x05model\"a\n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\x12?\n" +
+	"\ageneric\x18\x06 \x01(\v2#.nexus.controlplane.v1.GenericModelH\x00R\ageneric\x12>\n" +
+	"\taddresses\x18\a \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
+	"\x06labels\x18\b \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\a\n" +
+	"\x05model\"\xc2\x01\n" +
+	"\fGenericModel\x12\x14\n" +
+	"\x05model\x18\x01 \x01(\tR\x05model\x12#\n" +
+	"\fother_vendor\x18\x02 \x01(\tH\x00R\votherVendor\x124\n" +
+	"\x05cisco\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.CiscoH\x00R\x05cisco\x127\n" +
+	"\x06arista\x18\x04 \x01(\v2\x1d.nexus.controlplane.v1.AristaH\x00R\x06aristaB\b\n" +
+	"\x06vendor\"\a\n" +
+	"\x05Cisco\"\b\n" +
+	"\x06Arista\"a\n" +
 	"\tIpAddress\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\fR\aaddress\x12:\n" +
-	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\xb0\x03\n" +
+	"\aversion\x18\x02 \x01(\x0e2 .nexus.controlplane.v1.IPVersionR\aversion\"\x9a\x02\n" +
 	"\x13CreateDeviceRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12B\n" +
-	"\fknown_vendor\x18\x04 \x01(\x0e2\x1d.nexus.controlplane.v1.VendorH\x00R\vknownVendor\x12#\n" +
-	"\fother_vendor\x18\x05 \x01(\tH\x00R\votherVendor\x12?\n" +
-	"\vknown_model\x18\x06 \x01(\x0e2\x1c.nexus.controlplane.v1.ModelH\x01R\n" +
-	"knownModel\x12!\n" +
-	"\vother_model\x18\a \x01(\tH\x01R\n" +
-	"otherModel\x12>\n" +
-	"\taddresses\x18\b \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
-	"\x06labels\x18\t \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\b\n" +
-	"\x06vendorB\a\n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12?\n" +
+	"\ageneric\x18\x04 \x01(\v2#.nexus.controlplane.v1.GenericModelH\x00R\ageneric\x12>\n" +
+	"\taddresses\x18\x05 \x03(\v2 .nexus.controlplane.v1.IpAddressR\taddresses\x12(\n" +
+	"\x06labels\x18\x06 \x03(\v2\x10.std.v1.KeyValueR\x06labelsB\a\n" +
 	"\x05model\"\xa3\x01\n" +
 	"\x14CreateDeviceResponse\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x125\n" +
@@ -3594,11 +3552,7 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\vClusterType\x12\x1c\n" +
 	"\x18CLUSTER_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11CLUSTER_TYPE_BYOC\x10\x01\x12\x1b\n" +
-	"\x17CLUSTER_TYPE_SERVERLESS\x10\x02* \n" +
-	"\x06Vendor\x12\x16\n" +
-	"\x12VENDOR_UNSPECIFIED\x10\x00*\x1e\n" +
-	"\x05Model\x12\x15\n" +
-	"\x11MODEL_UNSPECIFIED\x10\x00*N\n" +
+	"\x17CLUSTER_TYPE_SERVERLESS\x10\x02*N\n" +
 	"\tIPVersion\x12\x19\n" +
 	"\x15IPVERSION_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eIPVERSION_IPV4\x10\x01\x12\x12\n" +
@@ -3683,158 +3637,159 @@ func file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP() []byte {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescData
 }
 
-var file_nexus_controlplane_v1_control_plane_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
-var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
+var file_nexus_controlplane_v1_control_plane_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
+var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 52)
 var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(ClusterType)(0),                    // 0: nexus.controlplane.v1.ClusterType
-	(Vendor)(0),                         // 1: nexus.controlplane.v1.Vendor
-	(Model)(0),                          // 2: nexus.controlplane.v1.Model
-	(IPVersion)(0),                      // 3: nexus.controlplane.v1.IPVersion
-	(VisualiseOp)(0),                    // 4: nexus.controlplane.v1.VisualiseOp
-	(WhereOp)(0),                        // 5: nexus.controlplane.v1.WhereOp
-	(CompareOp)(0),                      // 6: nexus.controlplane.v1.CompareOp
-	(OrderOp)(0),                        // 7: nexus.controlplane.v1.OrderOp
-	(QueryExecutionStatus)(0),           // 8: nexus.controlplane.v1.QueryExecutionStatus
-	(*Cluster)(nil),                     // 9: nexus.controlplane.v1.Cluster
-	(*CreateClusterRequest)(nil),        // 10: nexus.controlplane.v1.CreateClusterRequest
-	(*CreateClusterResponse)(nil),       // 11: nexus.controlplane.v1.CreateClusterResponse
-	(*DeleteClusterRequest)(nil),        // 12: nexus.controlplane.v1.DeleteClusterRequest
-	(*DeleteClusterResponse)(nil),       // 13: nexus.controlplane.v1.DeleteClusterResponse
-	(*ListClustersRequest)(nil),         // 14: nexus.controlplane.v1.ListClustersRequest
-	(*ListClustersResponse)(nil),        // 15: nexus.controlplane.v1.ListClustersResponse
-	(*GetClusterRequest)(nil),           // 16: nexus.controlplane.v1.GetClusterRequest
-	(*GetClusterResponse)(nil),          // 17: nexus.controlplane.v1.GetClusterResponse
-	(*Device)(nil),                      // 18: nexus.controlplane.v1.Device
-	(*IpAddress)(nil),                   // 19: nexus.controlplane.v1.IpAddress
-	(*CreateDeviceRequest)(nil),         // 20: nexus.controlplane.v1.CreateDeviceRequest
-	(*CreateDeviceResponse)(nil),        // 21: nexus.controlplane.v1.CreateDeviceResponse
-	(*DeleteDeviceRequest)(nil),         // 22: nexus.controlplane.v1.DeleteDeviceRequest
-	(*DeleteDeviceResponse)(nil),        // 23: nexus.controlplane.v1.DeleteDeviceResponse
-	(*UpdateDeviceRequest)(nil),         // 24: nexus.controlplane.v1.UpdateDeviceRequest
-	(*UpdateDeviceResponse)(nil),        // 25: nexus.controlplane.v1.UpdateDeviceResponse
-	(*GetDeviceRequest)(nil),            // 26: nexus.controlplane.v1.GetDeviceRequest
-	(*GetDeviceResponse)(nil),           // 27: nexus.controlplane.v1.GetDeviceResponse
-	(*ListDevicesRequest)(nil),          // 28: nexus.controlplane.v1.ListDevicesRequest
-	(*ListDevicesResponse)(nil),         // 29: nexus.controlplane.v1.ListDevicesResponse
-	(*Query)(nil),                       // 30: nexus.controlplane.v1.Query
-	(*Visualise)(nil),                   // 31: nexus.controlplane.v1.Visualise
-	(*Where)(nil),                       // 32: nexus.controlplane.v1.Where
-	(*Clause)(nil),                      // 33: nexus.controlplane.v1.Clause
-	(*Order)(nil),                       // 34: nexus.controlplane.v1.Order
-	(*Series)(nil),                      // 35: nexus.controlplane.v1.Series
-	(*SeriesData)(nil),                  // 36: nexus.controlplane.v1.SeriesData
-	(*Row)(nil),                         // 37: nexus.controlplane.v1.Row
-	(*RowValues)(nil),                   // 38: nexus.controlplane.v1.RowValues
-	(*CreateQueryRequest)(nil),          // 39: nexus.controlplane.v1.CreateQueryRequest
-	(*CreateQueryResponse)(nil),         // 40: nexus.controlplane.v1.CreateQueryResponse
-	(*StartQueryExecutionRequest)(nil),  // 41: nexus.controlplane.v1.StartQueryExecutionRequest
-	(*StartQueryExecutionResponse)(nil), // 42: nexus.controlplane.v1.StartQueryExecutionResponse
-	(*PollQueryExecutionRequest)(nil),   // 43: nexus.controlplane.v1.PollQueryExecutionRequest
-	(*PollQueryExecutionResponse)(nil),  // 44: nexus.controlplane.v1.PollQueryExecutionResponse
-	(*QueryExecutionResult)(nil),        // 45: nexus.controlplane.v1.QueryExecutionResult
-	(*RegisterAgentRequest)(nil),        // 46: nexus.controlplane.v1.RegisterAgentRequest
-	(*RegisterAgentResponse)(nil),       // 47: nexus.controlplane.v1.RegisterAgentResponse
-	(*DeregisterAgentRequest)(nil),      // 48: nexus.controlplane.v1.DeregisterAgentRequest
-	(*DeregisterAgentResponse)(nil),     // 49: nexus.controlplane.v1.DeregisterAgentResponse
-	(*HeartbeatRequest)(nil),            // 50: nexus.controlplane.v1.HeartbeatRequest
-	(*HeartbeatResponse)(nil),           // 51: nexus.controlplane.v1.HeartbeatResponse
-	(*ControlMessageRequest)(nil),       // 52: nexus.controlplane.v1.ControlMessageRequest
-	(*ControlMessageResponse)(nil),      // 53: nexus.controlplane.v1.ControlMessageResponse
-	(*ControlMessage)(nil),              // 54: nexus.controlplane.v1.ControlMessage
-	(*TelemetryControl)(nil),            // 55: nexus.controlplane.v1.TelemetryControl
-	(*DeviceControl)(nil),               // 56: nexus.controlplane.v1.DeviceControl
-	nil,                                 // 57: nexus.controlplane.v1.Series.DataEntry
-	(*timestamppb.Timestamp)(nil),       // 58: google.protobuf.Timestamp
-	(*v1.KeyValue)(nil),                 // 59: std.v1.KeyValue
-	(*fieldmaskpb.FieldMask)(nil),       // 60: google.protobuf.FieldMask
-	(*v1.Value)(nil),                    // 61: std.v1.Value
+	(IPVersion)(0),                      // 1: nexus.controlplane.v1.IPVersion
+	(VisualiseOp)(0),                    // 2: nexus.controlplane.v1.VisualiseOp
+	(WhereOp)(0),                        // 3: nexus.controlplane.v1.WhereOp
+	(CompareOp)(0),                      // 4: nexus.controlplane.v1.CompareOp
+	(OrderOp)(0),                        // 5: nexus.controlplane.v1.OrderOp
+	(QueryExecutionStatus)(0),           // 6: nexus.controlplane.v1.QueryExecutionStatus
+	(*Cluster)(nil),                     // 7: nexus.controlplane.v1.Cluster
+	(*CreateClusterRequest)(nil),        // 8: nexus.controlplane.v1.CreateClusterRequest
+	(*CreateClusterResponse)(nil),       // 9: nexus.controlplane.v1.CreateClusterResponse
+	(*DeleteClusterRequest)(nil),        // 10: nexus.controlplane.v1.DeleteClusterRequest
+	(*DeleteClusterResponse)(nil),       // 11: nexus.controlplane.v1.DeleteClusterResponse
+	(*ListClustersRequest)(nil),         // 12: nexus.controlplane.v1.ListClustersRequest
+	(*ListClustersResponse)(nil),        // 13: nexus.controlplane.v1.ListClustersResponse
+	(*GetClusterRequest)(nil),           // 14: nexus.controlplane.v1.GetClusterRequest
+	(*GetClusterResponse)(nil),          // 15: nexus.controlplane.v1.GetClusterResponse
+	(*Device)(nil),                      // 16: nexus.controlplane.v1.Device
+	(*GenericModel)(nil),                // 17: nexus.controlplane.v1.GenericModel
+	(*Cisco)(nil),                       // 18: nexus.controlplane.v1.Cisco
+	(*Arista)(nil),                      // 19: nexus.controlplane.v1.Arista
+	(*IpAddress)(nil),                   // 20: nexus.controlplane.v1.IpAddress
+	(*CreateDeviceRequest)(nil),         // 21: nexus.controlplane.v1.CreateDeviceRequest
+	(*CreateDeviceResponse)(nil),        // 22: nexus.controlplane.v1.CreateDeviceResponse
+	(*DeleteDeviceRequest)(nil),         // 23: nexus.controlplane.v1.DeleteDeviceRequest
+	(*DeleteDeviceResponse)(nil),        // 24: nexus.controlplane.v1.DeleteDeviceResponse
+	(*UpdateDeviceRequest)(nil),         // 25: nexus.controlplane.v1.UpdateDeviceRequest
+	(*UpdateDeviceResponse)(nil),        // 26: nexus.controlplane.v1.UpdateDeviceResponse
+	(*GetDeviceRequest)(nil),            // 27: nexus.controlplane.v1.GetDeviceRequest
+	(*GetDeviceResponse)(nil),           // 28: nexus.controlplane.v1.GetDeviceResponse
+	(*ListDevicesRequest)(nil),          // 29: nexus.controlplane.v1.ListDevicesRequest
+	(*ListDevicesResponse)(nil),         // 30: nexus.controlplane.v1.ListDevicesResponse
+	(*Query)(nil),                       // 31: nexus.controlplane.v1.Query
+	(*Visualise)(nil),                   // 32: nexus.controlplane.v1.Visualise
+	(*Where)(nil),                       // 33: nexus.controlplane.v1.Where
+	(*Clause)(nil),                      // 34: nexus.controlplane.v1.Clause
+	(*Order)(nil),                       // 35: nexus.controlplane.v1.Order
+	(*Series)(nil),                      // 36: nexus.controlplane.v1.Series
+	(*SeriesData)(nil),                  // 37: nexus.controlplane.v1.SeriesData
+	(*Row)(nil),                         // 38: nexus.controlplane.v1.Row
+	(*RowValues)(nil),                   // 39: nexus.controlplane.v1.RowValues
+	(*CreateQueryRequest)(nil),          // 40: nexus.controlplane.v1.CreateQueryRequest
+	(*CreateQueryResponse)(nil),         // 41: nexus.controlplane.v1.CreateQueryResponse
+	(*StartQueryExecutionRequest)(nil),  // 42: nexus.controlplane.v1.StartQueryExecutionRequest
+	(*StartQueryExecutionResponse)(nil), // 43: nexus.controlplane.v1.StartQueryExecutionResponse
+	(*PollQueryExecutionRequest)(nil),   // 44: nexus.controlplane.v1.PollQueryExecutionRequest
+	(*PollQueryExecutionResponse)(nil),  // 45: nexus.controlplane.v1.PollQueryExecutionResponse
+	(*QueryExecutionResult)(nil),        // 46: nexus.controlplane.v1.QueryExecutionResult
+	(*RegisterAgentRequest)(nil),        // 47: nexus.controlplane.v1.RegisterAgentRequest
+	(*RegisterAgentResponse)(nil),       // 48: nexus.controlplane.v1.RegisterAgentResponse
+	(*DeregisterAgentRequest)(nil),      // 49: nexus.controlplane.v1.DeregisterAgentRequest
+	(*DeregisterAgentResponse)(nil),     // 50: nexus.controlplane.v1.DeregisterAgentResponse
+	(*HeartbeatRequest)(nil),            // 51: nexus.controlplane.v1.HeartbeatRequest
+	(*HeartbeatResponse)(nil),           // 52: nexus.controlplane.v1.HeartbeatResponse
+	(*ControlMessageRequest)(nil),       // 53: nexus.controlplane.v1.ControlMessageRequest
+	(*ControlMessageResponse)(nil),      // 54: nexus.controlplane.v1.ControlMessageResponse
+	(*ControlMessage)(nil),              // 55: nexus.controlplane.v1.ControlMessage
+	(*TelemetryControl)(nil),            // 56: nexus.controlplane.v1.TelemetryControl
+	(*DeviceControl)(nil),               // 57: nexus.controlplane.v1.DeviceControl
+	nil,                                 // 58: nexus.controlplane.v1.Series.DataEntry
+	(*timestamppb.Timestamp)(nil),       // 59: google.protobuf.Timestamp
+	(*v1.KeyValue)(nil),                 // 60: std.v1.KeyValue
+	(*fieldmaskpb.FieldMask)(nil),       // 61: google.protobuf.FieldMask
+	(*v1.Value)(nil),                    // 62: std.v1.Value
 }
 var file_nexus_controlplane_v1_control_plane_proto_depIdxs = []int32{
 	0,  // 0: nexus.controlplane.v1.Cluster.type:type_name -> nexus.controlplane.v1.ClusterType
-	58, // 1: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	58, // 2: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	59, // 1: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	59, // 2: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: nexus.controlplane.v1.CreateClusterRequest.type:type_name -> nexus.controlplane.v1.ClusterType
-	9,  // 4: nexus.controlplane.v1.CreateClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
-	58, // 5: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
-	58, // 6: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
-	9,  // 7: nexus.controlplane.v1.ListClustersResponse.clusters:type_name -> nexus.controlplane.v1.Cluster
-	9,  // 8: nexus.controlplane.v1.GetClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
-	1,  // 9: nexus.controlplane.v1.Device.known_vendor:type_name -> nexus.controlplane.v1.Vendor
-	2,  // 10: nexus.controlplane.v1.Device.known_model:type_name -> nexus.controlplane.v1.Model
-	19, // 11: nexus.controlplane.v1.Device.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	59, // 12: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
-	3,  // 13: nexus.controlplane.v1.IpAddress.version:type_name -> nexus.controlplane.v1.IPVersion
-	1,  // 14: nexus.controlplane.v1.CreateDeviceRequest.known_vendor:type_name -> nexus.controlplane.v1.Vendor
-	2,  // 15: nexus.controlplane.v1.CreateDeviceRequest.known_model:type_name -> nexus.controlplane.v1.Model
-	19, // 16: nexus.controlplane.v1.CreateDeviceRequest.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	59, // 17: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
-	18, // 18: nexus.controlplane.v1.CreateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	58, // 19: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
-	58, // 20: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
-	18, // 21: nexus.controlplane.v1.UpdateDeviceRequest.device:type_name -> nexus.controlplane.v1.Device
-	60, // 22: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
-	18, // 23: nexus.controlplane.v1.UpdateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	58, // 24: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
-	18, // 25: nexus.controlplane.v1.GetDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	18, // 26: nexus.controlplane.v1.ListDevicesResponse.devices:type_name -> nexus.controlplane.v1.Device
-	31, // 27: nexus.controlplane.v1.Query.visualise:type_name -> nexus.controlplane.v1.Visualise
-	32, // 28: nexus.controlplane.v1.Query.where:type_name -> nexus.controlplane.v1.Where
-	34, // 29: nexus.controlplane.v1.Query.order_by:type_name -> nexus.controlplane.v1.Order
-	33, // 30: nexus.controlplane.v1.Query.having:type_name -> nexus.controlplane.v1.Clause
-	4,  // 31: nexus.controlplane.v1.Visualise.op:type_name -> nexus.controlplane.v1.VisualiseOp
-	5,  // 32: nexus.controlplane.v1.Where.op:type_name -> nexus.controlplane.v1.WhereOp
-	33, // 33: nexus.controlplane.v1.Where.clauses:type_name -> nexus.controlplane.v1.Clause
-	6,  // 34: nexus.controlplane.v1.Clause.op:type_name -> nexus.controlplane.v1.CompareOp
-	7,  // 35: nexus.controlplane.v1.Order.order:type_name -> nexus.controlplane.v1.OrderOp
-	58, // 36: nexus.controlplane.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
-	57, // 37: nexus.controlplane.v1.Series.data:type_name -> nexus.controlplane.v1.Series.DataEntry
-	61, // 38: nexus.controlplane.v1.SeriesData.values:type_name -> std.v1.Value
-	38, // 39: nexus.controlplane.v1.Row.row_values:type_name -> nexus.controlplane.v1.RowValues
-	61, // 40: nexus.controlplane.v1.RowValues.values:type_name -> std.v1.Value
-	30, // 41: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
-	30, // 42: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
-	58, // 43: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
-	8,  // 44: nexus.controlplane.v1.PollQueryExecutionResponse.status:type_name -> nexus.controlplane.v1.QueryExecutionStatus
-	45, // 45: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	35, // 46: nexus.controlplane.v1.QueryExecutionResult.series:type_name -> nexus.controlplane.v1.Series
-	37, // 47: nexus.controlplane.v1.QueryExecutionResult.rows:type_name -> nexus.controlplane.v1.Row
-	58, // 48: nexus.controlplane.v1.DeregisterAgentResponse.deregistered_at:type_name -> google.protobuf.Timestamp
-	54, // 49: nexus.controlplane.v1.ControlMessageRequest.control:type_name -> nexus.controlplane.v1.ControlMessage
-	54, // 50: nexus.controlplane.v1.ControlMessageResponse.control:type_name -> nexus.controlplane.v1.ControlMessage
-	55, // 51: nexus.controlplane.v1.ControlMessage.telemetry:type_name -> nexus.controlplane.v1.TelemetryControl
-	56, // 52: nexus.controlplane.v1.ControlMessage.devices:type_name -> nexus.controlplane.v1.DeviceControl
-	18, // 53: nexus.controlplane.v1.DeviceControl.devices:type_name -> nexus.controlplane.v1.Device
-	36, // 54: nexus.controlplane.v1.Series.DataEntry.value:type_name -> nexus.controlplane.v1.SeriesData
-	10, // 55: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
-	12, // 56: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
-	14, // 57: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
-	16, // 58: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
-	20, // 59: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
-	22, // 60: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
-	24, // 61: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
-	28, // 62: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
-	26, // 63: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
-	39, // 64: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
-	41, // 65: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:input_type -> nexus.controlplane.v1.StartQueryExecutionRequest
-	43, // 66: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
-	46, // 67: nexus.controlplane.v1.ControlPlaneService.RegisterAgent:input_type -> nexus.controlplane.v1.RegisterAgentRequest
-	48, // 68: nexus.controlplane.v1.ControlPlaneService.DeregisterAgent:input_type -> nexus.controlplane.v1.DeregisterAgentRequest
-	50, // 69: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
-	11, // 70: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
-	13, // 71: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
-	15, // 72: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
-	17, // 73: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
-	21, // 74: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
-	23, // 75: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
-	25, // 76: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
-	29, // 77: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
-	27, // 78: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
-	40, // 79: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
-	42, // 80: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:output_type -> nexus.controlplane.v1.StartQueryExecutionResponse
-	44, // 81: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
-	47, // 82: nexus.controlplane.v1.ControlPlaneService.RegisterAgent:output_type -> nexus.controlplane.v1.RegisterAgentResponse
-	49, // 83: nexus.controlplane.v1.ControlPlaneService.DeregisterAgent:output_type -> nexus.controlplane.v1.DeregisterAgentResponse
-	51, // 84: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
+	7,  // 4: nexus.controlplane.v1.CreateClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
+	59, // 5: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
+	59, // 6: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	7,  // 7: nexus.controlplane.v1.ListClustersResponse.clusters:type_name -> nexus.controlplane.v1.Cluster
+	7,  // 8: nexus.controlplane.v1.GetClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
+	17, // 9: nexus.controlplane.v1.Device.generic:type_name -> nexus.controlplane.v1.GenericModel
+	20, // 10: nexus.controlplane.v1.Device.addresses:type_name -> nexus.controlplane.v1.IpAddress
+	60, // 11: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
+	18, // 12: nexus.controlplane.v1.GenericModel.cisco:type_name -> nexus.controlplane.v1.Cisco
+	19, // 13: nexus.controlplane.v1.GenericModel.arista:type_name -> nexus.controlplane.v1.Arista
+	1,  // 14: nexus.controlplane.v1.IpAddress.version:type_name -> nexus.controlplane.v1.IPVersion
+	17, // 15: nexus.controlplane.v1.CreateDeviceRequest.generic:type_name -> nexus.controlplane.v1.GenericModel
+	20, // 16: nexus.controlplane.v1.CreateDeviceRequest.addresses:type_name -> nexus.controlplane.v1.IpAddress
+	60, // 17: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
+	16, // 18: nexus.controlplane.v1.CreateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	59, // 19: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
+	59, // 20: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	16, // 21: nexus.controlplane.v1.UpdateDeviceRequest.device:type_name -> nexus.controlplane.v1.Device
+	61, // 22: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
+	16, // 23: nexus.controlplane.v1.UpdateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	59, // 24: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 25: nexus.controlplane.v1.GetDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	16, // 26: nexus.controlplane.v1.ListDevicesResponse.devices:type_name -> nexus.controlplane.v1.Device
+	32, // 27: nexus.controlplane.v1.Query.visualise:type_name -> nexus.controlplane.v1.Visualise
+	33, // 28: nexus.controlplane.v1.Query.where:type_name -> nexus.controlplane.v1.Where
+	35, // 29: nexus.controlplane.v1.Query.order_by:type_name -> nexus.controlplane.v1.Order
+	34, // 30: nexus.controlplane.v1.Query.having:type_name -> nexus.controlplane.v1.Clause
+	2,  // 31: nexus.controlplane.v1.Visualise.op:type_name -> nexus.controlplane.v1.VisualiseOp
+	3,  // 32: nexus.controlplane.v1.Where.op:type_name -> nexus.controlplane.v1.WhereOp
+	34, // 33: nexus.controlplane.v1.Where.clauses:type_name -> nexus.controlplane.v1.Clause
+	4,  // 34: nexus.controlplane.v1.Clause.op:type_name -> nexus.controlplane.v1.CompareOp
+	5,  // 35: nexus.controlplane.v1.Order.order:type_name -> nexus.controlplane.v1.OrderOp
+	59, // 36: nexus.controlplane.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
+	58, // 37: nexus.controlplane.v1.Series.data:type_name -> nexus.controlplane.v1.Series.DataEntry
+	62, // 38: nexus.controlplane.v1.SeriesData.values:type_name -> std.v1.Value
+	39, // 39: nexus.controlplane.v1.Row.row_values:type_name -> nexus.controlplane.v1.RowValues
+	62, // 40: nexus.controlplane.v1.RowValues.values:type_name -> std.v1.Value
+	31, // 41: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
+	31, // 42: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
+	59, // 43: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
+	6,  // 44: nexus.controlplane.v1.PollQueryExecutionResponse.status:type_name -> nexus.controlplane.v1.QueryExecutionStatus
+	46, // 45: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	36, // 46: nexus.controlplane.v1.QueryExecutionResult.series:type_name -> nexus.controlplane.v1.Series
+	38, // 47: nexus.controlplane.v1.QueryExecutionResult.rows:type_name -> nexus.controlplane.v1.Row
+	59, // 48: nexus.controlplane.v1.DeregisterAgentResponse.deregistered_at:type_name -> google.protobuf.Timestamp
+	55, // 49: nexus.controlplane.v1.ControlMessageRequest.control:type_name -> nexus.controlplane.v1.ControlMessage
+	55, // 50: nexus.controlplane.v1.ControlMessageResponse.control:type_name -> nexus.controlplane.v1.ControlMessage
+	56, // 51: nexus.controlplane.v1.ControlMessage.telemetry:type_name -> nexus.controlplane.v1.TelemetryControl
+	57, // 52: nexus.controlplane.v1.ControlMessage.devices:type_name -> nexus.controlplane.v1.DeviceControl
+	16, // 53: nexus.controlplane.v1.DeviceControl.devices:type_name -> nexus.controlplane.v1.Device
+	37, // 54: nexus.controlplane.v1.Series.DataEntry.value:type_name -> nexus.controlplane.v1.SeriesData
+	8,  // 55: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
+	10, // 56: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
+	12, // 57: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
+	14, // 58: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
+	21, // 59: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
+	23, // 60: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
+	25, // 61: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
+	29, // 62: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
+	27, // 63: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
+	40, // 64: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
+	42, // 65: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:input_type -> nexus.controlplane.v1.StartQueryExecutionRequest
+	44, // 66: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
+	47, // 67: nexus.controlplane.v1.ControlPlaneService.RegisterAgent:input_type -> nexus.controlplane.v1.RegisterAgentRequest
+	49, // 68: nexus.controlplane.v1.ControlPlaneService.DeregisterAgent:input_type -> nexus.controlplane.v1.DeregisterAgentRequest
+	51, // 69: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
+	9,  // 70: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
+	11, // 71: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
+	13, // 72: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
+	15, // 73: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
+	22, // 74: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
+	24, // 75: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
+	26, // 76: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
+	30, // 77: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
+	28, // 78: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
+	41, // 79: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
+	43, // 80: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:output_type -> nexus.controlplane.v1.StartQueryExecutionResponse
+	45, // 81: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
+	48, // 82: nexus.controlplane.v1.ControlPlaneService.RegisterAgent:output_type -> nexus.controlplane.v1.RegisterAgentResponse
+	50, // 83: nexus.controlplane.v1.ControlPlaneService.DeregisterAgent:output_type -> nexus.controlplane.v1.DeregisterAgentResponse
+	52, // 84: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
 	70, // [70:85] is the sub-list for method output_type
 	55, // [55:70] is the sub-list for method input_type
 	55, // [55:55] is the sub-list for extension type_name
@@ -3848,19 +3803,18 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 		return
 	}
 	file_nexus_controlplane_v1_control_plane_proto_msgTypes[9].OneofWrappers = []any{
-		(*Device_KnownVendor)(nil),
-		(*Device_OtherVendor)(nil),
-		(*Device_KnownModel)(nil),
-		(*Device_OtherModel)(nil),
+		(*Device_Generic)(nil),
 	}
-	file_nexus_controlplane_v1_control_plane_proto_msgTypes[11].OneofWrappers = []any{
-		(*CreateDeviceRequest_KnownVendor)(nil),
-		(*CreateDeviceRequest_OtherVendor)(nil),
-		(*CreateDeviceRequest_KnownModel)(nil),
-		(*CreateDeviceRequest_OtherModel)(nil),
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[10].OneofWrappers = []any{
+		(*GenericModel_OtherVendor)(nil),
+		(*GenericModel_Cisco)(nil),
+		(*GenericModel_Arista)(nil),
 	}
-	file_nexus_controlplane_v1_control_plane_proto_msgTypes[35].OneofWrappers = []any{}
-	file_nexus_controlplane_v1_control_plane_proto_msgTypes[45].OneofWrappers = []any{
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[14].OneofWrappers = []any{
+		(*CreateDeviceRequest_Generic)(nil),
+	}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[38].OneofWrappers = []any{}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[48].OneofWrappers = []any{
 		(*ControlMessage_Telemetry)(nil),
 		(*ControlMessage_Devices)(nil),
 	}
@@ -3869,8 +3823,8 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_controlplane_v1_control_plane_proto_rawDesc), len(file_nexus_controlplane_v1_control_plane_proto_rawDesc)),
-			NumEnums:      9,
-			NumMessages:   49,
+			NumEnums:      7,
+			NumMessages:   52,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

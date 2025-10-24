@@ -107,14 +107,14 @@ message Device {
   string name = 4;
   string description = 5;
   oneof model {
-    GenericModel generic = 7;
+    GenericModel generic = 6;
   }
   // The IP addresses of the device. We use these to look
   // up the relevant device to enrich our flow with its information.
-  repeated IpAddress addresses = 9;
+  repeated IpAddress addresses = 7;
   // User-defined labels for the device. Used to add more metadata
   // to query over.
-  repeated std.v1.KeyValue labels = 10;
+  repeated std.v1.KeyValue labels = 8;
 }
 
 message GenericModel {
@@ -145,16 +145,11 @@ message CreateDeviceRequest {
   string team_pid = 1;
   string name = 2;
   string description = 3;
-  oneof vendor {
-    Vendor known_vendor = 4;
-    string other_vendor = 5;
-  }
   oneof model {
-    Model known_model = 6;
-    string other_model = 7;
+    GenericModel generic = 4;
   }
-  repeated IpAddress addresses = 8;
-  repeated std.v1.KeyValue labels = 9;
+  repeated IpAddress addresses = 5;
+  repeated std.v1.KeyValue labels = 6;
 }
 
 message CreateDeviceResponse {

@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/controlplane/v1/control_plane.proto.
  */
 export const file_nexus_controlplane_v1_control_plane: GenFile = /*@__PURE__*/
-  fileDesc("CiluZXh1cy9jb250cm9scGxhbmUvdjEvY29udHJvbF9wbGFuZS5wcm90bxIVbmV4dXMuY29udHJvbHBsYW5lLnYxIsgBCgdDbHVzdGVyEgsKA3BpZBgBIAEoCRIQCgh0ZWFtX3BpZBgCIAEoCRIMCgRuYW1lGAMgASgJEjAKBHR5cGUYBCABKA4yIi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlclR5cGUSLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiaAoUQ3JlYXRlQ2x1c3RlclJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRIwCgR0eXBlGAMgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXJUeXBlIngKFUNyZWF0ZUNsdXN0ZXJSZXNwb25zZRIvCgdjbHVzdGVyGAEgASgLMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXISLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoURGVsZXRlQ2x1c3RlclJlcXVlc3QSCwoDcGlkGAEgASgJIlQKFURlbGV0ZUNsdXN0ZXJSZXNwb25zZRILCgNwaWQYASABKAkSLgoKZGVsZXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiJwoTTGlzdENsdXN0ZXJzUmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCSJaChRMaXN0Q2x1c3RlcnNSZXNwb25zZRIQCgh0ZWFtX3BpZBgBIAEoCRIwCghjbHVzdGVycxgCIAMoCzIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbHVzdGVyIiAKEUdldENsdXN0ZXJSZXF1ZXN0EgsKA3BpZBgBIAEoCSJSChJHZXRDbHVzdGVyUmVzcG9uc2USCwoDcGlkGAEgASgJEi8KB2NsdXN0ZXIYAiABKAsyHi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlciLpAgoGRGV2aWNlEgsKA3BpZBgBIAEoCRIYChBvcmdhbml6YXRpb25fcGlkGAIgASgJEhAKCHRlYW1fcGlkGAMgASgJEgwKBG5hbWUYBCABKAkSEwoLZGVzY3JpcHRpb24YBSABKAkSNQoMa25vd25fdmVuZG9yGAYgASgOMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLlZlbmRvckgAEhYKDG90aGVyX3ZlbmRvchgHIAEoCUgAEjMKC2tub3duX21vZGVsGAggASgOMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLk1vZGVsSAESFQoLb3RoZXJfbW9kZWwYCSABKAlIARIzCglhZGRyZXNzZXMYCiADKAsyIC5uZXh1cy5jb250cm9scGxhbmUudjEuSXBBZGRyZXNzEiAKBmxhYmVscxgLIAMoCzIQLnN0ZC52MS5LZXlWYWx1ZUIICgZ2ZW5kb3JCBwoFbW9kZWwiTwoJSXBBZGRyZXNzEg8KB2FkZHJlc3MYASABKAwSMQoHdmVyc2lvbhgCIAEoDjIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JUFZlcnNpb24izwIKE0NyZWF0ZURldmljZVJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRI1Cgxrbm93bl92ZW5kb3IYBCABKA4yHS5uZXh1cy5jb250cm9scGxhbmUudjEuVmVuZG9ySAASFgoMb3RoZXJfdmVuZG9yGAUgASgJSAASMwoLa25vd25fbW9kZWwYBiABKA4yHC5uZXh1cy5jb250cm9scGxhbmUudjEuTW9kZWxIARIVCgtvdGhlcl9tb2RlbBgHIAEoCUgBEjMKCWFkZHJlc3NlcxgIIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAkgAygLMhAuc3RkLnYxLktleVZhbHVlQggKBnZlbmRvckIHCgVtb2RlbCKHAQoUQ3JlYXRlRGV2aWNlUmVzcG9uc2USEAoIdGVhbV9waWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIiChNEZWxldGVEZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJTChREZWxldGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLgoKZGVsZXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiggEKE1VwZGF0ZURldmljZVJlcXVlc3QSCwoDcGlkGAEgASgJEi0KBmRldmljZRgCIAEoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZXZpY2USLwoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIoIBChRVcGRhdGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgp1cGRhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIfChBHZXREZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJPChFHZXREZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSImChJMaXN0RGV2aWNlc1JlcXVlc3QSEAoIdGVhbV9waWQYASABKAkiVwoTTGlzdERldmljZXNSZXNwb25zZRIQCgh0ZWFtX3BpZBgBIAEoCRIuCgdkZXZpY2VzGAIgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSKPAgoFUXVlcnkSMwoJdmlzdWFsaXNlGAEgAygLMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLlZpc3VhbGlzZRIrCgV3aGVyZRgCIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5XaGVyZRIQCghncm91cF9ieRgDIAMoCRIuCghvcmRlcl9ieRgEIAMoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5PcmRlchINCgVsaW1pdBgFIAEoDRItCgZoYXZpbmcYBiABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuQ2xhdXNlEhIKCnN0YXJ0X3RpbWUYByABKAMSEAoIZW5kX3RpbWUYCCABKAMiSgoJVmlzdWFsaXNlEi4KAm9wGAEgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLlZpc3VhbGlzZU9wEg0KBWZpZWxkGAIgASgJImMKBVdoZXJlEioKAm9wGAEgASgOMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLldoZXJlT3ASLgoHY2xhdXNlcxgCIAMoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbGF1c2UiVAoGQ2xhdXNlEg0KBWZpZWxkGAEgASgJEg0KBXZhbHVlGAIgASgJEiwKAm9wGAMgASgOMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbXBhcmVPcCJFCgVPcmRlchINCgVmaWVsZBgBIAEoCRItCgVvcmRlchgCIAEoDjIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5PcmRlck9wIucBCgZTZXJpZXMSLgoKdGltZXN0YW1wcxgBIAMoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASNQoEZGF0YRgCIAMoCzInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TZXJpZXMuRGF0YUVudHJ5EhYKDnZpc3VhbGlzYXRpb25zGAMgAygJEg4KBmdyb3VwcxgEIAMoCRpOCglEYXRhRW50cnkSCwoDa2V5GAEgASgJEjAKBXZhbHVlGAIgASgLMiEubmV4dXMuY29udHJvbHBsYW5lLnYxLlNlcmllc0RhdGE6AjgBIjkKClNlcmllc0RhdGESDAoEbmFtZRgBIAEoCRIdCgZ2YWx1ZXMYAiADKAsyDS5zdGQudjEuVmFsdWUiSwoDUm93Eg4KBmZpZWxkcxgBIAMoCRI0Cgpyb3dfdmFsdWVzGAIgAygLMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLlJvd1ZhbHVlcyIqCglSb3dWYWx1ZXMSHQoGdmFsdWVzGAEgAygLMg0uc3RkLnYxLlZhbHVlIkEKEkNyZWF0ZVF1ZXJ5UmVxdWVzdBIrCgVxdWVyeRgBIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeSJ/ChNDcmVhdGVRdWVyeVJlc3BvbnNlEgsKA3BpZBgBIAEoCRIrCgVxdWVyeRgCIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeRIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIvChpTdGFydFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBIRCglxdWVyeV9waWQYASABKAkiPQobU3RhcnRRdWVyeUV4ZWN1dGlvblJlc3BvbnNlEgsKA3BpZBgBIAEoCRIRCglxdWVyeV9waWQYAiABKAkiLAoZUG9sbFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBIPCgdqb2JfcGlkGAEgASgJIqYBChpQb2xsUXVlcnlFeGVjdXRpb25SZXNwb25zZRI7CgZzdGF0dXMYASABKA4yKy5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnlFeGVjdXRpb25TdGF0dXMSQAoGcmVzdWx0GAIgASgLMisubmV4dXMuY29udHJvbHBsYW5lLnYxLlF1ZXJ5RXhlY3V0aW9uUmVzdWx0SACIAQFCCQoHX3Jlc3VsdCJvChRRdWVyeUV4ZWN1dGlvblJlc3VsdBItCgZzZXJpZXMYASABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuU2VyaWVzEigKBHJvd3MYAiADKAsyGi5uZXh1cy5jb250cm9scGxhbmUudjEuUm93IjcKFFJlZ2lzdGVyQWdlbnRSZXF1ZXN0EgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJIjgKFVJlZ2lzdGVyQWdlbnRSZXNwb25zZRIKCgJpZBgBIAEoCRITCgtjbHVzdGVyX3BpZBgCIAEoCSIkChZEZXJlZ2lzdGVyQWdlbnRSZXF1ZXN0EgoKAmlkGAEgASgJIloKF0RlcmVnaXN0ZXJBZ2VudFJlc3BvbnNlEgoKAmlkGAEgASgJEjMKD2RlcmVnaXN0ZXJlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiHgoQSGVhcnRiZWF0UmVxdWVzdBIKCgJpZBgBIAEoCSIfChFIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCSJjChVDb250cm9sTWVzc2FnZVJlcXVlc3QSEgoKcmVxdWVzdF9pZBgBIAEoCRI2Cgdjb250cm9sGAIgASgLMiUubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbnRyb2xNZXNzYWdlIoQBChZDb250cm9sTWVzc2FnZVJlc3BvbnNlEhIKCnJlcXVlc3RfaWQYASABKAkSNgoHY29udHJvbBgCIAEoCzIlLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db250cm9sTWVzc2FnZRIPCgdzdWNjZXNzGAMgASgIEg0KBWVycm9yGAQgASgJIpIBCg5Db250cm9sTWVzc2FnZRI8Cgl0ZWxlbWV0cnkYASABKAsyJy5uZXh1cy5jb250cm9scGxhbmUudjEuVGVsZW1ldHJ5Q29udHJvbEgAEjcKB2RldmljZXMYAiABKAsyJC5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlQ29udHJvbEgAQgkKB21lc3NhZ2UiIgoQVGVsZW1ldHJ5Q29udHJvbBIOCgZleHBvcnQYASABKAgiPwoNRGV2aWNlQ29udHJvbBIuCgdkZXZpY2VzGAEgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSpfCgtDbHVzdGVyVHlwZRIcChhDTFVTVEVSX1RZUEVfVU5TUEVDSUZJRUQQABIVChFDTFVTVEVSX1RZUEVfQllPQxABEhsKF0NMVVNURVJfVFlQRV9TRVJWRVJMRVNTEAIqIAoGVmVuZG9yEhYKElZFTkRPUl9VTlNQRUNJRklFRBAAKh4KBU1vZGVsEhUKEU1PREVMX1VOU1BFQ0lGSUVEEAAqTgoJSVBWZXJzaW9uEhkKFUlQVkVSU0lPTl9VTlNQRUNJRklFRBAAEhIKDklQVkVSU0lPTl9JUFY0EAESEgoOSVBWRVJTSU9OX0lQVjYQAiqBBAoLVmlzdWFsaXNlT3ASHAoYVklTVUFMSVNFX09QX1VOU1BFQ0lGSUVEEAASFgoSVklTVUFMSVNFX09QX0NPVU5UEAESHwobVklTVUFMSVNFX09QX0NPVU5UX0RJU1RJTkNUEAISFAoQVklTVUFMSVNFX09QX1NVTRADEhQKEFZJU1VBTElTRV9PUF9BVkcQBBIUChBWSVNVQUxJU0VfT1BfTUFYEAUSFAoQVklTVUFMSVNFX09QX01JThAGEhUKEVZJU1VBTElTRV9PUF9QMDAxEAcSFAoQVklTVUFMSVNFX09QX1AwMRAIEhQKEFZJU1VBTElTRV9PUF9QMDUQCRIUChBWSVNVQUxJU0VfT1BfUDEwEAoSFAoQVklTVUFMSVNFX09QX1AyNRALEhQKEFZJU1VBTElTRV9PUF9QNTAQDBIUChBWSVNVQUxJU0VfT1BfUDc1EA0SFAoQVklTVUFMSVNFX09QX1A5MBAOEhQKEFZJU1VBTElTRV9PUF9QOTUQDxIUChBWSVNVQUxJU0VfT1BfUDk5EBASFQoRVklTVUFMSVNFX09QX1A5OTkQERIZChVWSVNVQUxJU0VfT1BfUkFURV9BVkcQEhIZChVWSVNVQUxJU0VfT1BfUkFURV9TVU0QExIZChVWSVNVQUxJU0VfT1BfUkFURV9NQVgQFCpGCgdXaGVyZU9wEhgKFFdIRVJFX09QX1VOU1BFQ0lGSUVEEAASEAoMV0hFUkVfT1BfQU5EEAESDwoLV0hFUkVfT1BfT1IQAiq7AgoJQ29tcGFyZU9wEhoKFkNPTVBBUkVfT1BfVU5TUEVDSUZJRUQQABIUChBDT01QQVJFX09QX0VRVUFMEAESGAoUQ09NUEFSRV9PUF9OT1RfRVFVQUwQAhIbChdDT01QQVJFX09QX0dSRUFURVJfVEhBThADEiQKIENPTVBBUkVfT1BfR1JFQVRFUl9USEFOX09SX0VRVUFMEAQSGAoUQ09NUEFSRV9PUF9MRVNTX1RIQU4QBRIhCh1DT01QQVJFX09QX0xFU1NfVEhBTl9PUl9FUVVBTBAGEhcKE0NPTVBBUkVfT1BfQ09OVEFJTlMQBxIfChtDT01QQVJFX09QX0RPRVNfTk9UX0NPTlRBSU4QCBIRCg1DT01QQVJFX09QX0lOEAkSFQoRQ09NUEFSRV9PUF9OT1RfSU4QCipICgdPcmRlck9wEhgKFE9SREVSX09QX1VOU1BFQ0lGSUVEEAASEAoMT1JERVJfT1BfQVNDEAESEQoNT1JERVJfT1BfREVTQxACKs8BChRRdWVyeUV4ZWN1dGlvblN0YXR1cxImCiJRVUVSWV9FWEVDVVRJT05fU1RBVFVTX1VOU1BFQ0lGSUVEEAASIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19QRU5ESU5HEAESIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19SVU5OSU5HEAISJAogUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19DT01QTEVURUQQAxIhCh1RVUVSWV9FWEVDVVRJT05fU1RBVFVTX0ZBSUxFRBAEMvUMChNDb250cm9sUGxhbmVTZXJ2aWNlEmwKDUNyZWF0ZUNsdXN0ZXISKy5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlQ2x1c3RlclJlcXVlc3QaLC5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlQ2x1c3RlclJlc3BvbnNlIgASbAoNRGVsZXRlQ2x1c3RlchIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVDbHVzdGVyUmVxdWVzdBosLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVDbHVzdGVyUmVzcG9uc2UiABJpCgxMaXN0Q2x1c3RlcnMSKi5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdENsdXN0ZXJzUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5MaXN0Q2x1c3RlcnNSZXNwb25zZSIAEmMKCkdldENsdXN0ZXISKC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q2x1c3RlclJlcXVlc3QaKS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q2x1c3RlclJlc3BvbnNlIgASaQoMQ3JlYXRlRGV2aWNlEioubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZURldmljZVJlcXVlc3QaKy5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlRGV2aWNlUmVzcG9uc2UiABJpCgxEZWxldGVEZXZpY2USKi5uZXh1cy5jb250cm9scGxhbmUudjEuRGVsZXRlRGV2aWNlUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVEZXZpY2VSZXNwb25zZSIAEmkKDFVwZGF0ZURldmljZRIqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5VcGRhdGVEZXZpY2VSZXF1ZXN0GisubmV4dXMuY29udHJvbHBsYW5lLnYxLlVwZGF0ZURldmljZVJlc3BvbnNlIgASZgoLTGlzdERldmljZXMSKS5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdERldmljZXNSZXF1ZXN0GioubmV4dXMuY29udHJvbHBsYW5lLnYxLkxpc3REZXZpY2VzUmVzcG9uc2UiABJgCglHZXREZXZpY2USJy5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0RGV2aWNlUmVxdWVzdBooLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXREZXZpY2VSZXNwb25zZSIAEmYKC0NyZWF0ZVF1ZXJ5EikubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZVF1ZXJ5UmVxdWVzdBoqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVRdWVyeVJlc3BvbnNlIgASfgoTU3RhcnRRdWVyeUV4ZWN1dGlvbhIxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TdGFydFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBoyLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TdGFydFF1ZXJ5RXhlY3V0aW9uUmVzcG9uc2UiABJ7ChJQb2xsUXVlcnlFeGVjdXRpb24SMC5uZXh1cy5jb250cm9scGxhbmUudjEuUG9sbFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBoxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Qb2xsUXVlcnlFeGVjdXRpb25SZXNwb25zZSIAEmwKDVJlZ2lzdGVyQWdlbnQSKy5uZXh1cy5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJBZ2VudFJlcXVlc3QaLC5uZXh1cy5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJBZ2VudFJlc3BvbnNlIgAScgoPRGVyZWdpc3RlckFnZW50Ei0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlcmVnaXN0ZXJBZ2VudFJlcXVlc3QaLi5uZXh1cy5jb250cm9scGxhbmUudjEuRGVyZWdpc3RlckFnZW50UmVzcG9uc2UiABJgCglIZWFydGJlYXQSJy5uZXh1cy5jb250cm9scGxhbmUudjEuSGVhcnRiZWF0UmVxdWVzdBooLm5leHVzLmNvbnRyb2xwbGFuZS52MS5IZWFydGJlYXRSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_timestamp, file_google_protobuf_field_mask, file_std_v1_std]);
+  fileDesc("CiluZXh1cy9jb250cm9scGxhbmUvdjEvY29udHJvbF9wbGFuZS5wcm90bxIVbmV4dXMuY29udHJvbHBsYW5lLnYxIsgBCgdDbHVzdGVyEgsKA3BpZBgBIAEoCRIQCgh0ZWFtX3BpZBgCIAEoCRIMCgRuYW1lGAMgASgJEjAKBHR5cGUYBCABKA4yIi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlclR5cGUSLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiaAoUQ3JlYXRlQ2x1c3RlclJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRIwCgR0eXBlGAMgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXJUeXBlIngKFUNyZWF0ZUNsdXN0ZXJSZXNwb25zZRIvCgdjbHVzdGVyGAEgASgLMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXISLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoURGVsZXRlQ2x1c3RlclJlcXVlc3QSCwoDcGlkGAEgASgJIlQKFURlbGV0ZUNsdXN0ZXJSZXNwb25zZRILCgNwaWQYASABKAkSLgoKZGVsZXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiJwoTTGlzdENsdXN0ZXJzUmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCSJaChRMaXN0Q2x1c3RlcnNSZXNwb25zZRIQCgh0ZWFtX3BpZBgBIAEoCRIwCghjbHVzdGVycxgCIAMoCzIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbHVzdGVyIiAKEUdldENsdXN0ZXJSZXF1ZXN0EgsKA3BpZBgBIAEoCSJSChJHZXRDbHVzdGVyUmVzcG9uc2USCwoDcGlkGAEgASgJEi8KB2NsdXN0ZXIYAiABKAsyHi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlciL8AQoGRGV2aWNlEgsKA3BpZBgBIAEoCRIYChBvcmdhbml6YXRpb25fcGlkGAIgASgJEhAKCHRlYW1fcGlkGAMgASgJEgwKBG5hbWUYBCABKAkSEwoLZGVzY3JpcHRpb24YBSABKAkSNgoHZ2VuZXJpYxgGIAEoCzIjLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZW5lcmljTW9kZWxIABIzCglhZGRyZXNzZXMYByADKAsyIC5uZXh1cy5jb250cm9scGxhbmUudjEuSXBBZGRyZXNzEiAKBmxhYmVscxgIIAMoCzIQLnN0ZC52MS5LZXlWYWx1ZUIHCgVtb2RlbCKfAQoMR2VuZXJpY01vZGVsEg0KBW1vZGVsGAEgASgJEhYKDG90aGVyX3ZlbmRvchgCIAEoCUgAEi0KBWNpc2NvGAMgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkNpc2NvSAASLwoGYXJpc3RhGAQgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkFyaXN0YUgAQggKBnZlbmRvciIHCgVDaXNjbyIICgZBcmlzdGEiTwoJSXBBZGRyZXNzEg8KB2FkZHJlc3MYASABKAwSMQoHdmVyc2lvbhgCIAEoDjIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JUFZlcnNpb24i4gEKE0NyZWF0ZURldmljZVJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRI2CgdnZW5lcmljGAQgASgLMiMubmV4dXMuY29udHJvbHBsYW5lLnYxLkdlbmVyaWNNb2RlbEgAEjMKCWFkZHJlc3NlcxgFIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAYgAygLMhAuc3RkLnYxLktleVZhbHVlQgcKBW1vZGVsIocBChRDcmVhdGVEZXZpY2VSZXNwb25zZRIQCgh0ZWFtX3BpZBgBIAEoCRItCgZkZXZpY2UYAiABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlEi4KCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIiIKE0RlbGV0ZURldmljZVJlcXVlc3QSCwoDcGlkGAEgASgJIlMKFERlbGV0ZURldmljZVJlc3BvbnNlEgsKA3BpZBgBIAEoCRIuCgpkZWxldGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKCAQoTVXBkYXRlRGV2aWNlUmVxdWVzdBILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIvCgt1cGRhdGVfbWFzaxgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1hc2siggEKFFVwZGF0ZURldmljZVJlc3BvbnNlEgsKA3BpZBgBIAEoCRItCgZkZXZpY2UYAiABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlEi4KCnVwZGF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIh8KEEdldERldmljZVJlcXVlc3QSCwoDcGlkGAEgASgJIk8KEUdldERldmljZVJlc3BvbnNlEgsKA3BpZBgBIAEoCRItCgZkZXZpY2UYAiABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlIiYKEkxpc3REZXZpY2VzUmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCSJXChNMaXN0RGV2aWNlc1Jlc3BvbnNlEhAKCHRlYW1fcGlkGAEgASgJEi4KB2RldmljZXMYAiADKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlIo8CCgVRdWVyeRIzCgl2aXN1YWxpc2UYASADKAsyIC5uZXh1cy5jb250cm9scGxhbmUudjEuVmlzdWFsaXNlEisKBXdoZXJlGAIgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLldoZXJlEhAKCGdyb3VwX2J5GAMgAygJEi4KCG9yZGVyX2J5GAQgAygLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLk9yZGVyEg0KBWxpbWl0GAUgASgNEi0KBmhhdmluZxgGIAEoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbGF1c2USEgoKc3RhcnRfdGltZRgHIAEoAxIQCghlbmRfdGltZRgIIAEoAyJKCglWaXN1YWxpc2USLgoCb3AYASABKA4yIi5uZXh1cy5jb250cm9scGxhbmUudjEuVmlzdWFsaXNlT3ASDQoFZmllbGQYAiABKAkiYwoFV2hlcmUSKgoCb3AYASABKA4yHi5uZXh1cy5jb250cm9scGxhbmUudjEuV2hlcmVPcBIuCgdjbGF1c2VzGAIgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsYXVzZSJUCgZDbGF1c2USDQoFZmllbGQYASABKAkSDQoFdmFsdWUYAiABKAkSLAoCb3AYAyABKA4yIC5uZXh1cy5jb250cm9scGxhbmUudjEuQ29tcGFyZU9wIkUKBU9yZGVyEg0KBWZpZWxkGAEgASgJEi0KBW9yZGVyGAIgASgOMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLk9yZGVyT3Ai5wEKBlNlcmllcxIuCgp0aW1lc3RhbXBzGAEgAygLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI1CgRkYXRhGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLlNlcmllcy5EYXRhRW50cnkSFgoOdmlzdWFsaXNhdGlvbnMYAyADKAkSDgoGZ3JvdXBzGAQgAygJGk4KCURhdGFFbnRyeRILCgNrZXkYASABKAkSMAoFdmFsdWUYAiABKAsyIS5uZXh1cy5jb250cm9scGxhbmUudjEuU2VyaWVzRGF0YToCOAEiOQoKU2VyaWVzRGF0YRIMCgRuYW1lGAEgASgJEh0KBnZhbHVlcxgCIAMoCzINLnN0ZC52MS5WYWx1ZSJLCgNSb3cSDgoGZmllbGRzGAEgAygJEjQKCnJvd192YWx1ZXMYAiADKAsyIC5uZXh1cy5jb250cm9scGxhbmUudjEuUm93VmFsdWVzIioKCVJvd1ZhbHVlcxIdCgZ2YWx1ZXMYASADKAsyDS5zdGQudjEuVmFsdWUiQQoSQ3JlYXRlUXVlcnlSZXF1ZXN0EisKBXF1ZXJ5GAEgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLlF1ZXJ5In8KE0NyZWF0ZVF1ZXJ5UmVzcG9uc2USCwoDcGlkGAEgASgJEisKBXF1ZXJ5GAIgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLlF1ZXJ5Ei4KCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIi8KGlN0YXJ0UXVlcnlFeGVjdXRpb25SZXF1ZXN0EhEKCXF1ZXJ5X3BpZBgBIAEoCSI9ChtTdGFydFF1ZXJ5RXhlY3V0aW9uUmVzcG9uc2USCwoDcGlkGAEgASgJEhEKCXF1ZXJ5X3BpZBgCIAEoCSIsChlQb2xsUXVlcnlFeGVjdXRpb25SZXF1ZXN0Eg8KB2pvYl9waWQYASABKAkipgEKGlBvbGxRdWVyeUV4ZWN1dGlvblJlc3BvbnNlEjsKBnN0YXR1cxgBIAEoDjIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblN0YXR1cxJACgZyZXN1bHQYAiABKAsyKy5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnlFeGVjdXRpb25SZXN1bHRIAIgBAUIJCgdfcmVzdWx0Im8KFFF1ZXJ5RXhlY3V0aW9uUmVzdWx0Ei0KBnNlcmllcxgBIAEoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TZXJpZXMSKAoEcm93cxgCIAMoCzIaLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Sb3ciNwoUUmVnaXN0ZXJBZ2VudFJlcXVlc3QSCgoCaWQYASABKAkSEwoLY2x1c3Rlcl9waWQYAiABKAkiOAoVUmVnaXN0ZXJBZ2VudFJlc3BvbnNlEgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJIiQKFkRlcmVnaXN0ZXJBZ2VudFJlcXVlc3QSCgoCaWQYASABKAkiWgoXRGVyZWdpc3RlckFnZW50UmVzcG9uc2USCgoCaWQYASABKAkSMwoPZGVyZWdpc3RlcmVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIeChBIZWFydGJlYXRSZXF1ZXN0EgoKAmlkGAEgASgJIh8KEUhlYXJ0YmVhdFJlc3BvbnNlEgoKAmlkGAEgASgJImMKFUNvbnRyb2xNZXNzYWdlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEjYKB2NvbnRyb2wYAiABKAsyJS5uZXh1cy5jb250cm9scGxhbmUudjEuQ29udHJvbE1lc3NhZ2UihAEKFkNvbnRyb2xNZXNzYWdlUmVzcG9uc2USEgoKcmVxdWVzdF9pZBgBIAEoCRI2Cgdjb250cm9sGAIgASgLMiUubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbnRyb2xNZXNzYWdlEg8KB3N1Y2Nlc3MYAyABKAgSDQoFZXJyb3IYBCABKAkikgEKDkNvbnRyb2xNZXNzYWdlEjwKCXRlbGVtZXRyeRgBIAEoCzInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5UZWxlbWV0cnlDb250cm9sSAASNwoHZGV2aWNlcxgCIAEoCzIkLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZXZpY2VDb250cm9sSABCCQoHbWVzc2FnZSIiChBUZWxlbWV0cnlDb250cm9sEg4KBmV4cG9ydBgBIAEoCCI/Cg1EZXZpY2VDb250cm9sEi4KB2RldmljZXMYASADKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlKl8KC0NsdXN0ZXJUeXBlEhwKGENMVVNURVJfVFlQRV9VTlNQRUNJRklFRBAAEhUKEUNMVVNURVJfVFlQRV9CWU9DEAESGwoXQ0xVU1RFUl9UWVBFX1NFUlZFUkxFU1MQAipOCglJUFZlcnNpb24SGQoVSVBWRVJTSU9OX1VOU1BFQ0lGSUVEEAASEgoOSVBWRVJTSU9OX0lQVjQQARISCg5JUFZFUlNJT05fSVBWNhACKoEECgtWaXN1YWxpc2VPcBIcChhWSVNVQUxJU0VfT1BfVU5TUEVDSUZJRUQQABIWChJWSVNVQUxJU0VfT1BfQ09VTlQQARIfChtWSVNVQUxJU0VfT1BfQ09VTlRfRElTVElOQ1QQAhIUChBWSVNVQUxJU0VfT1BfU1VNEAMSFAoQVklTVUFMSVNFX09QX0FWRxAEEhQKEFZJU1VBTElTRV9PUF9NQVgQBRIUChBWSVNVQUxJU0VfT1BfTUlOEAYSFQoRVklTVUFMSVNFX09QX1AwMDEQBxIUChBWSVNVQUxJU0VfT1BfUDAxEAgSFAoQVklTVUFMSVNFX09QX1AwNRAJEhQKEFZJU1VBTElTRV9PUF9QMTAQChIUChBWSVNVQUxJU0VfT1BfUDI1EAsSFAoQVklTVUFMSVNFX09QX1A1MBAMEhQKEFZJU1VBTElTRV9PUF9QNzUQDRIUChBWSVNVQUxJU0VfT1BfUDkwEA4SFAoQVklTVUFMSVNFX09QX1A5NRAPEhQKEFZJU1VBTElTRV9PUF9QOTkQEBIVChFWSVNVQUxJU0VfT1BfUDk5ORAREhkKFVZJU1VBTElTRV9PUF9SQVRFX0FWRxASEhkKFVZJU1VBTElTRV9PUF9SQVRFX1NVTRATEhkKFVZJU1VBTElTRV9PUF9SQVRFX01BWBAUKkYKB1doZXJlT3ASGAoUV0hFUkVfT1BfVU5TUEVDSUZJRUQQABIQCgxXSEVSRV9PUF9BTkQQARIPCgtXSEVSRV9PUF9PUhACKrsCCglDb21wYXJlT3ASGgoWQ09NUEFSRV9PUF9VTlNQRUNJRklFRBAAEhQKEENPTVBBUkVfT1BfRVFVQUwQARIYChRDT01QQVJFX09QX05PVF9FUVVBTBACEhsKF0NPTVBBUkVfT1BfR1JFQVRFUl9USEFOEAMSJAogQ09NUEFSRV9PUF9HUkVBVEVSX1RIQU5fT1JfRVFVQUwQBBIYChRDT01QQVJFX09QX0xFU1NfVEhBThAFEiEKHUNPTVBBUkVfT1BfTEVTU19USEFOX09SX0VRVUFMEAYSFwoTQ09NUEFSRV9PUF9DT05UQUlOUxAHEh8KG0NPTVBBUkVfT1BfRE9FU19OT1RfQ09OVEFJThAIEhEKDUNPTVBBUkVfT1BfSU4QCRIVChFDT01QQVJFX09QX05PVF9JThAKKkgKB09yZGVyT3ASGAoUT1JERVJfT1BfVU5TUEVDSUZJRUQQABIQCgxPUkRFUl9PUF9BU0MQARIRCg1PUkRFUl9PUF9ERVNDEAIqzwEKFFF1ZXJ5RXhlY3V0aW9uU3RhdHVzEiYKIlFVRVJZX0VYRUNVVElPTl9TVEFUVVNfVU5TUEVDSUZJRUQQABIiCh5RVUVSWV9FWEVDVVRJT05fU1RBVFVTX1BFTkRJTkcQARIiCh5RVUVSWV9FWEVDVVRJT05fU1RBVFVTX1JVTk5JTkcQAhIkCiBRVUVSWV9FWEVDVVRJT05fU1RBVFVTX0NPTVBMRVRFRBADEiEKHVFVRVJZX0VYRUNVVElPTl9TVEFUVVNfRkFJTEVEEAQy9QwKE0NvbnRyb2xQbGFuZVNlcnZpY2USbAoNQ3JlYXRlQ2x1c3RlchIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVDbHVzdGVyUmVxdWVzdBosLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVDbHVzdGVyUmVzcG9uc2UiABJsCg1EZWxldGVDbHVzdGVyEisubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlbGV0ZUNsdXN0ZXJSZXF1ZXN0GiwubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlbGV0ZUNsdXN0ZXJSZXNwb25zZSIAEmkKDExpc3RDbHVzdGVycxIqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5MaXN0Q2x1c3RlcnNSZXF1ZXN0GisubmV4dXMuY29udHJvbHBsYW5lLnYxLkxpc3RDbHVzdGVyc1Jlc3BvbnNlIgASYwoKR2V0Q2x1c3RlchIoLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRDbHVzdGVyUmVxdWVzdBopLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRDbHVzdGVyUmVzcG9uc2UiABJpCgxDcmVhdGVEZXZpY2USKi5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlRGV2aWNlUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVEZXZpY2VSZXNwb25zZSIAEmkKDERlbGV0ZURldmljZRIqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVEZXZpY2VSZXF1ZXN0GisubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlbGV0ZURldmljZVJlc3BvbnNlIgASaQoMVXBkYXRlRGV2aWNlEioubmV4dXMuY29udHJvbHBsYW5lLnYxLlVwZGF0ZURldmljZVJlcXVlc3QaKy5uZXh1cy5jb250cm9scGxhbmUudjEuVXBkYXRlRGV2aWNlUmVzcG9uc2UiABJmCgtMaXN0RGV2aWNlcxIpLm5leHVzLmNvbnRyb2xwbGFuZS52MS5MaXN0RGV2aWNlc1JlcXVlc3QaKi5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdERldmljZXNSZXNwb25zZSIAEmAKCUdldERldmljZRInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXREZXZpY2VSZXF1ZXN0GigubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldERldmljZVJlc3BvbnNlIgASZgoLQ3JlYXRlUXVlcnkSKS5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlUXVlcnlSZXF1ZXN0GioubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZVF1ZXJ5UmVzcG9uc2UiABJ+ChNTdGFydFF1ZXJ5RXhlY3V0aW9uEjEubmV4dXMuY29udHJvbHBsYW5lLnYxLlN0YXJ0UXVlcnlFeGVjdXRpb25SZXF1ZXN0GjIubmV4dXMuY29udHJvbHBsYW5lLnYxLlN0YXJ0UXVlcnlFeGVjdXRpb25SZXNwb25zZSIAEnsKElBvbGxRdWVyeUV4ZWN1dGlvbhIwLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Qb2xsUXVlcnlFeGVjdXRpb25SZXF1ZXN0GjEubmV4dXMuY29udHJvbHBsYW5lLnYxLlBvbGxRdWVyeUV4ZWN1dGlvblJlc3BvbnNlIgASbAoNUmVnaXN0ZXJBZ2VudBIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5SZWdpc3RlckFnZW50UmVxdWVzdBosLm5leHVzLmNvbnRyb2xwbGFuZS52MS5SZWdpc3RlckFnZW50UmVzcG9uc2UiABJyCg9EZXJlZ2lzdGVyQWdlbnQSLS5uZXh1cy5jb250cm9scGxhbmUudjEuRGVyZWdpc3RlckFnZW50UmVxdWVzdBouLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZXJlZ2lzdGVyQWdlbnRSZXNwb25zZSIAEmAKCUhlYXJ0YmVhdBInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5IZWFydGJlYXRSZXF1ZXN0GigubmV4dXMuY29udHJvbHBsYW5lLnYxLkhlYXJ0YmVhdFJlc3BvbnNlIgBCRlpEZ2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9uZXh1cy9jb250cm9scGxhbmUvdjE7Y29udHJvbHBsYW5ldjFiBnByb3RvMw", [file_google_protobuf_field_mask, file_google_protobuf_timestamp, file_std_v1_std]);
 
 /**
  * @generated from message nexus.controlplane.v1.Cluster
@@ -257,55 +257,21 @@ export type Device = Message<"nexus.controlplane.v1.Device"> & {
   description: string;
 
   /**
-   * @generated from oneof nexus.controlplane.v1.Device.vendor
-   */
-  vendor: {
-    /**
-     * A known vendor that we explicitly support where
-     * support means we can populate device information
-     * with additional information that we know is specific
-     * to this vendor and/or model
-     *
-     * @generated from field: nexus.controlplane.v1.Vendor known_vendor = 6;
-     */
-    value: Vendor;
-    case: "knownVendor";
-  } | {
-    /**
-     * A generic vendor
-     *
-     * @generated from field: string other_vendor = 7;
-     */
-    value: string;
-    case: "otherVendor";
-  } | { case: undefined; value?: undefined };
-
-  /**
    * @generated from oneof nexus.controlplane.v1.Device.model
    */
   model: {
     /**
-     * A known model that we explicitly support
-     *
-     * @generated from field: nexus.controlplane.v1.Model known_model = 8;
+     * @generated from field: nexus.controlplane.v1.GenericModel generic = 6;
      */
-    value: Model;
-    case: "knownModel";
-  } | {
-    /**
-     * A generic model
-     *
-     * @generated from field: string other_model = 9;
-     */
-    value: string;
-    case: "otherModel";
+    value: GenericModel;
+    case: "generic";
   } | { case: undefined; value?: undefined };
 
   /**
    * The IP addresses of the device. We use these to look
    * up the relevant device to enrich our flow with its information.
    *
-   * @generated from field: repeated nexus.controlplane.v1.IpAddress addresses = 10;
+   * @generated from field: repeated nexus.controlplane.v1.IpAddress addresses = 7;
    */
   addresses: IpAddress[];
 
@@ -313,11 +279,7 @@ export type Device = Message<"nexus.controlplane.v1.Device"> & {
    * User-defined labels for the device. Used to add more metadata
    * to query over.
    *
-   * Additional information about the device, specific to known devices that
-   * we support (in future)
-   * oneof device_info {}
-   *
-   * @generated from field: repeated std.v1.KeyValue labels = 11;
+   * @generated from field: repeated std.v1.KeyValue labels = 8;
    */
   labels: KeyValue[];
 };
@@ -328,6 +290,74 @@ export type Device = Message<"nexus.controlplane.v1.Device"> & {
  */
 export const DeviceSchema: GenMessage<Device> = /*@__PURE__*/
   messageDesc(file_nexus_controlplane_v1_control_plane, 9);
+
+/**
+ * @generated from message nexus.controlplane.v1.GenericModel
+ */
+export type GenericModel = Message<"nexus.controlplane.v1.GenericModel"> & {
+  /**
+   * @generated from field: string model = 1;
+   */
+  model: string;
+
+  /**
+   * It is possible that we have a known vendor (e.g Cisco or Arista)
+   *
+   * @generated from oneof nexus.controlplane.v1.GenericModel.vendor
+   */
+  vendor: {
+    /**
+     * @generated from field: string other_vendor = 2;
+     */
+    value: string;
+    case: "otherVendor";
+  } | {
+    /**
+     * @generated from field: nexus.controlplane.v1.Cisco cisco = 3;
+     */
+    value: Cisco;
+    case: "cisco";
+  } | {
+    /**
+     * @generated from field: nexus.controlplane.v1.Arista arista = 4;
+     */
+    value: Arista;
+    case: "arista";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.GenericModel.
+ * Use `create(GenericModelSchema)` to create a new message.
+ */
+export const GenericModelSchema: GenMessage<GenericModel> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_control_plane, 10);
+
+/**
+ * @generated from message nexus.controlplane.v1.Cisco
+ */
+export type Cisco = Message<"nexus.controlplane.v1.Cisco"> & {
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.Cisco.
+ * Use `create(CiscoSchema)` to create a new message.
+ */
+export const CiscoSchema: GenMessage<Cisco> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_control_plane, 11);
+
+/**
+ * @generated from message nexus.controlplane.v1.Arista
+ */
+export type Arista = Message<"nexus.controlplane.v1.Arista"> & {
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.Arista.
+ * Use `create(AristaSchema)` to create a new message.
+ */
+export const AristaSchema: GenMessage<Arista> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_control_plane, 12);
 
 /**
  * @generated from message nexus.controlplane.v1.IpAddress
@@ -349,7 +379,7 @@ export type IpAddress = Message<"nexus.controlplane.v1.IpAddress"> & {
  * Use `create(IpAddressSchema)` to create a new message.
  */
 export const IpAddressSchema: GenMessage<IpAddress> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 10);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 13);
 
 /**
  * @generated from message nexus.controlplane.v1.CreateDeviceRequest
@@ -371,46 +401,23 @@ export type CreateDeviceRequest = Message<"nexus.controlplane.v1.CreateDeviceReq
   description: string;
 
   /**
-   * @generated from oneof nexus.controlplane.v1.CreateDeviceRequest.vendor
-   */
-  vendor: {
-    /**
-     * @generated from field: nexus.controlplane.v1.Vendor known_vendor = 4;
-     */
-    value: Vendor;
-    case: "knownVendor";
-  } | {
-    /**
-     * @generated from field: string other_vendor = 5;
-     */
-    value: string;
-    case: "otherVendor";
-  } | { case: undefined; value?: undefined };
-
-  /**
    * @generated from oneof nexus.controlplane.v1.CreateDeviceRequest.model
    */
   model: {
     /**
-     * @generated from field: nexus.controlplane.v1.Model known_model = 6;
+     * @generated from field: nexus.controlplane.v1.GenericModel generic = 4;
      */
-    value: Model;
-    case: "knownModel";
-  } | {
-    /**
-     * @generated from field: string other_model = 7;
-     */
-    value: string;
-    case: "otherModel";
+    value: GenericModel;
+    case: "generic";
   } | { case: undefined; value?: undefined };
 
   /**
-   * @generated from field: repeated nexus.controlplane.v1.IpAddress addresses = 8;
+   * @generated from field: repeated nexus.controlplane.v1.IpAddress addresses = 5;
    */
   addresses: IpAddress[];
 
   /**
-   * @generated from field: repeated std.v1.KeyValue labels = 9;
+   * @generated from field: repeated std.v1.KeyValue labels = 6;
    */
   labels: KeyValue[];
 };
@@ -420,7 +427,7 @@ export type CreateDeviceRequest = Message<"nexus.controlplane.v1.CreateDeviceReq
  * Use `create(CreateDeviceRequestSchema)` to create a new message.
  */
 export const CreateDeviceRequestSchema: GenMessage<CreateDeviceRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 11);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 14);
 
 /**
  * @generated from message nexus.controlplane.v1.CreateDeviceResponse
@@ -447,7 +454,7 @@ export type CreateDeviceResponse = Message<"nexus.controlplane.v1.CreateDeviceRe
  * Use `create(CreateDeviceResponseSchema)` to create a new message.
  */
 export const CreateDeviceResponseSchema: GenMessage<CreateDeviceResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 12);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 15);
 
 /**
  * @generated from message nexus.controlplane.v1.DeleteDeviceRequest
@@ -464,7 +471,7 @@ export type DeleteDeviceRequest = Message<"nexus.controlplane.v1.DeleteDeviceReq
  * Use `create(DeleteDeviceRequestSchema)` to create a new message.
  */
 export const DeleteDeviceRequestSchema: GenMessage<DeleteDeviceRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 13);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 16);
 
 /**
  * @generated from message nexus.controlplane.v1.DeleteDeviceResponse
@@ -486,7 +493,7 @@ export type DeleteDeviceResponse = Message<"nexus.controlplane.v1.DeleteDeviceRe
  * Use `create(DeleteDeviceResponseSchema)` to create a new message.
  */
 export const DeleteDeviceResponseSchema: GenMessage<DeleteDeviceResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 14);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 17);
 
 /**
  * @generated from message nexus.controlplane.v1.UpdateDeviceRequest
@@ -513,7 +520,7 @@ export type UpdateDeviceRequest = Message<"nexus.controlplane.v1.UpdateDeviceReq
  * Use `create(UpdateDeviceRequestSchema)` to create a new message.
  */
 export const UpdateDeviceRequestSchema: GenMessage<UpdateDeviceRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 15);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 18);
 
 /**
  * @generated from message nexus.controlplane.v1.UpdateDeviceResponse
@@ -540,7 +547,7 @@ export type UpdateDeviceResponse = Message<"nexus.controlplane.v1.UpdateDeviceRe
  * Use `create(UpdateDeviceResponseSchema)` to create a new message.
  */
 export const UpdateDeviceResponseSchema: GenMessage<UpdateDeviceResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 16);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 19);
 
 /**
  * @generated from message nexus.controlplane.v1.GetDeviceRequest
@@ -557,7 +564,7 @@ export type GetDeviceRequest = Message<"nexus.controlplane.v1.GetDeviceRequest">
  * Use `create(GetDeviceRequestSchema)` to create a new message.
  */
 export const GetDeviceRequestSchema: GenMessage<GetDeviceRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 17);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 20);
 
 /**
  * @generated from message nexus.controlplane.v1.GetDeviceResponse
@@ -579,7 +586,7 @@ export type GetDeviceResponse = Message<"nexus.controlplane.v1.GetDeviceResponse
  * Use `create(GetDeviceResponseSchema)` to create a new message.
  */
 export const GetDeviceResponseSchema: GenMessage<GetDeviceResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 18);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 21);
 
 /**
  * @generated from message nexus.controlplane.v1.ListDevicesRequest
@@ -596,7 +603,7 @@ export type ListDevicesRequest = Message<"nexus.controlplane.v1.ListDevicesReque
  * Use `create(ListDevicesRequestSchema)` to create a new message.
  */
 export const ListDevicesRequestSchema: GenMessage<ListDevicesRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 19);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 22);
 
 /**
  * @generated from message nexus.controlplane.v1.ListDevicesResponse
@@ -618,7 +625,7 @@ export type ListDevicesResponse = Message<"nexus.controlplane.v1.ListDevicesResp
  * Use `create(ListDevicesResponseSchema)` to create a new message.
  */
 export const ListDevicesResponseSchema: GenMessage<ListDevicesResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 20);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 23);
 
 /**
  * @generated from message nexus.controlplane.v1.Query
@@ -670,7 +677,7 @@ export type Query = Message<"nexus.controlplane.v1.Query"> & {
  * Use `create(QuerySchema)` to create a new message.
  */
 export const QuerySchema: GenMessage<Query> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 21);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 24);
 
 /**
  * @generated from message nexus.controlplane.v1.Visualise
@@ -692,7 +699,7 @@ export type Visualise = Message<"nexus.controlplane.v1.Visualise"> & {
  * Use `create(VisualiseSchema)` to create a new message.
  */
 export const VisualiseSchema: GenMessage<Visualise> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 22);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 25);
 
 /**
  * @generated from message nexus.controlplane.v1.Where
@@ -714,7 +721,7 @@ export type Where = Message<"nexus.controlplane.v1.Where"> & {
  * Use `create(WhereSchema)` to create a new message.
  */
 export const WhereSchema: GenMessage<Where> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 23);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 26);
 
 /**
  * @generated from message nexus.controlplane.v1.Clause
@@ -741,7 +748,7 @@ export type Clause = Message<"nexus.controlplane.v1.Clause"> & {
  * Use `create(ClauseSchema)` to create a new message.
  */
 export const ClauseSchema: GenMessage<Clause> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 24);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 27);
 
 /**
  * @generated from message nexus.controlplane.v1.Order
@@ -763,7 +770,7 @@ export type Order = Message<"nexus.controlplane.v1.Order"> & {
  * Use `create(OrderSchema)` to create a new message.
  */
 export const OrderSchema: GenMessage<Order> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 25);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 28);
 
 /**
  * @generated from message nexus.controlplane.v1.Series
@@ -802,7 +809,7 @@ export type Series = Message<"nexus.controlplane.v1.Series"> & {
  * Use `create(SeriesSchema)` to create a new message.
  */
 export const SeriesSchema: GenMessage<Series> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 26);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 29);
 
 /**
  * @generated from message nexus.controlplane.v1.SeriesData
@@ -826,7 +833,7 @@ export type SeriesData = Message<"nexus.controlplane.v1.SeriesData"> & {
  * Use `create(SeriesDataSchema)` to create a new message.
  */
 export const SeriesDataSchema: GenMessage<SeriesData> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 27);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 30);
 
 /**
  * @generated from message nexus.controlplane.v1.Row
@@ -848,7 +855,7 @@ export type Row = Message<"nexus.controlplane.v1.Row"> & {
  * Use `create(RowSchema)` to create a new message.
  */
 export const RowSchema: GenMessage<Row> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 28);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 31);
 
 /**
  * @generated from message nexus.controlplane.v1.RowValues
@@ -865,7 +872,7 @@ export type RowValues = Message<"nexus.controlplane.v1.RowValues"> & {
  * Use `create(RowValuesSchema)` to create a new message.
  */
 export const RowValuesSchema: GenMessage<RowValues> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 29);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 32);
 
 /**
  * @generated from message nexus.controlplane.v1.CreateQueryRequest
@@ -882,7 +889,7 @@ export type CreateQueryRequest = Message<"nexus.controlplane.v1.CreateQueryReque
  * Use `create(CreateQueryRequestSchema)` to create a new message.
  */
 export const CreateQueryRequestSchema: GenMessage<CreateQueryRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 30);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 33);
 
 /**
  * @generated from message nexus.controlplane.v1.CreateQueryResponse
@@ -909,7 +916,7 @@ export type CreateQueryResponse = Message<"nexus.controlplane.v1.CreateQueryResp
  * Use `create(CreateQueryResponseSchema)` to create a new message.
  */
 export const CreateQueryResponseSchema: GenMessage<CreateQueryResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 31);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 34);
 
 /**
  * @generated from message nexus.controlplane.v1.StartQueryExecutionRequest
@@ -926,7 +933,7 @@ export type StartQueryExecutionRequest = Message<"nexus.controlplane.v1.StartQue
  * Use `create(StartQueryExecutionRequestSchema)` to create a new message.
  */
 export const StartQueryExecutionRequestSchema: GenMessage<StartQueryExecutionRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 32);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 35);
 
 /**
  * @generated from message nexus.controlplane.v1.StartQueryExecutionResponse
@@ -951,7 +958,7 @@ export type StartQueryExecutionResponse = Message<"nexus.controlplane.v1.StartQu
  * Use `create(StartQueryExecutionResponseSchema)` to create a new message.
  */
 export const StartQueryExecutionResponseSchema: GenMessage<StartQueryExecutionResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 33);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 36);
 
 /**
  * @generated from message nexus.controlplane.v1.PollQueryExecutionRequest
@@ -968,7 +975,7 @@ export type PollQueryExecutionRequest = Message<"nexus.controlplane.v1.PollQuery
  * Use `create(PollQueryExecutionRequestSchema)` to create a new message.
  */
 export const PollQueryExecutionRequestSchema: GenMessage<PollQueryExecutionRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 34);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 37);
 
 /**
  * @generated from message nexus.controlplane.v1.PollQueryExecutionResponse
@@ -990,7 +997,7 @@ export type PollQueryExecutionResponse = Message<"nexus.controlplane.v1.PollQuer
  * Use `create(PollQueryExecutionResponseSchema)` to create a new message.
  */
 export const PollQueryExecutionResponseSchema: GenMessage<PollQueryExecutionResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 35);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 38);
 
 /**
  * @generated from message nexus.controlplane.v1.QueryExecutionResult
@@ -1018,7 +1025,7 @@ export type QueryExecutionResult = Message<"nexus.controlplane.v1.QueryExecution
  * Use `create(QueryExecutionResultSchema)` to create a new message.
  */
 export const QueryExecutionResultSchema: GenMessage<QueryExecutionResult> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 36);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 39);
 
 /**
  * @generated from message nexus.controlplane.v1.RegisterAgentRequest
@@ -1046,7 +1053,7 @@ export type RegisterAgentRequest = Message<"nexus.controlplane.v1.RegisterAgentR
  * Use `create(RegisterAgentRequestSchema)` to create a new message.
  */
 export const RegisterAgentRequestSchema: GenMessage<RegisterAgentRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 37);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 40);
 
 /**
  * @generated from message nexus.controlplane.v1.RegisterAgentResponse
@@ -1071,7 +1078,7 @@ export type RegisterAgentResponse = Message<"nexus.controlplane.v1.RegisterAgent
  * Use `create(RegisterAgentResponseSchema)` to create a new message.
  */
 export const RegisterAgentResponseSchema: GenMessage<RegisterAgentResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 38);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 41);
 
 /**
  * @generated from message nexus.controlplane.v1.DeregisterAgentRequest
@@ -1088,7 +1095,7 @@ export type DeregisterAgentRequest = Message<"nexus.controlplane.v1.DeregisterAg
  * Use `create(DeregisterAgentRequestSchema)` to create a new message.
  */
 export const DeregisterAgentRequestSchema: GenMessage<DeregisterAgentRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 39);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 42);
 
 /**
  * @generated from message nexus.controlplane.v1.DeregisterAgentResponse
@@ -1110,7 +1117,7 @@ export type DeregisterAgentResponse = Message<"nexus.controlplane.v1.DeregisterA
  * Use `create(DeregisterAgentResponseSchema)` to create a new message.
  */
 export const DeregisterAgentResponseSchema: GenMessage<DeregisterAgentResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 40);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 43);
 
 /**
  * @generated from message nexus.controlplane.v1.HeartbeatRequest
@@ -1127,7 +1134,7 @@ export type HeartbeatRequest = Message<"nexus.controlplane.v1.HeartbeatRequest">
  * Use `create(HeartbeatRequestSchema)` to create a new message.
  */
 export const HeartbeatRequestSchema: GenMessage<HeartbeatRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 41);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 44);
 
 /**
  * @generated from message nexus.controlplane.v1.HeartbeatResponse
@@ -1144,7 +1151,7 @@ export type HeartbeatResponse = Message<"nexus.controlplane.v1.HeartbeatResponse
  * Use `create(HeartbeatResponseSchema)` to create a new message.
  */
 export const HeartbeatResponseSchema: GenMessage<HeartbeatResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 42);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 45);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessageRequest
@@ -1166,7 +1173,7 @@ export type ControlMessageRequest = Message<"nexus.controlplane.v1.ControlMessag
  * Use `create(ControlMessageRequestSchema)` to create a new message.
  */
 export const ControlMessageRequestSchema: GenMessage<ControlMessageRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 43);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 46);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessageResponse
@@ -1198,7 +1205,7 @@ export type ControlMessageResponse = Message<"nexus.controlplane.v1.ControlMessa
  * Use `create(ControlMessageResponseSchema)` to create a new message.
  */
 export const ControlMessageResponseSchema: GenMessage<ControlMessageResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 44);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 47);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessage
@@ -1227,7 +1234,7 @@ export type ControlMessage = Message<"nexus.controlplane.v1.ControlMessage"> & {
  * Use `create(ControlMessageSchema)` to create a new message.
  */
 export const ControlMessageSchema: GenMessage<ControlMessage> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 45);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 48);
 
 /**
  * Telemetry control messages
@@ -1250,7 +1257,7 @@ export type TelemetryControl = Message<"nexus.controlplane.v1.TelemetryControl">
  * Use `create(TelemetryControlSchema)` to create a new message.
  */
 export const TelemetryControlSchema: GenMessage<TelemetryControl> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 46);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 49);
 
 /**
  * Device control messages
@@ -1269,7 +1276,7 @@ export type DeviceControl = Message<"nexus.controlplane.v1.DeviceControl"> & {
  * Use `create(DeviceControlSchema)` to create a new message.
  */
 export const DeviceControlSchema: GenMessage<DeviceControl> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 47);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 50);
 
 /**
  * @generated from enum nexus.controlplane.v1.ClusterType
@@ -1302,38 +1309,6 @@ export const ClusterTypeSchema: GenEnum<ClusterType> = /*@__PURE__*/
   enumDesc(file_nexus_controlplane_v1_control_plane, 0);
 
 /**
- * @generated from enum nexus.controlplane.v1.Vendor
- */
-export enum Vendor {
-  /**
-   * @generated from enum value: VENDOR_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-}
-
-/**
- * Describes the enum nexus.controlplane.v1.Vendor.
- */
-export const VendorSchema: GenEnum<Vendor> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 1);
-
-/**
- * @generated from enum nexus.controlplane.v1.Model
- */
-export enum Model {
-  /**
-   * @generated from enum value: MODEL_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-}
-
-/**
- * Describes the enum nexus.controlplane.v1.Model.
- */
-export const ModelSchema: GenEnum<Model> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 2);
-
-/**
  * @generated from enum nexus.controlplane.v1.IPVersion
  */
 export enum IPVersion {
@@ -1357,7 +1332,7 @@ export enum IPVersion {
  * Describes the enum nexus.controlplane.v1.IPVersion.
  */
 export const IPVersionSchema: GenEnum<IPVersion> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 3);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 1);
 
 /**
  * @generated from enum nexus.controlplane.v1.VisualiseOp
@@ -1475,7 +1450,7 @@ export enum VisualiseOp {
  * Describes the enum nexus.controlplane.v1.VisualiseOp.
  */
 export const VisualiseOpSchema: GenEnum<VisualiseOp> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 4);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 2);
 
 /**
  * @generated from enum nexus.controlplane.v1.WhereOp
@@ -1501,7 +1476,7 @@ export enum WhereOp {
  * Describes the enum nexus.controlplane.v1.WhereOp.
  */
 export const WhereOpSchema: GenEnum<WhereOp> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 5);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 3);
 
 /**
  * @generated from enum nexus.controlplane.v1.CompareOp
@@ -1567,7 +1542,7 @@ export enum CompareOp {
  * Describes the enum nexus.controlplane.v1.CompareOp.
  */
 export const CompareOpSchema: GenEnum<CompareOp> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 6);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 4);
 
 /**
  * @generated from enum nexus.controlplane.v1.OrderOp
@@ -1593,7 +1568,7 @@ export enum OrderOp {
  * Describes the enum nexus.controlplane.v1.OrderOp.
  */
 export const OrderOpSchema: GenEnum<OrderOp> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 7);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 5);
 
 /**
  * @generated from enum nexus.controlplane.v1.QueryExecutionStatus
@@ -1629,7 +1604,7 @@ export enum QueryExecutionStatus {
  * Describes the enum nexus.controlplane.v1.QueryExecutionStatus.
  */
 export const QueryExecutionStatusSchema: GenEnum<QueryExecutionStatus> = /*@__PURE__*/
-  enumDesc(file_nexus_controlplane_v1_control_plane, 8);
+  enumDesc(file_nexus_controlplane_v1_control_plane, 6);
 
 /**
  * The control plane service manages all operational aspects of the system. This includes
