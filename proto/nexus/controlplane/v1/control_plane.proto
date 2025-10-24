@@ -50,6 +50,14 @@ message Cluster {
   google.protobuf.Timestamp updated_at = 6;
 }
 
+enum ClusterType {
+  CLUSTER_TYPE_UNSPECIFIED = 0;
+  // The cluster runs in their own cloud
+  CLUSTER_TYPE_BYOC = 1;
+  // We run the cluster in our cloud, on behalf of the user
+  CLUSTER_TYPE_SERVERLESS = 2;
+}
+
 message CreateClusterRequest {
   string team_pid = 1;
   string name = 2;
@@ -57,16 +65,9 @@ message CreateClusterRequest {
 }
 
 message CreateClusterResponse {
-  Cluster cluster = 1;
-  google.protobuf.Timestamp created_at = 5;
-}
-
-enum ClusterType {
-  CLUSTER_TYPE_UNSPECIFIED = 0;
-  // The cluster runs in their own cloud
-  CLUSTER_TYPE_BYOC = 1;
-  // We run the cluster in our cloud, on behalf of the user
-  CLUSTER_TYPE_SERVERLESS = 2;
+  string pid = 1;
+  Cluster cluster = 2;
+  google.protobuf.Timestamp created_at = 3;
 }
 
 message DeleteClusterRequest {
@@ -83,8 +84,7 @@ message ListClustersRequest {
 }
 
 message ListClustersResponse {
-  string team_pid = 1;
-  repeated Cluster clusters = 2;
+  repeated Cluster clusters = 1;
 }
 
 message GetClusterRequest {
@@ -100,21 +100,24 @@ message GetClusterResponse {
 
 message Device {
   string pid = 1;
-  string organization_pid = 2;
-  string team_pid = 3;
+  string team_pid = 2;
   // A "common name" for the device that the user can use
   // to identify it.
-  string name = 4;
-  string description = 5;
+  string name = 3;
+  optional string description = 4;
+
   oneof model {
-    GenericModel generic = 6;
+    GenericModel generic = 5;
   }
   // The IP addresses of the device. We use these to look
   // up the relevant device to enrich our flow with its information.
-  repeated IpAddress addresses = 7;
+  repeated IpAddress addresses = 6;
   // User-defined labels for the device. Used to add more metadata
   // to query over.
-  repeated std.v1.KeyValue labels = 8;
+  repeated std.v1.KeyValue labels = 7;
+
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
 }
 
 message GenericModel {
@@ -153,7 +156,7 @@ message CreateDeviceRequest {
 }
 
 message CreateDeviceResponse {
-  string team_pid = 1;
+  string pid = 1;
   Device device = 2;
   google.protobuf.Timestamp created_at = 3;
 }
@@ -192,8 +195,7 @@ message ListDevicesRequest {
 }
 
 message ListDevicesResponse {
-  string team_pid = 1;
-  repeated Device devices = 2;
+  repeated Device devices = 1;
 }
 
 //===== QUERIES =====//
