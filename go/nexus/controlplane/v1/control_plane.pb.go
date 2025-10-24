@@ -2972,6 +2972,7 @@ func (x *DeregisterAgentResponse) GetDeregisteredAt() *timestamppb.Timestamp {
 type HeartbeatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3013,9 +3014,17 @@ func (x *HeartbeatRequest) GetId() string {
 	return ""
 }
 
+func (x *HeartbeatRequest) GetClusterPid() string {
+	if x != nil {
+		return x.ClusterPid
+	}
+	return ""
+}
+
 type HeartbeatResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3053,6 +3062,13 @@ func (*HeartbeatResponse) Descriptor() ([]byte, []int) {
 func (x *HeartbeatResponse) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+func (x *HeartbeatResponse) GetClusterPid() string {
+	if x != nil {
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -3529,11 +3545,15 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"n\n" +
 	"\x17DeregisterAgentResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12C\n" +
-	"\x0fderegistered_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x0ederegisteredAt\"\"\n" +
+	"\x0fderegistered_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x0ederegisteredAt\"C\n" +
 	"\x10HeartbeatRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"#\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\"D\n" +
 	"\x11HeartbeatResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"w\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\"w\n" +
 	"\x15ControlMessageRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\tR\trequestId\x12?\n" +

@@ -387,10 +387,12 @@ message DeregisterAgentResponse {
 
 message HeartbeatRequest {
   string id = 1;
+  string cluster_pid = 2;
 }
 
 message HeartbeatResponse {
   string id = 1;
+  string cluster_pid = 2;
 }
 
 //===== CONTROL MESSAGES =====//
