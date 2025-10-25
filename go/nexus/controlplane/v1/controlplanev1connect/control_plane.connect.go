@@ -69,12 +69,6 @@ const (
 	// ControlPlaneServicePollQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's PollQueryExecution RPC.
 	ControlPlaneServicePollQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/PollQueryExecution"
-	// ControlPlaneServiceRegisterAgentProcedure is the fully-qualified name of the
-	// ControlPlaneService's RegisterAgent RPC.
-	ControlPlaneServiceRegisterAgentProcedure = "/nexus.controlplane.v1.ControlPlaneService/RegisterAgent"
-	// ControlPlaneServiceDeregisterAgentProcedure is the fully-qualified name of the
-	// ControlPlaneService's DeregisterAgent RPC.
-	ControlPlaneServiceDeregisterAgentProcedure = "/nexus.controlplane.v1.ControlPlaneService/DeregisterAgent"
 	// ControlPlaneServiceHeartbeatProcedure is the fully-qualified name of the ControlPlaneService's
 	// Heartbeat RPC.
 	ControlPlaneServiceHeartbeatProcedure = "/nexus.controlplane.v1.ControlPlaneService/Heartbeat"
@@ -101,8 +95,6 @@ type ControlPlaneServiceClient interface {
 	// result alongside it
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Agent lifecycle
-	RegisterAgent(context.Context, *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error)
-	DeregisterAgent(context.Context, *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error)
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 
@@ -189,18 +181,6 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 			connect.WithClientOptions(opts...),
 		),
-		registerAgent: connect.NewClient[v1.RegisterAgentRequest, v1.RegisterAgentResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceRegisterAgentProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("RegisterAgent")),
-			connect.WithClientOptions(opts...),
-		),
-		deregisterAgent: connect.NewClient[v1.DeregisterAgentRequest, v1.DeregisterAgentResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceDeregisterAgentProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("DeregisterAgent")),
-			connect.WithClientOptions(opts...),
-		),
 		heartbeat: connect.NewClient[v1.HeartbeatRequest, v1.HeartbeatResponse](
 			httpClient,
 			baseURL+ControlPlaneServiceHeartbeatProcedure,
@@ -224,8 +204,6 @@ type controlPlaneServiceClient struct {
 	createQuery         *connect.Client[v1.CreateQueryRequest, v1.CreateQueryResponse]
 	startQueryExecution *connect.Client[v1.StartQueryExecutionRequest, v1.StartQueryExecutionResponse]
 	pollQueryExecution  *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
-	registerAgent       *connect.Client[v1.RegisterAgentRequest, v1.RegisterAgentResponse]
-	deregisterAgent     *connect.Client[v1.DeregisterAgentRequest, v1.DeregisterAgentResponse]
 	heartbeat           *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
 }
 
@@ -289,16 +267,6 @@ func (c *controlPlaneServiceClient) PollQueryExecution(ctx context.Context, req 
 	return c.pollQueryExecution.CallUnary(ctx, req)
 }
 
-// RegisterAgent calls nexus.controlplane.v1.ControlPlaneService.RegisterAgent.
-func (c *controlPlaneServiceClient) RegisterAgent(ctx context.Context, req *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error) {
-	return c.registerAgent.CallUnary(ctx, req)
-}
-
-// DeregisterAgent calls nexus.controlplane.v1.ControlPlaneService.DeregisterAgent.
-func (c *controlPlaneServiceClient) DeregisterAgent(ctx context.Context, req *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error) {
-	return c.deregisterAgent.CallUnary(ctx, req)
-}
-
 // Heartbeat calls nexus.controlplane.v1.ControlPlaneService.Heartbeat.
 func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return c.heartbeat.CallUnary(ctx, req)
@@ -326,8 +294,6 @@ type ControlPlaneServiceHandler interface {
 	// result alongside it
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Agent lifecycle
-	RegisterAgent(context.Context, *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error)
-	DeregisterAgent(context.Context, *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error)
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 
@@ -410,18 +376,6 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 		connect.WithHandlerOptions(opts...),
 	)
-	controlPlaneServiceRegisterAgentHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceRegisterAgentProcedure,
-		svc.RegisterAgent,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("RegisterAgent")),
-		connect.WithHandlerOptions(opts...),
-	)
-	controlPlaneServiceDeregisterAgentHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceDeregisterAgentProcedure,
-		svc.DeregisterAgent,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("DeregisterAgent")),
-		connect.WithHandlerOptions(opts...),
-	)
 	controlPlaneServiceHeartbeatHandler := connect.NewUnaryHandler(
 		ControlPlaneServiceHeartbeatProcedure,
 		svc.Heartbeat,
@@ -454,10 +408,6 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServiceStartQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServicePollQueryExecutionProcedure:
 			controlPlaneServicePollQueryExecutionHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceRegisterAgentProcedure:
-			controlPlaneServiceRegisterAgentHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceDeregisterAgentProcedure:
-			controlPlaneServiceDeregisterAgentHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceHeartbeatProcedure:
 			controlPlaneServiceHeartbeatHandler.ServeHTTP(w, r)
 		default:
@@ -515,14 +465,6 @@ func (UnimplementedControlPlaneServiceHandler) StartQueryExecution(context.Conte
 
 func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.PollQueryExecution is not implemented"))
-}
-
-func (UnimplementedControlPlaneServiceHandler) RegisterAgent(context.Context, *connect.Request[v1.RegisterAgentRequest]) (*connect.Response[v1.RegisterAgentResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.RegisterAgent is not implemented"))
-}
-
-func (UnimplementedControlPlaneServiceHandler) DeregisterAgent(context.Context, *connect.Request[v1.DeregisterAgentRequest]) (*connect.Response[v1.DeregisterAgentResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.DeregisterAgent is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
