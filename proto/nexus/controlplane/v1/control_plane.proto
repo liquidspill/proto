@@ -37,6 +37,7 @@ service ControlPlaneService {
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
   // Add a stop agent request which can hit a service running in the
   // agent that will cause it to quit
+  // Add a update config request
 }
 
 //===== CLUSTERS =====//
@@ -389,13 +390,16 @@ message AgentMetadata {
   string id = 1;
   string cluster_pid = 2;
   string version = 3;
-
   // The status of the agent. The control plane manages this field.
   // It is determined by the heartbeat recency.
   AgentStatus status = 4;
+  // The last heartbeat we received.
+  google.protobuf.Timestamp last_heartbeat = 5;
+}
 
-  // The last heartbeat we received stored as a unix timestamp in milliseconds.
-  int64 last_heartbeat = 5;
+message Heartbeat {
+  string agent_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
 }
 
 //===== CONTROL MESSAGES =====//
