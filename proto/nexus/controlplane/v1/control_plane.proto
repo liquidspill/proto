@@ -205,17 +205,20 @@ message ListDevicesResponse {
 
 message Query {
   string pid = 1;
-  repeated Visualise visualise = 2;
-  Where where = 3;
-  repeated string group_by = 4;
-  repeated Order order_by = 5;
-  uint32 limit = 6;
-  Clause having = 7;
-  int64 start_time = 8;
-  int64 end_time = 9;
+  string team_pid = 2;
+  string cluster_pid = 3;
 
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
+  repeated Visualise visualise = 4;
+  Where where = 5;
+  repeated string group_by = 6;
+  repeated Order order_by = 7;
+  uint32 limit = 8;
+  Clause having = 9;
+  int64 start_time = 10;
+  int64 end_time = 11;
+
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
 }
 
 message Visualise {
@@ -320,7 +323,8 @@ message RowValues {
 
 message CreateQueryRequest {
   string team_pid = 1;
-  Query query = 2;
+  string cluster_pid = 2;
+  Query query = 3;
 }
 
 message CreateQueryResponse {

@@ -1934,16 +1934,18 @@ func (x *ListDevicesResponse) GetDevices() []*Device {
 type Query struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
-	Visualise     []*Visualise           `protobuf:"bytes,2,rep,name=visualise,proto3" json:"visualise,omitempty"`
-	Where         *Where                 `protobuf:"bytes,3,opt,name=where,proto3" json:"where,omitempty"`
-	GroupBy       []string               `protobuf:"bytes,4,rep,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
-	OrderBy       []*Order               `protobuf:"bytes,5,rep,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
-	Limit         uint32                 `protobuf:"varint,6,opt,name=limit,proto3" json:"limit,omitempty"`
-	Having        *Clause                `protobuf:"bytes,7,opt,name=having,proto3" json:"having,omitempty"`
-	StartTime     int64                  `protobuf:"varint,8,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       int64                  `protobuf:"varint,9,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	TeamPid       string                 `protobuf:"bytes,2,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,3,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	Visualise     []*Visualise           `protobuf:"bytes,4,rep,name=visualise,proto3" json:"visualise,omitempty"`
+	Where         *Where                 `protobuf:"bytes,5,opt,name=where,proto3" json:"where,omitempty"`
+	GroupBy       []string               `protobuf:"bytes,6,rep,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
+	OrderBy       []*Order               `protobuf:"bytes,7,rep,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
+	Limit         uint32                 `protobuf:"varint,8,opt,name=limit,proto3" json:"limit,omitempty"`
+	Having        *Clause                `protobuf:"bytes,9,opt,name=having,proto3" json:"having,omitempty"`
+	StartTime     int64                  `protobuf:"varint,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       int64                  `protobuf:"varint,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1981,6 +1983,20 @@ func (*Query) Descriptor() ([]byte, []int) {
 func (x *Query) GetPid() string {
 	if x != nil {
 		return x.Pid
+	}
+	return ""
+}
+
+func (x *Query) GetTeamPid() string {
+	if x != nil {
+		return x.TeamPid
+	}
+	return ""
+}
+
+func (x *Query) GetClusterPid() string {
+	if x != nil {
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -2495,7 +2511,8 @@ func (x *RowValues) GetValues() []*v1.Value {
 type CreateQueryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
-	Query         *Query                 `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	Query         *Query                 `protobuf:"bytes,3,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2533,6 +2550,13 @@ func (*CreateQueryRequest) Descriptor() ([]byte, []int) {
 func (x *CreateQueryRequest) GetTeamPid() string {
 	if x != nil {
 		return x.TeamPid
+	}
+	return ""
+}
+
+func (x *CreateQueryRequest) GetClusterPid() string {
+	if x != nil {
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -3496,23 +3520,26 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x12ListDevicesRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"N\n" +
 	"\x13ListDevicesResponse\x127\n" +
-	"\adevices\x18\x01 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\xde\x03\n" +
+	"\adevices\x18\x01 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\x9a\x04\n" +
 	"\x05Query\x12\x10\n" +
-	"\x03pid\x18\x01 \x01(\tR\x03pid\x12>\n" +
-	"\tvisualise\x18\x02 \x03(\v2 .nexus.controlplane.v1.VisualiseR\tvisualise\x122\n" +
-	"\x05where\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.WhereR\x05where\x12\x19\n" +
-	"\bgroup_by\x18\x04 \x03(\tR\agroupBy\x127\n" +
-	"\border_by\x18\x05 \x03(\v2\x1c.nexus.controlplane.v1.OrderR\aorderBy\x12\x14\n" +
-	"\x05limit\x18\x06 \x01(\rR\x05limit\x125\n" +
-	"\x06having\x18\a \x01(\v2\x1d.nexus.controlplane.v1.ClauseR\x06having\x12\x1d\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
+	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x1f\n" +
+	"\vcluster_pid\x18\x03 \x01(\tR\n" +
+	"clusterPid\x12>\n" +
+	"\tvisualise\x18\x04 \x03(\v2 .nexus.controlplane.v1.VisualiseR\tvisualise\x122\n" +
+	"\x05where\x18\x05 \x01(\v2\x1c.nexus.controlplane.v1.WhereR\x05where\x12\x19\n" +
+	"\bgroup_by\x18\x06 \x03(\tR\agroupBy\x127\n" +
+	"\border_by\x18\a \x03(\v2\x1c.nexus.controlplane.v1.OrderR\aorderBy\x12\x14\n" +
+	"\x05limit\x18\b \x01(\rR\x05limit\x125\n" +
+	"\x06having\x18\t \x01(\v2\x1d.nexus.controlplane.v1.ClauseR\x06having\x12\x1d\n" +
 	"\n" +
-	"start_time\x18\b \x01(\x03R\tstartTime\x12\x19\n" +
-	"\bend_time\x18\t \x01(\x03R\aendTime\x129\n" +
+	"start_time\x18\n" +
+	" \x01(\x03R\tstartTime\x12\x19\n" +
+	"\bend_time\x18\v \x01(\x03R\aendTime\x129\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"U\n" +
+	"updated_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"U\n" +
 	"\tVisualise\x122\n" +
 	"\x02op\x18\x01 \x01(\x0e2\".nexus.controlplane.v1.VisualiseOpR\x02op\x12\x14\n" +
 	"\x05field\x18\x02 \x01(\tR\x05field\"p\n" +
@@ -3545,10 +3572,12 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"row_values\x18\x02 \x03(\v2 .nexus.controlplane.v1.RowValuesR\trowValues\"2\n" +
 	"\tRowValues\x12%\n" +
-	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"c\n" +
+	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"\x84\x01\n" +
 	"\x12CreateQueryRequest\x12\x19\n" +
-	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x122\n" +
-	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\x96\x01\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\x122\n" +
+	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\x96\x01\n" +
 	"\x13CreateQueryResponse\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x122\n" +
 	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\x129\n" +
