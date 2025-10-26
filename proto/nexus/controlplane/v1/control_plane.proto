@@ -204,14 +204,18 @@ message ListDevicesResponse {
 // THE SHAPE OF THE DATA RETURNED BY THE QUERIES, ITS CONFUSING
 
 message Query {
-  repeated Visualise visualise = 1;
-  Where where = 2;
-  repeated string group_by = 3;
-  repeated Order order_by = 4;
-  uint32 limit = 5;
-  Clause having = 6;
-  int64 start_time = 7;
-  int64 end_time = 8;
+  string pid = 1;
+  repeated Visualise visualise = 2;
+  Where where = 3;
+  repeated string group_by = 4;
+  repeated Order order_by = 5;
+  uint32 limit = 6;
+  Clause having = 7;
+  int64 start_time = 8;
+  int64 end_time = 9;
+
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
 message Visualise {
@@ -315,7 +319,8 @@ message RowValues {
 }
 
 message CreateQueryRequest {
-  Query query = 1;
+  string team_pid = 1;
+  Query query = 2;
 }
 
 message CreateQueryResponse {

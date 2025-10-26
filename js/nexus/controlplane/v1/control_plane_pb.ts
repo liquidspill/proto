@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/controlplane/v1/control_plane.proto.
  */
 export const file_nexus_controlplane_v1_control_plane: GenFile = /*@__PURE__*/
-  fileDesc("CiluZXh1cy9jb250cm9scGxhbmUvdjEvY29udHJvbF9wbGFuZS5wcm90bxIVbmV4dXMuY29udHJvbHBsYW5lLnYxIsgBCgdDbHVzdGVyEgsKA3BpZBgBIAEoCRIQCgh0ZWFtX3BpZBgCIAEoCRIMCgRuYW1lGAMgASgJEjAKBHR5cGUYBCABKA4yIi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlclR5cGUSLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiaAoUQ3JlYXRlQ2x1c3RlclJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRIwCgR0eXBlGAMgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXJUeXBlIoUBChVDcmVhdGVDbHVzdGVyUmVzcG9uc2USCwoDcGlkGAEgASgJEi8KB2NsdXN0ZXIYAiABKAsyHi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlchIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIjChREZWxldGVDbHVzdGVyUmVxdWVzdBILCgNwaWQYASABKAkiVAoVRGVsZXRlQ2x1c3RlclJlc3BvbnNlEgsKA3BpZBgBIAEoCRIuCgpkZWxldGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCInChNMaXN0Q2x1c3RlcnNSZXF1ZXN0EhAKCHRlYW1fcGlkGAEgASgJIkgKFExpc3RDbHVzdGVyc1Jlc3BvbnNlEjAKCGNsdXN0ZXJzGAEgAygLMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXIiIAoRR2V0Q2x1c3RlclJlcXVlc3QSCwoDcGlkGAEgASgJIlIKEkdldENsdXN0ZXJSZXNwb25zZRILCgNwaWQYASABKAkSLwoHY2x1c3RlchgCIAEoCzIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbHVzdGVyItcCCgZEZXZpY2USCwoDcGlkGAEgASgJEhAKCHRlYW1fcGlkGAIgASgJEgwKBG5hbWUYAyABKAkSGAoLZGVzY3JpcHRpb24YBCABKAlIAYgBARI2CgdnZW5lcmljGAUgASgLMiMubmV4dXMuY29udHJvbHBsYW5lLnYxLkdlbmVyaWNNb2RlbEgAEjMKCWFkZHJlc3NlcxgGIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAcgAygLMhAuc3RkLnYxLktleVZhbHVlEi4KCmNyZWF0ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgcKBW1vZGVsQg4KDF9kZXNjcmlwdGlvbiKfAQoMR2VuZXJpY01vZGVsEg0KBW1vZGVsGAEgASgJEhYKDG90aGVyX3ZlbmRvchgCIAEoCUgAEi0KBWNpc2NvGAMgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkNpc2NvSAASLwoGYXJpc3RhGAQgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkFyaXN0YUgAQggKBnZlbmRvciIHCgVDaXNjbyIICgZBcmlzdGEiTwoJSXBBZGRyZXNzEg8KB2FkZHJlc3MYASABKAwSMQoHdmVyc2lvbhgCIAEoDjIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JUFZlcnNpb24i4gEKE0NyZWF0ZURldmljZVJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRI2CgdnZW5lcmljGAQgASgLMiMubmV4dXMuY29udHJvbHBsYW5lLnYxLkdlbmVyaWNNb2RlbEgAEjMKCWFkZHJlc3NlcxgFIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAYgAygLMhAuc3RkLnYxLktleVZhbHVlQgcKBW1vZGVsIoIBChRDcmVhdGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIiChNEZWxldGVEZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJTChREZWxldGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLgoKZGVsZXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiggEKE1VwZGF0ZURldmljZVJlcXVlc3QSCwoDcGlkGAEgASgJEi0KBmRldmljZRgCIAEoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZXZpY2USLwoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIoIBChRVcGRhdGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgp1cGRhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIfChBHZXREZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJPChFHZXREZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSImChJMaXN0RGV2aWNlc1JlcXVlc3QSEAoIdGVhbV9waWQYASABKAkiRQoTTGlzdERldmljZXNSZXNwb25zZRIuCgdkZXZpY2VzGAEgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSKPAgoFUXVlcnkSMwoJdmlzdWFsaXNlGAEgAygLMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLlZpc3VhbGlzZRIrCgV3aGVyZRgCIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5XaGVyZRIQCghncm91cF9ieRgDIAMoCRIuCghvcmRlcl9ieRgEIAMoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5PcmRlchINCgVsaW1pdBgFIAEoDRItCgZoYXZpbmcYBiABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuQ2xhdXNlEhIKCnN0YXJ0X3RpbWUYByABKAMSEAoIZW5kX3RpbWUYCCABKAMiSgoJVmlzdWFsaXNlEi4KAm9wGAEgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLlZpc3VhbGlzZU9wEg0KBWZpZWxkGAIgASgJImMKBVdoZXJlEioKAm9wGAEgASgOMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLldoZXJlT3ASLgoHY2xhdXNlcxgCIAMoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbGF1c2UiVAoGQ2xhdXNlEg0KBWZpZWxkGAEgASgJEg0KBXZhbHVlGAIgASgJEiwKAm9wGAMgASgOMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbXBhcmVPcCJFCgVPcmRlchINCgVmaWVsZBgBIAEoCRItCgVvcmRlchgCIAEoDjIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5PcmRlck9wIucBCgZTZXJpZXMSLgoKdGltZXN0YW1wcxgBIAMoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASNQoEZGF0YRgCIAMoCzInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TZXJpZXMuRGF0YUVudHJ5EhYKDnZpc3VhbGlzYXRpb25zGAMgAygJEg4KBmdyb3VwcxgEIAMoCRpOCglEYXRhRW50cnkSCwoDa2V5GAEgASgJEjAKBXZhbHVlGAIgASgLMiEubmV4dXMuY29udHJvbHBsYW5lLnYxLlNlcmllc0RhdGE6AjgBIjkKClNlcmllc0RhdGESDAoEbmFtZRgBIAEoCRIdCgZ2YWx1ZXMYAiADKAsyDS5zdGQudjEuVmFsdWUiSwoDUm93Eg4KBmZpZWxkcxgBIAMoCRI0Cgpyb3dfdmFsdWVzGAIgAygLMiAubmV4dXMuY29udHJvbHBsYW5lLnYxLlJvd1ZhbHVlcyIqCglSb3dWYWx1ZXMSHQoGdmFsdWVzGAEgAygLMg0uc3RkLnYxLlZhbHVlIkEKEkNyZWF0ZVF1ZXJ5UmVxdWVzdBIrCgVxdWVyeRgBIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeSJ/ChNDcmVhdGVRdWVyeVJlc3BvbnNlEgsKA3BpZBgBIAEoCRIrCgVxdWVyeRgCIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeRIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIvChpTdGFydFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBIRCglxdWVyeV9waWQYASABKAkiPQobU3RhcnRRdWVyeUV4ZWN1dGlvblJlc3BvbnNlEgsKA3BpZBgBIAEoCRIRCglxdWVyeV9waWQYAiABKAkiLAoZUG9sbFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBIPCgdqb2JfcGlkGAEgASgJIqYBChpQb2xsUXVlcnlFeGVjdXRpb25SZXNwb25zZRI7CgZzdGF0dXMYASABKA4yKy5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnlFeGVjdXRpb25TdGF0dXMSQAoGcmVzdWx0GAIgASgLMisubmV4dXMuY29udHJvbHBsYW5lLnYxLlF1ZXJ5RXhlY3V0aW9uUmVzdWx0SACIAQFCCQoHX3Jlc3VsdCJvChRRdWVyeUV4ZWN1dGlvblJlc3VsdBItCgZzZXJpZXMYASABKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuU2VyaWVzEigKBHJvd3MYAiADKAsyGi5uZXh1cy5jb250cm9scGxhbmUudjEuUm93IjcKFFJlZ2lzdGVyQWdlbnRSZXF1ZXN0EgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJIjgKFVJlZ2lzdGVyQWdlbnRSZXNwb25zZRIKCgJpZBgBIAEoCRITCgtjbHVzdGVyX3BpZBgCIAEoCSIkChZEZXJlZ2lzdGVyQWdlbnRSZXF1ZXN0EgoKAmlkGAEgASgJIloKF0RlcmVnaXN0ZXJBZ2VudFJlc3BvbnNlEgoKAmlkGAEgASgJEjMKD2RlcmVnaXN0ZXJlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiMwoQSGVhcnRiZWF0UmVxdWVzdBIKCgJpZBgBIAEoCRITCgtjbHVzdGVyX3BpZBgCIAEoCSI0ChFIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCRITCgtjbHVzdGVyX3BpZBgCIAEoCSJjChVDb250cm9sTWVzc2FnZVJlcXVlc3QSEgoKcmVxdWVzdF9pZBgBIAEoCRI2Cgdjb250cm9sGAIgASgLMiUubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbnRyb2xNZXNzYWdlIoQBChZDb250cm9sTWVzc2FnZVJlc3BvbnNlEhIKCnJlcXVlc3RfaWQYASABKAkSNgoHY29udHJvbBgCIAEoCzIlLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db250cm9sTWVzc2FnZRIPCgdzdWNjZXNzGAMgASgIEg0KBWVycm9yGAQgASgJIpIBCg5Db250cm9sTWVzc2FnZRI8Cgl0ZWxlbWV0cnkYASABKAsyJy5uZXh1cy5jb250cm9scGxhbmUudjEuVGVsZW1ldHJ5Q29udHJvbEgAEjcKB2RldmljZXMYAiABKAsyJC5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlQ29udHJvbEgAQgkKB21lc3NhZ2UiIgoQVGVsZW1ldHJ5Q29udHJvbBIOCgZleHBvcnQYASABKAgiPwoNRGV2aWNlQ29udHJvbBIuCgdkZXZpY2VzGAEgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSpfCgtDbHVzdGVyVHlwZRIcChhDTFVTVEVSX1RZUEVfVU5TUEVDSUZJRUQQABIVChFDTFVTVEVSX1RZUEVfQllPQxABEhsKF0NMVVNURVJfVFlQRV9TRVJWRVJMRVNTEAIqTgoJSVBWZXJzaW9uEhkKFUlQVkVSU0lPTl9VTlNQRUNJRklFRBAAEhIKDklQVkVSU0lPTl9JUFY0EAESEgoOSVBWRVJTSU9OX0lQVjYQAiqBBAoLVmlzdWFsaXNlT3ASHAoYVklTVUFMSVNFX09QX1VOU1BFQ0lGSUVEEAASFgoSVklTVUFMSVNFX09QX0NPVU5UEAESHwobVklTVUFMSVNFX09QX0NPVU5UX0RJU1RJTkNUEAISFAoQVklTVUFMSVNFX09QX1NVTRADEhQKEFZJU1VBTElTRV9PUF9BVkcQBBIUChBWSVNVQUxJU0VfT1BfTUFYEAUSFAoQVklTVUFMSVNFX09QX01JThAGEhUKEVZJU1VBTElTRV9PUF9QMDAxEAcSFAoQVklTVUFMSVNFX09QX1AwMRAIEhQKEFZJU1VBTElTRV9PUF9QMDUQCRIUChBWSVNVQUxJU0VfT1BfUDEwEAoSFAoQVklTVUFMSVNFX09QX1AyNRALEhQKEFZJU1VBTElTRV9PUF9QNTAQDBIUChBWSVNVQUxJU0VfT1BfUDc1EA0SFAoQVklTVUFMSVNFX09QX1A5MBAOEhQKEFZJU1VBTElTRV9PUF9QOTUQDxIUChBWSVNVQUxJU0VfT1BfUDk5EBASFQoRVklTVUFMSVNFX09QX1A5OTkQERIZChVWSVNVQUxJU0VfT1BfUkFURV9BVkcQEhIZChVWSVNVQUxJU0VfT1BfUkFURV9TVU0QExIZChVWSVNVQUxJU0VfT1BfUkFURV9NQVgQFCpGCgdXaGVyZU9wEhgKFFdIRVJFX09QX1VOU1BFQ0lGSUVEEAASEAoMV0hFUkVfT1BfQU5EEAESDwoLV0hFUkVfT1BfT1IQAiq7AgoJQ29tcGFyZU9wEhoKFkNPTVBBUkVfT1BfVU5TUEVDSUZJRUQQABIUChBDT01QQVJFX09QX0VRVUFMEAESGAoUQ09NUEFSRV9PUF9OT1RfRVFVQUwQAhIbChdDT01QQVJFX09QX0dSRUFURVJfVEhBThADEiQKIENPTVBBUkVfT1BfR1JFQVRFUl9USEFOX09SX0VRVUFMEAQSGAoUQ09NUEFSRV9PUF9MRVNTX1RIQU4QBRIhCh1DT01QQVJFX09QX0xFU1NfVEhBTl9PUl9FUVVBTBAGEhcKE0NPTVBBUkVfT1BfQ09OVEFJTlMQBxIfChtDT01QQVJFX09QX0RPRVNfTk9UX0NPTlRBSU4QCBIRCg1DT01QQVJFX09QX0lOEAkSFQoRQ09NUEFSRV9PUF9OT1RfSU4QCipICgdPcmRlck9wEhgKFE9SREVSX09QX1VOU1BFQ0lGSUVEEAASEAoMT1JERVJfT1BfQVNDEAESEQoNT1JERVJfT1BfREVTQxACKs8BChRRdWVyeUV4ZWN1dGlvblN0YXR1cxImCiJRVUVSWV9FWEVDVVRJT05fU1RBVFVTX1VOU1BFQ0lGSUVEEAASIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19QRU5ESU5HEAESIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19SVU5OSU5HEAISJAogUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19DT01QTEVURUQQAxIhCh1RVUVSWV9FWEVDVVRJT05fU1RBVFVTX0ZBSUxFRBAEMvUMChNDb250cm9sUGxhbmVTZXJ2aWNlEmwKDUNyZWF0ZUNsdXN0ZXISKy5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlQ2x1c3RlclJlcXVlc3QaLC5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlQ2x1c3RlclJlc3BvbnNlIgASbAoNRGVsZXRlQ2x1c3RlchIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVDbHVzdGVyUmVxdWVzdBosLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVDbHVzdGVyUmVzcG9uc2UiABJpCgxMaXN0Q2x1c3RlcnMSKi5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdENsdXN0ZXJzUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5MaXN0Q2x1c3RlcnNSZXNwb25zZSIAEmMKCkdldENsdXN0ZXISKC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q2x1c3RlclJlcXVlc3QaKS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q2x1c3RlclJlc3BvbnNlIgASaQoMQ3JlYXRlRGV2aWNlEioubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZURldmljZVJlcXVlc3QaKy5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlRGV2aWNlUmVzcG9uc2UiABJpCgxEZWxldGVEZXZpY2USKi5uZXh1cy5jb250cm9scGxhbmUudjEuRGVsZXRlRGV2aWNlUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZWxldGVEZXZpY2VSZXNwb25zZSIAEmkKDFVwZGF0ZURldmljZRIqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5VcGRhdGVEZXZpY2VSZXF1ZXN0GisubmV4dXMuY29udHJvbHBsYW5lLnYxLlVwZGF0ZURldmljZVJlc3BvbnNlIgASZgoLTGlzdERldmljZXMSKS5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdERldmljZXNSZXF1ZXN0GioubmV4dXMuY29udHJvbHBsYW5lLnYxLkxpc3REZXZpY2VzUmVzcG9uc2UiABJgCglHZXREZXZpY2USJy5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0RGV2aWNlUmVxdWVzdBooLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXREZXZpY2VSZXNwb25zZSIAEmYKC0NyZWF0ZVF1ZXJ5EikubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZVF1ZXJ5UmVxdWVzdBoqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVRdWVyeVJlc3BvbnNlIgASfgoTU3RhcnRRdWVyeUV4ZWN1dGlvbhIxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TdGFydFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBoyLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TdGFydFF1ZXJ5RXhlY3V0aW9uUmVzcG9uc2UiABJ7ChJQb2xsUXVlcnlFeGVjdXRpb24SMC5uZXh1cy5jb250cm9scGxhbmUudjEuUG9sbFF1ZXJ5RXhlY3V0aW9uUmVxdWVzdBoxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Qb2xsUXVlcnlFeGVjdXRpb25SZXNwb25zZSIAEmwKDVJlZ2lzdGVyQWdlbnQSKy5uZXh1cy5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJBZ2VudFJlcXVlc3QaLC5uZXh1cy5jb250cm9scGxhbmUudjEuUmVnaXN0ZXJBZ2VudFJlc3BvbnNlIgAScgoPRGVyZWdpc3RlckFnZW50Ei0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlcmVnaXN0ZXJBZ2VudFJlcXVlc3QaLi5uZXh1cy5jb250cm9scGxhbmUudjEuRGVyZWdpc3RlckFnZW50UmVzcG9uc2UiABJgCglIZWFydGJlYXQSJy5uZXh1cy5jb250cm9scGxhbmUudjEuSGVhcnRiZWF0UmVxdWVzdBooLm5leHVzLmNvbnRyb2xwbGFuZS52MS5IZWFydGJlYXRSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_field_mask, file_google_protobuf_timestamp, file_std_v1_std]);
+  fileDesc("CiluZXh1cy9jb250cm9scGxhbmUvdjEvY29udHJvbF9wbGFuZS5wcm90bxIVbmV4dXMuY29udHJvbHBsYW5lLnYxIsgBCgdDbHVzdGVyEgsKA3BpZBgBIAEoCRIQCgh0ZWFtX3BpZBgCIAEoCRIMCgRuYW1lGAMgASgJEjAKBHR5cGUYBCABKA4yIi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlclR5cGUSLgoKY3JlYXRlZF9hdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiaAoUQ3JlYXRlQ2x1c3RlclJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRIwCgR0eXBlGAMgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXJUeXBlIoUBChVDcmVhdGVDbHVzdGVyUmVzcG9uc2USCwoDcGlkGAEgASgJEi8KB2NsdXN0ZXIYAiABKAsyHi5uZXh1cy5jb250cm9scGxhbmUudjEuQ2x1c3RlchIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIjChREZWxldGVDbHVzdGVyUmVxdWVzdBILCgNwaWQYASABKAkiVAoVRGVsZXRlQ2x1c3RlclJlc3BvbnNlEgsKA3BpZBgBIAEoCRIuCgpkZWxldGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCInChNMaXN0Q2x1c3RlcnNSZXF1ZXN0EhAKCHRlYW1fcGlkGAEgASgJIkgKFExpc3RDbHVzdGVyc1Jlc3BvbnNlEjAKCGNsdXN0ZXJzGAEgAygLMh4ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsdXN0ZXIiIAoRR2V0Q2x1c3RlclJlcXVlc3QSCwoDcGlkGAEgASgJIlIKEkdldENsdXN0ZXJSZXNwb25zZRILCgNwaWQYASABKAkSLwoHY2x1c3RlchgCIAEoCzIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DbHVzdGVyItcCCgZEZXZpY2USCwoDcGlkGAEgASgJEhAKCHRlYW1fcGlkGAIgASgJEgwKBG5hbWUYAyABKAkSGAoLZGVzY3JpcHRpb24YBCABKAlIAYgBARI2CgdnZW5lcmljGAUgASgLMiMubmV4dXMuY29udHJvbHBsYW5lLnYxLkdlbmVyaWNNb2RlbEgAEjMKCWFkZHJlc3NlcxgGIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAcgAygLMhAuc3RkLnYxLktleVZhbHVlEi4KCmNyZWF0ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgcKBW1vZGVsQg4KDF9kZXNjcmlwdGlvbiKfAQoMR2VuZXJpY01vZGVsEg0KBW1vZGVsGAEgASgJEhYKDG90aGVyX3ZlbmRvchgCIAEoCUgAEi0KBWNpc2NvGAMgASgLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkNpc2NvSAASLwoGYXJpc3RhGAQgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkFyaXN0YUgAQggKBnZlbmRvciIHCgVDaXNjbyIICgZBcmlzdGEiTwoJSXBBZGRyZXNzEg8KB2FkZHJlc3MYASABKAwSMQoHdmVyc2lvbhgCIAEoDjIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JUFZlcnNpb24i4gEKE0NyZWF0ZURldmljZVJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRI2CgdnZW5lcmljGAQgASgLMiMubmV4dXMuY29udHJvbHBsYW5lLnYxLkdlbmVyaWNNb2RlbEgAEjMKCWFkZHJlc3NlcxgFIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5JcEFkZHJlc3MSIAoGbGFiZWxzGAYgAygLMhAuc3RkLnYxLktleVZhbHVlQgcKBW1vZGVsIoIBChRDcmVhdGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgpjcmVhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIiChNEZWxldGVEZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJTChREZWxldGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLgoKZGVsZXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiggEKE1VwZGF0ZURldmljZVJlcXVlc3QSCwoDcGlkGAEgASgJEi0KBmRldmljZRgCIAEoCzIdLm5leHVzLmNvbnRyb2xwbGFuZS52MS5EZXZpY2USLwoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIoIBChRVcGRhdGVEZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZRIuCgp1cGRhdGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIfChBHZXREZXZpY2VSZXF1ZXN0EgsKA3BpZBgBIAEoCSJPChFHZXREZXZpY2VSZXNwb25zZRILCgNwaWQYASABKAkSLQoGZGV2aWNlGAIgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSImChJMaXN0RGV2aWNlc1JlcXVlc3QSEAoIdGVhbV9waWQYASABKAkiRQoTTGlzdERldmljZXNSZXNwb25zZRIuCgdkZXZpY2VzGAEgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSL8AgoFUXVlcnkSCwoDcGlkGAEgASgJEjMKCXZpc3VhbGlzZRgCIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5WaXN1YWxpc2USKwoFd2hlcmUYAyABKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuV2hlcmUSEAoIZ3JvdXBfYnkYBCADKAkSLgoIb3JkZXJfYnkYBSADKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuT3JkZXISDQoFbGltaXQYBiABKA0SLQoGaGF2aW5nGAcgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkNsYXVzZRISCgpzdGFydF90aW1lGAggASgDEhAKCGVuZF90aW1lGAkgASgDEi4KCmNyZWF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIkoKCVZpc3VhbGlzZRIuCgJvcBgBIAEoDjIiLm5leHVzLmNvbnRyb2xwbGFuZS52MS5WaXN1YWxpc2VPcBINCgVmaWVsZBgCIAEoCSJjCgVXaGVyZRIqCgJvcBgBIAEoDjIeLm5leHVzLmNvbnRyb2xwbGFuZS52MS5XaGVyZU9wEi4KB2NsYXVzZXMYAiADKAsyHS5uZXh1cy5jb250cm9scGxhbmUudjEuQ2xhdXNlIlQKBkNsYXVzZRINCgVmaWVsZBgBIAEoCRINCgV2YWx1ZRgCIAEoCRIsCgJvcBgDIAEoDjIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db21wYXJlT3AiRQoFT3JkZXISDQoFZmllbGQYASABKAkSLQoFb3JkZXIYAiABKA4yHi5uZXh1cy5jb250cm9scGxhbmUudjEuT3JkZXJPcCLnAQoGU2VyaWVzEi4KCnRpbWVzdGFtcHMYASADKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjUKBGRhdGEYAiADKAsyJy5uZXh1cy5jb250cm9scGxhbmUudjEuU2VyaWVzLkRhdGFFbnRyeRIWCg52aXN1YWxpc2F0aW9ucxgDIAMoCRIOCgZncm91cHMYBCADKAkaTgoJRGF0YUVudHJ5EgsKA2tleRgBIAEoCRIwCgV2YWx1ZRgCIAEoCzIhLm5leHVzLmNvbnRyb2xwbGFuZS52MS5TZXJpZXNEYXRhOgI4ASI5CgpTZXJpZXNEYXRhEgwKBG5hbWUYASABKAkSHQoGdmFsdWVzGAIgAygLMg0uc3RkLnYxLlZhbHVlIksKA1JvdxIOCgZmaWVsZHMYASADKAkSNAoKcm93X3ZhbHVlcxgCIAMoCzIgLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Sb3dWYWx1ZXMiKgoJUm93VmFsdWVzEh0KBnZhbHVlcxgBIAMoCzINLnN0ZC52MS5WYWx1ZSJTChJDcmVhdGVRdWVyeVJlcXVlc3QSEAoIdGVhbV9waWQYASABKAkSKwoFcXVlcnkYAiABKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnkifwoTQ3JlYXRlUXVlcnlSZXNwb25zZRILCgNwaWQYASABKAkSKwoFcXVlcnkYAiABKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnkSLgoKY3JlYXRlZF9hdBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiLwoaU3RhcnRRdWVyeUV4ZWN1dGlvblJlcXVlc3QSEQoJcXVlcnlfcGlkGAEgASgJIj0KG1N0YXJ0UXVlcnlFeGVjdXRpb25SZXNwb25zZRILCgNwaWQYASABKAkSEQoJcXVlcnlfcGlkGAIgASgJIiwKGVBvbGxRdWVyeUV4ZWN1dGlvblJlcXVlc3QSDwoHam9iX3BpZBgBIAEoCSKmAQoaUG9sbFF1ZXJ5RXhlY3V0aW9uUmVzcG9uc2USOwoGc3RhdHVzGAEgASgOMisubmV4dXMuY29udHJvbHBsYW5lLnYxLlF1ZXJ5RXhlY3V0aW9uU3RhdHVzEkAKBnJlc3VsdBgCIAEoCzIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblJlc3VsdEgAiAEBQgkKB19yZXN1bHQibwoUUXVlcnlFeGVjdXRpb25SZXN1bHQSLQoGc2VyaWVzGAEgASgLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLlNlcmllcxIoCgRyb3dzGAIgAygLMhoubmV4dXMuY29udHJvbHBsYW5lLnYxLlJvdyIzChBIZWFydGJlYXRSZXF1ZXN0EgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJIjQKEUhlYXJ0YmVhdFJlc3BvbnNlEgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJIqkBCg1BZ2VudE1ldGFkYXRhEgoKAmlkGAEgASgJEhMKC2NsdXN0ZXJfcGlkGAIgASgJEg8KB3ZlcnNpb24YAyABKAkSMgoGc3RhdHVzGAQgASgOMiIubmV4dXMuY29udHJvbHBsYW5lLnYxLkFnZW50U3RhdHVzEjIKDmxhc3RfaGVhcnRiZWF0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJMCglIZWFydGJlYXQSEAoIYWdlbnRfaWQYASABKAkSLQoJdGltZXN0YW1wGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJjChVDb250cm9sTWVzc2FnZVJlcXVlc3QSEgoKcmVxdWVzdF9pZBgBIAEoCRI2Cgdjb250cm9sGAIgASgLMiUubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbnRyb2xNZXNzYWdlIoQBChZDb250cm9sTWVzc2FnZVJlc3BvbnNlEhIKCnJlcXVlc3RfaWQYASABKAkSNgoHY29udHJvbBgCIAEoCzIlLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db250cm9sTWVzc2FnZRIPCgdzdWNjZXNzGAMgASgIEg0KBWVycm9yGAQgASgJIpIBCg5Db250cm9sTWVzc2FnZRI8Cgl0ZWxlbWV0cnkYASABKAsyJy5uZXh1cy5jb250cm9scGxhbmUudjEuVGVsZW1ldHJ5Q29udHJvbEgAEjcKB2RldmljZXMYAiABKAsyJC5uZXh1cy5jb250cm9scGxhbmUudjEuRGV2aWNlQ29udHJvbEgAQgkKB21lc3NhZ2UiIgoQVGVsZW1ldHJ5Q29udHJvbBIOCgZleHBvcnQYASABKAgiPwoNRGV2aWNlQ29udHJvbBIuCgdkZXZpY2VzGAEgAygLMh0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkRldmljZSpfCgtDbHVzdGVyVHlwZRIcChhDTFVTVEVSX1RZUEVfVU5TUEVDSUZJRUQQABIVChFDTFVTVEVSX1RZUEVfQllPQxABEhsKF0NMVVNURVJfVFlQRV9TRVJWRVJMRVNTEAIqTgoJSVBWZXJzaW9uEhkKFUlQVkVSU0lPTl9VTlNQRUNJRklFRBAAEhIKDklQVkVSU0lPTl9JUFY0EAESEgoOSVBWRVJTSU9OX0lQVjYQAiqBBAoLVmlzdWFsaXNlT3ASHAoYVklTVUFMSVNFX09QX1VOU1BFQ0lGSUVEEAASFgoSVklTVUFMSVNFX09QX0NPVU5UEAESHwobVklTVUFMSVNFX09QX0NPVU5UX0RJU1RJTkNUEAISFAoQVklTVUFMSVNFX09QX1NVTRADEhQKEFZJU1VBTElTRV9PUF9BVkcQBBIUChBWSVNVQUxJU0VfT1BfTUFYEAUSFAoQVklTVUFMSVNFX09QX01JThAGEhUKEVZJU1VBTElTRV9PUF9QMDAxEAcSFAoQVklTVUFMSVNFX09QX1AwMRAIEhQKEFZJU1VBTElTRV9PUF9QMDUQCRIUChBWSVNVQUxJU0VfT1BfUDEwEAoSFAoQVklTVUFMSVNFX09QX1AyNRALEhQKEFZJU1VBTElTRV9PUF9QNTAQDBIUChBWSVNVQUxJU0VfT1BfUDc1EA0SFAoQVklTVUFMSVNFX09QX1A5MBAOEhQKEFZJU1VBTElTRV9PUF9QOTUQDxIUChBWSVNVQUxJU0VfT1BfUDk5EBASFQoRVklTVUFMSVNFX09QX1A5OTkQERIZChVWSVNVQUxJU0VfT1BfUkFURV9BVkcQEhIZChVWSVNVQUxJU0VfT1BfUkFURV9TVU0QExIZChVWSVNVQUxJU0VfT1BfUkFURV9NQVgQFCpGCgdXaGVyZU9wEhgKFFdIRVJFX09QX1VOU1BFQ0lGSUVEEAASEAoMV0hFUkVfT1BfQU5EEAESDwoLV0hFUkVfT1BfT1IQAiq7AgoJQ29tcGFyZU9wEhoKFkNPTVBBUkVfT1BfVU5TUEVDSUZJRUQQABIUChBDT01QQVJFX09QX0VRVUFMEAESGAoUQ09NUEFSRV9PUF9OT1RfRVFVQUwQAhIbChdDT01QQVJFX09QX0dSRUFURVJfVEhBThADEiQKIENPTVBBUkVfT1BfR1JFQVRFUl9USEFOX09SX0VRVUFMEAQSGAoUQ09NUEFSRV9PUF9MRVNTX1RIQU4QBRIhCh1DT01QQVJFX09QX0xFU1NfVEhBTl9PUl9FUVVBTBAGEhcKE0NPTVBBUkVfT1BfQ09OVEFJTlMQBxIfChtDT01QQVJFX09QX0RPRVNfTk9UX0NPTlRBSU4QCBIRCg1DT01QQVJFX09QX0lOEAkSFQoRQ09NUEFSRV9PUF9OT1RfSU4QCipICgdPcmRlck9wEhgKFE9SREVSX09QX1VOU1BFQ0lGSUVEEAASEAoMT1JERVJfT1BfQVNDEAESEQoNT1JERVJfT1BfREVTQxACKs8BChRRdWVyeUV4ZWN1dGlvblN0YXR1cxImCiJRVUVSWV9FWEVDVVRJT05fU1RBVFVTX1VOU1BFQ0lGSUVEEAASIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19QRU5ESU5HEAESIgoeUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19SVU5OSU5HEAISJAogUVVFUllfRVhFQ1VUSU9OX1NUQVRVU19DT01QTEVURUQQAxIhCh1RVUVSWV9FWEVDVVRJT05fU1RBVFVTX0ZBSUxFRBAEKpEBCgtBZ2VudFN0YXR1cxIcChhBR0VOVF9TVEFUVVNfVU5TUEVDSUZJRUQQABIWChJBR0VOVF9TVEFUVVNfQUxJVkUQARIWChJBR0VOVF9TVEFUVVNfU1RBTEUQAhIdChlBR0VOVF9TVEFUVVNfVU5SRVNQT05TSVZFEAMSFQoRQUdFTlRfU1RBVFVTX0RFQUQQBDKTCwoTQ29udHJvbFBsYW5lU2VydmljZRJsCg1DcmVhdGVDbHVzdGVyEisubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZUNsdXN0ZXJSZXF1ZXN0GiwubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZUNsdXN0ZXJSZXNwb25zZSIAEmwKDURlbGV0ZUNsdXN0ZXISKy5uZXh1cy5jb250cm9scGxhbmUudjEuRGVsZXRlQ2x1c3RlclJlcXVlc3QaLC5uZXh1cy5jb250cm9scGxhbmUudjEuRGVsZXRlQ2x1c3RlclJlc3BvbnNlIgASaQoMTGlzdENsdXN0ZXJzEioubmV4dXMuY29udHJvbHBsYW5lLnYxLkxpc3RDbHVzdGVyc1JlcXVlc3QaKy5uZXh1cy5jb250cm9scGxhbmUudjEuTGlzdENsdXN0ZXJzUmVzcG9uc2UiABJjCgpHZXRDbHVzdGVyEigubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENsdXN0ZXJSZXF1ZXN0GikubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENsdXN0ZXJSZXNwb25zZSIAEmkKDENyZWF0ZURldmljZRIqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVEZXZpY2VSZXF1ZXN0GisubmV4dXMuY29udHJvbHBsYW5lLnYxLkNyZWF0ZURldmljZVJlc3BvbnNlIgASaQoMRGVsZXRlRGV2aWNlEioubmV4dXMuY29udHJvbHBsYW5lLnYxLkRlbGV0ZURldmljZVJlcXVlc3QaKy5uZXh1cy5jb250cm9scGxhbmUudjEuRGVsZXRlRGV2aWNlUmVzcG9uc2UiABJpCgxVcGRhdGVEZXZpY2USKi5uZXh1cy5jb250cm9scGxhbmUudjEuVXBkYXRlRGV2aWNlUmVxdWVzdBorLm5leHVzLmNvbnRyb2xwbGFuZS52MS5VcGRhdGVEZXZpY2VSZXNwb25zZSIAEmYKC0xpc3REZXZpY2VzEikubmV4dXMuY29udHJvbHBsYW5lLnYxLkxpc3REZXZpY2VzUmVxdWVzdBoqLm5leHVzLmNvbnRyb2xwbGFuZS52MS5MaXN0RGV2aWNlc1Jlc3BvbnNlIgASYAoJR2V0RGV2aWNlEicubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldERldmljZVJlcXVlc3QaKC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0RGV2aWNlUmVzcG9uc2UiABJmCgtDcmVhdGVRdWVyeRIpLm5leHVzLmNvbnRyb2xwbGFuZS52MS5DcmVhdGVRdWVyeVJlcXVlc3QaKi5uZXh1cy5jb250cm9scGxhbmUudjEuQ3JlYXRlUXVlcnlSZXNwb25zZSIAEn4KE1N0YXJ0UXVlcnlFeGVjdXRpb24SMS5uZXh1cy5jb250cm9scGxhbmUudjEuU3RhcnRRdWVyeUV4ZWN1dGlvblJlcXVlc3QaMi5uZXh1cy5jb250cm9scGxhbmUudjEuU3RhcnRRdWVyeUV4ZWN1dGlvblJlc3BvbnNlIgASewoSUG9sbFF1ZXJ5RXhlY3V0aW9uEjAubmV4dXMuY29udHJvbHBsYW5lLnYxLlBvbGxRdWVyeUV4ZWN1dGlvblJlcXVlc3QaMS5uZXh1cy5jb250cm9scGxhbmUudjEuUG9sbFF1ZXJ5RXhlY3V0aW9uUmVzcG9uc2UiABJgCglIZWFydGJlYXQSJy5uZXh1cy5jb250cm9scGxhbmUudjEuSGVhcnRiZWF0UmVxdWVzdBooLm5leHVzLmNvbnRyb2xwbGFuZS52MS5IZWFydGJlYXRSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_field_mask, file_google_protobuf_timestamp, file_std_v1_std]);
 
 /**
  * @generated from message nexus.controlplane.v1.Cluster
@@ -632,44 +632,59 @@ export const ListDevicesResponseSchema: GenMessage<ListDevicesResponse> = /*@__P
  */
 export type Query = Message<"nexus.controlplane.v1.Query"> & {
   /**
-   * @generated from field: repeated nexus.controlplane.v1.Visualise visualise = 1;
+   * @generated from field: string pid = 1;
+   */
+  pid: string;
+
+  /**
+   * @generated from field: repeated nexus.controlplane.v1.Visualise visualise = 2;
    */
   visualise: Visualise[];
 
   /**
-   * @generated from field: nexus.controlplane.v1.Where where = 2;
+   * @generated from field: nexus.controlplane.v1.Where where = 3;
    */
   where?: Where;
 
   /**
-   * @generated from field: repeated string group_by = 3;
+   * @generated from field: repeated string group_by = 4;
    */
   groupBy: string[];
 
   /**
-   * @generated from field: repeated nexus.controlplane.v1.Order order_by = 4;
+   * @generated from field: repeated nexus.controlplane.v1.Order order_by = 5;
    */
   orderBy: Order[];
 
   /**
-   * @generated from field: uint32 limit = 5;
+   * @generated from field: uint32 limit = 6;
    */
   limit: number;
 
   /**
-   * @generated from field: nexus.controlplane.v1.Clause having = 6;
+   * @generated from field: nexus.controlplane.v1.Clause having = 7;
    */
   having?: Clause;
 
   /**
-   * @generated from field: int64 start_time = 7;
+   * @generated from field: int64 start_time = 8;
    */
   startTime: bigint;
 
   /**
-   * @generated from field: int64 end_time = 8;
+   * @generated from field: int64 end_time = 9;
    */
   endTime: bigint;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp updated_at = 11;
+   */
+  updatedAt?: Timestamp;
 };
 
 /**
@@ -879,7 +894,12 @@ export const RowValuesSchema: GenMessage<RowValues> = /*@__PURE__*/
  */
 export type CreateQueryRequest = Message<"nexus.controlplane.v1.CreateQueryRequest"> & {
   /**
-   * @generated from field: nexus.controlplane.v1.Query query = 1;
+   * @generated from field: string team_pid = 1;
+   */
+  teamPid: string;
+
+  /**
+   * @generated from field: nexus.controlplane.v1.Query query = 2;
    */
   query?: Query;
 };
@@ -1028,102 +1048,15 @@ export const QueryExecutionResultSchema: GenMessage<QueryExecutionResult> = /*@_
   messageDesc(file_nexus_controlplane_v1_control_plane, 39);
 
 /**
- * @generated from message nexus.controlplane.v1.RegisterAgentRequest
- */
-export type RegisterAgentRequest = Message<"nexus.controlplane.v1.RegisterAgentRequest"> & {
-  /**
-   * The agent ID. These are generated by the agent themselves.
-   * They are of the form agt_{nanoid}
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * string organization_pid = 2; // We can derive these?
-   * string team_pid = 3;
-   *
-   * @generated from field: string cluster_pid = 2;
-   */
-  clusterPid: string;
-};
-
-/**
- * Describes the message nexus.controlplane.v1.RegisterAgentRequest.
- * Use `create(RegisterAgentRequestSchema)` to create a new message.
- */
-export const RegisterAgentRequestSchema: GenMessage<RegisterAgentRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 40);
-
-/**
- * @generated from message nexus.controlplane.v1.RegisterAgentResponse
- */
-export type RegisterAgentResponse = Message<"nexus.controlplane.v1.RegisterAgentResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * string organization_pid = 2;
-   * string team_pid = 3;
-   *
-   * @generated from field: string cluster_pid = 2;
-   */
-  clusterPid: string;
-};
-
-/**
- * Describes the message nexus.controlplane.v1.RegisterAgentResponse.
- * Use `create(RegisterAgentResponseSchema)` to create a new message.
- */
-export const RegisterAgentResponseSchema: GenMessage<RegisterAgentResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 41);
-
-/**
- * @generated from message nexus.controlplane.v1.DeregisterAgentRequest
- */
-export type DeregisterAgentRequest = Message<"nexus.controlplane.v1.DeregisterAgentRequest"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message nexus.controlplane.v1.DeregisterAgentRequest.
- * Use `create(DeregisterAgentRequestSchema)` to create a new message.
- */
-export const DeregisterAgentRequestSchema: GenMessage<DeregisterAgentRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 42);
-
-/**
- * @generated from message nexus.controlplane.v1.DeregisterAgentResponse
- */
-export type DeregisterAgentResponse = Message<"nexus.controlplane.v1.DeregisterAgentResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp deregistered_at = 2;
-   */
-  deregisteredAt?: Timestamp;
-};
-
-/**
- * Describes the message nexus.controlplane.v1.DeregisterAgentResponse.
- * Use `create(DeregisterAgentResponseSchema)` to create a new message.
- */
-export const DeregisterAgentResponseSchema: GenMessage<DeregisterAgentResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 43);
-
-/**
+ * ===== AGENT LIFECYCLE =====//
+ *
  * @generated from message nexus.controlplane.v1.HeartbeatRequest
  */
 export type HeartbeatRequest = Message<"nexus.controlplane.v1.HeartbeatRequest"> & {
   /**
+   * The agent ID. These are generated by the agent themselves.
+   * They are of the form agt_{nanoid}
+   *
    * @generated from field: string id = 1;
    */
   id: string;
@@ -1139,7 +1072,7 @@ export type HeartbeatRequest = Message<"nexus.controlplane.v1.HeartbeatRequest">
  * Use `create(HeartbeatRequestSchema)` to create a new message.
  */
 export const HeartbeatRequestSchema: GenMessage<HeartbeatRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 44);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 40);
 
 /**
  * @generated from message nexus.controlplane.v1.HeartbeatResponse
@@ -1161,7 +1094,71 @@ export type HeartbeatResponse = Message<"nexus.controlplane.v1.HeartbeatResponse
  * Use `create(HeartbeatResponseSchema)` to create a new message.
  */
 export const HeartbeatResponseSchema: GenMessage<HeartbeatResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 45);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 41);
+
+/**
+ * @generated from message nexus.controlplane.v1.AgentMetadata
+ */
+export type AgentMetadata = Message<"nexus.controlplane.v1.AgentMetadata"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string cluster_pid = 2;
+   */
+  clusterPid: string;
+
+  /**
+   * @generated from field: string version = 3;
+   */
+  version: string;
+
+  /**
+   * The status of the agent. The control plane manages this field.
+   * It is determined by the heartbeat recency.
+   *
+   * @generated from field: nexus.controlplane.v1.AgentStatus status = 4;
+   */
+  status: AgentStatus;
+
+  /**
+   * The last heartbeat we received.
+   *
+   * @generated from field: google.protobuf.Timestamp last_heartbeat = 5;
+   */
+  lastHeartbeat?: Timestamp;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.AgentMetadata.
+ * Use `create(AgentMetadataSchema)` to create a new message.
+ */
+export const AgentMetadataSchema: GenMessage<AgentMetadata> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_control_plane, 42);
+
+/**
+ * @generated from message nexus.controlplane.v1.Heartbeat
+ */
+export type Heartbeat = Message<"nexus.controlplane.v1.Heartbeat"> & {
+  /**
+   * @generated from field: string agent_id = 1;
+   */
+  agentId: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp timestamp = 2;
+   */
+  timestamp?: Timestamp;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.Heartbeat.
+ * Use `create(HeartbeatSchema)` to create a new message.
+ */
+export const HeartbeatSchema: GenMessage<Heartbeat> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_control_plane, 43);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessageRequest
@@ -1183,7 +1180,7 @@ export type ControlMessageRequest = Message<"nexus.controlplane.v1.ControlMessag
  * Use `create(ControlMessageRequestSchema)` to create a new message.
  */
 export const ControlMessageRequestSchema: GenMessage<ControlMessageRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 46);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 44);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessageResponse
@@ -1215,7 +1212,7 @@ export type ControlMessageResponse = Message<"nexus.controlplane.v1.ControlMessa
  * Use `create(ControlMessageResponseSchema)` to create a new message.
  */
 export const ControlMessageResponseSchema: GenMessage<ControlMessageResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 47);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 45);
 
 /**
  * @generated from message nexus.controlplane.v1.ControlMessage
@@ -1244,7 +1241,7 @@ export type ControlMessage = Message<"nexus.controlplane.v1.ControlMessage"> & {
  * Use `create(ControlMessageSchema)` to create a new message.
  */
 export const ControlMessageSchema: GenMessage<ControlMessage> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 48);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 46);
 
 /**
  * Telemetry control messages
@@ -1267,7 +1264,7 @@ export type TelemetryControl = Message<"nexus.controlplane.v1.TelemetryControl">
  * Use `create(TelemetryControlSchema)` to create a new message.
  */
 export const TelemetryControlSchema: GenMessage<TelemetryControl> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 49);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 47);
 
 /**
  * Device control messages
@@ -1286,7 +1283,7 @@ export type DeviceControl = Message<"nexus.controlplane.v1.DeviceControl"> & {
  * Use `create(DeviceControlSchema)` to create a new message.
  */
 export const DeviceControlSchema: GenMessage<DeviceControl> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_control_plane, 50);
+  messageDesc(file_nexus_controlplane_v1_control_plane, 48);
 
 /**
  * @generated from enum nexus.controlplane.v1.ClusterType
@@ -1617,6 +1614,50 @@ export const QueryExecutionStatusSchema: GenEnum<QueryExecutionStatus> = /*@__PU
   enumDesc(file_nexus_controlplane_v1_control_plane, 6);
 
 /**
+ * @generated from enum nexus.controlplane.v1.AgentStatus
+ */
+export enum AgentStatus {
+  /**
+   * @generated from enum value: AGENT_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * The last heartbeat was received within the last 5 minutes.
+   *
+   * @generated from enum value: AGENT_STATUS_ALIVE = 1;
+   */
+  ALIVE = 1,
+
+  /**
+   * The last heartbeat was received more than 5 minutes ago.
+   *
+   * @generated from enum value: AGENT_STATUS_STALE = 2;
+   */
+  STALE = 2,
+
+  /**
+   * The last heartbeat was received more than 30 minutes ago.
+   *
+   * @generated from enum value: AGENT_STATUS_UNRESPONSIVE = 3;
+   */
+  UNRESPONSIVE = 3,
+
+  /**
+   * The agent has not been heard of in the last 8 hours.
+   *
+   * @generated from enum value: AGENT_STATUS_DEAD = 4;
+   */
+  DEAD = 4,
+}
+
+/**
+ * Describes the enum nexus.controlplane.v1.AgentStatus.
+ */
+export const AgentStatusSchema: GenEnum<AgentStatus> = /*@__PURE__*/
+  enumDesc(file_nexus_controlplane_v1_control_plane, 7);
+
+/**
  * The control plane service manages all operational aspects of the system. This includes
  * owning the management of clusters, devices, queries, etc. Additionally, it manages the
  * lifecycle of our agents.
@@ -1734,22 +1775,6 @@ export const ControlPlaneService: GenService<{
   /**
    * Agent lifecycle
    *
-   * @generated from rpc nexus.controlplane.v1.ControlPlaneService.RegisterAgent
-   */
-  registerAgent: {
-    methodKind: "unary";
-    input: typeof RegisterAgentRequestSchema;
-    output: typeof RegisterAgentResponseSchema;
-  },
-  /**
-   * @generated from rpc nexus.controlplane.v1.ControlPlaneService.DeregisterAgent
-   */
-  deregisterAgent: {
-    methodKind: "unary";
-    input: typeof DeregisterAgentRequestSchema;
-    output: typeof DeregisterAgentResponseSchema;
-  },
-  /**
    * @generated from rpc nexus.controlplane.v1.ControlPlaneService.Heartbeat
    */
   heartbeat: {
