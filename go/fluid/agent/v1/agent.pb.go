@@ -27,8 +27,11 @@ const (
 )
 
 type ExecQueryRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Query         *v1.Query              `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// A (request) ID to keep track of the request. Usually set to the ID
+	// of the query result (created in the control plane)
+	Id            string    `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Query         *v1.Query `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -63,6 +66,13 @@ func (*ExecQueryRequest) Descriptor() ([]byte, []int) {
 	return file_fluid_agent_v1_agent_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *ExecQueryRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 func (x *ExecQueryRequest) GetQuery() *v1.Query {
 	if x != nil {
 		return x.Query
@@ -72,7 +82,8 @@ func (x *ExecQueryRequest) GetQuery() *v1.Query {
 
 type ExecQueryResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Result        *v1.QueryExecutionResult `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	Id            string                   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Result        *v1.QueryExecutionResult `protobuf:"bytes,2,opt,name=result,proto3" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -107,6 +118,13 @@ func (*ExecQueryResponse) Descriptor() ([]byte, []int) {
 	return file_fluid_agent_v1_agent_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *ExecQueryResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 func (x *ExecQueryResponse) GetResult() *v1.QueryExecutionResult {
 	if x != nil {
 		return x.Result
@@ -118,11 +136,13 @@ var File_fluid_agent_v1_agent_proto protoreflect.FileDescriptor
 
 const file_fluid_agent_v1_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x1afluid/agent/v1/agent.proto\x12\x0efluid.agent.v1\x1a)nexus/controlplane/v1/control_plane.proto\"F\n" +
-	"\x10ExecQueryRequest\x122\n" +
-	"\x05query\x18\x01 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"X\n" +
-	"\x11ExecQueryResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result2b\n" +
+	"\x1afluid/agent/v1/agent.proto\x12\x0efluid.agent.v1\x1a)nexus/controlplane/v1/control_plane.proto\"V\n" +
+	"\x10ExecQueryRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x122\n" +
+	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"h\n" +
+	"\x11ExecQueryResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12C\n" +
+	"\x06result\x18\x02 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result2b\n" +
 	"\fAgentService\x12R\n" +
 	"\tExecQuery\x12 .fluid.agent.v1.ExecQueryRequest\x1a!.fluid.agent.v1.ExecQueryResponse\"\x00B8Z6github.com/liquidspill/proto/go/fluid/agent/v1;agentv1b\x06proto3"
 

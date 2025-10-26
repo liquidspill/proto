@@ -16,9 +16,13 @@ service AgentService {
 }
 
 message ExecQueryRequest {
-  nexus.controlplane.v1.Query query = 1;
+  // A (request) ID to keep track of the request. Usually set to the ID
+  // of the query result (created in the control plane)
+  string id = 1;
+  nexus.controlplane.v1.Query query = 2;
 }
 
 message ExecQueryResponse {
-  nexus.controlplane.v1.QueryExecutionResult result = 1;
+  string id = 1;
+  nexus.controlplane.v1.QueryExecutionResult result = 2;
 }

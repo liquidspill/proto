@@ -16,14 +16,22 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file fluid/agent/v1/agent.proto.
  */
 export const file_fluid_agent_v1_agent: GenFile = /*@__PURE__*/
-  fileDesc("ChpmbHVpZC9hZ2VudC92MS9hZ2VudC5wcm90bxIOZmx1aWQuYWdlbnQudjEiPwoQRXhlY1F1ZXJ5UmVxdWVzdBIrCgVxdWVyeRgBIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeSJQChFFeGVjUXVlcnlSZXNwb25zZRI7CgZyZXN1bHQYASABKAsyKy5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnlFeGVjdXRpb25SZXN1bHQyYgoMQWdlbnRTZXJ2aWNlElIKCUV4ZWNRdWVyeRIgLmZsdWlkLmFnZW50LnYxLkV4ZWNRdWVyeVJlcXVlc3QaIS5mbHVpZC5hZ2VudC52MS5FeGVjUXVlcnlSZXNwb25zZSIAQjhaNmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvYWdlbnQvdjE7YWdlbnR2MWIGcHJvdG8z", [file_nexus_controlplane_v1_control_plane]);
+  fileDesc("ChpmbHVpZC9hZ2VudC92MS9hZ2VudC5wcm90bxIOZmx1aWQuYWdlbnQudjEiSwoQRXhlY1F1ZXJ5UmVxdWVzdBIKCgJpZBgBIAEoCRIrCgVxdWVyeRgCIAEoCzIcLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeSJcChFFeGVjUXVlcnlSZXNwb25zZRIKCgJpZBgBIAEoCRI7CgZyZXN1bHQYAiABKAsyKy5uZXh1cy5jb250cm9scGxhbmUudjEuUXVlcnlFeGVjdXRpb25SZXN1bHQyYgoMQWdlbnRTZXJ2aWNlElIKCUV4ZWNRdWVyeRIgLmZsdWlkLmFnZW50LnYxLkV4ZWNRdWVyeVJlcXVlc3QaIS5mbHVpZC5hZ2VudC52MS5FeGVjUXVlcnlSZXNwb25zZSIAQjhaNmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvYWdlbnQvdjE7YWdlbnR2MWIGcHJvdG8z", [file_nexus_controlplane_v1_control_plane]);
 
 /**
  * @generated from message fluid.agent.v1.ExecQueryRequest
  */
 export type ExecQueryRequest = Message<"fluid.agent.v1.ExecQueryRequest"> & {
   /**
-   * @generated from field: nexus.controlplane.v1.Query query = 1;
+   * A (request) ID to keep track of the request. Usually set to the ID
+   * of the query result (created in the control plane)
+   *
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: nexus.controlplane.v1.Query query = 2;
    */
   query?: Query;
 };
@@ -40,7 +48,12 @@ export const ExecQueryRequestSchema: GenMessage<ExecQueryRequest> = /*@__PURE__*
  */
 export type ExecQueryResponse = Message<"fluid.agent.v1.ExecQueryResponse"> & {
   /**
-   * @generated from field: nexus.controlplane.v1.QueryExecutionResult result = 1;
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: nexus.controlplane.v1.QueryExecutionResult result = 2;
    */
   result?: QueryExecutionResult;
 };
