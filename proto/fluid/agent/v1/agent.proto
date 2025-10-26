@@ -1,0 +1,24 @@
+// RPCs to perform against Fluid (the agent). These handle operations like
+// running queries, updating its configuration and other operational and
+// administrative tasks.
+
+syntax = "proto3";
+
+package fluid.agent.v1;
+
+option go_package = "github.com/liquidspill/proto/go/fluid/agent/v1;agentv1";
+
+import "nexus/controlplane/v1/control_plane.proto";
+
+service AgentService {
+  rpc ExecQuery(ExecQueryRequest) returns (ExecQueryResponse) {}
+  // rpc UpdateConfig(UpdateConfigRequest) returns (UpdateConfigResponse) {}
+}
+
+message ExecQueryRequest {
+  nexus.controlplane.v1.Query query = 1;
+}
+
+message ExecQueryResponse {
+  nexus.controlplane.v1.QueryExecutionResult result = 1;
+}
