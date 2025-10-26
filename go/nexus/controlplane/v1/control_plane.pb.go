@@ -2604,6 +2604,9 @@ func (x *CreateQueryResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+// Request used to start a "query result" which kicks off a
+// query execution job. Internally this creates a query result object
+// in our database. The query result ID is returned in the response.
 type StartQueryExecutionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QueryPid      string                 `protobuf:"bytes,1,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
@@ -2649,13 +2652,11 @@ func (x *StartQueryExecutionRequest) GetQueryPid() string {
 }
 
 type StartQueryExecutionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The ID of the query execution job. This ID is used later
-	// to poll for the results of the query.
-	Pid           string `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
-	QueryPid      string `protobuf:"bytes,2,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	QueryPid       string                 `protobuf:"bytes,1,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *StartQueryExecutionResponse) Reset() {
@@ -2688,13 +2689,6 @@ func (*StartQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{36}
 }
 
-func (x *StartQueryExecutionResponse) GetPid() string {
-	if x != nil {
-		return x.Pid
-	}
-	return ""
-}
-
 func (x *StartQueryExecutionResponse) GetQueryPid() string {
 	if x != nil {
 		return x.QueryPid
@@ -2702,11 +2696,18 @@ func (x *StartQueryExecutionResponse) GetQueryPid() string {
 	return ""
 }
 
+func (x *StartQueryExecutionResponse) GetQueryResultPid() string {
+	if x != nil {
+		return x.QueryResultPid
+	}
+	return ""
+}
+
 type PollQueryExecutionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	JobPid        string                 `protobuf:"bytes,1,opt,name=job_pid,json=jobPid,proto3" json:"job_pid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *PollQueryExecutionRequest) Reset() {
@@ -2739,19 +2740,20 @@ func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{37}
 }
 
-func (x *PollQueryExecutionRequest) GetJobPid() string {
+func (x *PollQueryExecutionRequest) GetQueryResultPid() string {
 	if x != nil {
-		return x.JobPid
+		return x.QueryResultPid
 	}
 	return ""
 }
 
 type PollQueryExecutionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        QueryExecutionStatus   `protobuf:"varint,1,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
-	Result        *QueryExecutionResult  `protobuf:"bytes,2,opt,name=result,proto3,oneof" json:"result,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	Status         QueryExecutionStatus   `protobuf:"varint,2,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
+	Result         *QueryExecutionResult  `protobuf:"bytes,3,opt,name=result,proto3,oneof" json:"result,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *PollQueryExecutionResponse) Reset() {
@@ -2782,6 +2784,13 @@ func (x *PollQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use PollQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *PollQueryExecutionResponse) GetQueryResultPid() string {
+	if x != nil {
+		return x.QueryResultPid
+	}
+	return ""
 }
 
 func (x *PollQueryExecutionResponse) GetStatus() QueryExecutionStatus {
@@ -3546,15 +3555,16 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"9\n" +
 	"\x1aStartQueryExecutionRequest\x12\x1b\n" +
-	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"L\n" +
-	"\x1bStartQueryExecutionResponse\x12\x10\n" +
-	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x1b\n" +
-	"\tquery_pid\x18\x02 \x01(\tR\bqueryPid\"4\n" +
-	"\x19PollQueryExecutionRequest\x12\x17\n" +
-	"\ajob_pid\x18\x01 \x01(\tR\x06jobPid\"\xb6\x01\n" +
-	"\x1aPollQueryExecutionResponse\x12C\n" +
-	"\x06status\x18\x01 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12H\n" +
-	"\x06result\x18\x02 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultH\x00R\x06result\x88\x01\x01B\t\n" +
+	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"d\n" +
+	"\x1bStartQueryExecutionResponse\x12\x1b\n" +
+	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"E\n" +
+	"\x19PollQueryExecutionRequest\x12(\n" +
+	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\"\xe0\x01\n" +
+	"\x1aPollQueryExecutionResponse\x12(\n" +
+	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12C\n" +
+	"\x06status\x18\x02 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12H\n" +
+	"\x06result\x18\x03 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultH\x00R\x06result\x88\x01\x01B\t\n" +
 	"\a_result\"}\n" +
 	"\x14QueryExecutionResult\x125\n" +
 	"\x06series\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x12.\n" +

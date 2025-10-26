@@ -329,24 +329,26 @@ message CreateQueryResponse {
   google.protobuf.Timestamp created_at = 3;
 }
 
+// Request used to start a "query result" which kicks off a
+// query execution job. Internally this creates a query result object
+// in our database. The query result ID is returned in the response.
 message StartQueryExecutionRequest {
   string query_pid = 1;
 }
 
 message StartQueryExecutionResponse {
-  // The ID of the query execution job. This ID is used later
-  // to poll for the results of the query.
-  string pid = 1;
-  string query_pid = 2;
+  string query_pid = 1;
+  string query_result_pid = 2;
 }
 
 message PollQueryExecutionRequest {
-  string job_pid = 1;
+  string query_result_pid = 1;
 }
 
 message PollQueryExecutionResponse {
-  QueryExecutionStatus status = 1;
-  optional QueryExecutionResult result = 2;
+  string query_result_pid = 1;
+  QueryExecutionStatus status = 2;
+  optional QueryExecutionResult result = 3;
 }
 
 enum QueryExecutionStatus {
