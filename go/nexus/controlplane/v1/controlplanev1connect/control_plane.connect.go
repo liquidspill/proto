@@ -63,9 +63,9 @@ const (
 	// ControlPlaneServiceCreateQueryProcedure is the fully-qualified name of the ControlPlaneService's
 	// CreateQuery RPC.
 	ControlPlaneServiceCreateQueryProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateQuery"
-	// ControlPlaneServiceStartQueryExecutionProcedure is the fully-qualified name of the
-	// ControlPlaneService's StartQueryExecution RPC.
-	ControlPlaneServiceStartQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/StartQueryExecution"
+	// ControlPlaneServiceSubmitQueryExecutionProcedure is the fully-qualified name of the
+	// ControlPlaneService's SubmitQueryExecution RPC.
+	ControlPlaneServiceSubmitQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/SubmitQueryExecution"
 	// ControlPlaneServiceUpdateQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's UpdateQueryExecution RPC.
 	ControlPlaneServiceUpdateQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/UpdateQueryExecution"
@@ -93,7 +93,7 @@ type ControlPlaneServiceClient interface {
 	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
 	// Starts the execution of a given query (nexus -> fluid)
-	StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error)
+	SubmitQueryExecution(context.Context, *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error)
 	// Registers updates of a query (fluid -> nexus)
 	UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error)
 	// Poll the query execution job. Used by the client to get the status of
@@ -174,10 +174,10 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("CreateQuery")),
 			connect.WithClientOptions(opts...),
 		),
-		startQueryExecution: connect.NewClient[v1.StartQueryExecutionRequest, v1.StartQueryExecutionResponse](
+		submitQueryExecution: connect.NewClient[v1.SubmitQueryExecutionRequest, v1.SubmitQueryExecutionResponse](
 			httpClient,
-			baseURL+ControlPlaneServiceStartQueryExecutionProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("StartQueryExecution")),
+			baseURL+ControlPlaneServiceSubmitQueryExecutionProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("SubmitQueryExecution")),
 			connect.WithClientOptions(opts...),
 		),
 		updateQueryExecution: connect.NewClient[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse](
@@ -213,7 +213,7 @@ type controlPlaneServiceClient struct {
 	listDevices          *connect.Client[v1.ListDevicesRequest, v1.ListDevicesResponse]
 	getDevice            *connect.Client[v1.GetDeviceRequest, v1.GetDeviceResponse]
 	createQuery          *connect.Client[v1.CreateQueryRequest, v1.CreateQueryResponse]
-	startQueryExecution  *connect.Client[v1.StartQueryExecutionRequest, v1.StartQueryExecutionResponse]
+	submitQueryExecution *connect.Client[v1.SubmitQueryExecutionRequest, v1.SubmitQueryExecutionResponse]
 	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
 	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
 	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
@@ -269,9 +269,9 @@ func (c *controlPlaneServiceClient) CreateQuery(ctx context.Context, req *connec
 	return c.createQuery.CallUnary(ctx, req)
 }
 
-// StartQueryExecution calls nexus.controlplane.v1.ControlPlaneService.StartQueryExecution.
-func (c *controlPlaneServiceClient) StartQueryExecution(ctx context.Context, req *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error) {
-	return c.startQueryExecution.CallUnary(ctx, req)
+// SubmitQueryExecution calls nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution.
+func (c *controlPlaneServiceClient) SubmitQueryExecution(ctx context.Context, req *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error) {
+	return c.submitQueryExecution.CallUnary(ctx, req)
 }
 
 // UpdateQueryExecution calls nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution.
@@ -306,7 +306,7 @@ type ControlPlaneServiceHandler interface {
 	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
 	// Starts the execution of a given query (nexus -> fluid)
-	StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error)
+	SubmitQueryExecution(context.Context, *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error)
 	// Registers updates of a query (fluid -> nexus)
 	UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error)
 	// Poll the query execution job. Used by the client to get the status of
@@ -383,10 +383,10 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("CreateQuery")),
 		connect.WithHandlerOptions(opts...),
 	)
-	controlPlaneServiceStartQueryExecutionHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceStartQueryExecutionProcedure,
-		svc.StartQueryExecution,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("StartQueryExecution")),
+	controlPlaneServiceSubmitQueryExecutionHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceSubmitQueryExecutionProcedure,
+		svc.SubmitQueryExecution,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("SubmitQueryExecution")),
 		connect.WithHandlerOptions(opts...),
 	)
 	controlPlaneServiceUpdateQueryExecutionHandler := connect.NewUnaryHandler(
@@ -429,8 +429,8 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServiceGetDeviceHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceCreateQueryProcedure:
 			controlPlaneServiceCreateQueryHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceStartQueryExecutionProcedure:
-			controlPlaneServiceStartQueryExecutionHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceSubmitQueryExecutionProcedure:
+			controlPlaneServiceSubmitQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceUpdateQueryExecutionProcedure:
 			controlPlaneServiceUpdateQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServicePollQueryExecutionProcedure:
@@ -486,8 +486,8 @@ func (UnimplementedControlPlaneServiceHandler) CreateQuery(context.Context, *con
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateQuery is not implemented"))
 }
 
-func (UnimplementedControlPlaneServiceHandler) StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.StartQueryExecution is not implemented"))
+func (UnimplementedControlPlaneServiceHandler) SubmitQueryExecution(context.Context, *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error) {

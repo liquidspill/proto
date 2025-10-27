@@ -2631,27 +2631,27 @@ func (x *CreateQueryResponse) GetCreatedAt() *timestamppb.Timestamp {
 // Request used to start a "query result" which kicks off a
 // query execution job. Internally this creates a query result object
 // in our database. The query result ID is returned in the response.
-type StartQueryExecutionRequest struct {
+type SubmitQueryExecutionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QueryPid      string                 `protobuf:"bytes,1,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StartQueryExecutionRequest) Reset() {
-	*x = StartQueryExecutionRequest{}
+func (x *SubmitQueryExecutionRequest) Reset() {
+	*x = SubmitQueryExecutionRequest{}
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartQueryExecutionRequest) String() string {
+func (x *SubmitQueryExecutionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartQueryExecutionRequest) ProtoMessage() {}
+func (*SubmitQueryExecutionRequest) ProtoMessage() {}
 
-func (x *StartQueryExecutionRequest) ProtoReflect() protoreflect.Message {
+func (x *SubmitQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2663,19 +2663,19 @@ func (x *StartQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartQueryExecutionRequest.ProtoReflect.Descriptor instead.
-func (*StartQueryExecutionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SubmitQueryExecutionRequest.ProtoReflect.Descriptor instead.
+func (*SubmitQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *StartQueryExecutionRequest) GetQueryPid() string {
+func (x *SubmitQueryExecutionRequest) GetQueryPid() string {
 	if x != nil {
 		return x.QueryPid
 	}
 	return ""
 }
 
-type StartQueryExecutionResponse struct {
+type SubmitQueryExecutionResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	QueryPid       string                 `protobuf:"bytes,1,opt,name=query_pid,json=queryPid,proto3" json:"query_pid,omitempty"`
 	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
@@ -2683,20 +2683,20 @@ type StartQueryExecutionResponse struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *StartQueryExecutionResponse) Reset() {
-	*x = StartQueryExecutionResponse{}
+func (x *SubmitQueryExecutionResponse) Reset() {
+	*x = SubmitQueryExecutionResponse{}
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StartQueryExecutionResponse) String() string {
+func (x *SubmitQueryExecutionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StartQueryExecutionResponse) ProtoMessage() {}
+func (*SubmitQueryExecutionResponse) ProtoMessage() {}
 
-func (x *StartQueryExecutionResponse) ProtoReflect() protoreflect.Message {
+func (x *SubmitQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2708,19 +2708,19 @@ func (x *StartQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StartQueryExecutionResponse.ProtoReflect.Descriptor instead.
-func (*StartQueryExecutionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SubmitQueryExecutionResponse.ProtoReflect.Descriptor instead.
+func (*SubmitQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{36}
 }
 
-func (x *StartQueryExecutionResponse) GetQueryPid() string {
+func (x *SubmitQueryExecutionResponse) GetQueryPid() string {
 	if x != nil {
 		return x.QueryPid
 	}
 	return ""
 }
 
-func (x *StartQueryExecutionResponse) GetQueryResultPid() string {
+func (x *SubmitQueryExecutionResponse) GetQueryResultPid() string {
 	if x != nil {
 		return x.QueryResultPid
 	}
@@ -3808,10 +3808,10 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x122\n" +
 	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"9\n" +
-	"\x1aStartQueryExecutionRequest\x12\x1b\n" +
-	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"d\n" +
-	"\x1bStartQueryExecutionResponse\x12\x1b\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\":\n" +
+	"\x1bSubmitQueryExecutionRequest\x12\x1b\n" +
+	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"e\n" +
+	"\x1cSubmitQueryExecutionResponse\x12\x1b\n" +
 	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"\x9d\x02\n" +
 	"\x1bUpdateQueryExecutionRequest\x12(\n" +
@@ -3939,7 +3939,7 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x12AGENT_STATUS_ALIVE\x10\x01\x12\x16\n" +
 	"\x12AGENT_STATUS_STALE\x10\x02\x12\x1d\n" +
 	"\x19AGENT_STATUS_UNRESPONSIVE\x10\x03\x12\x15\n" +
-	"\x11AGENT_STATUS_DEAD\x10\x042\x97\f\n" +
+	"\x11AGENT_STATUS_DEAD\x10\x042\x9b\f\n" +
 	"\x13ControlPlaneService\x12l\n" +
 	"\rCreateCluster\x12+.nexus.controlplane.v1.CreateClusterRequest\x1a,.nexus.controlplane.v1.CreateClusterResponse\"\x00\x12l\n" +
 	"\rDeleteCluster\x12+.nexus.controlplane.v1.DeleteClusterRequest\x1a,.nexus.controlplane.v1.DeleteClusterResponse\"\x00\x12i\n" +
@@ -3951,8 +3951,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\fUpdateDevice\x12*.nexus.controlplane.v1.UpdateDeviceRequest\x1a+.nexus.controlplane.v1.UpdateDeviceResponse\"\x00\x12f\n" +
 	"\vListDevices\x12).nexus.controlplane.v1.ListDevicesRequest\x1a*.nexus.controlplane.v1.ListDevicesResponse\"\x00\x12`\n" +
 	"\tGetDevice\x12'.nexus.controlplane.v1.GetDeviceRequest\x1a(.nexus.controlplane.v1.GetDeviceResponse\"\x00\x12f\n" +
-	"\vCreateQuery\x12).nexus.controlplane.v1.CreateQueryRequest\x1a*.nexus.controlplane.v1.CreateQueryResponse\"\x00\x12~\n" +
-	"\x13StartQueryExecution\x121.nexus.controlplane.v1.StartQueryExecutionRequest\x1a2.nexus.controlplane.v1.StartQueryExecutionResponse\"\x00\x12\x81\x01\n" +
+	"\vCreateQuery\x12).nexus.controlplane.v1.CreateQueryRequest\x1a*.nexus.controlplane.v1.CreateQueryResponse\"\x00\x12\x81\x01\n" +
+	"\x14SubmitQueryExecution\x122.nexus.controlplane.v1.SubmitQueryExecutionRequest\x1a3.nexus.controlplane.v1.SubmitQueryExecutionResponse\"\x00\x12\x81\x01\n" +
 	"\x14UpdateQueryExecution\x122.nexus.controlplane.v1.UpdateQueryExecutionRequest\x1a3.nexus.controlplane.v1.UpdateQueryExecutionResponse\"\x00\x12{\n" +
 	"\x12PollQueryExecution\x120.nexus.controlplane.v1.PollQueryExecutionRequest\x1a1.nexus.controlplane.v1.PollQueryExecutionResponse\"\x00\x12`\n" +
 	"\tHeartbeat\x12'.nexus.controlplane.v1.HeartbeatRequest\x1a(.nexus.controlplane.v1.HeartbeatResponse\"\x00BFZDgithub.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1b\x06proto3"
@@ -4015,8 +4015,8 @@ var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(*RowValues)(nil),                    // 40: nexus.controlplane.v1.RowValues
 	(*CreateQueryRequest)(nil),           // 41: nexus.controlplane.v1.CreateQueryRequest
 	(*CreateQueryResponse)(nil),          // 42: nexus.controlplane.v1.CreateQueryResponse
-	(*StartQueryExecutionRequest)(nil),   // 43: nexus.controlplane.v1.StartQueryExecutionRequest
-	(*StartQueryExecutionResponse)(nil),  // 44: nexus.controlplane.v1.StartQueryExecutionResponse
+	(*SubmitQueryExecutionRequest)(nil),  // 43: nexus.controlplane.v1.SubmitQueryExecutionRequest
+	(*SubmitQueryExecutionResponse)(nil), // 44: nexus.controlplane.v1.SubmitQueryExecutionResponse
 	(*UpdateQueryExecutionRequest)(nil),  // 45: nexus.controlplane.v1.UpdateQueryExecutionRequest
 	(*UpdateQueryExecutionResponse)(nil), // 46: nexus.controlplane.v1.UpdateQueryExecutionResponse
 	(*PollQueryExecutionRequest)(nil),    // 47: nexus.controlplane.v1.PollQueryExecutionRequest
@@ -4115,7 +4115,7 @@ var file_nexus_controlplane_v1_control_plane_proto_depIdxs = []int32{
 	30, // 72: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
 	28, // 73: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
 	41, // 74: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
-	43, // 75: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:input_type -> nexus.controlplane.v1.StartQueryExecutionRequest
+	43, // 75: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:input_type -> nexus.controlplane.v1.SubmitQueryExecutionRequest
 	45, // 76: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:input_type -> nexus.controlplane.v1.UpdateQueryExecutionRequest
 	47, // 77: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
 	52, // 78: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
@@ -4129,7 +4129,7 @@ var file_nexus_controlplane_v1_control_plane_proto_depIdxs = []int32{
 	31, // 86: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
 	29, // 87: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
 	42, // 88: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
-	44, // 89: nexus.controlplane.v1.ControlPlaneService.StartQueryExecution:output_type -> nexus.controlplane.v1.StartQueryExecutionResponse
+	44, // 89: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:output_type -> nexus.controlplane.v1.SubmitQueryExecutionResponse
 	46, // 90: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:output_type -> nexus.controlplane.v1.UpdateQueryExecutionResponse
 	48, // 91: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
 	53, // 92: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse

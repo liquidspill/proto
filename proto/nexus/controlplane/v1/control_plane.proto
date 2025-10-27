@@ -28,7 +28,7 @@ service ControlPlaneService {
   // Query management
   rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse) {}
   // Starts the execution of a given query (nexus -> fluid)
-  rpc StartQueryExecution(StartQueryExecutionRequest) returns (StartQueryExecutionResponse) {}
+  rpc SubmitQueryExecution(SubmitQueryExecutionRequest) returns (SubmitQueryExecutionResponse) {}
   // Registers updates of a query (fluid -> nexus)
   rpc UpdateQueryExecution(UpdateQueryExecutionRequest) returns (UpdateQueryExecutionResponse) {}
   // Poll the query execution job. Used by the client to get the status of
@@ -339,11 +339,11 @@ message CreateQueryResponse {
 // Request used to start a "query result" which kicks off a
 // query execution job. Internally this creates a query result object
 // in our database. The query result ID is returned in the response.
-message StartQueryExecutionRequest {
+message SubmitQueryExecutionRequest {
   string query_pid = 1;
 }
 
-message StartQueryExecutionResponse {
+message SubmitQueryExecutionResponse {
   string query_pid = 1;
   string query_result_pid = 2;
 }
