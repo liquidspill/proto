@@ -363,11 +363,13 @@ message UpdateQueryExecutionResponse {
 
 message PollQueryExecutionRequest {
   string query_result_pid = 1;
+  string cluster_pid = 2;
 }
 
 message PollQueryExecutionResponse {
   string query_result_pid = 1;
-  QueryExecutionResult result = 2;
+  string cluster_pid = 2;
+  QueryExecutionResult result = 3;
 }
 
 enum QueryExecutionStatus {
