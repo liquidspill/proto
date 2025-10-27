@@ -66,6 +66,9 @@ const (
 	// ControlPlaneServiceStartQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's StartQueryExecution RPC.
 	ControlPlaneServiceStartQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/StartQueryExecution"
+	// ControlPlaneServiceUpdateQueryExecutionProcedure is the fully-qualified name of the
+	// ControlPlaneService's UpdateQueryExecution RPC.
+	ControlPlaneServiceUpdateQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/UpdateQueryExecution"
 	// ControlPlaneServicePollQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's PollQueryExecution RPC.
 	ControlPlaneServicePollQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/PollQueryExecution"
@@ -89,10 +92,12 @@ type ControlPlaneServiceClient interface {
 	GetDevice(context.Context, *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error)
 	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
-	// Starts a background job to execute the query
+	// Starts the execution of a given query (nexus -> fluid)
 	StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error)
-	// Poll the query execution job. It will return a status and if complete, the
-	// result alongside it
+	// Registers updates of a query (fluid -> nexus)
+	UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error)
+	// Poll the query execution job. Used by the client to get the status of
+	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Agent lifecycle
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
@@ -175,6 +180,12 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("StartQueryExecution")),
 			connect.WithClientOptions(opts...),
 		),
+		updateQueryExecution: connect.NewClient[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceUpdateQueryExecutionProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("UpdateQueryExecution")),
+			connect.WithClientOptions(opts...),
+		),
 		pollQueryExecution: connect.NewClient[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse](
 			httpClient,
 			baseURL+ControlPlaneServicePollQueryExecutionProcedure,
@@ -192,19 +203,20 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 
 // controlPlaneServiceClient implements ControlPlaneServiceClient.
 type controlPlaneServiceClient struct {
-	createCluster       *connect.Client[v1.CreateClusterRequest, v1.CreateClusterResponse]
-	deleteCluster       *connect.Client[v1.DeleteClusterRequest, v1.DeleteClusterResponse]
-	listClusters        *connect.Client[v1.ListClustersRequest, v1.ListClustersResponse]
-	getCluster          *connect.Client[v1.GetClusterRequest, v1.GetClusterResponse]
-	createDevice        *connect.Client[v1.CreateDeviceRequest, v1.CreateDeviceResponse]
-	deleteDevice        *connect.Client[v1.DeleteDeviceRequest, v1.DeleteDeviceResponse]
-	updateDevice        *connect.Client[v1.UpdateDeviceRequest, v1.UpdateDeviceResponse]
-	listDevices         *connect.Client[v1.ListDevicesRequest, v1.ListDevicesResponse]
-	getDevice           *connect.Client[v1.GetDeviceRequest, v1.GetDeviceResponse]
-	createQuery         *connect.Client[v1.CreateQueryRequest, v1.CreateQueryResponse]
-	startQueryExecution *connect.Client[v1.StartQueryExecutionRequest, v1.StartQueryExecutionResponse]
-	pollQueryExecution  *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
-	heartbeat           *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
+	createCluster        *connect.Client[v1.CreateClusterRequest, v1.CreateClusterResponse]
+	deleteCluster        *connect.Client[v1.DeleteClusterRequest, v1.DeleteClusterResponse]
+	listClusters         *connect.Client[v1.ListClustersRequest, v1.ListClustersResponse]
+	getCluster           *connect.Client[v1.GetClusterRequest, v1.GetClusterResponse]
+	createDevice         *connect.Client[v1.CreateDeviceRequest, v1.CreateDeviceResponse]
+	deleteDevice         *connect.Client[v1.DeleteDeviceRequest, v1.DeleteDeviceResponse]
+	updateDevice         *connect.Client[v1.UpdateDeviceRequest, v1.UpdateDeviceResponse]
+	listDevices          *connect.Client[v1.ListDevicesRequest, v1.ListDevicesResponse]
+	getDevice            *connect.Client[v1.GetDeviceRequest, v1.GetDeviceResponse]
+	createQuery          *connect.Client[v1.CreateQueryRequest, v1.CreateQueryResponse]
+	startQueryExecution  *connect.Client[v1.StartQueryExecutionRequest, v1.StartQueryExecutionResponse]
+	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
+	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
+	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
 }
 
 // CreateCluster calls nexus.controlplane.v1.ControlPlaneService.CreateCluster.
@@ -262,6 +274,11 @@ func (c *controlPlaneServiceClient) StartQueryExecution(ctx context.Context, req
 	return c.startQueryExecution.CallUnary(ctx, req)
 }
 
+// UpdateQueryExecution calls nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution.
+func (c *controlPlaneServiceClient) UpdateQueryExecution(ctx context.Context, req *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error) {
+	return c.updateQueryExecution.CallUnary(ctx, req)
+}
+
 // PollQueryExecution calls nexus.controlplane.v1.ControlPlaneService.PollQueryExecution.
 func (c *controlPlaneServiceClient) PollQueryExecution(ctx context.Context, req *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {
 	return c.pollQueryExecution.CallUnary(ctx, req)
@@ -288,10 +305,12 @@ type ControlPlaneServiceHandler interface {
 	GetDevice(context.Context, *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error)
 	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
-	// Starts a background job to execute the query
+	// Starts the execution of a given query (nexus -> fluid)
 	StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error)
-	// Poll the query execution job. It will return a status and if complete, the
-	// result alongside it
+	// Registers updates of a query (fluid -> nexus)
+	UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error)
+	// Poll the query execution job. Used by the client to get the status of
+	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Agent lifecycle
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
@@ -370,6 +389,12 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("StartQueryExecution")),
 		connect.WithHandlerOptions(opts...),
 	)
+	controlPlaneServiceUpdateQueryExecutionHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceUpdateQueryExecutionProcedure,
+		svc.UpdateQueryExecution,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("UpdateQueryExecution")),
+		connect.WithHandlerOptions(opts...),
+	)
 	controlPlaneServicePollQueryExecutionHandler := connect.NewUnaryHandler(
 		ControlPlaneServicePollQueryExecutionProcedure,
 		svc.PollQueryExecution,
@@ -406,6 +431,8 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServiceCreateQueryHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceStartQueryExecutionProcedure:
 			controlPlaneServiceStartQueryExecutionHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceUpdateQueryExecutionProcedure:
+			controlPlaneServiceUpdateQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServicePollQueryExecutionProcedure:
 			controlPlaneServicePollQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceHeartbeatProcedure:
@@ -461,6 +488,10 @@ func (UnimplementedControlPlaneServiceHandler) CreateQuery(context.Context, *con
 
 func (UnimplementedControlPlaneServiceHandler) StartQueryExecution(context.Context, *connect.Request[v1.StartQueryExecutionRequest]) (*connect.Response[v1.StartQueryExecutionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.StartQueryExecution is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) UpdateQueryExecution(context.Context, *connect.Request[v1.UpdateQueryExecutionRequest]) (*connect.Response[v1.UpdateQueryExecutionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {

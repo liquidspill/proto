@@ -27,11 +27,14 @@ service ControlPlaneService {
 
   // Query management
   rpc CreateQuery(CreateQueryRequest) returns (CreateQueryResponse) {}
-  // Starts a background job to execute the query
+  // Starts the execution of a given query (nexus -> fluid)
   rpc StartQueryExecution(StartQueryExecutionRequest) returns (StartQueryExecutionResponse) {}
-  // Poll the query execution job. It will return a status and if complete, the
-  // result alongside it
+  // Registers updates of a query (fluid -> nexus)
+  rpc UpdateQueryExecution(UpdateQueryExecutionRequest) returns (UpdateQueryExecutionResponse) {}
+  // Poll the query execution job. Used by the client to get the status of
+  // a query. If it is complete, the result will be returned alongside it.
   rpc PollQueryExecution(PollQueryExecutionRequest) returns (PollQueryExecutionResponse) {}
+
 
   // Agent lifecycle
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
@@ -345,14 +348,26 @@ message StartQueryExecutionResponse {
   string query_result_pid = 2;
 }
 
+message UpdateQueryExecutionRequest {
+  string query_result_pid = 1;
+  QueryExecutionStatus status = 2;
+  optional QueryExecutionResult result = 3;
+  optional string error_message = 4;
+}
+
+message UpdateQueryExecutionResponse {
+  // Nexus ACK's the update
+  bool ack = 1;
+  string id = 2;
+}
+
 message PollQueryExecutionRequest {
   string query_result_pid = 1;
 }
 
 message PollQueryExecutionResponse {
   string query_result_pid = 1;
-  QueryExecutionStatus status = 2;
-  optional QueryExecutionResult result = 3;
+  QueryExecutionResult result = 2;
 }
 
 enum QueryExecutionStatus {
@@ -363,7 +378,19 @@ enum QueryExecutionStatus {
   QUERY_EXECUTION_STATUS_FAILED = 4;
 }
 
+// The request message sent to fluid instances to perform a request
+message ExecQueryRequest {
+  string query_result_pid = 1;
+  Query query = 2;
+}
+
 message QueryExecutionResult {
+  string query_result_pid = 1;
+  QueryExecutionStatus status = 2;
+  optional QueryExecutionData data = 3;
+}
+
+message QueryExecutionData {
   // The time series data. If many fields are queried at once
   // e.g select bytes, src_ip each field will have its own series
   Series series = 1;
