@@ -349,11 +349,7 @@ message SubmitQueryExecutionResponse {
 }
 
 message UpdateQueryExecutionRequest {
-  string cluster_pid = 1;
-  string query_result_pid = 2;
-  QueryExecutionStatus status = 3;
-  optional QueryExecutionResult result = 4;
-  optional string error_message = 5;
+  QueryExecutionResult result = 1;
 }
 
 message UpdateQueryExecutionResponse {
@@ -368,9 +364,7 @@ message PollQueryExecutionRequest {
 }
 
 message PollQueryExecutionResponse {
-  string cluster_pid = 1;
-  string query_result_pid = 2;
-  QueryExecutionResult result = 3;
+  QueryExecutionResult result = 1;
 }
 
 enum QueryExecutionStatus {
@@ -388,9 +382,11 @@ message ExecQueryRequest {
 }
 
 message QueryExecutionResult {
-  string query_result_pid = 1;
-  QueryExecutionStatus status = 2;
-  optional QueryExecutionData data = 3;
+  string cluster_pid = 1;
+  string query_result_pid = 2;
+  QueryExecutionStatus status = 3;
+  optional QueryExecutionData data = 4;
+  optional string error_message = 5;
 }
 
 message QueryExecutionData {
