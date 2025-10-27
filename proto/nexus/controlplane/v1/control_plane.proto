@@ -349,10 +349,11 @@ message SubmitQueryExecutionResponse {
 }
 
 message UpdateQueryExecutionRequest {
-  string query_result_pid = 1;
-  QueryExecutionStatus status = 2;
-  optional QueryExecutionResult result = 3;
-  optional string error_message = 4;
+  string cluster_pid = 1;
+  string query_result_pid = 2;
+  QueryExecutionStatus status = 3;
+  optional QueryExecutionResult result = 4;
+  optional string error_message = 5;
 }
 
 message UpdateQueryExecutionResponse {
@@ -362,13 +363,13 @@ message UpdateQueryExecutionResponse {
 }
 
 message PollQueryExecutionRequest {
-  string query_result_pid = 1;
-  string cluster_pid = 2;
+  string cluster_pid = 1;
+  string query_result_pid = 2;
 }
 
 message PollQueryExecutionResponse {
-  string query_result_pid = 1;
-  string cluster_pid = 2;
+  string cluster_pid = 1;
+  string query_result_pid = 2;
   QueryExecutionResult result = 3;
 }
 

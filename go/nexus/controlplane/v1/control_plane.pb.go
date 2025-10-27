@@ -2729,10 +2729,11 @@ func (x *SubmitQueryExecutionResponse) GetQueryResultPid() string {
 
 type UpdateQueryExecutionRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
-	Status         QueryExecutionStatus   `protobuf:"varint,2,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
-	Result         *QueryExecutionResult  `protobuf:"bytes,3,opt,name=result,proto3,oneof" json:"result,omitempty"`
-	ErrorMessage   *string                `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message,omitempty"`
+	ClusterPid     string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	Status         QueryExecutionStatus   `protobuf:"varint,3,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
+	Result         *QueryExecutionResult  `protobuf:"bytes,4,opt,name=result,proto3,oneof" json:"result,omitempty"`
+	ErrorMessage   *string                `protobuf:"bytes,5,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -2765,6 +2766,13 @@ func (x *UpdateQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *UpdateQueryExecutionRequest) GetClusterPid() string {
+	if x != nil {
+		return x.ClusterPid
+	}
+	return ""
 }
 
 func (x *UpdateQueryExecutionRequest) GetQueryResultPid() string {
@@ -2850,8 +2858,8 @@ func (x *UpdateQueryExecutionResponse) GetId() string {
 
 type PollQueryExecutionRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
-	ClusterPid     string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	ClusterPid     string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -2886,13 +2894,6 @@ func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{39}
 }
 
-func (x *PollQueryExecutionRequest) GetQueryResultPid() string {
-	if x != nil {
-		return x.QueryResultPid
-	}
-	return ""
-}
-
 func (x *PollQueryExecutionRequest) GetClusterPid() string {
 	if x != nil {
 		return x.ClusterPid
@@ -2900,10 +2901,17 @@ func (x *PollQueryExecutionRequest) GetClusterPid() string {
 	return ""
 }
 
+func (x *PollQueryExecutionRequest) GetQueryResultPid() string {
+	if x != nil {
+		return x.QueryResultPid
+	}
+	return ""
+}
+
 type PollQueryExecutionResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
-	ClusterPid     string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	ClusterPid     string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	Result         *QueryExecutionResult  `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -2939,16 +2947,16 @@ func (*PollQueryExecutionResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *PollQueryExecutionResponse) GetQueryResultPid() string {
+func (x *PollQueryExecutionResponse) GetClusterPid() string {
 	if x != nil {
-		return x.QueryResultPid
+		return x.ClusterPid
 	}
 	return ""
 }
 
-func (x *PollQueryExecutionResponse) GetClusterPid() string {
+func (x *PollQueryExecutionResponse) GetQueryResultPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.QueryResultPid
 	}
 	return ""
 }
@@ -3829,25 +3837,27 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\"e\n" +
 	"\x1cSubmitQueryExecutionResponse\x12\x1b\n" +
 	"\tquery_pid\x18\x01 \x01(\tR\bqueryPid\x12(\n" +
-	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"\x9d\x02\n" +
-	"\x1bUpdateQueryExecutionRequest\x12(\n" +
-	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12C\n" +
-	"\x06status\x18\x02 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12H\n" +
-	"\x06result\x18\x03 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultH\x00R\x06result\x88\x01\x01\x12(\n" +
-	"\rerror_message\x18\x04 \x01(\tH\x01R\ferrorMessage\x88\x01\x01B\t\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"\xbe\x02\n" +
+	"\x1bUpdateQueryExecutionRequest\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x12C\n" +
+	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12H\n" +
+	"\x06result\x18\x04 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultH\x00R\x06result\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\x05 \x01(\tH\x01R\ferrorMessage\x88\x01\x01B\t\n" +
 	"\a_resultB\x10\n" +
 	"\x0e_error_message\"@\n" +
 	"\x1cUpdateQueryExecutionResponse\x12\x10\n" +
 	"\x03ack\x18\x01 \x01(\bR\x03ack\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"f\n" +
-	"\x19PollQueryExecutionRequest\x12(\n" +
-	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\"\xac\x01\n" +
-	"\x1aPollQueryExecutionResponse\x12(\n" +
-	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\x12C\n" +
+	"\x19PollQueryExecutionRequest\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"\xac\x01\n" +
+	"\x1aPollQueryExecutionResponse\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x12C\n" +
 	"\x06result\x18\x03 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"p\n" +
 	"\x10ExecQueryRequest\x12(\n" +
 	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x122\n" +
