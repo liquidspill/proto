@@ -37,6 +37,8 @@ service ControlPlaneService {
 
 
   // Agent lifecycle
+  // rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
+
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
   // Add a stop agent request which can hit a service running in the
   // agent that will cause it to quit

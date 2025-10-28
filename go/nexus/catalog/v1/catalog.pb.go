@@ -101,12 +101,14 @@ func (ColumnType) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
 }
 
+// CompactionLevel indicates how many times data has been compacted.
+// Higher levels generally mean larger files with better organization.
 type CompactionLevel int32
 
 const (
 	CompactionLevel_COMPACTION_LEVEL_UNSPECIFIED CompactionLevel = 0
-	CompactionLevel_COMPACTION_LEVEL_ZERO        CompactionLevel = 1
-	CompactionLevel_COMPACTION_LEVEL_ONE         CompactionLevel = 2
+	CompactionLevel_COMPACTION_LEVEL_ZERO        CompactionLevel = 1 // Initial write, no compaction
+	CompactionLevel_COMPACTION_LEVEL_ONE         CompactionLevel = 2 // First compaction pass
 )
 
 // Enum value maps for CompactionLevel.
@@ -150,13 +152,15 @@ func (CompactionLevel) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{1}
 }
 
+// Compression algorithms supported for compressing raw data.
+// Different algorithms offer different trade-offs between compression ratio and speed.
 type Compression int32
 
 const (
 	Compression_COMPRESSION_UNSPECIFIED Compression = 0
-	Compression_COMPRESSION_ZSTD        Compression = 1
-	Compression_COMPRESSION_LZ4         Compression = 2
-	Compression_COMPRESSION_SNAPPY      Compression = 3
+	Compression_COMPRESSION_ZSTD        Compression = 1 // Zstandard: High compression ratio, good speed
+	Compression_COMPRESSION_LZ4         Compression = 2 // LZ4: Very fast, moderate compression
+	Compression_COMPRESSION_SNAPPY      Compression = 3 // Snappy: Fast, moderate compression, widely used in Parquet
 )
 
 // Enum value maps for Compression.
@@ -202,31 +206,31 @@ func (Compression) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{2}
 }
 
-type CreatePartitionRequest struct {
+type CreateManifestRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
 	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
 	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
 	Id             string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
-	Partition      *Partition             `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
+	Manifest       *Manifest              `protobuf:"bytes,5,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *CreatePartitionRequest) Reset() {
-	*x = CreatePartitionRequest{}
+func (x *CreateManifestRequest) Reset() {
+	*x = CreateManifestRequest{}
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePartitionRequest) String() string {
+func (x *CreateManifestRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePartitionRequest) ProtoMessage() {}
+func (*CreateManifestRequest) ProtoMessage() {}
 
-func (x *CreatePartitionRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateManifestRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -238,72 +242,72 @@ func (x *CreatePartitionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePartitionRequest.ProtoReflect.Descriptor instead.
-func (*CreatePartitionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateManifestRequest.ProtoReflect.Descriptor instead.
+func (*CreateManifestRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreatePartitionRequest) GetOrganizationId() string {
+func (x *CreateManifestRequest) GetOrganizationId() string {
 	if x != nil {
 		return x.OrganizationId
 	}
 	return ""
 }
 
-func (x *CreatePartitionRequest) GetTeamId() string {
+func (x *CreateManifestRequest) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
 	}
 	return ""
 }
 
-func (x *CreatePartitionRequest) GetClusterId() string {
+func (x *CreateManifestRequest) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
 	}
 	return ""
 }
 
-func (x *CreatePartitionRequest) GetId() string {
+func (x *CreateManifestRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *CreatePartitionRequest) GetPartition() *Partition {
+func (x *CreateManifestRequest) GetManifest() *Manifest {
 	if x != nil {
-		return x.Partition
+		return x.Manifest
 	}
 	return nil
 }
 
-type CreatePartitionResponse struct {
+type CreateManifestResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
 	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
 	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
 	Id             string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
-	Partition      *Partition             `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
+	Manifest       *Manifest              `protobuf:"bytes,5,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *CreatePartitionResponse) Reset() {
-	*x = CreatePartitionResponse{}
+func (x *CreateManifestResponse) Reset() {
+	*x = CreateManifestResponse{}
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreatePartitionResponse) String() string {
+func (x *CreateManifestResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePartitionResponse) ProtoMessage() {}
+func (*CreateManifestResponse) ProtoMessage() {}
 
-func (x *CreatePartitionResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateManifestResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -315,54 +319,56 @@ func (x *CreatePartitionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePartitionResponse.ProtoReflect.Descriptor instead.
-func (*CreatePartitionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateManifestResponse.ProtoReflect.Descriptor instead.
+func (*CreateManifestResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreatePartitionResponse) GetOrganizationId() string {
+func (x *CreateManifestResponse) GetOrganizationId() string {
 	if x != nil {
 		return x.OrganizationId
 	}
 	return ""
 }
 
-func (x *CreatePartitionResponse) GetTeamId() string {
+func (x *CreateManifestResponse) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
 	}
 	return ""
 }
 
-func (x *CreatePartitionResponse) GetClusterId() string {
+func (x *CreateManifestResponse) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
 	}
 	return ""
 }
 
-func (x *CreatePartitionResponse) GetId() string {
+func (x *CreateManifestResponse) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *CreatePartitionResponse) GetPartition() *Partition {
+func (x *CreateManifestResponse) GetManifest() *Manifest {
 	if x != nil {
-		return x.Partition
+		return x.Manifest
 	}
 	return nil
 }
 
-func (x *CreatePartitionResponse) GetCreatedAt() *timestamppb.Timestamp {
+func (x *CreateManifestResponse) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
 	return nil
 }
 
-type ListPartitionsRequest struct {
+// ListManifestsRequest queries for Manifests within a time range.
+// Used by query engines to discover which data files contain relevant data.
+type ListManifestsRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
 	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
@@ -373,20 +379,20 @@ type ListPartitionsRequest struct {
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *ListPartitionsRequest) Reset() {
-	*x = ListPartitionsRequest{}
+func (x *ListManifestsRequest) Reset() {
+	*x = ListManifestsRequest{}
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListPartitionsRequest) String() string {
+func (x *ListManifestsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListPartitionsRequest) ProtoMessage() {}
+func (*ListManifestsRequest) ProtoMessage() {}
 
-func (x *ListPartitionsRequest) ProtoReflect() protoreflect.Message {
+func (x *ListManifestsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -398,72 +404,75 @@ func (x *ListPartitionsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListPartitionsRequest.ProtoReflect.Descriptor instead.
-func (*ListPartitionsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListManifestsRequest.ProtoReflect.Descriptor instead.
+func (*ListManifestsRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListPartitionsRequest) GetOrganizationId() string {
+func (x *ListManifestsRequest) GetOrganizationId() string {
 	if x != nil {
 		return x.OrganizationId
 	}
 	return ""
 }
 
-func (x *ListPartitionsRequest) GetTeamId() string {
+func (x *ListManifestsRequest) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
 	}
 	return ""
 }
 
-func (x *ListPartitionsRequest) GetClusterId() string {
+func (x *ListManifestsRequest) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
 	}
 	return ""
 }
 
-func (x *ListPartitionsRequest) GetStartTime() *timestamppb.Timestamp {
+func (x *ListManifestsRequest) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ListPartitionsRequest) GetEndTime() *timestamppb.Timestamp {
+func (x *ListManifestsRequest) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
 	return nil
 }
 
-type ListPartitionsResponse struct {
+// ListManifestsResponse returns all Manifests matching the query criteria.
+// The returned Manifest descriptors include column statistics that enable
+// query engines to perform predicate pushdown and skip irrelevant files.
+type ListManifestsResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
 	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
 	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
 	StartTime      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime        *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Partition      []*Partition           `protobuf:"bytes,6,rep,name=partition,proto3" json:"partition,omitempty"`
+	Manifests      []*Manifest            `protobuf:"bytes,6,rep,name=Manifests,proto3" json:"Manifests,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
-func (x *ListPartitionsResponse) Reset() {
-	*x = ListPartitionsResponse{}
+func (x *ListManifestsResponse) Reset() {
+	*x = ListManifestsResponse{}
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListPartitionsResponse) String() string {
+func (x *ListManifestsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListPartitionsResponse) ProtoMessage() {}
+func (*ListManifestsResponse) ProtoMessage() {}
 
-func (x *ListPartitionsResponse) ProtoReflect() protoreflect.Message {
+func (x *ListManifestsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -475,436 +484,113 @@ func (x *ListPartitionsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListPartitionsResponse.ProtoReflect.Descriptor instead.
-func (*ListPartitionsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListManifestsResponse.ProtoReflect.Descriptor instead.
+func (*ListManifestsResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListPartitionsResponse) GetOrganizationId() string {
+func (x *ListManifestsResponse) GetOrganizationId() string {
 	if x != nil {
 		return x.OrganizationId
 	}
 	return ""
 }
 
-func (x *ListPartitionsResponse) GetTeamId() string {
+func (x *ListManifestsResponse) GetTeamId() string {
 	if x != nil {
 		return x.TeamId
 	}
 	return ""
 }
 
-func (x *ListPartitionsResponse) GetClusterId() string {
+func (x *ListManifestsResponse) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
 	}
 	return ""
 }
 
-func (x *ListPartitionsResponse) GetStartTime() *timestamppb.Timestamp {
+func (x *ListManifestsResponse) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ListPartitionsResponse) GetEndTime() *timestamppb.Timestamp {
+func (x *ListManifestsResponse) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
 	return nil
 }
 
-func (x *ListPartitionsResponse) GetPartition() []*Partition {
+func (x *ListManifestsResponse) GetManifests() []*Manifest {
 	if x != nil {
-		return x.Partition
+		return x.Manifests
 	}
 	return nil
 }
 
-type GetMetadataVersionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	WindowSize    uint32                 `protobuf:"varint,1,opt,name=window_size,json=windowSize,proto3" json:"window_size,omitempty"`
-	Window        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=window,proto3" json:"window,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMetadataVersionRequest) Reset() {
-	*x = GetMetadataVersionRequest{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMetadataVersionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMetadataVersionRequest) ProtoMessage() {}
-
-func (x *GetMetadataVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetMetadataVersionRequest.ProtoReflect.Descriptor instead.
-func (*GetMetadataVersionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetMetadataVersionRequest) GetWindowSize() uint32 {
-	if x != nil {
-		return x.WindowSize
-	}
-	return 0
-}
-
-func (x *GetMetadataVersionRequest) GetWindow() *timestamppb.Timestamp {
-	if x != nil {
-		return x.Window
-	}
-	return nil
-}
-
-type GetMetadataVersionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Version       []byte                 `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetMetadataVersionResponse) Reset() {
-	*x = GetMetadataVersionResponse{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetMetadataVersionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetMetadataVersionResponse) ProtoMessage() {}
-
-func (x *GetMetadataVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetMetadataVersionResponse.ProtoReflect.Descriptor instead.
-func (*GetMetadataVersionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *GetMetadataVersionResponse) GetVersion() []byte {
-	if x != nil {
-		return x.Version
-	}
-	return nil
-}
-
-type ListMetadataVersionsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	WindowSize    uint32                 `protobuf:"varint,1,opt,name=window_size,json=windowSize,proto3" json:"window_size,omitempty"`
-	WindowStart   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=window_start,json=windowStart,proto3" json:"window_start,omitempty"`
-	WindowEnd     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=window_end,json=windowEnd,proto3" json:"window_end,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListMetadataVersionsRequest) Reset() {
-	*x = ListMetadataVersionsRequest{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListMetadataVersionsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListMetadataVersionsRequest) ProtoMessage() {}
-
-func (x *ListMetadataVersionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListMetadataVersionsRequest.ProtoReflect.Descriptor instead.
-func (*ListMetadataVersionsRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *ListMetadataVersionsRequest) GetWindowSize() uint32 {
-	if x != nil {
-		return x.WindowSize
-	}
-	return 0
-}
-
-func (x *ListMetadataVersionsRequest) GetWindowStart() *timestamppb.Timestamp {
-	if x != nil {
-		return x.WindowStart
-	}
-	return nil
-}
-
-func (x *ListMetadataVersionsRequest) GetWindowEnd() *timestamppb.Timestamp {
-	if x != nil {
-		return x.WindowEnd
-	}
-	return nil
-}
-
-type ListMetadataVersionsResponse struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Windows       []*timestamppb.Timestamp `protobuf:"bytes,1,rep,name=windows,proto3" json:"windows,omitempty"`
-	Versions      [][]byte                 `protobuf:"bytes,2,rep,name=versions,proto3" json:"versions,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListMetadataVersionsResponse) Reset() {
-	*x = ListMetadataVersionsResponse{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListMetadataVersionsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListMetadataVersionsResponse) ProtoMessage() {}
-
-func (x *ListMetadataVersionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListMetadataVersionsResponse.ProtoReflect.Descriptor instead.
-func (*ListMetadataVersionsResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ListMetadataVersionsResponse) GetWindows() []*timestamppb.Timestamp {
-	if x != nil {
-		return x.Windows
-	}
-	return nil
-}
-
-func (x *ListMetadataVersionsResponse) GetVersions() [][]byte {
-	if x != nil {
-		return x.Versions
-	}
-	return nil
-}
-
-type ValidateMetadataVersionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Versions      []*Validate            `protobuf:"bytes,1,rep,name=versions,proto3" json:"versions,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ValidateMetadataVersionRequest) Reset() {
-	*x = ValidateMetadataVersionRequest{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ValidateMetadataVersionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ValidateMetadataVersionRequest) ProtoMessage() {}
-
-func (x *ValidateMetadataVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ValidateMetadataVersionRequest.ProtoReflect.Descriptor instead.
-func (*ValidateMetadataVersionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *ValidateMetadataVersionRequest) GetVersions() []*Validate {
-	if x != nil {
-		return x.Versions
-	}
-	return nil
-}
-
-type ValidateMetadataVersionResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Valid         []bool                 `protobuf:"varint,1,rep,packed,name=valid,proto3" json:"valid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ValidateMetadataVersionResponse) Reset() {
-	*x = ValidateMetadataVersionResponse{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ValidateMetadataVersionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ValidateMetadataVersionResponse) ProtoMessage() {}
-
-func (x *ValidateMetadataVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ValidateMetadataVersionResponse.ProtoReflect.Descriptor instead.
-func (*ValidateMetadataVersionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *ValidateMetadataVersionResponse) GetValid() []bool {
-	if x != nil {
-		return x.Valid
-	}
-	return nil
-}
-
-type Validate struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Window        *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=window,proto3" json:"window,omitempty"`
-	Version       []byte                 `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Validate) Reset() {
-	*x = Validate{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Validate) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Validate) ProtoMessage() {}
-
-func (x *Validate) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Validate.ProtoReflect.Descriptor instead.
-func (*Validate) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *Validate) GetWindow() *timestamppb.Timestamp {
-	if x != nil {
-		return x.Window
-	}
-	return nil
-}
-
-func (x *Validate) GetVersion() []byte {
-	if x != nil {
-		return x.Version
-	}
-	return nil
-}
-
-// Immutable metadata describing a partition stored in object storage
-type Partition struct {
+// A Manifest describes a Granule where a Granule is a set of data stored in object storage
+// as a Parquet file.
+//
+// A Granule is:
+// - A Parquet file stored in object storage (e.g S3)
+// - Immutable once written
+// - Organized by cluster key (timestamp) for data locality
+// - Enriched with column statistics for query optimization
+//
+// The Manifest (this Granule descriptor) enables query engines to:
+// 1. Discover which files to read based on time range queries
+// 2. Skip files based on min/max statistics (predicate pushdown)
+// 3. Use bloom filters for efficient existence checks
+// 4. Understand the schema without reading the Parquet file
+//
+// RELATIONSHIP:
+// Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
+type Manifest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// The key used to cluster the data into partitions. This is
-	// used to increase data locality, with the idea being that it
-	// helps process queries faster
+	// The key used to cluster the data into Granules. This determines how data
+	// is partitioned and enables efficient querying by time and device.
+	// Data locality: Granules with similar cluster keys are stored together,
+	// which helps query engines process related data faster.
 	ClusterKey *ClusterKey `protobuf:"bytes,2,opt,name=cluster_key,json=clusterKey,proto3" json:"cluster_key,omitempty"`
-	Segments   []string    `protobuf:"bytes,3,rep,name=segments,proto3" json:"segments,omitempty"`
-	// The size in bytes of the Parquet file
-	Size     uint64 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
+	// Storage location(s) for the Parquet file.
+	// Multiple locations can be specified for redundancy/multi-region support.
+	Locations []*StorageLocation `protobuf:"bytes,3,rep,name=locations,proto3" json:"locations,omitempty"`
+	// Physical size in bytes of the Parquet file in object storage
+	Size uint64 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
+	// Total number of rows in the Parquet file
 	RowCount uint64 `protobuf:"varint,5,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
-	// Time the partition was created
+	// Timestamp when the Granule was created and written to object storage
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// Metadata describing the columns in the partition
+	// Schema and statistics for each column in the Parquet file.
+	// Key: column name, Value: column metadata
+	// This enables query optimization without reading the actual file:
+	// - Type information for schema validation
+	// - Min/max values for predicate pushdown
+	// - Bloom filters for existence checks
 	Columns       map[string]*Column `protobuf:"bytes,7,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Partition) Reset() {
-	*x = Partition{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
+func (x *Manifest) Reset() {
+	*x = Manifest{}
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Partition) String() string {
+func (x *Manifest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Partition) ProtoMessage() {}
+func (*Manifest) ProtoMessage() {}
 
-func (x *Partition) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
+func (x *Manifest) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -915,54 +601,54 @@ func (x *Partition) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Partition.ProtoReflect.Descriptor instead.
-func (*Partition) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{11}
+// Deprecated: Use Manifest.ProtoReflect.Descriptor instead.
+func (*Manifest) Descriptor() ([]byte, []int) {
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *Partition) GetId() string {
+func (x *Manifest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *Partition) GetClusterKey() *ClusterKey {
+func (x *Manifest) GetClusterKey() *ClusterKey {
 	if x != nil {
 		return x.ClusterKey
 	}
 	return nil
 }
 
-func (x *Partition) GetSegments() []string {
+func (x *Manifest) GetLocations() []*StorageLocation {
 	if x != nil {
-		return x.Segments
+		return x.Locations
 	}
 	return nil
 }
 
-func (x *Partition) GetSize() uint64 {
+func (x *Manifest) GetSize() uint64 {
 	if x != nil {
 		return x.Size
 	}
 	return 0
 }
 
-func (x *Partition) GetRowCount() uint64 {
+func (x *Manifest) GetRowCount() uint64 {
 	if x != nil {
 		return x.RowCount
 	}
 	return 0
 }
 
-func (x *Partition) GetCreatedAt() *timestamppb.Timestamp {
+func (x *Manifest) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
 	return nil
 }
 
-func (x *Partition) GetColumns() map[string]*Column {
+func (x *Manifest) GetColumns() map[string]*Column {
 	if x != nil {
 		return x.Columns
 	}
@@ -980,7 +666,7 @@ type Column struct {
 
 func (x *Column) Reset() {
 	*x = Column{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[12]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +678,7 @@ func (x *Column) String() string {
 func (*Column) ProtoMessage() {}
 
 func (x *Column) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[12]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,7 +691,7 @@ func (x *Column) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Column.ProtoReflect.Descriptor instead.
 func (*Column) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{12}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Column) GetName() string {
@@ -1029,8 +715,331 @@ func (x *Column) GetType() ColumnType {
 	return ColumnType_COLUMN_TYPE_UNSPECIFIED
 }
 
+// StorageLocation specifies where a Parquet file is stored.
+// Supports multiple storage backends for flexibility across cloud providers and local development.
+type StorageLocation struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Location:
+	//
+	//	*StorageLocation_S3Compatible
+	//	*StorageLocation_AzureBlob
+	//	*StorageLocation_Local
+	Location      isStorageLocation_Location `protobuf_oneof:"location"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StorageLocation) Reset() {
+	*x = StorageLocation{}
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StorageLocation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StorageLocation) ProtoMessage() {}
+
+func (x *StorageLocation) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StorageLocation.ProtoReflect.Descriptor instead.
+func (*StorageLocation) Descriptor() ([]byte, []int) {
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *StorageLocation) GetLocation() isStorageLocation_Location {
+	if x != nil {
+		return x.Location
+	}
+	return nil
+}
+
+func (x *StorageLocation) GetS3Compatible() *S3CompatibleStorage {
+	if x != nil {
+		if x, ok := x.Location.(*StorageLocation_S3Compatible); ok {
+			return x.S3Compatible
+		}
+	}
+	return nil
+}
+
+func (x *StorageLocation) GetAzureBlob() *AzureBlobStorage {
+	if x != nil {
+		if x, ok := x.Location.(*StorageLocation_AzureBlob); ok {
+			return x.AzureBlob
+		}
+	}
+	return nil
+}
+
+func (x *StorageLocation) GetLocal() *LocalStorage {
+	if x != nil {
+		if x, ok := x.Location.(*StorageLocation_Local); ok {
+			return x.Local
+		}
+	}
+	return nil
+}
+
+type isStorageLocation_Location interface {
+	isStorageLocation_Location()
+}
+
+type StorageLocation_S3Compatible struct {
+	S3Compatible *S3CompatibleStorage `protobuf:"bytes,1,opt,name=s3_compatible,json=s3Compatible,proto3,oneof"` // AWS S3, GCS, MinIO, Ceph, etc.
+}
+
+type StorageLocation_AzureBlob struct {
+	AzureBlob *AzureBlobStorage `protobuf:"bytes,2,opt,name=azure_blob,json=azureBlob,proto3,oneof"` // Microsoft Azure Blob Storage
+}
+
+type StorageLocation_Local struct {
+	Local *LocalStorage `protobuf:"bytes,3,opt,name=local,proto3,oneof"` // Local filesystem
+}
+
+func (*StorageLocation_S3Compatible) isStorageLocation_Location() {}
+
+func (*StorageLocation_AzureBlob) isStorageLocation_Location() {}
+
+func (*StorageLocation_Local) isStorageLocation_Location() {}
+
+// S3CompatibleStorage represents object storage using the S3 API.
+// Supports AWS S3, Google Cloud Storage (GCS), R2, Ceph, and other S3-compatible services.
+type S3CompatibleStorage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Endpoint URL for the object storage service.
+	// Examples:
+	// - AWS S3 (us-east-1): "https://s3.us-east-1.amazonaws.com" or empty for default
+	// - AWS S3 (custom region): "https://s3.<region>.amazonaws.com"
+	// - GCS: "https://storage.googleapis.com"
+	// - Cloudflare R2: "https://<account-id>.r2.cloudflarestorage.com"
+	// If empty, defaults to AWS S3 in the region specified below.
+	Endpoint string `protobuf:"bytes,1,opt,name=endpoint,proto3" json:"endpoint,omitempty"`
+	// Bucket name
+	Bucket string `protobuf:"bytes,2,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	// Object key/path within the bucket (e.g., "data/2024/01/flows.parquet")
+	Key string `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	// AWS region (for S3) or location (for GCS).
+	// Examples: "us-east-1", "us-west-2", "eu-west-1"
+	// For GCS, use GCS location names like "us-central1", "europe-west1"
+	Region        string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *S3CompatibleStorage) Reset() {
+	*x = S3CompatibleStorage{}
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *S3CompatibleStorage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*S3CompatibleStorage) ProtoMessage() {}
+
+func (x *S3CompatibleStorage) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use S3CompatibleStorage.ProtoReflect.Descriptor instead.
+func (*S3CompatibleStorage) Descriptor() ([]byte, []int) {
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *S3CompatibleStorage) GetEndpoint() string {
+	if x != nil {
+		return x.Endpoint
+	}
+	return ""
+}
+
+func (x *S3CompatibleStorage) GetBucket() string {
+	if x != nil {
+		return x.Bucket
+	}
+	return ""
+}
+
+func (x *S3CompatibleStorage) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *S3CompatibleStorage) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+// AzureBlobStorage represents Microsoft Azure Blob Storage.
+// Note: Azure Blob Storage uses a different API model than S3.
+// Uses container/blob nomenclature instead of bucket/key.
+type AzureBlobStorage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Azure storage account name
+	AccountName string `protobuf:"bytes,1,opt,name=account_name,json=accountName,proto3" json:"account_name,omitempty"`
+	// Container name (equivalent to S3 bucket)
+	Container string `protobuf:"bytes,2,opt,name=container,proto3" json:"container,omitempty"`
+	// Blob name/path (equivalent to S3 key)
+	BlobName string `protobuf:"bytes,3,opt,name=blob_name,json=blobName,proto3" json:"blob_name,omitempty"`
+	// Optional: Azure endpoint suffix (e.g., "core.windows.net")
+	// Defaults to "core.windows.net" if not specified.
+	// Full URL format: https://{account_name}.blob.{endpoint_suffix}/{container}/{blob_name}
+	EndpointSuffix string `protobuf:"bytes,4,opt,name=endpoint_suffix,json=endpointSuffix,proto3" json:"endpoint_suffix,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *AzureBlobStorage) Reset() {
+	*x = AzureBlobStorage{}
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AzureBlobStorage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AzureBlobStorage) ProtoMessage() {}
+
+func (x *AzureBlobStorage) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AzureBlobStorage.ProtoReflect.Descriptor instead.
+func (*AzureBlobStorage) Descriptor() ([]byte, []int) {
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *AzureBlobStorage) GetAccountName() string {
+	if x != nil {
+		return x.AccountName
+	}
+	return ""
+}
+
+func (x *AzureBlobStorage) GetContainer() string {
+	if x != nil {
+		return x.Container
+	}
+	return ""
+}
+
+func (x *AzureBlobStorage) GetBlobName() string {
+	if x != nil {
+		return x.BlobName
+	}
+	return ""
+}
+
+func (x *AzureBlobStorage) GetEndpointSuffix() string {
+	if x != nil {
+		return x.EndpointSuffix
+	}
+	return ""
+}
+
+// LocalStorage represents local filesystem storage.
+// Primarily used for demos, testing, and development environments.
+type LocalStorage struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Filesystem path (can be absolute or relative)
+	// Examples:
+	// - Absolute: "/data/parquet/flows.parquet"
+	// - Relative: "./data/flows.parquet"
+	Path          string `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LocalStorage) Reset() {
+	*x = LocalStorage{}
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LocalStorage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LocalStorage) ProtoMessage() {}
+
+func (x *LocalStorage) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LocalStorage.ProtoReflect.Descriptor instead.
+func (*LocalStorage) Descriptor() ([]byte, []int) {
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *LocalStorage) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+// Statistics contains min/max bounds and bloom filters for a column.
+// Query engines use these statistics to determine if a Granule needs to be read:
+//
+// PREDICATE PUSHDOWN EXAMPLE:
+// Query: SELECT * FROM table WHERE age > 30
+// If a Granule's age column has max_int32 = 25, the entire file can be skipped.
+//
+// BLOOM FILTER EXAMPLE:
+// Query: SELECT * FROM table WHERE user_id = 'abc123'
+// The bloom filter can quickly indicate if 'abc123' definitely doesn't exist,
+// allowing the query engine to skip reading the file.
 type Statistics struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Minimum value in this column across all rows in the Granule.
+	// The specific field used depends on the column type.
+	//
 	// Types that are valid to be assigned to Min:
 	//
 	//	*Statistics_MinInt32
@@ -1042,6 +1051,9 @@ type Statistics struct {
 	//	*Statistics_MinBytes
 	//	*Statistics_MinTimestamp
 	Min isStatistics_Min `protobuf_oneof:"min"`
+	// Maximum value in this column across all rows in the Granule.
+	// The specific field used depends on the column type.
+	//
 	// Types that are valid to be assigned to Max:
 	//
 	//	*Statistics_MaxInt32
@@ -1052,15 +1064,18 @@ type Statistics struct {
 	//	*Statistics_MaxString
 	//	*Statistics_MaxBytes
 	//	*Statistics_MaxTimestamp
-	Max           isStatistics_Max `protobuf_oneof:"max"`
-	Filter        []byte           `protobuf:"bytes,17,opt,name=filter,proto3" json:"filter,omitempty"`
+	Max isStatistics_Max `protobuf_oneof:"max"`
+	// Bloom filter or similar probabilistic data structure.
+	// Used for efficient "does this value exist?" queries.
+	// False positives are possible, but false negatives are not.
+	Filter        []byte `protobuf:"bytes,17,opt,name=filter,proto3" json:"filter,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Statistics) Reset() {
 	*x = Statistics{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[13]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1072,7 +1087,7 @@ func (x *Statistics) String() string {
 func (*Statistics) ProtoMessage() {}
 
 func (x *Statistics) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[13]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1085,7 +1100,7 @@ func (x *Statistics) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Statistics.ProtoReflect.Descriptor instead.
 func (*Statistics) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{13}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Statistics) GetMin() isStatistics_Min {
@@ -1361,19 +1376,28 @@ func (*Statistics_MaxBytes) isStatistics_Max() {}
 
 func (*Statistics_MaxTimestamp) isStatistics_Max() {}
 
+// ClusterKey defines how data is partitioned and organized into Granules.
+// The cluster key creates a partitioning scheme:
+// 1. Temporal dimension (timestamp) - enables time-range queries
+//
+// DATA LOCALITY BENEFITS:
+//   - Time-range queries: "SELECT * FROM flows WHERE timestamp BETWEEN t1 AND t2"
+//     Only need to scan Granules with cluster_key.timestamp in [t1, t2]
+//
+// Granules with similar cluster keys are stored together in object storage,
+// improving cache locality and reducing the number of files that need to be read.
 type ClusterKey struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The timestamp is the time that the flow was received
-	Timestamp *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	// The ID of the device the flow belongs to
-	DeviceId      uint64 `protobuf:"varint,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	// The timestamp when the flow was received by the system.
+	// Used as the primary partitioning dimension for time-range queries.
+	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ClusterKey) Reset() {
 	*x = ClusterKey{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[14]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1385,7 +1409,7 @@ func (x *ClusterKey) String() string {
 func (*ClusterKey) ProtoMessage() {}
 
 func (x *ClusterKey) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[14]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1398,7 +1422,7 @@ func (x *ClusterKey) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClusterKey.ProtoReflect.Descriptor instead.
 func (*ClusterKey) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{14}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ClusterKey) GetTimestamp() *timestamppb.Timestamp {
@@ -1408,27 +1432,33 @@ func (x *ClusterKey) GetTimestamp() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *ClusterKey) GetDeviceId() uint64 {
-	if x != nil {
-		return x.DeviceId
-	}
-	return 0
-}
-
-// TODO: Add metrics we care about?
+// Compaction represents metadata about a data compaction operation.
+// Compaction is the process of merging multiple small Granules into larger ones
+// to improve query performance and reduce storage overhead.
+//
+// COMPACTION LEVELS (LSM-tree style):
+// - Level 0: Initial write, many small files
+// - Level 1: First compaction pass, medium-sized files
+// - Higher levels: Further compaction, larger files with better organization
+//
+// TODO: Add metrics we care about? (e.g., rows merged, time taken, compression ratio)
 type Compaction struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Level         CompactionLevel        `protobuf:"varint,2,opt,name=level,proto3,enum=nexus.catalog.v1.CompactionLevel" json:"level,omitempty"`
-	Window        *Window                `protobuf:"bytes,3,opt,name=window,proto3" json:"window,omitempty"`
-	Size          uint64                 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Timestamp when the compaction operation was performed
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// The compaction level (0 = uncompacted, higher = more compacted)
+	Level CompactionLevel `protobuf:"varint,2,opt,name=level,proto3,enum=nexus.catalog.v1.CompactionLevel" json:"level,omitempty"`
+	// The time window that was compacted
+	Window *Window `protobuf:"bytes,3,opt,name=window,proto3" json:"window,omitempty"`
+	// Total size in bytes of the compacted output
+	Size          uint64 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Compaction) Reset() {
 	*x = Compaction{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[15]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1470,7 @@ func (x *Compaction) String() string {
 func (*Compaction) ProtoMessage() {}
 
 func (x *Compaction) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[15]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1483,7 @@ func (x *Compaction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Compaction.ProtoReflect.Descriptor instead.
 func (*Compaction) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{15}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Compaction) GetCreatedAt() *timestamppb.Timestamp {
@@ -1484,8 +1514,11 @@ func (x *Compaction) GetSize() uint64 {
 	return 0
 }
 
+// Window represents a time range, typically used for compaction operations.
+// Defines the temporal boundaries of a batch of data.
 type Window struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Size of the window (e.g., duration in seconds or minutes)
 	Size          uint32                 `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
@@ -1495,7 +1528,7 @@ type Window struct {
 
 func (x *Window) Reset() {
 	*x = Window{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[16]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1507,7 +1540,7 @@ func (x *Window) String() string {
 func (*Window) ProtoMessage() {}
 
 func (x *Window) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[16]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1520,7 +1553,7 @@ func (x *Window) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Window.ProtoReflect.Descriptor instead.
 func (*Window) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{16}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Window) GetSize() uint32 {
@@ -1544,21 +1577,26 @@ func (x *Window) GetEndTime() *timestamppb.Timestamp {
 	return nil
 }
 
-// Metadata and data stored for a given value
+// Value represents a generic container for storing raw data with metadata.
+// This is used for storing arbitrary values with compression and timestamp tracking.
+// Useful for caching, intermediate results, or storing configuration data.
 type Value struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// int32 enc = 2; // encoding of the raw data -- store as enums
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Comp          Compression            `protobuf:"varint,3,opt,name=comp,proto3,enum=nexus.catalog.v1.Compression" json:"comp,omitempty"`
-	Raw           []byte                 `protobuf:"bytes,4,opt,name=raw,proto3" json:"raw,omitempty"`
+	// Timestamp when the value was first created
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Timestamp when the value was last updated
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Compression algorithm applied to the raw data
+	Comp Compression `protobuf:"varint,3,opt,name=comp,proto3,enum=nexus.catalog.v1.Compression" json:"comp,omitempty"`
+	// The raw data bytes (potentially compressed)
+	Raw           []byte `protobuf:"bytes,4,opt,name=raw,proto3" json:"raw,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Value) Reset() {
 	*x = Value{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[17]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1570,7 +1608,7 @@ func (x *Value) String() string {
 func (*Value) ProtoMessage() {}
 
 func (x *Value) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[17]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1583,7 +1621,7 @@ func (x *Value) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Value.ProtoReflect.Descriptor instead.
 func (*Value) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{17}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Value) GetCreatedAt() *timestamppb.Timestamp {
@@ -1614,6 +1652,17 @@ func (x *Value) GetRaw() []byte {
 	return nil
 }
 
+// Variant is a polymorphic value type that can hold different primitive types.
+// Similar to a union type or tagged union in programming languages.
+//
+// USE CASES:
+// - Storing heterogeneous data where the type varies at runtime
+// - Dynamic configuration values
+// - Query parameters that can be of different types
+// - Metadata values with varying types
+//
+// The oneof ensures only one field is set at a time, with the field tag
+// indicating the actual type of the stored value.
 type Variant struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Variant:
@@ -1633,7 +1682,7 @@ type Variant struct {
 
 func (x *Variant) Reset() {
 	*x = Variant{}
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[18]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1645,7 +1694,7 @@ func (x *Variant) String() string {
 func (*Variant) ProtoMessage() {}
 
 func (x *Variant) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[18]
+	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1658,7 +1707,7 @@ func (x *Variant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Variant.ProtoReflect.Descriptor instead.
 func (*Variant) Descriptor() ([]byte, []int) {
-	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{18}
+	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Variant) GetVariant() isVariant_Variant {
@@ -1796,72 +1845,50 @@ var File_nexus_catalog_v1_catalog_proto protoreflect.FileDescriptor
 
 const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc4\x01\n" +
-	"\x16CreatePartitionRequest\x12'\n" +
+	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
+	"\x15CreateManifestRequest\x12'\n" +
 	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
 	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x03 \x01(\tR\tclusterId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02id\x129\n" +
-	"\tpartition\x18\x05 \x01(\v2\x1b.nexus.catalog.v1.PartitionR\tpartition\"\x80\x02\n" +
-	"\x17CreatePartitionResponse\x12'\n" +
+	"\x02id\x18\x04 \x01(\tR\x02id\x126\n" +
+	"\bmanifest\x18\x05 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xfc\x01\n" +
+	"\x16CreateManifestResponse\x12'\n" +
 	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
 	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x03 \x01(\tR\tclusterId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02id\x129\n" +
-	"\tpartition\x18\x05 \x01(\v2\x1b.nexus.catalog.v1.PartitionR\tpartition\x129\n" +
+	"\x02id\x18\x04 \x01(\tR\x02id\x126\n" +
+	"\bmanifest\x18\x05 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xea\x01\n" +
-	"\x15ListPartitionsRequest\x12'\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe9\x01\n" +
+	"\x14ListManifestsRequest\x12'\n" +
 	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
 	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x03 \x01(\tR\tclusterId\x129\n" +
 	"\n" +
 	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xa6\x02\n" +
-	"\x16ListPartitionsResponse\x12'\n" +
+	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xa4\x02\n" +
+	"\x15ListManifestsResponse\x12'\n" +
 	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
 	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
 	"\n" +
 	"cluster_id\x18\x03 \x01(\tR\tclusterId\x129\n" +
 	"\n" +
 	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x129\n" +
-	"\tpartition\x18\x06 \x03(\v2\x1b.nexus.catalog.v1.PartitionR\tpartition\"p\n" +
-	"\x19GetMetadataVersionRequest\x12\x1f\n" +
-	"\vwindow_size\x18\x01 \x01(\rR\n" +
-	"windowSize\x122\n" +
-	"\x06window\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06window\"6\n" +
-	"\x1aGetMetadataVersionResponse\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\fR\aversion\"\xb8\x01\n" +
-	"\x1bListMetadataVersionsRequest\x12\x1f\n" +
-	"\vwindow_size\x18\x01 \x01(\rR\n" +
-	"windowSize\x12=\n" +
-	"\fwindow_start\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vwindowStart\x129\n" +
-	"\n" +
-	"window_end\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\twindowEnd\"p\n" +
-	"\x1cListMetadataVersionsResponse\x124\n" +
-	"\awindows\x18\x01 \x03(\v2\x1a.google.protobuf.TimestampR\awindows\x12\x1a\n" +
-	"\bversions\x18\x02 \x03(\fR\bversions\"X\n" +
-	"\x1eValidateMetadataVersionRequest\x126\n" +
-	"\bversions\x18\x01 \x03(\v2\x1a.nexus.catalog.v1.ValidateR\bversions\"7\n" +
-	"\x1fValidateMetadataVersionResponse\x12\x14\n" +
-	"\x05valid\x18\x01 \x03(\bR\x05valid\"X\n" +
-	"\bValidate\x122\n" +
-	"\x06window\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x06window\x12\x18\n" +
-	"\aversion\x18\x02 \x01(\fR\aversion\"\xfc\x02\n" +
-	"\tPartition\x12\x0e\n" +
+	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
+	"\tManifests\x18\x06 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\x9f\x03\n" +
+	"\bManifest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
 	"\vcluster_key\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.ClusterKeyR\n" +
-	"clusterKey\x12\x1a\n" +
-	"\bsegments\x18\x03 \x03(\tR\bsegments\x12\x12\n" +
+	"clusterKey\x12?\n" +
+	"\tlocations\x18\x03 \x03(\v2!.nexus.catalog.v1.StorageLocationR\tlocations\x12\x12\n" +
 	"\x04size\x18\x04 \x01(\x04R\x04size\x12\x1b\n" +
 	"\trow_count\x18\x05 \x01(\x04R\browCount\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12B\n" +
-	"\acolumns\x18\a \x03(\v2(.nexus.catalog.v1.Partition.ColumnsEntryR\acolumns\x1aT\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12A\n" +
+	"\acolumns\x18\a \x03(\v2'.nexus.catalog.v1.Manifest.ColumnsEntryR\acolumns\x1aT\n" +
 	"\fColumnsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12.\n" +
 	"\x05value\x18\x02 \x01(\v2\x18.nexus.catalog.v1.ColumnR\x05value:\x028\x01\"\x8c\x01\n" +
@@ -1870,7 +1897,26 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
 	"statistics\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.StatisticsR\n" +
 	"statistics\x120\n" +
-	"\x04type\x18\x03 \x01(\x0e2\x1c.nexus.catalog.v1.ColumnTypeR\x04type\"\xf2\x04\n" +
+	"\x04type\x18\x03 \x01(\x0e2\x1c.nexus.catalog.v1.ColumnTypeR\x04type\"\xe8\x01\n" +
+	"\x0fStorageLocation\x12L\n" +
+	"\rs3_compatible\x18\x01 \x01(\v2%.nexus.catalog.v1.S3CompatibleStorageH\x00R\fs3Compatible\x12C\n" +
+	"\n" +
+	"azure_blob\x18\x02 \x01(\v2\".nexus.catalog.v1.AzureBlobStorageH\x00R\tazureBlob\x126\n" +
+	"\x05local\x18\x03 \x01(\v2\x1e.nexus.catalog.v1.LocalStorageH\x00R\x05localB\n" +
+	"\n" +
+	"\blocation\"s\n" +
+	"\x13S3CompatibleStorage\x12\x1a\n" +
+	"\bendpoint\x18\x01 \x01(\tR\bendpoint\x12\x16\n" +
+	"\x06bucket\x18\x02 \x01(\tR\x06bucket\x12\x10\n" +
+	"\x03key\x18\x03 \x01(\tR\x03key\x12\x16\n" +
+	"\x06region\x18\x04 \x01(\tR\x06region\"\x99\x01\n" +
+	"\x10AzureBlobStorage\x12!\n" +
+	"\faccount_name\x18\x01 \x01(\tR\vaccountName\x12\x1c\n" +
+	"\tcontainer\x18\x02 \x01(\tR\tcontainer\x12\x1b\n" +
+	"\tblob_name\x18\x03 \x01(\tR\bblobName\x12'\n" +
+	"\x0fendpoint_suffix\x18\x04 \x01(\tR\x0eendpointSuffix\"\"\n" +
+	"\fLocalStorage\x12\x12\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\"\xf2\x04\n" +
 	"\n" +
 	"Statistics\x12\x1d\n" +
 	"\tmin_int32\x18\x01 \x01(\x05H\x00R\bminInt32\x12\x1d\n" +
@@ -1898,11 +1944,10 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\rmax_timestamp\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\fmaxTimestamp\x12\x16\n" +
 	"\x06filter\x18\x11 \x01(\fR\x06filterB\x05\n" +
 	"\x03minB\x05\n" +
-	"\x03max\"c\n" +
+	"\x03max\"F\n" +
 	"\n" +
 	"ClusterKey\x128\n" +
-	"\ttimestamp\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1b\n" +
-	"\tdevice_id\x18\x02 \x01(\x04R\bdeviceId\"\xc6\x01\n" +
+	"\ttimestamp\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"\xc6\x01\n" +
 	"\n" +
 	"Compaction\x129\n" +
 	"\n" +
@@ -1956,13 +2001,10 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\x17COMPRESSION_UNSPECIFIED\x10\x00\x12\x14\n" +
 	"\x10COMPRESSION_ZSTD\x10\x01\x12\x13\n" +
 	"\x0fCOMPRESSION_LZ4\x10\x02\x12\x16\n" +
-	"\x12COMPRESSION_SNAPPY\x10\x032\xd0\x04\n" +
-	"\x0eCatalogService\x12h\n" +
-	"\x0fCreatePartition\x12(.nexus.catalog.v1.CreatePartitionRequest\x1a).nexus.catalog.v1.CreatePartitionResponse\"\x00\x12e\n" +
-	"\x0eListPartitions\x12'.nexus.catalog.v1.ListPartitionsRequest\x1a(.nexus.catalog.v1.ListPartitionsResponse\"\x00\x12\x80\x01\n" +
-	"\x17ValidateMetadataVersion\x120.nexus.catalog.v1.ValidateMetadataVersionRequest\x1a1.nexus.catalog.v1.ValidateMetadataVersionResponse\"\x00\x12q\n" +
-	"\x12GetMetadataVersion\x12+.nexus.catalog.v1.GetMetadataVersionRequest\x1a,.nexus.catalog.v1.GetMetadataVersionResponse\"\x00\x12w\n" +
-	"\x14ListMetadataVersions\x12-.nexus.catalog.v1.ListMetadataVersionsRequest\x1a..nexus.catalog.v1.ListMetadataVersionsResponse\"\x00B<Z:github.com/liquidspill/proto/go/nexus/catalog/v1;catalogv1b\x06proto3"
+	"\x12COMPRESSION_SNAPPY\x10\x032\xdb\x01\n" +
+	"\x0eCatalogService\x12e\n" +
+	"\x0eCreateManifest\x12'.nexus.catalog.v1.CreateManifestRequest\x1a(.nexus.catalog.v1.CreateManifestResponse\"\x00\x12b\n" +
+	"\rListManifests\x12&.nexus.catalog.v1.ListManifestsRequest\x1a'.nexus.catalog.v1.ListManifestsResponse\"\x00B<Z:github.com/liquidspill/proto/go/nexus/catalog/v1;catalogv1b\x06proto3"
 
 var (
 	file_nexus_catalog_v1_catalog_proto_rawDescOnce sync.Once
@@ -1977,81 +2019,70 @@ func file_nexus_catalog_v1_catalog_proto_rawDescGZIP() []byte {
 }
 
 var file_nexus_catalog_v1_catalog_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_nexus_catalog_v1_catalog_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_nexus_catalog_v1_catalog_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_nexus_catalog_v1_catalog_proto_goTypes = []any{
-	(ColumnType)(0),                         // 0: nexus.catalog.v1.ColumnType
-	(CompactionLevel)(0),                    // 1: nexus.catalog.v1.CompactionLevel
-	(Compression)(0),                        // 2: nexus.catalog.v1.Compression
-	(*CreatePartitionRequest)(nil),          // 3: nexus.catalog.v1.CreatePartitionRequest
-	(*CreatePartitionResponse)(nil),         // 4: nexus.catalog.v1.CreatePartitionResponse
-	(*ListPartitionsRequest)(nil),           // 5: nexus.catalog.v1.ListPartitionsRequest
-	(*ListPartitionsResponse)(nil),          // 6: nexus.catalog.v1.ListPartitionsResponse
-	(*GetMetadataVersionRequest)(nil),       // 7: nexus.catalog.v1.GetMetadataVersionRequest
-	(*GetMetadataVersionResponse)(nil),      // 8: nexus.catalog.v1.GetMetadataVersionResponse
-	(*ListMetadataVersionsRequest)(nil),     // 9: nexus.catalog.v1.ListMetadataVersionsRequest
-	(*ListMetadataVersionsResponse)(nil),    // 10: nexus.catalog.v1.ListMetadataVersionsResponse
-	(*ValidateMetadataVersionRequest)(nil),  // 11: nexus.catalog.v1.ValidateMetadataVersionRequest
-	(*ValidateMetadataVersionResponse)(nil), // 12: nexus.catalog.v1.ValidateMetadataVersionResponse
-	(*Validate)(nil),                        // 13: nexus.catalog.v1.Validate
-	(*Partition)(nil),                       // 14: nexus.catalog.v1.Partition
-	(*Column)(nil),                          // 15: nexus.catalog.v1.Column
-	(*Statistics)(nil),                      // 16: nexus.catalog.v1.Statistics
-	(*ClusterKey)(nil),                      // 17: nexus.catalog.v1.ClusterKey
-	(*Compaction)(nil),                      // 18: nexus.catalog.v1.Compaction
-	(*Window)(nil),                          // 19: nexus.catalog.v1.Window
-	(*Value)(nil),                           // 20: nexus.catalog.v1.Value
-	(*Variant)(nil),                         // 21: nexus.catalog.v1.Variant
-	nil,                                     // 22: nexus.catalog.v1.Partition.ColumnsEntry
-	(*timestamppb.Timestamp)(nil),           // 23: google.protobuf.Timestamp
+	(ColumnType)(0),                // 0: nexus.catalog.v1.ColumnType
+	(CompactionLevel)(0),           // 1: nexus.catalog.v1.CompactionLevel
+	(Compression)(0),               // 2: nexus.catalog.v1.Compression
+	(*CreateManifestRequest)(nil),  // 3: nexus.catalog.v1.CreateManifestRequest
+	(*CreateManifestResponse)(nil), // 4: nexus.catalog.v1.CreateManifestResponse
+	(*ListManifestsRequest)(nil),   // 5: nexus.catalog.v1.ListManifestsRequest
+	(*ListManifestsResponse)(nil),  // 6: nexus.catalog.v1.ListManifestsResponse
+	(*Manifest)(nil),               // 7: nexus.catalog.v1.Manifest
+	(*Column)(nil),                 // 8: nexus.catalog.v1.Column
+	(*StorageLocation)(nil),        // 9: nexus.catalog.v1.StorageLocation
+	(*S3CompatibleStorage)(nil),    // 10: nexus.catalog.v1.S3CompatibleStorage
+	(*AzureBlobStorage)(nil),       // 11: nexus.catalog.v1.AzureBlobStorage
+	(*LocalStorage)(nil),           // 12: nexus.catalog.v1.LocalStorage
+	(*Statistics)(nil),             // 13: nexus.catalog.v1.Statistics
+	(*ClusterKey)(nil),             // 14: nexus.catalog.v1.ClusterKey
+	(*Compaction)(nil),             // 15: nexus.catalog.v1.Compaction
+	(*Window)(nil),                 // 16: nexus.catalog.v1.Window
+	(*Value)(nil),                  // 17: nexus.catalog.v1.Value
+	(*Variant)(nil),                // 18: nexus.catalog.v1.Variant
+	nil,                            // 19: nexus.catalog.v1.Manifest.ColumnsEntry
+	(*timestamppb.Timestamp)(nil),  // 20: google.protobuf.Timestamp
 }
 var file_nexus_catalog_v1_catalog_proto_depIdxs = []int32{
-	14, // 0: nexus.catalog.v1.CreatePartitionRequest.partition:type_name -> nexus.catalog.v1.Partition
-	14, // 1: nexus.catalog.v1.CreatePartitionResponse.partition:type_name -> nexus.catalog.v1.Partition
-	23, // 2: nexus.catalog.v1.CreatePartitionResponse.created_at:type_name -> google.protobuf.Timestamp
-	23, // 3: nexus.catalog.v1.ListPartitionsRequest.start_time:type_name -> google.protobuf.Timestamp
-	23, // 4: nexus.catalog.v1.ListPartitionsRequest.end_time:type_name -> google.protobuf.Timestamp
-	23, // 5: nexus.catalog.v1.ListPartitionsResponse.start_time:type_name -> google.protobuf.Timestamp
-	23, // 6: nexus.catalog.v1.ListPartitionsResponse.end_time:type_name -> google.protobuf.Timestamp
-	14, // 7: nexus.catalog.v1.ListPartitionsResponse.partition:type_name -> nexus.catalog.v1.Partition
-	23, // 8: nexus.catalog.v1.GetMetadataVersionRequest.window:type_name -> google.protobuf.Timestamp
-	23, // 9: nexus.catalog.v1.ListMetadataVersionsRequest.window_start:type_name -> google.protobuf.Timestamp
-	23, // 10: nexus.catalog.v1.ListMetadataVersionsRequest.window_end:type_name -> google.protobuf.Timestamp
-	23, // 11: nexus.catalog.v1.ListMetadataVersionsResponse.windows:type_name -> google.protobuf.Timestamp
-	13, // 12: nexus.catalog.v1.ValidateMetadataVersionRequest.versions:type_name -> nexus.catalog.v1.Validate
-	23, // 13: nexus.catalog.v1.Validate.window:type_name -> google.protobuf.Timestamp
-	17, // 14: nexus.catalog.v1.Partition.cluster_key:type_name -> nexus.catalog.v1.ClusterKey
-	23, // 15: nexus.catalog.v1.Partition.created_at:type_name -> google.protobuf.Timestamp
-	22, // 16: nexus.catalog.v1.Partition.columns:type_name -> nexus.catalog.v1.Partition.ColumnsEntry
-	16, // 17: nexus.catalog.v1.Column.statistics:type_name -> nexus.catalog.v1.Statistics
-	0,  // 18: nexus.catalog.v1.Column.type:type_name -> nexus.catalog.v1.ColumnType
-	23, // 19: nexus.catalog.v1.Statistics.min_timestamp:type_name -> google.protobuf.Timestamp
-	23, // 20: nexus.catalog.v1.Statistics.max_timestamp:type_name -> google.protobuf.Timestamp
-	23, // 21: nexus.catalog.v1.ClusterKey.timestamp:type_name -> google.protobuf.Timestamp
-	23, // 22: nexus.catalog.v1.Compaction.created_at:type_name -> google.protobuf.Timestamp
-	1,  // 23: nexus.catalog.v1.Compaction.level:type_name -> nexus.catalog.v1.CompactionLevel
-	19, // 24: nexus.catalog.v1.Compaction.window:type_name -> nexus.catalog.v1.Window
-	23, // 25: nexus.catalog.v1.Window.start_time:type_name -> google.protobuf.Timestamp
-	23, // 26: nexus.catalog.v1.Window.end_time:type_name -> google.protobuf.Timestamp
-	23, // 27: nexus.catalog.v1.Value.created_at:type_name -> google.protobuf.Timestamp
-	23, // 28: nexus.catalog.v1.Value.updated_at:type_name -> google.protobuf.Timestamp
-	2,  // 29: nexus.catalog.v1.Value.comp:type_name -> nexus.catalog.v1.Compression
-	23, // 30: nexus.catalog.v1.Variant.timestamp_variant:type_name -> google.protobuf.Timestamp
-	15, // 31: nexus.catalog.v1.Partition.ColumnsEntry.value:type_name -> nexus.catalog.v1.Column
-	3,  // 32: nexus.catalog.v1.CatalogService.CreatePartition:input_type -> nexus.catalog.v1.CreatePartitionRequest
-	5,  // 33: nexus.catalog.v1.CatalogService.ListPartitions:input_type -> nexus.catalog.v1.ListPartitionsRequest
-	11, // 34: nexus.catalog.v1.CatalogService.ValidateMetadataVersion:input_type -> nexus.catalog.v1.ValidateMetadataVersionRequest
-	7,  // 35: nexus.catalog.v1.CatalogService.GetMetadataVersion:input_type -> nexus.catalog.v1.GetMetadataVersionRequest
-	9,  // 36: nexus.catalog.v1.CatalogService.ListMetadataVersions:input_type -> nexus.catalog.v1.ListMetadataVersionsRequest
-	4,  // 37: nexus.catalog.v1.CatalogService.CreatePartition:output_type -> nexus.catalog.v1.CreatePartitionResponse
-	6,  // 38: nexus.catalog.v1.CatalogService.ListPartitions:output_type -> nexus.catalog.v1.ListPartitionsResponse
-	12, // 39: nexus.catalog.v1.CatalogService.ValidateMetadataVersion:output_type -> nexus.catalog.v1.ValidateMetadataVersionResponse
-	8,  // 40: nexus.catalog.v1.CatalogService.GetMetadataVersion:output_type -> nexus.catalog.v1.GetMetadataVersionResponse
-	10, // 41: nexus.catalog.v1.CatalogService.ListMetadataVersions:output_type -> nexus.catalog.v1.ListMetadataVersionsResponse
-	37, // [37:42] is the sub-list for method output_type
-	32, // [32:37] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	7,  // 0: nexus.catalog.v1.CreateManifestRequest.manifest:type_name -> nexus.catalog.v1.Manifest
+	7,  // 1: nexus.catalog.v1.CreateManifestResponse.manifest:type_name -> nexus.catalog.v1.Manifest
+	20, // 2: nexus.catalog.v1.CreateManifestResponse.created_at:type_name -> google.protobuf.Timestamp
+	20, // 3: nexus.catalog.v1.ListManifestsRequest.start_time:type_name -> google.protobuf.Timestamp
+	20, // 4: nexus.catalog.v1.ListManifestsRequest.end_time:type_name -> google.protobuf.Timestamp
+	20, // 5: nexus.catalog.v1.ListManifestsResponse.start_time:type_name -> google.protobuf.Timestamp
+	20, // 6: nexus.catalog.v1.ListManifestsResponse.end_time:type_name -> google.protobuf.Timestamp
+	7,  // 7: nexus.catalog.v1.ListManifestsResponse.Manifests:type_name -> nexus.catalog.v1.Manifest
+	14, // 8: nexus.catalog.v1.Manifest.cluster_key:type_name -> nexus.catalog.v1.ClusterKey
+	9,  // 9: nexus.catalog.v1.Manifest.locations:type_name -> nexus.catalog.v1.StorageLocation
+	20, // 10: nexus.catalog.v1.Manifest.created_at:type_name -> google.protobuf.Timestamp
+	19, // 11: nexus.catalog.v1.Manifest.columns:type_name -> nexus.catalog.v1.Manifest.ColumnsEntry
+	13, // 12: nexus.catalog.v1.Column.statistics:type_name -> nexus.catalog.v1.Statistics
+	0,  // 13: nexus.catalog.v1.Column.type:type_name -> nexus.catalog.v1.ColumnType
+	10, // 14: nexus.catalog.v1.StorageLocation.s3_compatible:type_name -> nexus.catalog.v1.S3CompatibleStorage
+	11, // 15: nexus.catalog.v1.StorageLocation.azure_blob:type_name -> nexus.catalog.v1.AzureBlobStorage
+	12, // 16: nexus.catalog.v1.StorageLocation.local:type_name -> nexus.catalog.v1.LocalStorage
+	20, // 17: nexus.catalog.v1.Statistics.min_timestamp:type_name -> google.protobuf.Timestamp
+	20, // 18: nexus.catalog.v1.Statistics.max_timestamp:type_name -> google.protobuf.Timestamp
+	20, // 19: nexus.catalog.v1.ClusterKey.timestamp:type_name -> google.protobuf.Timestamp
+	20, // 20: nexus.catalog.v1.Compaction.created_at:type_name -> google.protobuf.Timestamp
+	1,  // 21: nexus.catalog.v1.Compaction.level:type_name -> nexus.catalog.v1.CompactionLevel
+	16, // 22: nexus.catalog.v1.Compaction.window:type_name -> nexus.catalog.v1.Window
+	20, // 23: nexus.catalog.v1.Window.start_time:type_name -> google.protobuf.Timestamp
+	20, // 24: nexus.catalog.v1.Window.end_time:type_name -> google.protobuf.Timestamp
+	20, // 25: nexus.catalog.v1.Value.created_at:type_name -> google.protobuf.Timestamp
+	20, // 26: nexus.catalog.v1.Value.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 27: nexus.catalog.v1.Value.comp:type_name -> nexus.catalog.v1.Compression
+	20, // 28: nexus.catalog.v1.Variant.timestamp_variant:type_name -> google.protobuf.Timestamp
+	8,  // 29: nexus.catalog.v1.Manifest.ColumnsEntry.value:type_name -> nexus.catalog.v1.Column
+	3,  // 30: nexus.catalog.v1.CatalogService.CreateManifest:input_type -> nexus.catalog.v1.CreateManifestRequest
+	5,  // 31: nexus.catalog.v1.CatalogService.ListManifests:input_type -> nexus.catalog.v1.ListManifestsRequest
+	4,  // 32: nexus.catalog.v1.CatalogService.CreateManifest:output_type -> nexus.catalog.v1.CreateManifestResponse
+	6,  // 33: nexus.catalog.v1.CatalogService.ListManifests:output_type -> nexus.catalog.v1.ListManifestsResponse
+	32, // [32:34] is the sub-list for method output_type
+	30, // [30:32] is the sub-list for method input_type
+	30, // [30:30] is the sub-list for extension type_name
+	30, // [30:30] is the sub-list for extension extendee
+	0,  // [0:30] is the sub-list for field type_name
 }
 
 func init() { file_nexus_catalog_v1_catalog_proto_init() }
@@ -2059,7 +2090,12 @@ func file_nexus_catalog_v1_catalog_proto_init() {
 	if File_nexus_catalog_v1_catalog_proto != nil {
 		return
 	}
-	file_nexus_catalog_v1_catalog_proto_msgTypes[13].OneofWrappers = []any{
+	file_nexus_catalog_v1_catalog_proto_msgTypes[6].OneofWrappers = []any{
+		(*StorageLocation_S3Compatible)(nil),
+		(*StorageLocation_AzureBlob)(nil),
+		(*StorageLocation_Local)(nil),
+	}
+	file_nexus_catalog_v1_catalog_proto_msgTypes[10].OneofWrappers = []any{
 		(*Statistics_MinInt32)(nil),
 		(*Statistics_MinInt64)(nil),
 		(*Statistics_MinUint32)(nil),
@@ -2077,7 +2113,7 @@ func file_nexus_catalog_v1_catalog_proto_init() {
 		(*Statistics_MaxBytes)(nil),
 		(*Statistics_MaxTimestamp)(nil),
 	}
-	file_nexus_catalog_v1_catalog_proto_msgTypes[18].OneofWrappers = []any{
+	file_nexus_catalog_v1_catalog_proto_msgTypes[15].OneofWrappers = []any{
 		(*Variant_Int32Variant)(nil),
 		(*Variant_Int64Variant)(nil),
 		(*Variant_Uint32Variant)(nil),
@@ -2093,7 +2129,7 @@ func file_nexus_catalog_v1_catalog_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_catalog_v1_catalog_proto_rawDesc), len(file_nexus_catalog_v1_catalog_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   20,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

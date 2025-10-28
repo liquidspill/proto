@@ -33,30 +33,22 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// CatalogServiceCreatePartitionProcedure is the fully-qualified name of the CatalogService's
-	// CreatePartition RPC.
-	CatalogServiceCreatePartitionProcedure = "/nexus.catalog.v1.CatalogService/CreatePartition"
-	// CatalogServiceListPartitionsProcedure is the fully-qualified name of the CatalogService's
-	// ListPartitions RPC.
-	CatalogServiceListPartitionsProcedure = "/nexus.catalog.v1.CatalogService/ListPartitions"
-	// CatalogServiceValidateMetadataVersionProcedure is the fully-qualified name of the
-	// CatalogService's ValidateMetadataVersion RPC.
-	CatalogServiceValidateMetadataVersionProcedure = "/nexus.catalog.v1.CatalogService/ValidateMetadataVersion"
-	// CatalogServiceGetMetadataVersionProcedure is the fully-qualified name of the CatalogService's
-	// GetMetadataVersion RPC.
-	CatalogServiceGetMetadataVersionProcedure = "/nexus.catalog.v1.CatalogService/GetMetadataVersion"
-	// CatalogServiceListMetadataVersionsProcedure is the fully-qualified name of the CatalogService's
-	// ListMetadataVersions RPC.
-	CatalogServiceListMetadataVersionsProcedure = "/nexus.catalog.v1.CatalogService/ListMetadataVersions"
+	// CatalogServiceCreateManifestProcedure is the fully-qualified name of the CatalogService's
+	// CreateManifest RPC.
+	CatalogServiceCreateManifestProcedure = "/nexus.catalog.v1.CatalogService/CreateManifest"
+	// CatalogServiceListManifestsProcedure is the fully-qualified name of the CatalogService's
+	// ListManifests RPC.
+	CatalogServiceListManifestsProcedure = "/nexus.catalog.v1.CatalogService/ListManifests"
 )
 
 // CatalogServiceClient is a client for the nexus.catalog.v1.CatalogService service.
 type CatalogServiceClient interface {
-	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
-	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
-	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
-	GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error)
-	ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error)
+	// CreateManifest registers a new Granule (data file) in the catalog.
+	// This should be called after successfully writing a Parquet file to object storage.
+	CreateManifest(context.Context, *connect.Request[v1.CreateManifestRequest]) (*connect.Response[v1.CreateManifestResponse], error)
+	// ListManifests retrieves Granule descriptors for a given time range and scope.
+	// Used by query engines to discover which data files need to be read.
+	ListManifests(context.Context, *connect.Request[v1.ListManifestsRequest]) (*connect.Response[v1.ListManifestsResponse], error)
 }
 
 // NewCatalogServiceClient constructs a client for the nexus.catalog.v1.CatalogService service. By
@@ -70,34 +62,16 @@ func NewCatalogServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	catalogServiceMethods := v1.File_nexus_catalog_v1_catalog_proto.Services().ByName("CatalogService").Methods()
 	return &catalogServiceClient{
-		createPartition: connect.NewClient[v1.CreatePartitionRequest, v1.CreatePartitionResponse](
+		createManifest: connect.NewClient[v1.CreateManifestRequest, v1.CreateManifestResponse](
 			httpClient,
-			baseURL+CatalogServiceCreatePartitionProcedure,
-			connect.WithSchema(catalogServiceMethods.ByName("CreatePartition")),
+			baseURL+CatalogServiceCreateManifestProcedure,
+			connect.WithSchema(catalogServiceMethods.ByName("CreateManifest")),
 			connect.WithClientOptions(opts...),
 		),
-		listPartitions: connect.NewClient[v1.ListPartitionsRequest, v1.ListPartitionsResponse](
+		listManifests: connect.NewClient[v1.ListManifestsRequest, v1.ListManifestsResponse](
 			httpClient,
-			baseURL+CatalogServiceListPartitionsProcedure,
-			connect.WithSchema(catalogServiceMethods.ByName("ListPartitions")),
-			connect.WithClientOptions(opts...),
-		),
-		validateMetadataVersion: connect.NewClient[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse](
-			httpClient,
-			baseURL+CatalogServiceValidateMetadataVersionProcedure,
-			connect.WithSchema(catalogServiceMethods.ByName("ValidateMetadataVersion")),
-			connect.WithClientOptions(opts...),
-		),
-		getMetadataVersion: connect.NewClient[v1.GetMetadataVersionRequest, v1.GetMetadataVersionResponse](
-			httpClient,
-			baseURL+CatalogServiceGetMetadataVersionProcedure,
-			connect.WithSchema(catalogServiceMethods.ByName("GetMetadataVersion")),
-			connect.WithClientOptions(opts...),
-		),
-		listMetadataVersions: connect.NewClient[v1.ListMetadataVersionsRequest, v1.ListMetadataVersionsResponse](
-			httpClient,
-			baseURL+CatalogServiceListMetadataVersionsProcedure,
-			connect.WithSchema(catalogServiceMethods.ByName("ListMetadataVersions")),
+			baseURL+CatalogServiceListManifestsProcedure,
+			connect.WithSchema(catalogServiceMethods.ByName("ListManifests")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -105,45 +79,28 @@ func NewCatalogServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // catalogServiceClient implements CatalogServiceClient.
 type catalogServiceClient struct {
-	createPartition         *connect.Client[v1.CreatePartitionRequest, v1.CreatePartitionResponse]
-	listPartitions          *connect.Client[v1.ListPartitionsRequest, v1.ListPartitionsResponse]
-	validateMetadataVersion *connect.Client[v1.ValidateMetadataVersionRequest, v1.ValidateMetadataVersionResponse]
-	getMetadataVersion      *connect.Client[v1.GetMetadataVersionRequest, v1.GetMetadataVersionResponse]
-	listMetadataVersions    *connect.Client[v1.ListMetadataVersionsRequest, v1.ListMetadataVersionsResponse]
+	createManifest *connect.Client[v1.CreateManifestRequest, v1.CreateManifestResponse]
+	listManifests  *connect.Client[v1.ListManifestsRequest, v1.ListManifestsResponse]
 }
 
-// CreatePartition calls nexus.catalog.v1.CatalogService.CreatePartition.
-func (c *catalogServiceClient) CreatePartition(ctx context.Context, req *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
-	return c.createPartition.CallUnary(ctx, req)
+// CreateManifest calls nexus.catalog.v1.CatalogService.CreateManifest.
+func (c *catalogServiceClient) CreateManifest(ctx context.Context, req *connect.Request[v1.CreateManifestRequest]) (*connect.Response[v1.CreateManifestResponse], error) {
+	return c.createManifest.CallUnary(ctx, req)
 }
 
-// ListPartitions calls nexus.catalog.v1.CatalogService.ListPartitions.
-func (c *catalogServiceClient) ListPartitions(ctx context.Context, req *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error) {
-	return c.listPartitions.CallUnary(ctx, req)
-}
-
-// ValidateMetadataVersion calls nexus.catalog.v1.CatalogService.ValidateMetadataVersion.
-func (c *catalogServiceClient) ValidateMetadataVersion(ctx context.Context, req *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
-	return c.validateMetadataVersion.CallUnary(ctx, req)
-}
-
-// GetMetadataVersion calls nexus.catalog.v1.CatalogService.GetMetadataVersion.
-func (c *catalogServiceClient) GetMetadataVersion(ctx context.Context, req *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
-	return c.getMetadataVersion.CallUnary(ctx, req)
-}
-
-// ListMetadataVersions calls nexus.catalog.v1.CatalogService.ListMetadataVersions.
-func (c *catalogServiceClient) ListMetadataVersions(ctx context.Context, req *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
-	return c.listMetadataVersions.CallUnary(ctx, req)
+// ListManifests calls nexus.catalog.v1.CatalogService.ListManifests.
+func (c *catalogServiceClient) ListManifests(ctx context.Context, req *connect.Request[v1.ListManifestsRequest]) (*connect.Response[v1.ListManifestsResponse], error) {
+	return c.listManifests.CallUnary(ctx, req)
 }
 
 // CatalogServiceHandler is an implementation of the nexus.catalog.v1.CatalogService service.
 type CatalogServiceHandler interface {
-	CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error)
-	ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error)
-	ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error)
-	GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error)
-	ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error)
+	// CreateManifest registers a new Granule (data file) in the catalog.
+	// This should be called after successfully writing a Parquet file to object storage.
+	CreateManifest(context.Context, *connect.Request[v1.CreateManifestRequest]) (*connect.Response[v1.CreateManifestResponse], error)
+	// ListManifests retrieves Granule descriptors for a given time range and scope.
+	// Used by query engines to discover which data files need to be read.
+	ListManifests(context.Context, *connect.Request[v1.ListManifestsRequest]) (*connect.Response[v1.ListManifestsResponse], error)
 }
 
 // NewCatalogServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -153,48 +110,24 @@ type CatalogServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	catalogServiceMethods := v1.File_nexus_catalog_v1_catalog_proto.Services().ByName("CatalogService").Methods()
-	catalogServiceCreatePartitionHandler := connect.NewUnaryHandler(
-		CatalogServiceCreatePartitionProcedure,
-		svc.CreatePartition,
-		connect.WithSchema(catalogServiceMethods.ByName("CreatePartition")),
+	catalogServiceCreateManifestHandler := connect.NewUnaryHandler(
+		CatalogServiceCreateManifestProcedure,
+		svc.CreateManifest,
+		connect.WithSchema(catalogServiceMethods.ByName("CreateManifest")),
 		connect.WithHandlerOptions(opts...),
 	)
-	catalogServiceListPartitionsHandler := connect.NewUnaryHandler(
-		CatalogServiceListPartitionsProcedure,
-		svc.ListPartitions,
-		connect.WithSchema(catalogServiceMethods.ByName("ListPartitions")),
-		connect.WithHandlerOptions(opts...),
-	)
-	catalogServiceValidateMetadataVersionHandler := connect.NewUnaryHandler(
-		CatalogServiceValidateMetadataVersionProcedure,
-		svc.ValidateMetadataVersion,
-		connect.WithSchema(catalogServiceMethods.ByName("ValidateMetadataVersion")),
-		connect.WithHandlerOptions(opts...),
-	)
-	catalogServiceGetMetadataVersionHandler := connect.NewUnaryHandler(
-		CatalogServiceGetMetadataVersionProcedure,
-		svc.GetMetadataVersion,
-		connect.WithSchema(catalogServiceMethods.ByName("GetMetadataVersion")),
-		connect.WithHandlerOptions(opts...),
-	)
-	catalogServiceListMetadataVersionsHandler := connect.NewUnaryHandler(
-		CatalogServiceListMetadataVersionsProcedure,
-		svc.ListMetadataVersions,
-		connect.WithSchema(catalogServiceMethods.ByName("ListMetadataVersions")),
+	catalogServiceListManifestsHandler := connect.NewUnaryHandler(
+		CatalogServiceListManifestsProcedure,
+		svc.ListManifests,
+		connect.WithSchema(catalogServiceMethods.ByName("ListManifests")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/nexus.catalog.v1.CatalogService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case CatalogServiceCreatePartitionProcedure:
-			catalogServiceCreatePartitionHandler.ServeHTTP(w, r)
-		case CatalogServiceListPartitionsProcedure:
-			catalogServiceListPartitionsHandler.ServeHTTP(w, r)
-		case CatalogServiceValidateMetadataVersionProcedure:
-			catalogServiceValidateMetadataVersionHandler.ServeHTTP(w, r)
-		case CatalogServiceGetMetadataVersionProcedure:
-			catalogServiceGetMetadataVersionHandler.ServeHTTP(w, r)
-		case CatalogServiceListMetadataVersionsProcedure:
-			catalogServiceListMetadataVersionsHandler.ServeHTTP(w, r)
+		case CatalogServiceCreateManifestProcedure:
+			catalogServiceCreateManifestHandler.ServeHTTP(w, r)
+		case CatalogServiceListManifestsProcedure:
+			catalogServiceListManifestsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -204,22 +137,10 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 // UnimplementedCatalogServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedCatalogServiceHandler struct{}
 
-func (UnimplementedCatalogServiceHandler) CreatePartition(context.Context, *connect.Request[v1.CreatePartitionRequest]) (*connect.Response[v1.CreatePartitionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.CreatePartition is not implemented"))
+func (UnimplementedCatalogServiceHandler) CreateManifest(context.Context, *connect.Request[v1.CreateManifestRequest]) (*connect.Response[v1.CreateManifestResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.CreateManifest is not implemented"))
 }
 
-func (UnimplementedCatalogServiceHandler) ListPartitions(context.Context, *connect.Request[v1.ListPartitionsRequest]) (*connect.Response[v1.ListPartitionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.ListPartitions is not implemented"))
-}
-
-func (UnimplementedCatalogServiceHandler) ValidateMetadataVersion(context.Context, *connect.Request[v1.ValidateMetadataVersionRequest]) (*connect.Response[v1.ValidateMetadataVersionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.ValidateMetadataVersion is not implemented"))
-}
-
-func (UnimplementedCatalogServiceHandler) GetMetadataVersion(context.Context, *connect.Request[v1.GetMetadataVersionRequest]) (*connect.Response[v1.GetMetadataVersionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.GetMetadataVersion is not implemented"))
-}
-
-func (UnimplementedCatalogServiceHandler) ListMetadataVersions(context.Context, *connect.Request[v1.ListMetadataVersionsRequest]) (*connect.Response[v1.ListMetadataVersionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.ListMetadataVersions is not implemented"))
+func (UnimplementedCatalogServiceHandler) ListManifests(context.Context, *connect.Request[v1.ListManifestsRequest]) (*connect.Response[v1.ListManifestsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.catalog.v1.CatalogService.ListManifests is not implemented"))
 }

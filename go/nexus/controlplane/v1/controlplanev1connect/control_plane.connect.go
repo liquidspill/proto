@@ -99,7 +99,6 @@ type ControlPlaneServiceClient interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
-	// Agent lifecycle
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 
@@ -312,7 +311,6 @@ type ControlPlaneServiceHandler interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
-	// Agent lifecycle
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 

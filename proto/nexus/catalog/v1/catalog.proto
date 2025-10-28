@@ -6,39 +6,61 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/liquidspill/proto/go/nexus/catalog/v1;catalogv1";
 
-// This service is responsible for operations against our catalog store. The
-// catalog store holds partitions -- descriptors of data that exists in object
-// storage.
+// CatalogService is responsible for managing the catalog store, which maintains
+// metadata about data stored in object storage.
+//
+// HIERARCHY OF ELEMENTS:
+// ----------------------
+// Organization → Team → Cluster → Manifest (Granule)
+//
+// A Granule is a set of data stored in object storage as a Parquet file.
+// A Manifest is a descriptor of a Granule, containing:
+//   - Physical metadata (size, row count, location)
+//   - Temporal metadata (cluster key with timestamp and device_id)
+//   - Column metadata (schema, statistics, bloom filters)
+//
+// The CatalogService stores all Manifests, enabling efficient query planning
+// by providing min/max statistics and bloom filters for each column, allowing
+// query engines to skip irrelevant Granules without reading the actual data files.
+//
+// DATA FLOW:
+// 1. Data is ingested and written as Parquet files (Granules) to object storage
+// 2. CreateManifest is called to register the Granule's metadata in the catalog
+// 3. Query engines use ListManifests to discover relevant Granules for a query
+// 4. Statistics and filters enable predicate pushdown and partition pruning
 service CatalogService {
-  rpc CreatePartition(CreatePartitionRequest) returns (CreatePartitionResponse) {}
-  rpc ListPartitions(ListPartitionsRequest) returns (ListPartitionsResponse) {}
-  rpc ValidateMetadataVersion(ValidateMetadataVersionRequest) returns (ValidateMetadataVersionResponse) {}
+  // CreateManifest registers a new Granule (data file) in the catalog.
+  // This should be called after successfully writing a Parquet file to object storage.
+  rpc CreateManifest(CreateManifestRequest) returns (CreateManifestResponse) {}
 
-  rpc GetMetadataVersion(GetMetadataVersionRequest) returns (GetMetadataVersionResponse) {}
-  rpc ListMetadataVersions(ListMetadataVersionsRequest) returns (ListMetadataVersionsResponse) {}
+  // ListManifests retrieves Granule descriptors for a given time range and scope.
+  // Used by query engines to discover which data files need to be read.
+  rpc ListManifests(ListManifestsRequest) returns (ListManifestsResponse) {}
 }
 
-message CreatePartitionRequest {
+message CreateManifestRequest {
   string organization_id = 1;
   string team_id = 2;
   string cluster_id = 3;
 
   string id = 4;
-  Partition partition = 5;
+  Manifest manifest = 5;
 }
 
-message CreatePartitionResponse {
+message CreateManifestResponse {
   string organization_id = 1;
   string team_id = 2;
   string cluster_id = 3;
 
   string id = 4;
-  Partition partition = 5;
+  Manifest manifest = 5;
 
   google.protobuf.Timestamp created_at = 6;
 }
 
-message ListPartitionsRequest {
+// ListManifestsRequest queries for Manifests within a time range.
+// Used by query engines to discover which data files contain relevant data.
+message ListManifestsRequest {
   string organization_id = 1;
   string team_id = 2;
   string cluster_id = 3;
@@ -47,67 +69,65 @@ message ListPartitionsRequest {
   google.protobuf.Timestamp end_time = 5;
 }
 
-message ListPartitionsResponse {
+// ListManifestsResponse returns all Manifests matching the query criteria.
+// The returned Manifest descriptors include column statistics that enable
+// query engines to perform predicate pushdown and skip irrelevant files.
+message ListManifestsResponse {
   string organization_id = 1;
   string team_id = 2;
   string cluster_id = 3;
 
   google.protobuf.Timestamp start_time = 4;
   google.protobuf.Timestamp end_time = 5;
-  repeated Partition partition = 6;
+
+  repeated Manifest Manifests = 6;
 }
 
-message GetMetadataVersionRequest {
-  uint32 window_size = 1;
-  google.protobuf.Timestamp window = 2;
-}
-
-message GetMetadataVersionResponse {
-  bytes version = 1;
-}
-
-message ListMetadataVersionsRequest {
-  uint32 window_size = 1;
-  google.protobuf.Timestamp window_start = 2;
-  google.protobuf.Timestamp window_end = 3;
-}
-
-message ListMetadataVersionsResponse {
-  repeated google.protobuf.Timestamp windows = 1;
-  repeated bytes versions = 2;
-}
-
-message ValidateMetadataVersionRequest {
-  repeated Validate versions = 1;
-}
-
-message ValidateMetadataVersionResponse {
-  repeated bool valid = 1;
-}
-
-message Validate {
-  google.protobuf.Timestamp window = 1;
-  bytes version = 2;
-}
-
-// Immutable metadata describing a partition stored in object storage
-message Partition {
+// A Manifest describes a Granule where a Granule is a set of data stored in object storage
+// as a Parquet file.
+//
+// A Granule is:
+// - A Parquet file stored in object storage (e.g S3)
+// - Immutable once written
+// - Organized by cluster key (timestamp) for data locality
+// - Enriched with column statistics for query optimization
+//
+// The Manifest (this Granule descriptor) enables query engines to:
+// 1. Discover which files to read based on time range queries
+// 2. Skip files based on min/max statistics (predicate pushdown)
+// 3. Use bloom filters for efficient existence checks
+// 4. Understand the schema without reading the Parquet file
+//
+// RELATIONSHIP:
+// Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
+message Manifest {
   string id = 1;
-  // The key used to cluster the data into partitions. This is
-  // used to increase data locality, with the idea being that it
-  // helps process queries faster
+
+  // The key used to cluster the data into Granules. This determines how data
+  // is partitioned and enables efficient querying by time and device.
+  // Data locality: Granules with similar cluster keys are stored together,
+  // which helps query engines process related data faster.
   ClusterKey cluster_key = 2;
 
-  repeated string segments = 3;
+  // Storage location(s) for the Parquet file.
+  // Multiple locations can be specified for redundancy/multi-region support.
+  repeated StorageLocation locations = 3;
 
-  // The size in bytes of the Parquet file
+  // Physical size in bytes of the Parquet file in object storage
   uint64 size = 4;
+
+  // Total number of rows in the Parquet file
   uint64 row_count = 5;
 
-  // Time the partition was created
+  // Timestamp when the Granule was created and written to object storage
   google.protobuf.Timestamp created_at = 6;
 
-  // Metadata describing the columns in the partition
+  // Schema and statistics for each column in the Parquet file.
+  // Key: column name, Value: column metadata
+  // This enables query optimization without reading the actual file:
+  // - Type information for schema validation
+  // - Min/max values for predicate pushdown
+  // - Bloom filters for existence checks
   map<string, Column> columns = 7;
 }
 
@@ -133,7 +153,83 @@ enum ColumnType {
   COLUMN_TYPE_BYTES = 12;
 }
 
+// StorageLocation specifies where a Parquet file is stored.
+// Supports multiple storage backends for flexibility across cloud providers and local development.
+message StorageLocation {
+  oneof location {
+    S3CompatibleStorage s3_compatible = 1;  // AWS S3, GCS, MinIO, Ceph, etc.
+    AzureBlobStorage azure_blob = 2;        // Microsoft Azure Blob Storage
+    LocalStorage local = 3;                  // Local filesystem
+  }
+}
+
+// S3CompatibleStorage represents object storage using the S3 API.
+// Supports AWS S3, Google Cloud Storage (GCS), R2, Ceph, and other S3-compatible services.
+message S3CompatibleStorage {
+  // Endpoint URL for the object storage service.
+  // Examples:
+  // - AWS S3 (us-east-1): "https://s3.us-east-1.amazonaws.com" or empty for default
+  // - AWS S3 (custom region): "https://s3.<region>.amazonaws.com"
+  // - GCS: "https://storage.googleapis.com"
+  // - Cloudflare R2: "https://<account-id>.r2.cloudflarestorage.com"
+  // If empty, defaults to AWS S3 in the region specified below.
+  string endpoint = 1;
+
+  // Bucket name
+  string bucket = 2;
+
+  // Object key/path within the bucket (e.g., "data/2024/01/flows.parquet")
+  string key = 3;
+
+  // AWS region (for S3) or location (for GCS).
+  // Examples: "us-east-1", "us-west-2", "eu-west-1"
+  // For GCS, use GCS location names like "us-central1", "europe-west1"
+  string region = 4;
+}
+
+// AzureBlobStorage represents Microsoft Azure Blob Storage.
+// Note: Azure Blob Storage uses a different API model than S3.
+// Uses container/blob nomenclature instead of bucket/key.
+message AzureBlobStorage {
+  // Azure storage account name
+  string account_name = 1;
+
+  // Container name (equivalent to S3 bucket)
+  string container = 2;
+
+  // Blob name/path (equivalent to S3 key)
+  string blob_name = 3;
+
+  // Optional: Azure endpoint suffix (e.g., "core.windows.net")
+  // Defaults to "core.windows.net" if not specified.
+  // Full URL format: https://{account_name}.blob.{endpoint_suffix}/{container}/{blob_name}
+  string endpoint_suffix = 4;
+}
+
+// LocalStorage represents local filesystem storage.
+// Primarily used for demos, testing, and development environments.
+message LocalStorage {
+  // Filesystem path (can be absolute or relative)
+  // Examples:
+  // - Absolute: "/data/parquet/flows.parquet"
+  // - Relative: "./data/flows.parquet"
+  string path = 1;
+}
+
+// Statistics contains min/max bounds and bloom filters for a column.
+// Query engines use these statistics to determine if a Granule needs to be read:
+//
+// PREDICATE PUSHDOWN EXAMPLE:
+// Query: SELECT * FROM table WHERE age > 30
+// If a Granule's age column has max_int32 = 25, the entire file can be skipped.
+//
+// BLOOM FILTER EXAMPLE:
+// Query: SELECT * FROM table WHERE user_id = 'abc123'
+// The bloom filter can quickly indicate if 'abc123' definitely doesn't exist,
+// allowing the query engine to skip reading the file.
 message Statistics {
+  // Minimum value in this column across all rows in the Granule.
+  // The specific field used depends on the column type.
   oneof min {
     // Handles int8, int16, int32
     int32 min_int32 = 1;
@@ -146,6 +242,9 @@ message Statistics {
     bytes min_bytes = 7;
     google.protobuf.Timestamp min_timestamp = 8;
   }
+
+  // Maximum value in this column across all rows in the Granule.
+  // The specific field used depends on the column type.
   oneof max {
     // Handles int8, int16, int32
     int32 max_int32 = 9;
@@ -158,52 +257,110 @@ message Statistics {
     bytes max_bytes = 15;
     google.protobuf.Timestamp max_timestamp = 16;
   }
+
+  // Bloom filter or similar probabilistic data structure.
+  // Used for efficient "does this value exist?" queries.
+  // False positives are possible, but false negatives are not.
   bytes filter = 17;
 }
 
+// ClusterKey defines how data is partitioned and organized into Granules.
+// The cluster key creates a partitioning scheme:
+// 1. Temporal dimension (timestamp) - enables time-range queries
+//
+// DATA LOCALITY BENEFITS:
+// - Time-range queries: "SELECT * FROM flows WHERE timestamp BETWEEN t1 AND t2"
+//   Only need to scan Granules with cluster_key.timestamp in [t1, t2]
+//
+// Granules with similar cluster keys are stored together in object storage,
+// improving cache locality and reducing the number of files that need to be read.
 message ClusterKey {
-  // The timestamp is the time that the flow was received
+  // The timestamp when the flow was received by the system.
+  // Used as the primary partitioning dimension for time-range queries.
   google.protobuf.Timestamp timestamp = 1;
-  // The ID of the device the flow belongs to
-  uint64 device_id = 2;
 }
 
-// TODO: Add metrics we care about?
+// Compaction represents metadata about a data compaction operation.
+// Compaction is the process of merging multiple small Granules into larger ones
+// to improve query performance and reduce storage overhead.
+//
+// COMPACTION LEVELS (LSM-tree style):
+// - Level 0: Initial write, many small files
+// - Level 1: First compaction pass, medium-sized files
+// - Higher levels: Further compaction, larger files with better organization
+//
+// TODO: Add metrics we care about? (e.g., rows merged, time taken, compression ratio)
 message Compaction {
+  // Timestamp when the compaction operation was performed
   google.protobuf.Timestamp created_at = 1;
+
+  // The compaction level (0 = uncompacted, higher = more compacted)
   CompactionLevel level = 2;
+
+  // The time window that was compacted
   Window window = 3;
+
+  // Total size in bytes of the compacted output
   uint64 size = 4;
 }
 
+// Window represents a time range, typically used for compaction operations.
+// Defines the temporal boundaries of a batch of data.
 message Window {
+  // Size of the window (e.g., duration in seconds or minutes)
   uint32 size = 1;
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
 }
 
+// CompactionLevel indicates how many times data has been compacted.
+// Higher levels generally mean larger files with better organization.
 enum CompactionLevel {
   COMPACTION_LEVEL_UNSPECIFIED = 0;
-  COMPACTION_LEVEL_ZERO = 1;
-  COMPACTION_LEVEL_ONE = 2;
+  COMPACTION_LEVEL_ZERO = 1;    // Initial write, no compaction
+  COMPACTION_LEVEL_ONE = 2;     // First compaction pass
 }
 
-// Metadata and data stored for a given value
+// Value represents a generic container for storing raw data with metadata.
+// This is used for storing arbitrary values with compression and timestamp tracking.
+// Useful for caching, intermediate results, or storing configuration data.
 message Value {
-  // int32 enc = 2; // encoding of the raw data -- store as enums
+  // Timestamp when the value was first created
   google.protobuf.Timestamp created_at = 1;
+
+  // Timestamp when the value was last updated
   google.protobuf.Timestamp updated_at = 2;
+
+  // Compression algorithm applied to the raw data
   Compression comp = 3;
+
+  // The raw data bytes (potentially compressed)
   bytes raw = 4;
+
+  // Future: encoding of the raw data (e.g., JSON, protobuf, custom)
+  // int32 enc = 2; // encoding of the raw data -- store as enums
 }
 
+// Compression algorithms supported for compressing raw data.
+// Different algorithms offer different trade-offs between compression ratio and speed.
 enum Compression {
   COMPRESSION_UNSPECIFIED = 0;
-  COMPRESSION_ZSTD = 1;
-  COMPRESSION_LZ4 = 2;
-  COMPRESSION_SNAPPY = 3;
+  COMPRESSION_ZSTD = 1;    // Zstandard: High compression ratio, good speed
+  COMPRESSION_LZ4 = 2;     // LZ4: Very fast, moderate compression
+  COMPRESSION_SNAPPY = 3;  // Snappy: Fast, moderate compression, widely used in Parquet
 }
 
+// Variant is a polymorphic value type that can hold different primitive types.
+// Similar to a union type or tagged union in programming languages.
+//
+// USE CASES:
+// - Storing heterogeneous data where the type varies at runtime
+// - Dynamic configuration values
+// - Query parameters that can be of different types
+// - Metadata values with varying types
+//
+// The oneof ensures only one field is set at a time, with the field tag
+// indicating the actual type of the stored value.
 message Variant {
   oneof variant {
     int32 int32_variant = 1;

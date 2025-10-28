@@ -1901,8 +1901,6 @@ export const ControlPlaneService: GenService<{
     output: typeof PollQueryExecutionResponseSchema;
   },
   /**
-   * Agent lifecycle
-   *
    * @generated from rpc nexus.controlplane.v1.ControlPlaneService.Heartbeat
    */
   heartbeat: {

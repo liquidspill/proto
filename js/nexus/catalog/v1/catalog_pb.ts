@@ -12,12 +12,12 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/catalog/v1/catalog.proto.
  */
 export const file_nexus_catalog_v1_catalog: GenFile = /*@__PURE__*/
-  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEikgEKFkNyZWF0ZVBhcnRpdGlvblJlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEg8KB3RlYW1faWQYAiABKAkSEgoKY2x1c3Rlcl9pZBgDIAEoCRIKCgJpZBgEIAEoCRIuCglwYXJ0aXRpb24YBSABKAsyGy5uZXh1cy5jYXRhbG9nLnYxLlBhcnRpdGlvbiLDAQoXQ3JlYXRlUGFydGl0aW9uUmVzcG9uc2USFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEg8KB3RlYW1faWQYAiABKAkSEgoKY2x1c3Rlcl9pZBgDIAEoCRIKCgJpZBgEIAEoCRIuCglwYXJ0aXRpb24YBSABKAsyGy5uZXh1cy5jYXRhbG9nLnYxLlBhcnRpdGlvbhIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKzAQoVTGlzdFBhcnRpdGlvbnNSZXF1ZXN0EhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCRIPCgd0ZWFtX2lkGAIgASgJEhIKCmNsdXN0ZXJfaWQYAyABKAkSLgoKc3RhcnRfdGltZRgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIuQBChZMaXN0UGFydGl0aW9uc1Jlc3BvbnNlEhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCRIPCgd0ZWFtX2lkGAIgASgJEhIKCmNsdXN0ZXJfaWQYAyABKAkSLgoKc3RhcnRfdGltZRgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCXBhcnRpdGlvbhgGIAMoCzIbLm5leHVzLmNhdGFsb2cudjEuUGFydGl0aW9uIlwKGUdldE1ldGFkYXRhVmVyc2lvblJlcXVlc3QSEwoLd2luZG93X3NpemUYASABKA0SKgoGd2luZG93GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCItChpHZXRNZXRhZGF0YVZlcnNpb25SZXNwb25zZRIPCgd2ZXJzaW9uGAEgASgMIpQBChtMaXN0TWV0YWRhdGFWZXJzaW9uc1JlcXVlc3QSEwoLd2luZG93X3NpemUYASABKA0SMAoMd2luZG93X3N0YXJ0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp3aW5kb3dfZW5kGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJdChxMaXN0TWV0YWRhdGFWZXJzaW9uc1Jlc3BvbnNlEisKB3dpbmRvd3MYASADKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhAKCHZlcnNpb25zGAIgAygMIk4KHlZhbGlkYXRlTWV0YWRhdGFWZXJzaW9uUmVxdWVzdBIsCgh2ZXJzaW9ucxgBIAMoCzIaLm5leHVzLmNhdGFsb2cudjEuVmFsaWRhdGUiMAofVmFsaWRhdGVNZXRhZGF0YVZlcnNpb25SZXNwb25zZRINCgV2YWxpZBgBIAMoCCJHCghWYWxpZGF0ZRIqCgZ3aW5kb3cYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg8KB3ZlcnNpb24YAiABKAwisgIKCVBhcnRpdGlvbhIKCgJpZBgBIAEoCRIxCgtjbHVzdGVyX2tleRgCIAEoCzIcLm5leHVzLmNhdGFsb2cudjEuQ2x1c3RlcktleRIQCghzZWdtZW50cxgDIAMoCRIMCgRzaXplGAQgASgEEhEKCXJvd19jb3VudBgFIAEoBBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI5Cgdjb2x1bW5zGAcgAygLMigubmV4dXMuY2F0YWxvZy52MS5QYXJ0aXRpb24uQ29sdW1uc0VudHJ5GkgKDENvbHVtbnNFbnRyeRILCgNrZXkYASABKAkSJwoFdmFsdWUYAiABKAsyGC5uZXh1cy5jYXRhbG9nLnYxLkNvbHVtbjoCOAEidAoGQ29sdW1uEgwKBG5hbWUYASABKAkSMAoKc3RhdGlzdGljcxgCIAEoCzIcLm5leHVzLmNhdGFsb2cudjEuU3RhdGlzdGljcxIqCgR0eXBlGAMgASgOMhwubmV4dXMuY2F0YWxvZy52MS5Db2x1bW5UeXBlIr4DCgpTdGF0aXN0aWNzEhMKCW1pbl9pbnQzMhgBIAEoBUgAEhMKCW1pbl9pbnQ2NBgCIAEoA0gAEhQKCm1pbl91aW50MzIYAyABKA1IABIUCgptaW5fdWludDY0GAQgASgESAASEgoIbWluX2Jvb2wYBSABKAhIABIUCgptaW5fc3RyaW5nGAYgASgJSAASEwoJbWluX2J5dGVzGAcgASgMSAASMwoNbWluX3RpbWVzdGFtcBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIABITCgltYXhfaW50MzIYCSABKAVIARITCgltYXhfaW50NjQYCiABKANIARIUCgptYXhfdWludDMyGAsgASgNSAESFAoKbWF4X3VpbnQ2NBgMIAEoBEgBEhIKCG1heF9ib29sGA0gASgISAESFAoKbWF4X3N0cmluZxgOIAEoCUgBEhMKCW1heF9ieXRlcxgPIAEoDEgBEjMKDW1heF90aW1lc3RhbXAYECABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAESDgoGZmlsdGVyGBEgASgMQgUKA21pbkIFCgNtYXgiTgoKQ2x1c3RlcktleRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhEKCWRldmljZV9pZBgCIAEoBCKmAQoKQ29tcGFjdGlvbhIuCgpjcmVhdGVkX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIwCgVsZXZlbBgCIAEoDjIhLm5leHVzLmNhdGFsb2cudjEuQ29tcGFjdGlvbkxldmVsEigKBndpbmRvdxgDIAEoCzIYLm5leHVzLmNhdGFsb2cudjEuV2luZG93EgwKBHNpemUYBCABKAQidAoGV2luZG93EgwKBHNpemUYASABKA0SLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIqEBCgVWYWx1ZRIuCgpjcmVhdGVkX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIrCgRjb21wGAMgASgOMh0ubmV4dXMuY2F0YWxvZy52MS5Db21wcmVzc2lvbhILCgNyYXcYBCABKAwi/gEKB1ZhcmlhbnQSFwoNaW50MzJfdmFyaWFudBgBIAEoBUgAEhcKDWludDY0X3ZhcmlhbnQYAiABKANIABIYCg51aW50MzJfdmFyaWFudBgDIAEoDUgAEhgKDnVpbnQ2NF92YXJpYW50GAQgASgESAASFgoMYm9vbF92YXJpYW50GAUgASgISAASGAoOc3RyaW5nX3ZhcmlhbnQYBiABKAlIABIXCg1ieXRlc192YXJpYW50GAcgASgMSAASNwoRdGltZXN0YW1wX3ZhcmlhbnQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSABCCQoHdmFyaWFudCrGAgoKQ29sdW1uVHlwZRIbChdDT0xVTU5fVFlQRV9VTlNQRUNJRklFRBAAEhQKEENPTFVNTl9UWVBFX0lOVDgQARIVChFDT0xVTU5fVFlQRV9JTlQxNhACEhUKEUNPTFVNTl9UWVBFX0lOVDMyEAMSFQoRQ09MVU1OX1RZUEVfSU5UNjQQBBIVChFDT0xVTU5fVFlQRV9VSU5UOBAFEhYKEkNPTFVNTl9UWVBFX1VJTlQxNhAGEhYKEkNPTFVNTl9UWVBFX1VJTlQzMhAHEhYKEkNPTFVNTl9UWVBFX1VJTlQ2NBAIEhYKEkNPTFVNTl9UWVBFX1NUUklORxAJEhcKE0NPTFVNTl9UWVBFX0JPT0xFQU4QChIZChVDT0xVTU5fVFlQRV9USU1FU1RBTVAQCxIVChFDT0xVTU5fVFlQRV9CWVRFUxAMKmgKD0NvbXBhY3Rpb25MZXZlbBIgChxDT01QQUNUSU9OX0xFVkVMX1VOU1BFQ0lGSUVEEAASGQoVQ09NUEFDVElPTl9MRVZFTF9aRVJPEAESGAoUQ09NUEFDVElPTl9MRVZFTF9PTkUQAiptCgtDb21wcmVzc2lvbhIbChdDT01QUkVTU0lPTl9VTlNQRUNJRklFRBAAEhQKEENPTVBSRVNTSU9OX1pTVEQQARITCg9DT01QUkVTU0lPTl9MWjQQAhIWChJDT01QUkVTU0lPTl9TTkFQUFkQAzLQBAoOQ2F0YWxvZ1NlcnZpY2USaAoPQ3JlYXRlUGFydGl0aW9uEigubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVQYXJ0aXRpb25SZXF1ZXN0GikubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVQYXJ0aXRpb25SZXNwb25zZSIAEmUKDkxpc3RQYXJ0aXRpb25zEicubmV4dXMuY2F0YWxvZy52MS5MaXN0UGFydGl0aW9uc1JlcXVlc3QaKC5uZXh1cy5jYXRhbG9nLnYxLkxpc3RQYXJ0aXRpb25zUmVzcG9uc2UiABKAAQoXVmFsaWRhdGVNZXRhZGF0YVZlcnNpb24SMC5uZXh1cy5jYXRhbG9nLnYxLlZhbGlkYXRlTWV0YWRhdGFWZXJzaW9uUmVxdWVzdBoxLm5leHVzLmNhdGFsb2cudjEuVmFsaWRhdGVNZXRhZGF0YVZlcnNpb25SZXNwb25zZSIAEnEKEkdldE1ldGFkYXRhVmVyc2lvbhIrLm5leHVzLmNhdGFsb2cudjEuR2V0TWV0YWRhdGFWZXJzaW9uUmVxdWVzdBosLm5leHVzLmNhdGFsb2cudjEuR2V0TWV0YWRhdGFWZXJzaW9uUmVzcG9uc2UiABJ3ChRMaXN0TWV0YWRhdGFWZXJzaW9ucxItLm5leHVzLmNhdGFsb2cudjEuTGlzdE1ldGFkYXRhVmVyc2lvbnNSZXF1ZXN0Gi4ubmV4dXMuY2F0YWxvZy52MS5MaXN0TWV0YWRhdGFWZXJzaW9uc1Jlc3BvbnNlIgBCPFo6Z2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9uZXh1cy9jYXRhbG9nL3YxO2NhdGFsb2d2MWIGcHJvdG8z", [file_google_protobuf_timestamp]);
+  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEijwEKFUNyZWF0ZU1hbmlmZXN0UmVxdWVzdBIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEgoKAmlkGAQgASgJEiwKCG1hbmlmZXN0GAUgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCLAAQoWQ3JlYXRlTWFuaWZlc3RSZXNwb25zZRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEgoKAmlkGAQgASgJEiwKCG1hbmlmZXN0GAUgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKyAQoUTGlzdE1hbmlmZXN0c1JlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEg8KB3RlYW1faWQYAiABKAkSEgoKY2x1c3Rlcl9pZBgDIAEoCRIuCgpzdGFydF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAi4gEKFUxpc3RNYW5pZmVzdHNSZXNwb25zZRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEi4KCnN0YXJ0X3RpbWUYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglNYW5pZmVzdHMYBiADKAsyGi5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0ItQCCghNYW5pZmVzdBIKCgJpZBgBIAEoCRIxCgtjbHVzdGVyX2tleRgCIAEoCzIcLm5leHVzLmNhdGFsb2cudjEuQ2x1c3RlcktleRI0Cglsb2NhdGlvbnMYAyADKAsyIS5uZXh1cy5jYXRhbG9nLnYxLlN0b3JhZ2VMb2NhdGlvbhIMCgRzaXplGAQgASgEEhEKCXJvd19jb3VudBgFIAEoBBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI4Cgdjb2x1bW5zGAcgAygLMicubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdC5Db2x1bW5zRW50cnkaSAoMQ29sdW1uc0VudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIYLm5leHVzLmNhdGFsb2cudjEuQ29sdW1uOgI4ASJ0CgZDb2x1bW4SDAoEbmFtZRgBIAEoCRIwCgpzdGF0aXN0aWNzGAIgASgLMhwubmV4dXMuY2F0YWxvZy52MS5TdGF0aXN0aWNzEioKBHR5cGUYAyABKA4yHC5uZXh1cy5jYXRhbG9nLnYxLkNvbHVtblR5cGUiyAEKD1N0b3JhZ2VMb2NhdGlvbhI+Cg1zM19jb21wYXRpYmxlGAEgASgLMiUubmV4dXMuY2F0YWxvZy52MS5TM0NvbXBhdGlibGVTdG9yYWdlSAASOAoKYXp1cmVfYmxvYhgCIAEoCzIiLm5leHVzLmNhdGFsb2cudjEuQXp1cmVCbG9iU3RvcmFnZUgAEi8KBWxvY2FsGAMgASgLMh4ubmV4dXMuY2F0YWxvZy52MS5Mb2NhbFN0b3JhZ2VIAEIKCghsb2NhdGlvbiJUChNTM0NvbXBhdGlibGVTdG9yYWdlEhAKCGVuZHBvaW50GAEgASgJEg4KBmJ1Y2tldBgCIAEoCRILCgNrZXkYAyABKAkSDgoGcmVnaW9uGAQgASgJImcKEEF6dXJlQmxvYlN0b3JhZ2USFAoMYWNjb3VudF9uYW1lGAEgASgJEhEKCWNvbnRhaW5lchgCIAEoCRIRCglibG9iX25hbWUYAyABKAkSFwoPZW5kcG9pbnRfc3VmZml4GAQgASgJIhwKDExvY2FsU3RvcmFnZRIMCgRwYXRoGAEgASgJIr4DCgpTdGF0aXN0aWNzEhMKCW1pbl9pbnQzMhgBIAEoBUgAEhMKCW1pbl9pbnQ2NBgCIAEoA0gAEhQKCm1pbl91aW50MzIYAyABKA1IABIUCgptaW5fdWludDY0GAQgASgESAASEgoIbWluX2Jvb2wYBSABKAhIABIUCgptaW5fc3RyaW5nGAYgASgJSAASEwoJbWluX2J5dGVzGAcgASgMSAASMwoNbWluX3RpbWVzdGFtcBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIABITCgltYXhfaW50MzIYCSABKAVIARITCgltYXhfaW50NjQYCiABKANIARIUCgptYXhfdWludDMyGAsgASgNSAESFAoKbWF4X3VpbnQ2NBgMIAEoBEgBEhIKCG1heF9ib29sGA0gASgISAESFAoKbWF4X3N0cmluZxgOIAEoCUgBEhMKCW1heF9ieXRlcxgPIAEoDEgBEjMKDW1heF90aW1lc3RhbXAYECABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAESDgoGZmlsdGVyGBEgASgMQgUKA21pbkIFCgNtYXgiOwoKQ2x1c3RlcktleRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIqYBCgpDb21wYWN0aW9uEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjAKBWxldmVsGAIgASgOMiEubmV4dXMuY2F0YWxvZy52MS5Db21wYWN0aW9uTGV2ZWwSKAoGd2luZG93GAMgASgLMhgubmV4dXMuY2F0YWxvZy52MS5XaW5kb3cSDAoEc2l6ZRgEIAEoBCJ0CgZXaW5kb3cSDAoEc2l6ZRgBIAEoDRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAioQEKBVZhbHVlEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKBGNvbXAYAyABKA4yHS5uZXh1cy5jYXRhbG9nLnYxLkNvbXByZXNzaW9uEgsKA3JhdxgEIAEoDCL+AQoHVmFyaWFudBIXCg1pbnQzMl92YXJpYW50GAEgASgFSAASFwoNaW50NjRfdmFyaWFudBgCIAEoA0gAEhgKDnVpbnQzMl92YXJpYW50GAMgASgNSAASGAoOdWludDY0X3ZhcmlhbnQYBCABKARIABIWCgxib29sX3ZhcmlhbnQYBSABKAhIABIYCg5zdHJpbmdfdmFyaWFudBgGIAEoCUgAEhcKDWJ5dGVzX3ZhcmlhbnQYByABKAxIABI3ChF0aW1lc3RhbXBfdmFyaWFudBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAEIJCgd2YXJpYW50KsYCCgpDb2x1bW5UeXBlEhsKF0NPTFVNTl9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQQ09MVU1OX1RZUEVfSU5UOBABEhUKEUNPTFVNTl9UWVBFX0lOVDE2EAISFQoRQ09MVU1OX1RZUEVfSU5UMzIQAxIVChFDT0xVTU5fVFlQRV9JTlQ2NBAEEhUKEUNPTFVNTl9UWVBFX1VJTlQ4EAUSFgoSQ09MVU1OX1RZUEVfVUlOVDE2EAYSFgoSQ09MVU1OX1RZUEVfVUlOVDMyEAcSFgoSQ09MVU1OX1RZUEVfVUlOVDY0EAgSFgoSQ09MVU1OX1RZUEVfU1RSSU5HEAkSFwoTQ09MVU1OX1RZUEVfQk9PTEVBThAKEhkKFUNPTFVNTl9UWVBFX1RJTUVTVEFNUBALEhUKEUNPTFVNTl9UWVBFX0JZVEVTEAwqaAoPQ29tcGFjdGlvbkxldmVsEiAKHENPTVBBQ1RJT05fTEVWRUxfVU5TUEVDSUZJRUQQABIZChVDT01QQUNUSU9OX0xFVkVMX1pFUk8QARIYChRDT01QQUNUSU9OX0xFVkVMX09ORRACKm0KC0NvbXByZXNzaW9uEhsKF0NPTVBSRVNTSU9OX1VOU1BFQ0lGSUVEEAASFAoQQ09NUFJFU1NJT05fWlNURBABEhMKD0NPTVBSRVNTSU9OX0xaNBACEhYKEkNPTVBSRVNTSU9OX1NOQVBQWRADMtsBCg5DYXRhbG9nU2VydmljZRJlCg5DcmVhdGVNYW5pZmVzdBInLm5leHVzLmNhdGFsb2cudjEuQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0GigubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVNYW5pZmVzdFJlc3BvbnNlIgASYgoNTGlzdE1hbmlmZXN0cxImLm5leHVzLmNhdGFsb2cudjEuTGlzdE1hbmlmZXN0c1JlcXVlc3QaJy5uZXh1cy5jYXRhbG9nLnYxLkxpc3RNYW5pZmVzdHNSZXNwb25zZSIAQjxaOmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY2F0YWxvZy92MTtjYXRhbG9ndjFiBnByb3RvMw", [file_google_protobuf_timestamp]);
 
 /**
- * @generated from message nexus.catalog.v1.CreatePartitionRequest
+ * @generated from message nexus.catalog.v1.CreateManifestRequest
  */
-export type CreatePartitionRequest = Message<"nexus.catalog.v1.CreatePartitionRequest"> & {
+export type CreateManifestRequest = Message<"nexus.catalog.v1.CreateManifestRequest"> & {
   /**
    * @generated from field: string organization_id = 1;
    */
@@ -39,22 +39,22 @@ export type CreatePartitionRequest = Message<"nexus.catalog.v1.CreatePartitionRe
   id: string;
 
   /**
-   * @generated from field: nexus.catalog.v1.Partition partition = 5;
+   * @generated from field: nexus.catalog.v1.Manifest manifest = 5;
    */
-  partition?: Partition;
+  manifest?: Manifest;
 };
 
 /**
- * Describes the message nexus.catalog.v1.CreatePartitionRequest.
- * Use `create(CreatePartitionRequestSchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.CreateManifestRequest.
+ * Use `create(CreateManifestRequestSchema)` to create a new message.
  */
-export const CreatePartitionRequestSchema: GenMessage<CreatePartitionRequest> = /*@__PURE__*/
+export const CreateManifestRequestSchema: GenMessage<CreateManifestRequest> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 0);
 
 /**
- * @generated from message nexus.catalog.v1.CreatePartitionResponse
+ * @generated from message nexus.catalog.v1.CreateManifestResponse
  */
-export type CreatePartitionResponse = Message<"nexus.catalog.v1.CreatePartitionResponse"> & {
+export type CreateManifestResponse = Message<"nexus.catalog.v1.CreateManifestResponse"> & {
   /**
    * @generated from field: string organization_id = 1;
    */
@@ -76,9 +76,9 @@ export type CreatePartitionResponse = Message<"nexus.catalog.v1.CreatePartitionR
   id: string;
 
   /**
-   * @generated from field: nexus.catalog.v1.Partition partition = 5;
+   * @generated from field: nexus.catalog.v1.Manifest manifest = 5;
    */
-  partition?: Partition;
+  manifest?: Manifest;
 
   /**
    * @generated from field: google.protobuf.Timestamp created_at = 6;
@@ -87,16 +87,19 @@ export type CreatePartitionResponse = Message<"nexus.catalog.v1.CreatePartitionR
 };
 
 /**
- * Describes the message nexus.catalog.v1.CreatePartitionResponse.
- * Use `create(CreatePartitionResponseSchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.CreateManifestResponse.
+ * Use `create(CreateManifestResponseSchema)` to create a new message.
  */
-export const CreatePartitionResponseSchema: GenMessage<CreatePartitionResponse> = /*@__PURE__*/
+export const CreateManifestResponseSchema: GenMessage<CreateManifestResponse> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 1);
 
 /**
- * @generated from message nexus.catalog.v1.ListPartitionsRequest
+ * ListManifestsRequest queries for Manifests within a time range.
+ * Used by query engines to discover which data files contain relevant data.
+ *
+ * @generated from message nexus.catalog.v1.ListManifestsRequest
  */
-export type ListPartitionsRequest = Message<"nexus.catalog.v1.ListPartitionsRequest"> & {
+export type ListManifestsRequest = Message<"nexus.catalog.v1.ListManifestsRequest"> & {
   /**
    * @generated from field: string organization_id = 1;
    */
@@ -124,16 +127,20 @@ export type ListPartitionsRequest = Message<"nexus.catalog.v1.ListPartitionsRequ
 };
 
 /**
- * Describes the message nexus.catalog.v1.ListPartitionsRequest.
- * Use `create(ListPartitionsRequestSchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.ListManifestsRequest.
+ * Use `create(ListManifestsRequestSchema)` to create a new message.
  */
-export const ListPartitionsRequestSchema: GenMessage<ListPartitionsRequest> = /*@__PURE__*/
+export const ListManifestsRequestSchema: GenMessage<ListManifestsRequest> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 2);
 
 /**
- * @generated from message nexus.catalog.v1.ListPartitionsResponse
+ * ListManifestsResponse returns all Manifests matching the query criteria.
+ * The returned Manifest descriptors include column statistics that enable
+ * query engines to perform predicate pushdown and skip irrelevant files.
+ *
+ * @generated from message nexus.catalog.v1.ListManifestsResponse
  */
-export type ListPartitionsResponse = Message<"nexus.catalog.v1.ListPartitionsResponse"> & {
+export type ListManifestsResponse = Message<"nexus.catalog.v1.ListManifestsResponse"> & {
   /**
    * @generated from field: string organization_id = 1;
    */
@@ -160,208 +167,91 @@ export type ListPartitionsResponse = Message<"nexus.catalog.v1.ListPartitionsRes
   endTime?: Timestamp;
 
   /**
-   * @generated from field: repeated nexus.catalog.v1.Partition partition = 6;
+   * @generated from field: repeated nexus.catalog.v1.Manifest Manifests = 6;
    */
-  partition: Partition[];
+  Manifests: Manifest[];
 };
 
 /**
- * Describes the message nexus.catalog.v1.ListPartitionsResponse.
- * Use `create(ListPartitionsResponseSchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.ListManifestsResponse.
+ * Use `create(ListManifestsResponseSchema)` to create a new message.
  */
-export const ListPartitionsResponseSchema: GenMessage<ListPartitionsResponse> = /*@__PURE__*/
+export const ListManifestsResponseSchema: GenMessage<ListManifestsResponse> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 3);
 
 /**
- * @generated from message nexus.catalog.v1.GetMetadataVersionRequest
- */
-export type GetMetadataVersionRequest = Message<"nexus.catalog.v1.GetMetadataVersionRequest"> & {
-  /**
-   * @generated from field: uint32 window_size = 1;
-   */
-  windowSize: number;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp window = 2;
-   */
-  window?: Timestamp;
-};
-
-/**
- * Describes the message nexus.catalog.v1.GetMetadataVersionRequest.
- * Use `create(GetMetadataVersionRequestSchema)` to create a new message.
- */
-export const GetMetadataVersionRequestSchema: GenMessage<GetMetadataVersionRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 4);
-
-/**
- * @generated from message nexus.catalog.v1.GetMetadataVersionResponse
- */
-export type GetMetadataVersionResponse = Message<"nexus.catalog.v1.GetMetadataVersionResponse"> & {
-  /**
-   * @generated from field: bytes version = 1;
-   */
-  version: Uint8Array;
-};
-
-/**
- * Describes the message nexus.catalog.v1.GetMetadataVersionResponse.
- * Use `create(GetMetadataVersionResponseSchema)` to create a new message.
- */
-export const GetMetadataVersionResponseSchema: GenMessage<GetMetadataVersionResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 5);
-
-/**
- * @generated from message nexus.catalog.v1.ListMetadataVersionsRequest
- */
-export type ListMetadataVersionsRequest = Message<"nexus.catalog.v1.ListMetadataVersionsRequest"> & {
-  /**
-   * @generated from field: uint32 window_size = 1;
-   */
-  windowSize: number;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp window_start = 2;
-   */
-  windowStart?: Timestamp;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp window_end = 3;
-   */
-  windowEnd?: Timestamp;
-};
-
-/**
- * Describes the message nexus.catalog.v1.ListMetadataVersionsRequest.
- * Use `create(ListMetadataVersionsRequestSchema)` to create a new message.
- */
-export const ListMetadataVersionsRequestSchema: GenMessage<ListMetadataVersionsRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 6);
-
-/**
- * @generated from message nexus.catalog.v1.ListMetadataVersionsResponse
- */
-export type ListMetadataVersionsResponse = Message<"nexus.catalog.v1.ListMetadataVersionsResponse"> & {
-  /**
-   * @generated from field: repeated google.protobuf.Timestamp windows = 1;
-   */
-  windows: Timestamp[];
-
-  /**
-   * @generated from field: repeated bytes versions = 2;
-   */
-  versions: Uint8Array[];
-};
-
-/**
- * Describes the message nexus.catalog.v1.ListMetadataVersionsResponse.
- * Use `create(ListMetadataVersionsResponseSchema)` to create a new message.
- */
-export const ListMetadataVersionsResponseSchema: GenMessage<ListMetadataVersionsResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 7);
-
-/**
- * @generated from message nexus.catalog.v1.ValidateMetadataVersionRequest
- */
-export type ValidateMetadataVersionRequest = Message<"nexus.catalog.v1.ValidateMetadataVersionRequest"> & {
-  /**
-   * @generated from field: repeated nexus.catalog.v1.Validate versions = 1;
-   */
-  versions: Validate[];
-};
-
-/**
- * Describes the message nexus.catalog.v1.ValidateMetadataVersionRequest.
- * Use `create(ValidateMetadataVersionRequestSchema)` to create a new message.
- */
-export const ValidateMetadataVersionRequestSchema: GenMessage<ValidateMetadataVersionRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 8);
-
-/**
- * @generated from message nexus.catalog.v1.ValidateMetadataVersionResponse
- */
-export type ValidateMetadataVersionResponse = Message<"nexus.catalog.v1.ValidateMetadataVersionResponse"> & {
-  /**
-   * @generated from field: repeated bool valid = 1;
-   */
-  valid: boolean[];
-};
-
-/**
- * Describes the message nexus.catalog.v1.ValidateMetadataVersionResponse.
- * Use `create(ValidateMetadataVersionResponseSchema)` to create a new message.
- */
-export const ValidateMetadataVersionResponseSchema: GenMessage<ValidateMetadataVersionResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 9);
-
-/**
- * @generated from message nexus.catalog.v1.Validate
- */
-export type Validate = Message<"nexus.catalog.v1.Validate"> & {
-  /**
-   * @generated from field: google.protobuf.Timestamp window = 1;
-   */
-  window?: Timestamp;
-
-  /**
-   * @generated from field: bytes version = 2;
-   */
-  version: Uint8Array;
-};
-
-/**
- * Describes the message nexus.catalog.v1.Validate.
- * Use `create(ValidateSchema)` to create a new message.
- */
-export const ValidateSchema: GenMessage<Validate> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 10);
-
-/**
- * Immutable metadata describing a partition stored in object storage
+ * A Manifest describes a Granule where a Granule is a set of data stored in object storage
+ * as a Parquet file.
  *
- * @generated from message nexus.catalog.v1.Partition
+ * A Granule is:
+ * - A Parquet file stored in object storage (e.g S3)
+ * - Immutable once written
+ * - Organized by cluster key (timestamp) for data locality
+ * - Enriched with column statistics for query optimization
+ *
+ * The Manifest (this Granule descriptor) enables query engines to:
+ * 1. Discover which files to read based on time range queries
+ * 2. Skip files based on min/max statistics (predicate pushdown)
+ * 3. Use bloom filters for efficient existence checks
+ * 4. Understand the schema without reading the Parquet file
+ *
+ * RELATIONSHIP:
+ * Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
+ *
+ * @generated from message nexus.catalog.v1.Manifest
  */
-export type Partition = Message<"nexus.catalog.v1.Partition"> & {
+export type Manifest = Message<"nexus.catalog.v1.Manifest"> & {
   /**
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * The key used to cluster the data into partitions. This is
-   * used to increase data locality, with the idea being that it
-   * helps process queries faster
+   * The key used to cluster the data into Granules. This determines how data
+   * is partitioned and enables efficient querying by time and device.
+   * Data locality: Granules with similar cluster keys are stored together,
+   * which helps query engines process related data faster.
    *
    * @generated from field: nexus.catalog.v1.ClusterKey cluster_key = 2;
    */
   clusterKey?: ClusterKey;
 
   /**
-   * @generated from field: repeated string segments = 3;
+   * Storage location(s) for the Parquet file.
+   * Multiple locations can be specified for redundancy/multi-region support.
+   *
+   * @generated from field: repeated nexus.catalog.v1.StorageLocation locations = 3;
    */
-  segments: string[];
+  locations: StorageLocation[];
 
   /**
-   * The size in bytes of the Parquet file
+   * Physical size in bytes of the Parquet file in object storage
    *
    * @generated from field: uint64 size = 4;
    */
   size: bigint;
 
   /**
+   * Total number of rows in the Parquet file
+   *
    * @generated from field: uint64 row_count = 5;
    */
   rowCount: bigint;
 
   /**
-   * Time the partition was created
+   * Timestamp when the Granule was created and written to object storage
    *
    * @generated from field: google.protobuf.Timestamp created_at = 6;
    */
   createdAt?: Timestamp;
 
   /**
-   * Metadata describing the columns in the partition
+   * Schema and statistics for each column in the Parquet file.
+   * Key: column name, Value: column metadata
+   * This enables query optimization without reading the actual file:
+   * - Type information for schema validation
+   * - Min/max values for predicate pushdown
+   * - Bloom filters for existence checks
    *
    * @generated from field: map<string, nexus.catalog.v1.Column> columns = 7;
    */
@@ -369,11 +259,11 @@ export type Partition = Message<"nexus.catalog.v1.Partition"> & {
 };
 
 /**
- * Describes the message nexus.catalog.v1.Partition.
- * Use `create(PartitionSchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.Manifest.
+ * Use `create(ManifestSchema)` to create a new message.
  */
-export const PartitionSchema: GenMessage<Partition> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 11);
+export const ManifestSchema: GenMessage<Manifest> = /*@__PURE__*/
+  messageDesc(file_nexus_catalog_v1_catalog, 4);
 
 /**
  * @generated from message nexus.catalog.v1.Column
@@ -400,13 +290,194 @@ export type Column = Message<"nexus.catalog.v1.Column"> & {
  * Use `create(ColumnSchema)` to create a new message.
  */
 export const ColumnSchema: GenMessage<Column> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 12);
+  messageDesc(file_nexus_catalog_v1_catalog, 5);
 
 /**
+ * StorageLocation specifies where a Parquet file is stored.
+ * Supports multiple storage backends for flexibility across cloud providers and local development.
+ *
+ * @generated from message nexus.catalog.v1.StorageLocation
+ */
+export type StorageLocation = Message<"nexus.catalog.v1.StorageLocation"> & {
+  /**
+   * @generated from oneof nexus.catalog.v1.StorageLocation.location
+   */
+  location: {
+    /**
+     * AWS S3, GCS, MinIO, Ceph, etc.
+     *
+     * @generated from field: nexus.catalog.v1.S3CompatibleStorage s3_compatible = 1;
+     */
+    value: S3CompatibleStorage;
+    case: "s3Compatible";
+  } | {
+    /**
+     * Microsoft Azure Blob Storage
+     *
+     * @generated from field: nexus.catalog.v1.AzureBlobStorage azure_blob = 2;
+     */
+    value: AzureBlobStorage;
+    case: "azureBlob";
+  } | {
+    /**
+     * Local filesystem
+     *
+     * @generated from field: nexus.catalog.v1.LocalStorage local = 3;
+     */
+    value: LocalStorage;
+    case: "local";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message nexus.catalog.v1.StorageLocation.
+ * Use `create(StorageLocationSchema)` to create a new message.
+ */
+export const StorageLocationSchema: GenMessage<StorageLocation> = /*@__PURE__*/
+  messageDesc(file_nexus_catalog_v1_catalog, 6);
+
+/**
+ * S3CompatibleStorage represents object storage using the S3 API.
+ * Supports AWS S3, Google Cloud Storage (GCS), R2, Ceph, and other S3-compatible services.
+ *
+ * @generated from message nexus.catalog.v1.S3CompatibleStorage
+ */
+export type S3CompatibleStorage = Message<"nexus.catalog.v1.S3CompatibleStorage"> & {
+  /**
+   * Endpoint URL for the object storage service.
+   * Examples:
+   * - AWS S3 (us-east-1): "https://s3.us-east-1.amazonaws.com" or empty for default
+   * - AWS S3 (custom region): "https://s3.<region>.amazonaws.com"
+   * - GCS: "https://storage.googleapis.com"
+   * - Cloudflare R2: "https://<account-id>.r2.cloudflarestorage.com"
+   * If empty, defaults to AWS S3 in the region specified below.
+   *
+   * @generated from field: string endpoint = 1;
+   */
+  endpoint: string;
+
+  /**
+   * Bucket name
+   *
+   * @generated from field: string bucket = 2;
+   */
+  bucket: string;
+
+  /**
+   * Object key/path within the bucket (e.g., "data/2024/01/flows.parquet")
+   *
+   * @generated from field: string key = 3;
+   */
+  key: string;
+
+  /**
+   * AWS region (for S3) or location (for GCS).
+   * Examples: "us-east-1", "us-west-2", "eu-west-1"
+   * For GCS, use GCS location names like "us-central1", "europe-west1"
+   *
+   * @generated from field: string region = 4;
+   */
+  region: string;
+};
+
+/**
+ * Describes the message nexus.catalog.v1.S3CompatibleStorage.
+ * Use `create(S3CompatibleStorageSchema)` to create a new message.
+ */
+export const S3CompatibleStorageSchema: GenMessage<S3CompatibleStorage> = /*@__PURE__*/
+  messageDesc(file_nexus_catalog_v1_catalog, 7);
+
+/**
+ * AzureBlobStorage represents Microsoft Azure Blob Storage.
+ * Note: Azure Blob Storage uses a different API model than S3.
+ * Uses container/blob nomenclature instead of bucket/key.
+ *
+ * @generated from message nexus.catalog.v1.AzureBlobStorage
+ */
+export type AzureBlobStorage = Message<"nexus.catalog.v1.AzureBlobStorage"> & {
+  /**
+   * Azure storage account name
+   *
+   * @generated from field: string account_name = 1;
+   */
+  accountName: string;
+
+  /**
+   * Container name (equivalent to S3 bucket)
+   *
+   * @generated from field: string container = 2;
+   */
+  container: string;
+
+  /**
+   * Blob name/path (equivalent to S3 key)
+   *
+   * @generated from field: string blob_name = 3;
+   */
+  blobName: string;
+
+  /**
+   * Optional: Azure endpoint suffix (e.g., "core.windows.net")
+   * Defaults to "core.windows.net" if not specified.
+   * Full URL format: https://{account_name}.blob.{endpoint_suffix}/{container}/{blob_name}
+   *
+   * @generated from field: string endpoint_suffix = 4;
+   */
+  endpointSuffix: string;
+};
+
+/**
+ * Describes the message nexus.catalog.v1.AzureBlobStorage.
+ * Use `create(AzureBlobStorageSchema)` to create a new message.
+ */
+export const AzureBlobStorageSchema: GenMessage<AzureBlobStorage> = /*@__PURE__*/
+  messageDesc(file_nexus_catalog_v1_catalog, 8);
+
+/**
+ * LocalStorage represents local filesystem storage.
+ * Primarily used for demos, testing, and development environments.
+ *
+ * @generated from message nexus.catalog.v1.LocalStorage
+ */
+export type LocalStorage = Message<"nexus.catalog.v1.LocalStorage"> & {
+  /**
+   * Filesystem path (can be absolute or relative)
+   * Examples:
+   * - Absolute: "/data/parquet/flows.parquet"
+   * - Relative: "./data/flows.parquet"
+   *
+   * @generated from field: string path = 1;
+   */
+  path: string;
+};
+
+/**
+ * Describes the message nexus.catalog.v1.LocalStorage.
+ * Use `create(LocalStorageSchema)` to create a new message.
+ */
+export const LocalStorageSchema: GenMessage<LocalStorage> = /*@__PURE__*/
+  messageDesc(file_nexus_catalog_v1_catalog, 9);
+
+/**
+ * Statistics contains min/max bounds and bloom filters for a column.
+ * Query engines use these statistics to determine if a Granule needs to be read:
+ *
+ * PREDICATE PUSHDOWN EXAMPLE:
+ * Query: SELECT * FROM table WHERE age > 30
+ * If a Granule's age column has max_int32 = 25, the entire file can be skipped.
+ *
+ * BLOOM FILTER EXAMPLE:
+ * Query: SELECT * FROM table WHERE user_id = 'abc123'
+ * The bloom filter can quickly indicate if 'abc123' definitely doesn't exist,
+ * allowing the query engine to skip reading the file.
+ *
  * @generated from message nexus.catalog.v1.Statistics
  */
 export type Statistics = Message<"nexus.catalog.v1.Statistics"> & {
   /**
+   * Minimum value in this column across all rows in the Granule.
+   * The specific field used depends on the column type.
+   *
    * @generated from oneof nexus.catalog.v1.Statistics.min
    */
   min: {
@@ -464,6 +535,9 @@ export type Statistics = Message<"nexus.catalog.v1.Statistics"> & {
   } | { case: undefined; value?: undefined };
 
   /**
+   * Maximum value in this column across all rows in the Granule.
+   * The specific field used depends on the column type.
+   *
    * @generated from oneof nexus.catalog.v1.Statistics.max
    */
   max: {
@@ -521,6 +595,10 @@ export type Statistics = Message<"nexus.catalog.v1.Statistics"> & {
   } | { case: undefined; value?: undefined };
 
   /**
+   * Bloom filter or similar probabilistic data structure.
+   * Used for efficient "does this value exist?" queries.
+   * False positives are possible, but false negatives are not.
+   *
    * @generated from field: bytes filter = 17;
    */
   filter: Uint8Array;
@@ -531,25 +609,30 @@ export type Statistics = Message<"nexus.catalog.v1.Statistics"> & {
  * Use `create(StatisticsSchema)` to create a new message.
  */
 export const StatisticsSchema: GenMessage<Statistics> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 13);
+  messageDesc(file_nexus_catalog_v1_catalog, 10);
 
 /**
+ * ClusterKey defines how data is partitioned and organized into Granules.
+ * The cluster key creates a partitioning scheme:
+ * 1. Temporal dimension (timestamp) - enables time-range queries
+ *
+ * DATA LOCALITY BENEFITS:
+ * - Time-range queries: "SELECT * FROM flows WHERE timestamp BETWEEN t1 AND t2"
+ *   Only need to scan Granules with cluster_key.timestamp in [t1, t2]
+ *
+ * Granules with similar cluster keys are stored together in object storage,
+ * improving cache locality and reducing the number of files that need to be read.
+ *
  * @generated from message nexus.catalog.v1.ClusterKey
  */
 export type ClusterKey = Message<"nexus.catalog.v1.ClusterKey"> & {
   /**
-   * The timestamp is the time that the flow was received
+   * The timestamp when the flow was received by the system.
+   * Used as the primary partitioning dimension for time-range queries.
    *
    * @generated from field: google.protobuf.Timestamp timestamp = 1;
    */
   timestamp?: Timestamp;
-
-  /**
-   * The ID of the device the flow belongs to
-   *
-   * @generated from field: uint64 device_id = 2;
-   */
-  deviceId: bigint;
 };
 
 /**
@@ -557,30 +640,47 @@ export type ClusterKey = Message<"nexus.catalog.v1.ClusterKey"> & {
  * Use `create(ClusterKeySchema)` to create a new message.
  */
 export const ClusterKeySchema: GenMessage<ClusterKey> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 14);
+  messageDesc(file_nexus_catalog_v1_catalog, 11);
 
 /**
- * TODO: Add metrics we care about?
+ * Compaction represents metadata about a data compaction operation.
+ * Compaction is the process of merging multiple small Granules into larger ones
+ * to improve query performance and reduce storage overhead.
+ *
+ * COMPACTION LEVELS (LSM-tree style):
+ * - Level 0: Initial write, many small files
+ * - Level 1: First compaction pass, medium-sized files
+ * - Higher levels: Further compaction, larger files with better organization
+ *
+ * TODO: Add metrics we care about? (e.g., rows merged, time taken, compression ratio)
  *
  * @generated from message nexus.catalog.v1.Compaction
  */
 export type Compaction = Message<"nexus.catalog.v1.Compaction"> & {
   /**
+   * Timestamp when the compaction operation was performed
+   *
    * @generated from field: google.protobuf.Timestamp created_at = 1;
    */
   createdAt?: Timestamp;
 
   /**
+   * The compaction level (0 = uncompacted, higher = more compacted)
+   *
    * @generated from field: nexus.catalog.v1.CompactionLevel level = 2;
    */
   level: CompactionLevel;
 
   /**
+   * The time window that was compacted
+   *
    * @generated from field: nexus.catalog.v1.Window window = 3;
    */
   window?: Window;
 
   /**
+   * Total size in bytes of the compacted output
+   *
    * @generated from field: uint64 size = 4;
    */
   size: bigint;
@@ -591,13 +691,18 @@ export type Compaction = Message<"nexus.catalog.v1.Compaction"> & {
  * Use `create(CompactionSchema)` to create a new message.
  */
 export const CompactionSchema: GenMessage<Compaction> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 15);
+  messageDesc(file_nexus_catalog_v1_catalog, 12);
 
 /**
+ * Window represents a time range, typically used for compaction operations.
+ * Defines the temporal boundaries of a batch of data.
+ *
  * @generated from message nexus.catalog.v1.Window
  */
 export type Window = Message<"nexus.catalog.v1.Window"> & {
   /**
+   * Size of the window (e.g., duration in seconds or minutes)
+   *
    * @generated from field: uint32 size = 1;
    */
   size: number;
@@ -618,32 +723,40 @@ export type Window = Message<"nexus.catalog.v1.Window"> & {
  * Use `create(WindowSchema)` to create a new message.
  */
 export const WindowSchema: GenMessage<Window> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 16);
+  messageDesc(file_nexus_catalog_v1_catalog, 13);
 
 /**
- * Metadata and data stored for a given value
+ * Value represents a generic container for storing raw data with metadata.
+ * This is used for storing arbitrary values with compression and timestamp tracking.
+ * Useful for caching, intermediate results, or storing configuration data.
  *
  * @generated from message nexus.catalog.v1.Value
  */
 export type Value = Message<"nexus.catalog.v1.Value"> & {
   /**
-   * int32 enc = 2; // encoding of the raw data -- store as enums
+   * Timestamp when the value was first created
    *
    * @generated from field: google.protobuf.Timestamp created_at = 1;
    */
   createdAt?: Timestamp;
 
   /**
+   * Timestamp when the value was last updated
+   *
    * @generated from field: google.protobuf.Timestamp updated_at = 2;
    */
   updatedAt?: Timestamp;
 
   /**
+   * Compression algorithm applied to the raw data
+   *
    * @generated from field: nexus.catalog.v1.Compression comp = 3;
    */
   comp: Compression;
 
   /**
+   * The raw data bytes (potentially compressed)
+   *
    * @generated from field: bytes raw = 4;
    */
   raw: Uint8Array;
@@ -654,9 +767,21 @@ export type Value = Message<"nexus.catalog.v1.Value"> & {
  * Use `create(ValueSchema)` to create a new message.
  */
 export const ValueSchema: GenMessage<Value> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 17);
+  messageDesc(file_nexus_catalog_v1_catalog, 14);
 
 /**
+ * Variant is a polymorphic value type that can hold different primitive types.
+ * Similar to a union type or tagged union in programming languages.
+ *
+ * USE CASES:
+ * - Storing heterogeneous data where the type varies at runtime
+ * - Dynamic configuration values
+ * - Query parameters that can be of different types
+ * - Metadata values with varying types
+ *
+ * The oneof ensures only one field is set at a time, with the field tag
+ * indicating the actual type of the stored value.
+ *
  * @generated from message nexus.catalog.v1.Variant
  */
 export type Variant = Message<"nexus.catalog.v1.Variant"> & {
@@ -719,7 +844,7 @@ export type Variant = Message<"nexus.catalog.v1.Variant"> & {
  * Use `create(VariantSchema)` to create a new message.
  */
 export const VariantSchema: GenMessage<Variant> = /*@__PURE__*/
-  messageDesc(file_nexus_catalog_v1_catalog, 18);
+  messageDesc(file_nexus_catalog_v1_catalog, 15);
 
 /**
  * @generated from enum nexus.catalog.v1.ColumnType
@@ -798,6 +923,9 @@ export const ColumnTypeSchema: GenEnum<ColumnType> = /*@__PURE__*/
   enumDesc(file_nexus_catalog_v1_catalog, 0);
 
 /**
+ * CompactionLevel indicates how many times data has been compacted.
+ * Higher levels generally mean larger files with better organization.
+ *
  * @generated from enum nexus.catalog.v1.CompactionLevel
  */
 export enum CompactionLevel {
@@ -807,11 +935,15 @@ export enum CompactionLevel {
   UNSPECIFIED = 0,
 
   /**
+   * Initial write, no compaction
+   *
    * @generated from enum value: COMPACTION_LEVEL_ZERO = 1;
    */
   ZERO = 1,
 
   /**
+   * First compaction pass
+   *
    * @generated from enum value: COMPACTION_LEVEL_ONE = 2;
    */
   ONE = 2,
@@ -824,6 +956,9 @@ export const CompactionLevelSchema: GenEnum<CompactionLevel> = /*@__PURE__*/
   enumDesc(file_nexus_catalog_v1_catalog, 1);
 
 /**
+ * Compression algorithms supported for compressing raw data.
+ * Different algorithms offer different trade-offs between compression ratio and speed.
+ *
  * @generated from enum nexus.catalog.v1.Compression
  */
 export enum Compression {
@@ -833,16 +968,22 @@ export enum Compression {
   UNSPECIFIED = 0,
 
   /**
+   * Zstandard: High compression ratio, good speed
+   *
    * @generated from enum value: COMPRESSION_ZSTD = 1;
    */
   ZSTD = 1,
 
   /**
+   * LZ4: Very fast, moderate compression
+   *
    * @generated from enum value: COMPRESSION_LZ4 = 2;
    */
   LZ4 = 2,
 
   /**
+   * Snappy: Fast, moderate compression, widely used in Parquet
+   *
    * @generated from enum value: COMPRESSION_SNAPPY = 3;
    */
   SNAPPY = 3,
@@ -855,52 +996,53 @@ export const CompressionSchema: GenEnum<Compression> = /*@__PURE__*/
   enumDesc(file_nexus_catalog_v1_catalog, 2);
 
 /**
- * This service is responsible for operations against our catalog store. The
- * catalog store holds partitions -- descriptors of data that exists in object
- * storage.
+ * CatalogService is responsible for managing the catalog store, which maintains
+ * metadata about data stored in object storage.
+ *
+ * HIERARCHY OF ELEMENTS:
+ * ----------------------
+ * Organization → Team → Cluster → Manifest (Granule)
+ *
+ * A Granule is a set of data stored in object storage as a Parquet file.
+ * A Manifest is a descriptor of a Granule, containing:
+ *   - Physical metadata (size, row count, location)
+ *   - Temporal metadata (cluster key with timestamp and device_id)
+ *   - Column metadata (schema, statistics, bloom filters)
+ *
+ * The CatalogService stores all Manifests, enabling efficient query planning
+ * by providing min/max statistics and bloom filters for each column, allowing
+ * query engines to skip irrelevant Granules without reading the actual data files.
+ *
+ * DATA FLOW:
+ * 1. Data is ingested and written as Parquet files (Granules) to object storage
+ * 2. CreateManifest is called to register the Granule's metadata in the catalog
+ * 3. Query engines use ListManifests to discover relevant Granules for a query
+ * 4. Statistics and filters enable predicate pushdown and partition pruning
  *
  * @generated from service nexus.catalog.v1.CatalogService
  */
 export const CatalogService: GenService<{
   /**
-   * @generated from rpc nexus.catalog.v1.CatalogService.CreatePartition
+   * CreateManifest registers a new Granule (data file) in the catalog.
+   * This should be called after successfully writing a Parquet file to object storage.
+   *
+   * @generated from rpc nexus.catalog.v1.CatalogService.CreateManifest
    */
-  createPartition: {
+  createManifest: {
     methodKind: "unary";
-    input: typeof CreatePartitionRequestSchema;
-    output: typeof CreatePartitionResponseSchema;
+    input: typeof CreateManifestRequestSchema;
+    output: typeof CreateManifestResponseSchema;
   },
   /**
-   * @generated from rpc nexus.catalog.v1.CatalogService.ListPartitions
+   * ListManifests retrieves Granule descriptors for a given time range and scope.
+   * Used by query engines to discover which data files need to be read.
+   *
+   * @generated from rpc nexus.catalog.v1.CatalogService.ListManifests
    */
-  listPartitions: {
+  listManifests: {
     methodKind: "unary";
-    input: typeof ListPartitionsRequestSchema;
-    output: typeof ListPartitionsResponseSchema;
-  },
-  /**
-   * @generated from rpc nexus.catalog.v1.CatalogService.ValidateMetadataVersion
-   */
-  validateMetadataVersion: {
-    methodKind: "unary";
-    input: typeof ValidateMetadataVersionRequestSchema;
-    output: typeof ValidateMetadataVersionResponseSchema;
-  },
-  /**
-   * @generated from rpc nexus.catalog.v1.CatalogService.GetMetadataVersion
-   */
-  getMetadataVersion: {
-    methodKind: "unary";
-    input: typeof GetMetadataVersionRequestSchema;
-    output: typeof GetMetadataVersionResponseSchema;
-  },
-  /**
-   * @generated from rpc nexus.catalog.v1.CatalogService.ListMetadataVersions
-   */
-  listMetadataVersions: {
-    methodKind: "unary";
-    input: typeof ListMetadataVersionsRequestSchema;
-    output: typeof ListMetadataVersionsResponseSchema;
+    input: typeof ListManifestsRequestSchema;
+    output: typeof ListManifestsResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_nexus_catalog_v1_catalog, 0);
