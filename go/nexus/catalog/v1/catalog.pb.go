@@ -208,7 +208,8 @@ func (Compression) EnumDescriptor() ([]byte, []int) {
 
 type CreateManifestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Manifest      *Manifest              `protobuf:"bytes,1,opt,name=manifest,proto3" json:"manifest,omitempty"`
+	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	Manifest      *Manifest              `protobuf:"bytes,2,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -241,6 +242,13 @@ func (x *CreateManifestRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateManifestRequest.ProtoReflect.Descriptor instead.
 func (*CreateManifestRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreateManifestRequest) GetClusterId() string {
+	if x != nil {
+		return x.ClusterId
+	}
+	return ""
 }
 
 func (x *CreateManifestRequest) GetManifest() *Manifest {
@@ -1765,9 +1773,11 @@ var File_nexus_catalog_v1_catalog_proto protoreflect.FileDescriptor
 
 const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"O\n" +
-	"\x15CreateManifestRequest\x126\n" +
-	"\bmanifest\x18\x01 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xba\x01\n" +
+	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"n\n" +
+	"\x15CreateManifestRequest\x12\x1d\n" +
+	"\n" +
+	"cluster_id\x18\x01 \x01(\tR\tclusterId\x126\n" +
+	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xba\x01\n" +
 	"\x16CreateManifestResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
