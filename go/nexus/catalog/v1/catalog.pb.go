@@ -207,14 +207,10 @@ func (Compression) EnumDescriptor() ([]byte, []int) {
 }
 
 type CreateManifestRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	Id             string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
-	Manifest       *Manifest              `protobuf:"bytes,5,opt,name=manifest,proto3" json:"manifest,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Manifest      *Manifest              `protobuf:"bytes,1,opt,name=manifest,proto3" json:"manifest,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateManifestRequest) Reset() {
@@ -247,34 +243,6 @@ func (*CreateManifestRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateManifestRequest) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *CreateManifestRequest) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
-	}
-	return ""
-}
-
-func (x *CreateManifestRequest) GetClusterId() string {
-	if x != nil {
-		return x.ClusterId
-	}
-	return ""
-}
-
-func (x *CreateManifestRequest) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
 func (x *CreateManifestRequest) GetManifest() *Manifest {
 	if x != nil {
 		return x.Manifest
@@ -283,15 +251,13 @@ func (x *CreateManifestRequest) GetManifest() *Manifest {
 }
 
 type CreateManifestResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	Id             string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
-	Manifest       *Manifest              `protobuf:"bytes,5,opt,name=manifest,proto3" json:"manifest,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ClusterId     string                 `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	Manifest      *Manifest              `protobuf:"bytes,3,opt,name=manifest,proto3" json:"manifest,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateManifestResponse) Reset() {
@@ -324,16 +290,9 @@ func (*CreateManifestResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateManifestResponse) GetOrganizationId() string {
+func (x *CreateManifestResponse) GetId() string {
 	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *CreateManifestResponse) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
+		return x.Id
 	}
 	return ""
 }
@@ -341,13 +300,6 @@ func (x *CreateManifestResponse) GetTeamId() string {
 func (x *CreateManifestResponse) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
-	}
-	return ""
-}
-
-func (x *CreateManifestResponse) GetId() string {
-	if x != nil {
-		return x.Id
 	}
 	return ""
 }
@@ -369,14 +321,12 @@ func (x *CreateManifestResponse) GetCreatedAt() *timestamppb.Timestamp {
 // ListManifestsRequest queries for Manifests within a time range.
 // Used by query engines to discover which data files contain relevant data.
 type ListManifestsRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	StartTime      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime        *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListManifestsRequest) Reset() {
@@ -409,20 +359,6 @@ func (*ListManifestsRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListManifestsRequest) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *ListManifestsRequest) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
-	}
-	return ""
-}
-
 func (x *ListManifestsRequest) GetClusterId() string {
 	if x != nil {
 		return x.ClusterId
@@ -448,15 +384,13 @@ func (x *ListManifestsRequest) GetEndTime() *timestamppb.Timestamp {
 // The returned Manifest descriptors include column statistics that enable
 // query engines to perform predicate pushdown and skip irrelevant files.
 type ListManifestsResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
-	TeamId         string                 `protobuf:"bytes,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	ClusterId      string                 `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
-	StartTime      *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime        *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Manifests      []*Manifest            `protobuf:"bytes,6,rep,name=Manifests,proto3" json:"Manifests,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Manifests     []*Manifest            `protobuf:"bytes,4,rep,name=Manifests,proto3" json:"Manifests,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ListManifestsResponse) Reset() {
@@ -487,20 +421,6 @@ func (x *ListManifestsResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListManifestsResponse.ProtoReflect.Descriptor instead.
 func (*ListManifestsResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListManifestsResponse) GetOrganizationId() string {
-	if x != nil {
-		return x.OrganizationId
-	}
-	return ""
-}
-
-func (x *ListManifestsResponse) GetTeamId() string {
-	if x != nil {
-		return x.TeamId
-	}
-	return ""
 }
 
 func (x *ListManifestsResponse) GetClusterId() string {
@@ -1845,40 +1765,29 @@ var File_nexus_catalog_v1_catalog_proto protoreflect.FileDescriptor
 
 const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x01\n" +
-	"\x15CreateManifestRequest\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
+	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"O\n" +
+	"\x15CreateManifestRequest\x126\n" +
+	"\bmanifest\x18\x01 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xba\x01\n" +
+	"\x16CreateManifestResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"cluster_id\x18\x03 \x01(\tR\tclusterId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02id\x126\n" +
-	"\bmanifest\x18\x05 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xfc\x01\n" +
-	"\x16CreateManifestResponse\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
+	"cluster_id\x18\x02 \x01(\tR\tclusterId\x126\n" +
+	"\bmanifest\x18\x03 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
 	"\n" +
-	"cluster_id\x18\x03 \x01(\tR\tclusterId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02id\x126\n" +
-	"\bmanifest\x18\x05 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xa7\x01\n" +
+	"\x14ListManifestsRequest\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe9\x01\n" +
-	"\x14ListManifestsRequest\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
+	"cluster_id\x18\x01 \x01(\tR\tclusterId\x129\n" +
 	"\n" +
-	"cluster_id\x18\x03 \x01(\tR\tclusterId\x129\n" +
+	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xe2\x01\n" +
+	"\x15ListManifestsResponse\x12\x1d\n" +
 	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xa4\x02\n" +
-	"\x15ListManifestsResponse\x12'\n" +
-	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x17\n" +
-	"\ateam_id\x18\x02 \x01(\tR\x06teamId\x12\x1d\n" +
+	"cluster_id\x18\x01 \x01(\tR\tclusterId\x129\n" +
 	"\n" +
-	"cluster_id\x18\x03 \x01(\tR\tclusterId\x129\n" +
-	"\n" +
-	"start_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
-	"\tManifests\x18\x06 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\x9f\x03\n" +
+	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
+	"\tManifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\x9f\x03\n" +
 	"\bManifest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
 	"\vcluster_key\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.ClusterKeyR\n" +

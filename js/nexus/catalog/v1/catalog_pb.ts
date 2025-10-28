@@ -12,34 +12,14 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/catalog/v1/catalog.proto.
  */
 export const file_nexus_catalog_v1_catalog: GenFile = /*@__PURE__*/
-  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEijwEKFUNyZWF0ZU1hbmlmZXN0UmVxdWVzdBIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEgoKAmlkGAQgASgJEiwKCG1hbmlmZXN0GAUgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCLAAQoWQ3JlYXRlTWFuaWZlc3RSZXNwb25zZRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEgoKAmlkGAQgASgJEiwKCG1hbmlmZXN0GAUgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKyAQoUTGlzdE1hbmlmZXN0c1JlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEg8KB3RlYW1faWQYAiABKAkSEgoKY2x1c3Rlcl9pZBgDIAEoCRIuCgpzdGFydF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAi4gEKFUxpc3RNYW5pZmVzdHNSZXNwb25zZRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHdGVhbV9pZBgCIAEoCRISCgpjbHVzdGVyX2lkGAMgASgJEi4KCnN0YXJ0X3RpbWUYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglNYW5pZmVzdHMYBiADKAsyGi5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0ItQCCghNYW5pZmVzdBIKCgJpZBgBIAEoCRIxCgtjbHVzdGVyX2tleRgCIAEoCzIcLm5leHVzLmNhdGFsb2cudjEuQ2x1c3RlcktleRI0Cglsb2NhdGlvbnMYAyADKAsyIS5uZXh1cy5jYXRhbG9nLnYxLlN0b3JhZ2VMb2NhdGlvbhIMCgRzaXplGAQgASgEEhEKCXJvd19jb3VudBgFIAEoBBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI4Cgdjb2x1bW5zGAcgAygLMicubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdC5Db2x1bW5zRW50cnkaSAoMQ29sdW1uc0VudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIYLm5leHVzLmNhdGFsb2cudjEuQ29sdW1uOgI4ASJ0CgZDb2x1bW4SDAoEbmFtZRgBIAEoCRIwCgpzdGF0aXN0aWNzGAIgASgLMhwubmV4dXMuY2F0YWxvZy52MS5TdGF0aXN0aWNzEioKBHR5cGUYAyABKA4yHC5uZXh1cy5jYXRhbG9nLnYxLkNvbHVtblR5cGUiyAEKD1N0b3JhZ2VMb2NhdGlvbhI+Cg1zM19jb21wYXRpYmxlGAEgASgLMiUubmV4dXMuY2F0YWxvZy52MS5TM0NvbXBhdGlibGVTdG9yYWdlSAASOAoKYXp1cmVfYmxvYhgCIAEoCzIiLm5leHVzLmNhdGFsb2cudjEuQXp1cmVCbG9iU3RvcmFnZUgAEi8KBWxvY2FsGAMgASgLMh4ubmV4dXMuY2F0YWxvZy52MS5Mb2NhbFN0b3JhZ2VIAEIKCghsb2NhdGlvbiJUChNTM0NvbXBhdGlibGVTdG9yYWdlEhAKCGVuZHBvaW50GAEgASgJEg4KBmJ1Y2tldBgCIAEoCRILCgNrZXkYAyABKAkSDgoGcmVnaW9uGAQgASgJImcKEEF6dXJlQmxvYlN0b3JhZ2USFAoMYWNjb3VudF9uYW1lGAEgASgJEhEKCWNvbnRhaW5lchgCIAEoCRIRCglibG9iX25hbWUYAyABKAkSFwoPZW5kcG9pbnRfc3VmZml4GAQgASgJIhwKDExvY2FsU3RvcmFnZRIMCgRwYXRoGAEgASgJIr4DCgpTdGF0aXN0aWNzEhMKCW1pbl9pbnQzMhgBIAEoBUgAEhMKCW1pbl9pbnQ2NBgCIAEoA0gAEhQKCm1pbl91aW50MzIYAyABKA1IABIUCgptaW5fdWludDY0GAQgASgESAASEgoIbWluX2Jvb2wYBSABKAhIABIUCgptaW5fc3RyaW5nGAYgASgJSAASEwoJbWluX2J5dGVzGAcgASgMSAASMwoNbWluX3RpbWVzdGFtcBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIABITCgltYXhfaW50MzIYCSABKAVIARITCgltYXhfaW50NjQYCiABKANIARIUCgptYXhfdWludDMyGAsgASgNSAESFAoKbWF4X3VpbnQ2NBgMIAEoBEgBEhIKCG1heF9ib29sGA0gASgISAESFAoKbWF4X3N0cmluZxgOIAEoCUgBEhMKCW1heF9ieXRlcxgPIAEoDEgBEjMKDW1heF90aW1lc3RhbXAYECABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAESDgoGZmlsdGVyGBEgASgMQgUKA21pbkIFCgNtYXgiOwoKQ2x1c3RlcktleRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIqYBCgpDb21wYWN0aW9uEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjAKBWxldmVsGAIgASgOMiEubmV4dXMuY2F0YWxvZy52MS5Db21wYWN0aW9uTGV2ZWwSKAoGd2luZG93GAMgASgLMhgubmV4dXMuY2F0YWxvZy52MS5XaW5kb3cSDAoEc2l6ZRgEIAEoBCJ0CgZXaW5kb3cSDAoEc2l6ZRgBIAEoDRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAioQEKBVZhbHVlEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKBGNvbXAYAyABKA4yHS5uZXh1cy5jYXRhbG9nLnYxLkNvbXByZXNzaW9uEgsKA3JhdxgEIAEoDCL+AQoHVmFyaWFudBIXCg1pbnQzMl92YXJpYW50GAEgASgFSAASFwoNaW50NjRfdmFyaWFudBgCIAEoA0gAEhgKDnVpbnQzMl92YXJpYW50GAMgASgNSAASGAoOdWludDY0X3ZhcmlhbnQYBCABKARIABIWCgxib29sX3ZhcmlhbnQYBSABKAhIABIYCg5zdHJpbmdfdmFyaWFudBgGIAEoCUgAEhcKDWJ5dGVzX3ZhcmlhbnQYByABKAxIABI3ChF0aW1lc3RhbXBfdmFyaWFudBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAEIJCgd2YXJpYW50KsYCCgpDb2x1bW5UeXBlEhsKF0NPTFVNTl9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQQ09MVU1OX1RZUEVfSU5UOBABEhUKEUNPTFVNTl9UWVBFX0lOVDE2EAISFQoRQ09MVU1OX1RZUEVfSU5UMzIQAxIVChFDT0xVTU5fVFlQRV9JTlQ2NBAEEhUKEUNPTFVNTl9UWVBFX1VJTlQ4EAUSFgoSQ09MVU1OX1RZUEVfVUlOVDE2EAYSFgoSQ09MVU1OX1RZUEVfVUlOVDMyEAcSFgoSQ09MVU1OX1RZUEVfVUlOVDY0EAgSFgoSQ09MVU1OX1RZUEVfU1RSSU5HEAkSFwoTQ09MVU1OX1RZUEVfQk9PTEVBThAKEhkKFUNPTFVNTl9UWVBFX1RJTUVTVEFNUBALEhUKEUNPTFVNTl9UWVBFX0JZVEVTEAwqaAoPQ29tcGFjdGlvbkxldmVsEiAKHENPTVBBQ1RJT05fTEVWRUxfVU5TUEVDSUZJRUQQABIZChVDT01QQUNUSU9OX0xFVkVMX1pFUk8QARIYChRDT01QQUNUSU9OX0xFVkVMX09ORRACKm0KC0NvbXByZXNzaW9uEhsKF0NPTVBSRVNTSU9OX1VOU1BFQ0lGSUVEEAASFAoQQ09NUFJFU1NJT05fWlNURBABEhMKD0NPTVBSRVNTSU9OX0xaNBACEhYKEkNPTVBSRVNTSU9OX1NOQVBQWRADMtsBCg5DYXRhbG9nU2VydmljZRJlCg5DcmVhdGVNYW5pZmVzdBInLm5leHVzLmNhdGFsb2cudjEuQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0GigubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVNYW5pZmVzdFJlc3BvbnNlIgASYgoNTGlzdE1hbmlmZXN0cxImLm5leHVzLmNhdGFsb2cudjEuTGlzdE1hbmlmZXN0c1JlcXVlc3QaJy5uZXh1cy5jYXRhbG9nLnYxLkxpc3RNYW5pZmVzdHNSZXNwb25zZSIAQjxaOmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY2F0YWxvZy92MTtjYXRhbG9ndjFiBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEiRQoVQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0EiwKCG1hbmlmZXN0GAEgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCKWAQoWQ3JlYXRlTWFuaWZlc3RSZXNwb25zZRIKCgJpZBgBIAEoCRISCgpjbHVzdGVyX2lkGAIgASgJEiwKCG1hbmlmZXN0GAMgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdBIuCgpjcmVhdGVkX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKIAQoUTGlzdE1hbmlmZXN0c1JlcXVlc3QSEgoKY2x1c3Rlcl9pZBgBIAEoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuAEKFUxpc3RNYW5pZmVzdHNSZXNwb25zZRISCgpjbHVzdGVyX2lkGAEgASgJEi4KCnN0YXJ0X3RpbWUYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglNYW5pZmVzdHMYBCADKAsyGi5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0ItQCCghNYW5pZmVzdBIKCgJpZBgBIAEoCRIxCgtjbHVzdGVyX2tleRgCIAEoCzIcLm5leHVzLmNhdGFsb2cudjEuQ2x1c3RlcktleRI0Cglsb2NhdGlvbnMYAyADKAsyIS5uZXh1cy5jYXRhbG9nLnYxLlN0b3JhZ2VMb2NhdGlvbhIMCgRzaXplGAQgASgEEhEKCXJvd19jb3VudBgFIAEoBBIuCgpjcmVhdGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI4Cgdjb2x1bW5zGAcgAygLMicubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdC5Db2x1bW5zRW50cnkaSAoMQ29sdW1uc0VudHJ5EgsKA2tleRgBIAEoCRInCgV2YWx1ZRgCIAEoCzIYLm5leHVzLmNhdGFsb2cudjEuQ29sdW1uOgI4ASJ0CgZDb2x1bW4SDAoEbmFtZRgBIAEoCRIwCgpzdGF0aXN0aWNzGAIgASgLMhwubmV4dXMuY2F0YWxvZy52MS5TdGF0aXN0aWNzEioKBHR5cGUYAyABKA4yHC5uZXh1cy5jYXRhbG9nLnYxLkNvbHVtblR5cGUiyAEKD1N0b3JhZ2VMb2NhdGlvbhI+Cg1zM19jb21wYXRpYmxlGAEgASgLMiUubmV4dXMuY2F0YWxvZy52MS5TM0NvbXBhdGlibGVTdG9yYWdlSAASOAoKYXp1cmVfYmxvYhgCIAEoCzIiLm5leHVzLmNhdGFsb2cudjEuQXp1cmVCbG9iU3RvcmFnZUgAEi8KBWxvY2FsGAMgASgLMh4ubmV4dXMuY2F0YWxvZy52MS5Mb2NhbFN0b3JhZ2VIAEIKCghsb2NhdGlvbiJUChNTM0NvbXBhdGlibGVTdG9yYWdlEhAKCGVuZHBvaW50GAEgASgJEg4KBmJ1Y2tldBgCIAEoCRILCgNrZXkYAyABKAkSDgoGcmVnaW9uGAQgASgJImcKEEF6dXJlQmxvYlN0b3JhZ2USFAoMYWNjb3VudF9uYW1lGAEgASgJEhEKCWNvbnRhaW5lchgCIAEoCRIRCglibG9iX25hbWUYAyABKAkSFwoPZW5kcG9pbnRfc3VmZml4GAQgASgJIhwKDExvY2FsU3RvcmFnZRIMCgRwYXRoGAEgASgJIr4DCgpTdGF0aXN0aWNzEhMKCW1pbl9pbnQzMhgBIAEoBUgAEhMKCW1pbl9pbnQ2NBgCIAEoA0gAEhQKCm1pbl91aW50MzIYAyABKA1IABIUCgptaW5fdWludDY0GAQgASgESAASEgoIbWluX2Jvb2wYBSABKAhIABIUCgptaW5fc3RyaW5nGAYgASgJSAASEwoJbWluX2J5dGVzGAcgASgMSAASMwoNbWluX3RpbWVzdGFtcBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIABITCgltYXhfaW50MzIYCSABKAVIARITCgltYXhfaW50NjQYCiABKANIARIUCgptYXhfdWludDMyGAsgASgNSAESFAoKbWF4X3VpbnQ2NBgMIAEoBEgBEhIKCG1heF9ib29sGA0gASgISAESFAoKbWF4X3N0cmluZxgOIAEoCUgBEhMKCW1heF9ieXRlcxgPIAEoDEgBEjMKDW1heF90aW1lc3RhbXAYECABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAESDgoGZmlsdGVyGBEgASgMQgUKA21pbkIFCgNtYXgiOwoKQ2x1c3RlcktleRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIqYBCgpDb21wYWN0aW9uEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjAKBWxldmVsGAIgASgOMiEubmV4dXMuY2F0YWxvZy52MS5Db21wYWN0aW9uTGV2ZWwSKAoGd2luZG93GAMgASgLMhgubmV4dXMuY2F0YWxvZy52MS5XaW5kb3cSDAoEc2l6ZRgEIAEoBCJ0CgZXaW5kb3cSDAoEc2l6ZRgBIAEoDRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAioQEKBVZhbHVlEi4KCmNyZWF0ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKBGNvbXAYAyABKA4yHS5uZXh1cy5jYXRhbG9nLnYxLkNvbXByZXNzaW9uEgsKA3JhdxgEIAEoDCL+AQoHVmFyaWFudBIXCg1pbnQzMl92YXJpYW50GAEgASgFSAASFwoNaW50NjRfdmFyaWFudBgCIAEoA0gAEhgKDnVpbnQzMl92YXJpYW50GAMgASgNSAASGAoOdWludDY0X3ZhcmlhbnQYBCABKARIABIWCgxib29sX3ZhcmlhbnQYBSABKAhIABIYCg5zdHJpbmdfdmFyaWFudBgGIAEoCUgAEhcKDWJ5dGVzX3ZhcmlhbnQYByABKAxIABI3ChF0aW1lc3RhbXBfdmFyaWFudBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAEIJCgd2YXJpYW50KsYCCgpDb2x1bW5UeXBlEhsKF0NPTFVNTl9UWVBFX1VOU1BFQ0lGSUVEEAASFAoQQ09MVU1OX1RZUEVfSU5UOBABEhUKEUNPTFVNTl9UWVBFX0lOVDE2EAISFQoRQ09MVU1OX1RZUEVfSU5UMzIQAxIVChFDT0xVTU5fVFlQRV9JTlQ2NBAEEhUKEUNPTFVNTl9UWVBFX1VJTlQ4EAUSFgoSQ09MVU1OX1RZUEVfVUlOVDE2EAYSFgoSQ09MVU1OX1RZUEVfVUlOVDMyEAcSFgoSQ09MVU1OX1RZUEVfVUlOVDY0EAgSFgoSQ09MVU1OX1RZUEVfU1RSSU5HEAkSFwoTQ09MVU1OX1RZUEVfQk9PTEVBThAKEhkKFUNPTFVNTl9UWVBFX1RJTUVTVEFNUBALEhUKEUNPTFVNTl9UWVBFX0JZVEVTEAwqaAoPQ29tcGFjdGlvbkxldmVsEiAKHENPTVBBQ1RJT05fTEVWRUxfVU5TUEVDSUZJRUQQABIZChVDT01QQUNUSU9OX0xFVkVMX1pFUk8QARIYChRDT01QQUNUSU9OX0xFVkVMX09ORRACKm0KC0NvbXByZXNzaW9uEhsKF0NPTVBSRVNTSU9OX1VOU1BFQ0lGSUVEEAASFAoQQ09NUFJFU1NJT05fWlNURBABEhMKD0NPTVBSRVNTSU9OX0xaNBACEhYKEkNPTVBSRVNTSU9OX1NOQVBQWRADMtsBCg5DYXRhbG9nU2VydmljZRJlCg5DcmVhdGVNYW5pZmVzdBInLm5leHVzLmNhdGFsb2cudjEuQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0GigubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVNYW5pZmVzdFJlc3BvbnNlIgASYgoNTGlzdE1hbmlmZXN0cxImLm5leHVzLmNhdGFsb2cudjEuTGlzdE1hbmlmZXN0c1JlcXVlc3QaJy5uZXh1cy5jYXRhbG9nLnYxLkxpc3RNYW5pZmVzdHNSZXNwb25zZSIAQjxaOmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY2F0YWxvZy92MTtjYXRhbG9ndjFiBnByb3RvMw", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message nexus.catalog.v1.CreateManifestRequest
  */
 export type CreateManifestRequest = Message<"nexus.catalog.v1.CreateManifestRequest"> & {
   /**
-   * @generated from field: string organization_id = 1;
-   */
-  organizationId: string;
-
-  /**
-   * @generated from field: string team_id = 2;
-   */
-  teamId: string;
-
-  /**
-   * @generated from field: string cluster_id = 3;
-   */
-  clusterId: string;
-
-  /**
-   * @generated from field: string id = 4;
-   */
-  id: string;
-
-  /**
-   * @generated from field: nexus.catalog.v1.Manifest manifest = 5;
+   * @generated from field: nexus.catalog.v1.Manifest manifest = 1;
    */
   manifest?: Manifest;
 };
@@ -56,32 +36,22 @@ export const CreateManifestRequestSchema: GenMessage<CreateManifestRequest> = /*
  */
 export type CreateManifestResponse = Message<"nexus.catalog.v1.CreateManifestResponse"> & {
   /**
-   * @generated from field: string organization_id = 1;
-   */
-  organizationId: string;
-
-  /**
-   * @generated from field: string team_id = 2;
-   */
-  teamId: string;
-
-  /**
-   * @generated from field: string cluster_id = 3;
-   */
-  clusterId: string;
-
-  /**
-   * @generated from field: string id = 4;
+   * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * @generated from field: nexus.catalog.v1.Manifest manifest = 5;
+   * @generated from field: string cluster_id = 2;
+   */
+  clusterId: string;
+
+  /**
+   * @generated from field: nexus.catalog.v1.Manifest manifest = 3;
    */
   manifest?: Manifest;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 6;
+   * @generated from field: google.protobuf.Timestamp created_at = 4;
    */
   createdAt?: Timestamp;
 };
@@ -101,27 +71,17 @@ export const CreateManifestResponseSchema: GenMessage<CreateManifestResponse> = 
  */
 export type ListManifestsRequest = Message<"nexus.catalog.v1.ListManifestsRequest"> & {
   /**
-   * @generated from field: string organization_id = 1;
-   */
-  organizationId: string;
-
-  /**
-   * @generated from field: string team_id = 2;
-   */
-  teamId: string;
-
-  /**
-   * @generated from field: string cluster_id = 3;
+   * @generated from field: string cluster_id = 1;
    */
   clusterId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp start_time = 4;
+   * @generated from field: google.protobuf.Timestamp start_time = 2;
    */
   startTime?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp end_time = 5;
+   * @generated from field: google.protobuf.Timestamp end_time = 3;
    */
   endTime?: Timestamp;
 };
@@ -142,32 +102,22 @@ export const ListManifestsRequestSchema: GenMessage<ListManifestsRequest> = /*@_
  */
 export type ListManifestsResponse = Message<"nexus.catalog.v1.ListManifestsResponse"> & {
   /**
-   * @generated from field: string organization_id = 1;
-   */
-  organizationId: string;
-
-  /**
-   * @generated from field: string team_id = 2;
-   */
-  teamId: string;
-
-  /**
-   * @generated from field: string cluster_id = 3;
+   * @generated from field: string cluster_id = 1;
    */
   clusterId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp start_time = 4;
+   * @generated from field: google.protobuf.Timestamp start_time = 2;
    */
   startTime?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp end_time = 5;
+   * @generated from field: google.protobuf.Timestamp end_time = 3;
    */
   endTime?: Timestamp;
 
   /**
-   * @generated from field: repeated nexus.catalog.v1.Manifest Manifests = 6;
+   * @generated from field: repeated nexus.catalog.v1.Manifest Manifests = 4;
    */
   Manifests: Manifest[];
 };

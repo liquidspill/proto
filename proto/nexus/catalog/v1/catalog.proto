@@ -39,48 +39,35 @@ service CatalogService {
 }
 
 message CreateManifestRequest {
-  string organization_id = 1;
-  string team_id = 2;
-  string cluster_id = 3;
-
-  string id = 4;
-  Manifest manifest = 5;
+  Manifest manifest = 1;
 }
 
 message CreateManifestResponse {
-  string organization_id = 1;
-  string team_id = 2;
-  string cluster_id = 3;
-
-  string id = 4;
-  Manifest manifest = 5;
-
-  google.protobuf.Timestamp created_at = 6;
+  string id = 1;
+  string cluster_id = 2;
+  Manifest manifest = 3;
+  google.protobuf.Timestamp created_at = 4;
 }
 
 // ListManifestsRequest queries for Manifests within a time range.
 // Used by query engines to discover which data files contain relevant data.
 message ListManifestsRequest {
-  string organization_id = 1;
-  string team_id = 2;
-  string cluster_id = 3;
+  string cluster_id = 1;
 
-  google.protobuf.Timestamp start_time = 4;
-  google.protobuf.Timestamp end_time = 5;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
 }
 
 // ListManifestsResponse returns all Manifests matching the query criteria.
 // The returned Manifest descriptors include column statistics that enable
 // query engines to perform predicate pushdown and skip irrelevant files.
 message ListManifestsResponse {
-  string organization_id = 1;
-  string team_id = 2;
-  string cluster_id = 3;
+  string cluster_id = 1;
 
-  google.protobuf.Timestamp start_time = 4;
-  google.protobuf.Timestamp end_time = 5;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
 
-  repeated Manifest Manifests = 6;
+  repeated Manifest Manifests = 4;
 }
 
 // A Manifest describes a Granule where a Granule is a set of data stored in object storage
