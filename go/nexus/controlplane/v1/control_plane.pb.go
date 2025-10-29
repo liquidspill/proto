@@ -518,7 +518,7 @@ type Dataset struct {
 	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	TeamPid       string                 `protobuf:"bytes,2,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	Description   *string                `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -577,8 +577,8 @@ func (x *Dataset) GetName() string {
 }
 
 func (x *Dataset) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -601,7 +601,7 @@ type CreateDatasetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Description   *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -651,8 +651,8 @@ func (x *CreateDatasetRequest) GetName() string {
 }
 
 func (x *CreateDatasetRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -2447,7 +2447,7 @@ type Query struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	TeamPid       string                 `protobuf:"bytes,2,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
-	ClusterPid    string                 `protobuf:"bytes,3,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,3,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	Visualise     []*Visualise           `protobuf:"bytes,4,rep,name=visualise,proto3" json:"visualise,omitempty"`
 	Where         *Where                 `protobuf:"bytes,5,opt,name=where,proto3" json:"where,omitempty"`
 	GroupBy       []string               `protobuf:"bytes,6,rep,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
@@ -2506,9 +2506,9 @@ func (x *Query) GetTeamPid() string {
 	return ""
 }
 
-func (x *Query) GetClusterPid() string {
+func (x *Query) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -3023,7 +3023,7 @@ func (x *RowValues) GetValues() []*v1.Value {
 type CreateQueryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
-	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,2,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	Query         *Query                 `protobuf:"bytes,3,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -3066,9 +3066,9 @@ func (x *CreateQueryRequest) GetTeamPid() string {
 	return ""
 }
 
-func (x *CreateQueryRequest) GetClusterPid() string {
+func (x *CreateQueryRequest) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -3338,7 +3338,7 @@ func (x *UpdateQueryExecutionResponse) GetId() string {
 
 type PollQueryExecutionRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	ClusterPid     string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid     string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -3374,9 +3374,9 @@ func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{48}
 }
 
-func (x *PollQueryExecutionRequest) GetClusterPid() string {
+func (x *PollQueryExecutionRequest) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -3487,7 +3487,7 @@ func (x *ExecQueryRequest) GetQuery() *Query {
 
 type QueryExecutionResult struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	ClusterPid     string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid     string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	Status         QueryExecutionStatus   `protobuf:"varint,3,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
 	Data           *QueryExecutionData    `protobuf:"bytes,4,opt,name=data,proto3,oneof" json:"data,omitempty"`
@@ -3526,9 +3526,9 @@ func (*QueryExecutionResult) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{51}
 }
 
-func (x *QueryExecutionResult) GetClusterPid() string {
+func (x *QueryExecutionResult) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -4154,20 +4154,22 @@ var File_nexus_controlplane_v1_control_plane_proto protoreflect.FileDescriptor
 
 const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
-	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10std/v1/std.proto\"\xe2\x01\n" +
+	")nexus/controlplane/v1/control_plane.proto\x12\x15nexus.controlplane.v1\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x10std/v1/std.proto\"\xf7\x01\n" +
 	"\aDataset\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
 	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x129\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12%\n" +
+	"\vdescription\x18\x04 \x01(\tH\x00R\vdescription\x88\x01\x01\x129\n" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"g\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
+	"\f_description\"|\n" +
 	"\x14CreateDatasetRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\"\x9e\x01\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12%\n" +
+	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
+	"\f_description\"\x9e\x01\n" +
 	"\x15CreateDatasetResponse\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x128\n" +
 	"\adataset\x18\x02 \x01(\v2\x1e.nexus.controlplane.v1.DatasetR\adataset\x129\n" +
@@ -4290,8 +4292,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x05Query\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
 	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x1f\n" +
-	"\vcluster_pid\x18\x03 \x01(\tR\n" +
-	"clusterPid\x12>\n" +
+	"\vdataset_pid\x18\x03 \x01(\tR\n" +
+	"datasetPid\x12>\n" +
 	"\tvisualise\x18\x04 \x03(\v2 .nexus.controlplane.v1.VisualiseR\tvisualise\x122\n" +
 	"\x05where\x18\x05 \x01(\v2\x1c.nexus.controlplane.v1.WhereR\x05where\x12\x19\n" +
 	"\bgroup_by\x18\x06 \x03(\tR\agroupBy\x127\n" +
@@ -4341,8 +4343,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"\x84\x01\n" +
 	"\x12CreateQueryRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\x122\n" +
+	"\vdataset_pid\x18\x02 \x01(\tR\n" +
+	"datasetPid\x122\n" +
 	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\x96\x01\n" +
 	"\x13CreateQueryResponse\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x122\n" +
@@ -4360,8 +4362,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x03ack\x18\x01 \x01(\bR\x03ack\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"f\n" +
 	"\x19PollQueryExecutionRequest\x12\x1f\n" +
-	"\vcluster_pid\x18\x01 \x01(\tR\n" +
-	"clusterPid\x12(\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"a\n" +
 	"\x1aPollQueryExecutionResponse\x12C\n" +
 	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"p\n" +
@@ -4369,8 +4371,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x122\n" +
 	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xaf\x02\n" +
 	"\x14QueryExecutionResult\x12\x1f\n" +
-	"\vcluster_pid\x18\x01 \x01(\tR\n" +
-	"clusterPid\x12(\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x12C\n" +
 	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12B\n" +
 	"\x04data\x18\x04 \x01(\v2).nexus.controlplane.v1.QueryExecutionDataH\x00R\x04data\x88\x01\x01\x12(\n" +
@@ -4713,6 +4715,8 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 	if File_nexus_controlplane_v1_control_plane_proto != nil {
 		return
 	}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[0].OneofWrappers = []any{}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[1].OneofWrappers = []any{}
 	file_nexus_controlplane_v1_control_plane_proto_msgTypes[18].OneofWrappers = []any{
 		(*Device_Generic)(nil),
 	}
