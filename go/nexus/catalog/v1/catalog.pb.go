@@ -208,7 +208,7 @@ func (Compression) EnumDescriptor() ([]byte, []int) {
 
 type CreateManifestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	Manifest      *Manifest              `protobuf:"bytes,2,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -244,9 +244,9 @@ func (*CreateManifestRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateManifestRequest) GetClusterId() string {
+func (x *CreateManifestRequest) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -261,7 +261,7 @@ func (x *CreateManifestRequest) GetManifest() *Manifest {
 type CreateManifestResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ClusterId     string                 `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	Manifest      *Manifest              `protobuf:"bytes,3,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -305,9 +305,9 @@ func (x *CreateManifestResponse) GetId() string {
 	return ""
 }
 
-func (x *CreateManifestResponse) GetClusterId() string {
+func (x *CreateManifestResponse) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -330,7 +330,7 @@ func (x *CreateManifestResponse) GetCreatedAt() *timestamppb.Timestamp {
 // Used by query engines to discover which data files contain relevant data.
 type ListManifestsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -367,9 +367,9 @@ func (*ListManifestsRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListManifestsRequest) GetClusterId() string {
+func (x *ListManifestsRequest) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -393,7 +393,7 @@ func (x *ListManifestsRequest) GetEndTime() *timestamppb.Timestamp {
 // query engines to perform predicate pushdown and skip irrelevant files.
 type ListManifestsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterId     string                 `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
+	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	Manifests     []*Manifest            `protobuf:"bytes,4,rep,name=Manifests,proto3" json:"Manifests,omitempty"`
@@ -431,9 +431,9 @@ func (*ListManifestsResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListManifestsResponse) GetClusterId() string {
+func (x *ListManifestsResponse) GetClusterPid() string {
 	if x != nil {
-		return x.ClusterId
+		return x.ClusterPid
 	}
 	return ""
 }
@@ -478,7 +478,7 @@ func (x *ListManifestsResponse) GetManifests() []*Manifest {
 // Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
 type Manifest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid   string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	// The key used to cluster the data into Granules. This determines how data
 	// is partitioned and enables efficient querying by time and device.
 	// Data locality: Granules with similar cluster keys are stored together,
@@ -534,9 +534,9 @@ func (*Manifest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *Manifest) GetId() string {
+func (x *Manifest) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -1773,33 +1773,33 @@ var File_nexus_catalog_v1_catalog_proto protoreflect.FileDescriptor
 
 const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"n\n" +
-	"\x15CreateManifestRequest\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\tR\tclusterId\x126\n" +
-	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xba\x01\n" +
+	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"p\n" +
+	"\x15CreateManifestRequest\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x126\n" +
+	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xbc\x01\n" +
 	"\x16CreateManifestResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x02 \x01(\tR\tclusterId\x126\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vcluster_pid\x18\x02 \x01(\tR\n" +
+	"clusterPid\x126\n" +
 	"\bmanifest\x18\x03 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xa7\x01\n" +
-	"\x14ListManifestsRequest\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\tR\tclusterId\x129\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xa9\x01\n" +
+	"\x14ListManifestsRequest\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xe2\x01\n" +
-	"\x15ListManifestsResponse\x12\x1d\n" +
-	"\n" +
-	"cluster_id\x18\x01 \x01(\tR\tclusterId\x129\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xe4\x01\n" +
+	"\x15ListManifestsResponse\x12\x1f\n" +
+	"\vcluster_pid\x18\x01 \x01(\tR\n" +
+	"clusterPid\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
-	"\tManifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\x9f\x03\n" +
-	"\bManifest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
+	"\tManifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\xa1\x03\n" +
+	"\bManifest\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12=\n" +
 	"\vcluster_key\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.ClusterKeyR\n" +
 	"clusterKey\x12?\n" +
 	"\tlocations\x18\x03 \x03(\v2!.nexus.catalog.v1.StorageLocationR\tlocations\x12\x12\n" +
