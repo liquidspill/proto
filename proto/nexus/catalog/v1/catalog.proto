@@ -39,13 +39,13 @@ service CatalogService {
 }
 
 message CreateManifestRequest {
-  string cluster_id = 1;
+  string cluster_pid = 1;
   Manifest manifest = 2;
 }
 
 message CreateManifestResponse {
   string id = 1;
-  string cluster_id = 2;
+  string cluster_pid = 2;
   Manifest manifest = 3;
   google.protobuf.Timestamp created_at = 4;
 }
@@ -53,7 +53,7 @@ message CreateManifestResponse {
 // ListManifestsRequest queries for Manifests within a time range.
 // Used by query engines to discover which data files contain relevant data.
 message ListManifestsRequest {
-  string cluster_id = 1;
+  string cluster_pid = 1;
 
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
@@ -63,7 +63,7 @@ message ListManifestsRequest {
 // The returned Manifest descriptors include column statistics that enable
 // query engines to perform predicate pushdown and skip irrelevant files.
 message ListManifestsResponse {
-  string cluster_id = 1;
+  string cluster_pid = 1;
 
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
@@ -89,7 +89,7 @@ message ListManifestsResponse {
 // RELATIONSHIP:
 // Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
 message Manifest {
-  string id = 1;
+  string pid = 1;
 
   // The key used to cluster the data into Granules. This determines how data
   // is partitioned and enables efficient querying by time and device.
