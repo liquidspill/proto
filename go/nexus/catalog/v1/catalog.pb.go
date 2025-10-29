@@ -260,7 +260,7 @@ func (x *CreateManifestRequest) GetManifest() *Manifest {
 
 type CreateManifestResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	Manifest      *Manifest              `protobuf:"bytes,3,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -298,9 +298,9 @@ func (*CreateManifestResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateManifestResponse) GetId() string {
+func (x *CreateManifestResponse) GetPid() string {
 	if x != nil {
-		return x.Id
+		return x.Pid
 	}
 	return ""
 }
@@ -396,7 +396,7 @@ type ListManifestsResponse struct {
 	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	Manifests     []*Manifest            `protobuf:"bytes,4,rep,name=Manifests,proto3" json:"Manifests,omitempty"`
+	Manifests     []*Manifest            `protobuf:"bytes,4,rep,name=manifests,proto3" json:"manifests,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -478,7 +478,10 @@ func (x *ListManifestsResponse) GetManifests() []*Manifest {
 // Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
 type Manifest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	Pid   string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
+	// The ID of the Manifest
+	// NOTE: This should be left unset when creating a new Manifest, the control
+	// plane will create the pid and set it here, as well as returning it in the response
+	Pid string `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
 	// The key used to cluster the data into Granules. This determines how data
 	// is partitioned and enables efficient querying by time and device.
 	// Data locality: Granules with similar cluster keys are stored together,
@@ -1777,9 +1780,9 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\x15CreateManifestRequest\x12\x1f\n" +
 	"\vcluster_pid\x18\x01 \x01(\tR\n" +
 	"clusterPid\x126\n" +
-	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xbc\x01\n" +
-	"\x16CreateManifestResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xbe\x01\n" +
+	"\x16CreateManifestResponse\x12\x10\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x1f\n" +
 	"\vcluster_pid\x18\x02 \x01(\tR\n" +
 	"clusterPid\x126\n" +
 	"\bmanifest\x18\x03 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
@@ -1797,7 +1800,7 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
-	"\tManifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tManifests\"\xa1\x03\n" +
+	"\tmanifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tmanifests\"\xa1\x03\n" +
 	"\bManifest\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12=\n" +
 	"\vcluster_key\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.ClusterKeyR\n" +
@@ -1970,7 +1973,7 @@ var file_nexus_catalog_v1_catalog_proto_depIdxs = []int32{
 	20, // 4: nexus.catalog.v1.ListManifestsRequest.end_time:type_name -> google.protobuf.Timestamp
 	20, // 5: nexus.catalog.v1.ListManifestsResponse.start_time:type_name -> google.protobuf.Timestamp
 	20, // 6: nexus.catalog.v1.ListManifestsResponse.end_time:type_name -> google.protobuf.Timestamp
-	7,  // 7: nexus.catalog.v1.ListManifestsResponse.Manifests:type_name -> nexus.catalog.v1.Manifest
+	7,  // 7: nexus.catalog.v1.ListManifestsResponse.manifests:type_name -> nexus.catalog.v1.Manifest
 	14, // 8: nexus.catalog.v1.Manifest.cluster_key:type_name -> nexus.catalog.v1.ClusterKey
 	9,  // 9: nexus.catalog.v1.Manifest.locations:type_name -> nexus.catalog.v1.StorageLocation
 	20, // 10: nexus.catalog.v1.Manifest.created_at:type_name -> google.protobuf.Timestamp

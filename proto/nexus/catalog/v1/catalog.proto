@@ -44,7 +44,7 @@ message CreateManifestRequest {
 }
 
 message CreateManifestResponse {
-  string id = 1;
+  string pid = 1;
   string cluster_pid = 2;
   Manifest manifest = 3;
   google.protobuf.Timestamp created_at = 4;
@@ -68,7 +68,7 @@ message ListManifestsResponse {
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
 
-  repeated Manifest Manifests = 4;
+  repeated Manifest manifests = 4;
 }
 
 // A Manifest describes a Granule where a Granule is a set of data stored in object storage
@@ -89,6 +89,9 @@ message ListManifestsResponse {
 // RELATIONSHIP:
 // Granule (data file in S3) ← described by → Manifest (this message) ← stored in → CatalogService
 message Manifest {
+  // The ID of the Manifest
+  // NOTE: This should be left unset when creating a new Manifest, the control
+  // plane will create the pid and set it here, as well as returning it in the response
   string pid = 1;
 
   // The key used to cluster the data into Granules. This determines how data
