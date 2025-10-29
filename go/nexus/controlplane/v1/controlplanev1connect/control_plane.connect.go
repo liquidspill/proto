@@ -33,6 +33,18 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// ControlPlaneServiceCreateDatasetProcedure is the fully-qualified name of the
+	// ControlPlaneService's CreateDataset RPC.
+	ControlPlaneServiceCreateDatasetProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateDataset"
+	// ControlPlaneServiceDeleteDatasetProcedure is the fully-qualified name of the
+	// ControlPlaneService's DeleteDataset RPC.
+	ControlPlaneServiceDeleteDatasetProcedure = "/nexus.controlplane.v1.ControlPlaneService/DeleteDataset"
+	// ControlPlaneServiceListDatasetsProcedure is the fully-qualified name of the ControlPlaneService's
+	// ListDatasets RPC.
+	ControlPlaneServiceListDatasetsProcedure = "/nexus.controlplane.v1.ControlPlaneService/ListDatasets"
+	// ControlPlaneServiceGetDatasetProcedure is the fully-qualified name of the ControlPlaneService's
+	// GetDataset RPC.
+	ControlPlaneServiceGetDatasetProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetDataset"
 	// ControlPlaneServiceCreateClusterProcedure is the fully-qualified name of the
 	// ControlPlaneService's CreateCluster RPC.
 	ControlPlaneServiceCreateClusterProcedure = "/nexus.controlplane.v1.ControlPlaneService/CreateCluster"
@@ -79,6 +91,11 @@ const (
 
 // ControlPlaneServiceClient is a client for the nexus.controlplane.v1.ControlPlaneService service.
 type ControlPlaneServiceClient interface {
+	// Dataset management
+	CreateDataset(context.Context, *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error)
+	DeleteDataset(context.Context, *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error)
+	ListDatasets(context.Context, *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error)
+	GetDataset(context.Context, *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error)
 	// Cluster management
 	CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error)
 	DeleteCluster(context.Context, *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error)
@@ -113,6 +130,30 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 	baseURL = strings.TrimRight(baseURL, "/")
 	controlPlaneServiceMethods := v1.File_nexus_controlplane_v1_control_plane_proto.Services().ByName("ControlPlaneService").Methods()
 	return &controlPlaneServiceClient{
+		createDataset: connect.NewClient[v1.CreateDatasetRequest, v1.CreateDatasetResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceCreateDatasetProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("CreateDataset")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteDataset: connect.NewClient[v1.DeleteDatasetRequest, v1.DeleteDatasetResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceDeleteDatasetProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("DeleteDataset")),
+			connect.WithClientOptions(opts...),
+		),
+		listDatasets: connect.NewClient[v1.ListDatasetsRequest, v1.ListDatasetsResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceListDatasetsProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("ListDatasets")),
+			connect.WithClientOptions(opts...),
+		),
+		getDataset: connect.NewClient[v1.GetDatasetRequest, v1.GetDatasetResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceGetDatasetProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("GetDataset")),
+			connect.WithClientOptions(opts...),
+		),
 		createCluster: connect.NewClient[v1.CreateClusterRequest, v1.CreateClusterResponse](
 			httpClient,
 			baseURL+ControlPlaneServiceCreateClusterProcedure,
@@ -202,6 +243,10 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 
 // controlPlaneServiceClient implements ControlPlaneServiceClient.
 type controlPlaneServiceClient struct {
+	createDataset        *connect.Client[v1.CreateDatasetRequest, v1.CreateDatasetResponse]
+	deleteDataset        *connect.Client[v1.DeleteDatasetRequest, v1.DeleteDatasetResponse]
+	listDatasets         *connect.Client[v1.ListDatasetsRequest, v1.ListDatasetsResponse]
+	getDataset           *connect.Client[v1.GetDatasetRequest, v1.GetDatasetResponse]
 	createCluster        *connect.Client[v1.CreateClusterRequest, v1.CreateClusterResponse]
 	deleteCluster        *connect.Client[v1.DeleteClusterRequest, v1.DeleteClusterResponse]
 	listClusters         *connect.Client[v1.ListClustersRequest, v1.ListClustersResponse]
@@ -216,6 +261,26 @@ type controlPlaneServiceClient struct {
 	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
 	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
 	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
+}
+
+// CreateDataset calls nexus.controlplane.v1.ControlPlaneService.CreateDataset.
+func (c *controlPlaneServiceClient) CreateDataset(ctx context.Context, req *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error) {
+	return c.createDataset.CallUnary(ctx, req)
+}
+
+// DeleteDataset calls nexus.controlplane.v1.ControlPlaneService.DeleteDataset.
+func (c *controlPlaneServiceClient) DeleteDataset(ctx context.Context, req *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error) {
+	return c.deleteDataset.CallUnary(ctx, req)
+}
+
+// ListDatasets calls nexus.controlplane.v1.ControlPlaneService.ListDatasets.
+func (c *controlPlaneServiceClient) ListDatasets(ctx context.Context, req *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error) {
+	return c.listDatasets.CallUnary(ctx, req)
+}
+
+// GetDataset calls nexus.controlplane.v1.ControlPlaneService.GetDataset.
+func (c *controlPlaneServiceClient) GetDataset(ctx context.Context, req *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error) {
+	return c.getDataset.CallUnary(ctx, req)
 }
 
 // CreateCluster calls nexus.controlplane.v1.ControlPlaneService.CreateCluster.
@@ -291,6 +356,11 @@ func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.
 // ControlPlaneServiceHandler is an implementation of the nexus.controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
+	// Dataset management
+	CreateDataset(context.Context, *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error)
+	DeleteDataset(context.Context, *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error)
+	ListDatasets(context.Context, *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error)
+	GetDataset(context.Context, *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error)
 	// Cluster management
 	CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error)
 	DeleteCluster(context.Context, *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error)
@@ -321,6 +391,30 @@ type ControlPlaneServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	controlPlaneServiceMethods := v1.File_nexus_controlplane_v1_control_plane_proto.Services().ByName("ControlPlaneService").Methods()
+	controlPlaneServiceCreateDatasetHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceCreateDatasetProcedure,
+		svc.CreateDataset,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("CreateDataset")),
+		connect.WithHandlerOptions(opts...),
+	)
+	controlPlaneServiceDeleteDatasetHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceDeleteDatasetProcedure,
+		svc.DeleteDataset,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("DeleteDataset")),
+		connect.WithHandlerOptions(opts...),
+	)
+	controlPlaneServiceListDatasetsHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceListDatasetsProcedure,
+		svc.ListDatasets,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("ListDatasets")),
+		connect.WithHandlerOptions(opts...),
+	)
+	controlPlaneServiceGetDatasetHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceGetDatasetProcedure,
+		svc.GetDataset,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("GetDataset")),
+		connect.WithHandlerOptions(opts...),
+	)
 	controlPlaneServiceCreateClusterHandler := connect.NewUnaryHandler(
 		ControlPlaneServiceCreateClusterProcedure,
 		svc.CreateCluster,
@@ -407,6 +501,14 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 	)
 	return "/nexus.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case ControlPlaneServiceCreateDatasetProcedure:
+			controlPlaneServiceCreateDatasetHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceDeleteDatasetProcedure:
+			controlPlaneServiceDeleteDatasetHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceListDatasetsProcedure:
+			controlPlaneServiceListDatasetsHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceGetDatasetProcedure:
+			controlPlaneServiceGetDatasetHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceCreateClusterProcedure:
 			controlPlaneServiceCreateClusterHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceDeleteClusterProcedure:
@@ -443,6 +545,22 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 
 // UnimplementedControlPlaneServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedControlPlaneServiceHandler struct{}
+
+func (UnimplementedControlPlaneServiceHandler) CreateDataset(context.Context, *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateDataset is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) DeleteDataset(context.Context, *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.DeleteDataset is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) ListDatasets(context.Context, *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.ListDatasets is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) GetDataset(context.Context, *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetDataset is not implemented"))
+}
 
 func (UnimplementedControlPlaneServiceHandler) CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.CreateCluster is not implemented"))

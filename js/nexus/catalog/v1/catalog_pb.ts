@@ -12,16 +12,16 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/catalog/v1/catalog.proto.
  */
 export const file_nexus_catalog_v1_catalog: GenFile = /*@__PURE__*/
-  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEiWgoVQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0EhMKC2NsdXN0ZXJfcGlkGAEgASgJEiwKCG1hbmlmZXN0GAIgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCKYAQoWQ3JlYXRlTWFuaWZlc3RSZXNwb25zZRILCgNwaWQYASABKAkSEwoLY2x1c3Rlcl9waWQYAiABKAkSLAoIbWFuaWZlc3QYAyABKAsyGi5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0Ei4KCmNyZWF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIokBChRMaXN0TWFuaWZlc3RzUmVxdWVzdBITCgtjbHVzdGVyX3BpZBgBIAEoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuQEKFUxpc3RNYW5pZmVzdHNSZXNwb25zZRITCgtjbHVzdGVyX3BpZBgBIAEoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJbWFuaWZlc3RzGAQgAygLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCLVAgoITWFuaWZlc3QSCwoDcGlkGAEgASgJEjEKC2NsdXN0ZXJfa2V5GAIgASgLMhwubmV4dXMuY2F0YWxvZy52MS5DbHVzdGVyS2V5EjQKCWxvY2F0aW9ucxgDIAMoCzIhLm5leHVzLmNhdGFsb2cudjEuU3RvcmFnZUxvY2F0aW9uEgwKBHNpemUYBCABKAQSEQoJcm93X2NvdW50GAUgASgEEi4KCmNyZWF0ZWRfYXQYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjgKB2NvbHVtbnMYByADKAsyJy5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0LkNvbHVtbnNFbnRyeRpICgxDb2x1bW5zRW50cnkSCwoDa2V5GAEgASgJEicKBXZhbHVlGAIgASgLMhgubmV4dXMuY2F0YWxvZy52MS5Db2x1bW46AjgBInQKBkNvbHVtbhIMCgRuYW1lGAEgASgJEjAKCnN0YXRpc3RpY3MYAiABKAsyHC5uZXh1cy5jYXRhbG9nLnYxLlN0YXRpc3RpY3MSKgoEdHlwZRgDIAEoDjIcLm5leHVzLmNhdGFsb2cudjEuQ29sdW1uVHlwZSLIAQoPU3RvcmFnZUxvY2F0aW9uEj4KDXMzX2NvbXBhdGlibGUYASABKAsyJS5uZXh1cy5jYXRhbG9nLnYxLlMzQ29tcGF0aWJsZVN0b3JhZ2VIABI4CgphenVyZV9ibG9iGAIgASgLMiIubmV4dXMuY2F0YWxvZy52MS5BenVyZUJsb2JTdG9yYWdlSAASLwoFbG9jYWwYAyABKAsyHi5uZXh1cy5jYXRhbG9nLnYxLkxvY2FsU3RvcmFnZUgAQgoKCGxvY2F0aW9uIlQKE1MzQ29tcGF0aWJsZVN0b3JhZ2USEAoIZW5kcG9pbnQYASABKAkSDgoGYnVja2V0GAIgASgJEgsKA2tleRgDIAEoCRIOCgZyZWdpb24YBCABKAkiZwoQQXp1cmVCbG9iU3RvcmFnZRIUCgxhY2NvdW50X25hbWUYASABKAkSEQoJY29udGFpbmVyGAIgASgJEhEKCWJsb2JfbmFtZRgDIAEoCRIXCg9lbmRwb2ludF9zdWZmaXgYBCABKAkiHAoMTG9jYWxTdG9yYWdlEgwKBHBhdGgYASABKAkivgMKClN0YXRpc3RpY3MSEwoJbWluX2ludDMyGAEgASgFSAASEwoJbWluX2ludDY0GAIgASgDSAASFAoKbWluX3VpbnQzMhgDIAEoDUgAEhQKCm1pbl91aW50NjQYBCABKARIABISCghtaW5fYm9vbBgFIAEoCEgAEhQKCm1pbl9zdHJpbmcYBiABKAlIABITCgltaW5fYnl0ZXMYByABKAxIABIzCg1taW5fdGltZXN0YW1wGAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAEhMKCW1heF9pbnQzMhgJIAEoBUgBEhMKCW1heF9pbnQ2NBgKIAEoA0gBEhQKCm1heF91aW50MzIYCyABKA1IARIUCgptYXhfdWludDY0GAwgASgESAESEgoIbWF4X2Jvb2wYDSABKAhIARIUCgptYXhfc3RyaW5nGA4gASgJSAESEwoJbWF4X2J5dGVzGA8gASgMSAESMwoNbWF4X3RpbWVzdGFtcBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIARIOCgZmaWx0ZXIYESABKAxCBQoDbWluQgUKA21heCI7CgpDbHVzdGVyS2V5Ei0KCXRpbWVzdGFtcBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAipgEKCkNvbXBhY3Rpb24SLgoKY3JlYXRlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASMAoFbGV2ZWwYAiABKA4yIS5uZXh1cy5jYXRhbG9nLnYxLkNvbXBhY3Rpb25MZXZlbBIoCgZ3aW5kb3cYAyABKAsyGC5uZXh1cy5jYXRhbG9nLnYxLldpbmRvdxIMCgRzaXplGAQgASgEInQKBldpbmRvdxIMCgRzaXplGAEgASgNEi4KCnN0YXJ0X3RpbWUYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKhAQoFVmFsdWUSLgoKY3JlYXRlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKwoEY29tcBgDIAEoDjIdLm5leHVzLmNhdGFsb2cudjEuQ29tcHJlc3Npb24SCwoDcmF3GAQgASgMIv4BCgdWYXJpYW50EhcKDWludDMyX3ZhcmlhbnQYASABKAVIABIXCg1pbnQ2NF92YXJpYW50GAIgASgDSAASGAoOdWludDMyX3ZhcmlhbnQYAyABKA1IABIYCg51aW50NjRfdmFyaWFudBgEIAEoBEgAEhYKDGJvb2xfdmFyaWFudBgFIAEoCEgAEhgKDnN0cmluZ192YXJpYW50GAYgASgJSAASFwoNYnl0ZXNfdmFyaWFudBgHIAEoDEgAEjcKEXRpbWVzdGFtcF92YXJpYW50GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAQgkKB3ZhcmlhbnQqxgIKCkNvbHVtblR5cGUSGwoXQ09MVU1OX1RZUEVfVU5TUEVDSUZJRUQQABIUChBDT0xVTU5fVFlQRV9JTlQ4EAESFQoRQ09MVU1OX1RZUEVfSU5UMTYQAhIVChFDT0xVTU5fVFlQRV9JTlQzMhADEhUKEUNPTFVNTl9UWVBFX0lOVDY0EAQSFQoRQ09MVU1OX1RZUEVfVUlOVDgQBRIWChJDT0xVTU5fVFlQRV9VSU5UMTYQBhIWChJDT0xVTU5fVFlQRV9VSU5UMzIQBxIWChJDT0xVTU5fVFlQRV9VSU5UNjQQCBIWChJDT0xVTU5fVFlQRV9TVFJJTkcQCRIXChNDT0xVTU5fVFlQRV9CT09MRUFOEAoSGQoVQ09MVU1OX1RZUEVfVElNRVNUQU1QEAsSFQoRQ09MVU1OX1RZUEVfQllURVMQDCpoCg9Db21wYWN0aW9uTGV2ZWwSIAocQ09NUEFDVElPTl9MRVZFTF9VTlNQRUNJRklFRBAAEhkKFUNPTVBBQ1RJT05fTEVWRUxfWkVSTxABEhgKFENPTVBBQ1RJT05fTEVWRUxfT05FEAIqbQoLQ29tcHJlc3Npb24SGwoXQ09NUFJFU1NJT05fVU5TUEVDSUZJRUQQABIUChBDT01QUkVTU0lPTl9aU1REEAESEwoPQ09NUFJFU1NJT05fTFo0EAISFgoSQ09NUFJFU1NJT05fU05BUFBZEAMy2wEKDkNhdGFsb2dTZXJ2aWNlEmUKDkNyZWF0ZU1hbmlmZXN0EicubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVNYW5pZmVzdFJlcXVlc3QaKC5uZXh1cy5jYXRhbG9nLnYxLkNyZWF0ZU1hbmlmZXN0UmVzcG9uc2UiABJiCg1MaXN0TWFuaWZlc3RzEiYubmV4dXMuY2F0YWxvZy52MS5MaXN0TWFuaWZlc3RzUmVxdWVzdBonLm5leHVzLmNhdGFsb2cudjEuTGlzdE1hbmlmZXN0c1Jlc3BvbnNlIgBCPFo6Z2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9uZXh1cy9jYXRhbG9nL3YxO2NhdGFsb2d2MWIGcHJvdG8z", [file_google_protobuf_timestamp]);
+  fileDesc("Ch5uZXh1cy9jYXRhbG9nL3YxL2NhdGFsb2cucHJvdG8SEG5leHVzLmNhdGFsb2cudjEiWgoVQ3JlYXRlTWFuaWZlc3RSZXF1ZXN0EhMKC2RhdGFzZXRfcGlkGAEgASgJEiwKCG1hbmlmZXN0GAIgASgLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCKYAQoWQ3JlYXRlTWFuaWZlc3RSZXNwb25zZRILCgNwaWQYASABKAkSEwoLZGF0YXNldF9waWQYAiABKAkSLAoIbWFuaWZlc3QYAyABKAsyGi5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0Ei4KCmNyZWF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIokBChRMaXN0TWFuaWZlc3RzUmVxdWVzdBITCgtkYXRhc2V0X3BpZBgBIAEoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuQEKFUxpc3RNYW5pZmVzdHNSZXNwb25zZRITCgtkYXRhc2V0X3BpZBgBIAEoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJbWFuaWZlc3RzGAQgAygLMhoubmV4dXMuY2F0YWxvZy52MS5NYW5pZmVzdCLwAgoITWFuaWZlc3QSCwoDcGlkGAEgASgJEhMKC2RhdGFzZXRfcGlkGAIgASgJEjcKDmNsdXN0ZXJpbmdfa2V5GAMgASgLMh8ubmV4dXMuY2F0YWxvZy52MS5DbHVzdGVyaW5nS2V5EjQKCWxvY2F0aW9ucxgEIAMoCzIhLm5leHVzLmNhdGFsb2cudjEuU3RvcmFnZUxvY2F0aW9uEgwKBHNpemUYBSABKAQSEQoJcm93X2NvdW50GAYgASgEEi4KCmNyZWF0ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjgKB2NvbHVtbnMYCCADKAsyJy5uZXh1cy5jYXRhbG9nLnYxLk1hbmlmZXN0LkNvbHVtbnNFbnRyeRpICgxDb2x1bW5zRW50cnkSCwoDa2V5GAEgASgJEicKBXZhbHVlGAIgASgLMhgubmV4dXMuY2F0YWxvZy52MS5Db2x1bW46AjgBInQKBkNvbHVtbhIMCgRuYW1lGAEgASgJEjAKCnN0YXRpc3RpY3MYAiABKAsyHC5uZXh1cy5jYXRhbG9nLnYxLlN0YXRpc3RpY3MSKgoEdHlwZRgDIAEoDjIcLm5leHVzLmNhdGFsb2cudjEuQ29sdW1uVHlwZSLIAQoPU3RvcmFnZUxvY2F0aW9uEj4KDXMzX2NvbXBhdGlibGUYASABKAsyJS5uZXh1cy5jYXRhbG9nLnYxLlMzQ29tcGF0aWJsZVN0b3JhZ2VIABI4CgphenVyZV9ibG9iGAIgASgLMiIubmV4dXMuY2F0YWxvZy52MS5BenVyZUJsb2JTdG9yYWdlSAASLwoFbG9jYWwYAyABKAsyHi5uZXh1cy5jYXRhbG9nLnYxLkxvY2FsU3RvcmFnZUgAQgoKCGxvY2F0aW9uIlQKE1MzQ29tcGF0aWJsZVN0b3JhZ2USEAoIZW5kcG9pbnQYASABKAkSDgoGYnVja2V0GAIgASgJEgsKA2tleRgDIAEoCRIOCgZyZWdpb24YBCABKAkiZwoQQXp1cmVCbG9iU3RvcmFnZRIUCgxhY2NvdW50X25hbWUYASABKAkSEQoJY29udGFpbmVyGAIgASgJEhEKCWJsb2JfbmFtZRgDIAEoCRIXCg9lbmRwb2ludF9zdWZmaXgYBCABKAkiHAoMTG9jYWxTdG9yYWdlEgwKBHBhdGgYASABKAkivgMKClN0YXRpc3RpY3MSEwoJbWluX2ludDMyGAEgASgFSAASEwoJbWluX2ludDY0GAIgASgDSAASFAoKbWluX3VpbnQzMhgDIAEoDUgAEhQKCm1pbl91aW50NjQYBCABKARIABISCghtaW5fYm9vbBgFIAEoCEgAEhQKCm1pbl9zdHJpbmcYBiABKAlIABITCgltaW5fYnl0ZXMYByABKAxIABIzCg1taW5fdGltZXN0YW1wGAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAEhMKCW1heF9pbnQzMhgJIAEoBUgBEhMKCW1heF9pbnQ2NBgKIAEoA0gBEhQKCm1heF91aW50MzIYCyABKA1IARIUCgptYXhfdWludDY0GAwgASgESAESEgoIbWF4X2Jvb2wYDSABKAhIARIUCgptYXhfc3RyaW5nGA4gASgJSAESEwoJbWF4X2J5dGVzGA8gASgMSAESMwoNbWF4X3RpbWVzdGFtcBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIARIOCgZmaWx0ZXIYESABKAxCBQoDbWluQgUKA21heCI+Cg1DbHVzdGVyaW5nS2V5Ei0KCXRpbWVzdGFtcBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAipgEKCkNvbXBhY3Rpb24SLgoKY3JlYXRlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASMAoFbGV2ZWwYAiABKA4yIS5uZXh1cy5jYXRhbG9nLnYxLkNvbXBhY3Rpb25MZXZlbBIoCgZ3aW5kb3cYAyABKAsyGC5uZXh1cy5jYXRhbG9nLnYxLldpbmRvdxIMCgRzaXplGAQgASgEInQKBldpbmRvdxIMCgRzaXplGAEgASgNEi4KCnN0YXJ0X3RpbWUYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKhAQoFVmFsdWUSLgoKY3JlYXRlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKwoEY29tcBgDIAEoDjIdLm5leHVzLmNhdGFsb2cudjEuQ29tcHJlc3Npb24SCwoDcmF3GAQgASgMIv4BCgdWYXJpYW50EhcKDWludDMyX3ZhcmlhbnQYASABKAVIABIXCg1pbnQ2NF92YXJpYW50GAIgASgDSAASGAoOdWludDMyX3ZhcmlhbnQYAyABKA1IABIYCg51aW50NjRfdmFyaWFudBgEIAEoBEgAEhYKDGJvb2xfdmFyaWFudBgFIAEoCEgAEhgKDnN0cmluZ192YXJpYW50GAYgASgJSAASFwoNYnl0ZXNfdmFyaWFudBgHIAEoDEgAEjcKEXRpbWVzdGFtcF92YXJpYW50GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAQgkKB3ZhcmlhbnQqxgIKCkNvbHVtblR5cGUSGwoXQ09MVU1OX1RZUEVfVU5TUEVDSUZJRUQQABIUChBDT0xVTU5fVFlQRV9JTlQ4EAESFQoRQ09MVU1OX1RZUEVfSU5UMTYQAhIVChFDT0xVTU5fVFlQRV9JTlQzMhADEhUKEUNPTFVNTl9UWVBFX0lOVDY0EAQSFQoRQ09MVU1OX1RZUEVfVUlOVDgQBRIWChJDT0xVTU5fVFlQRV9VSU5UMTYQBhIWChJDT0xVTU5fVFlQRV9VSU5UMzIQBxIWChJDT0xVTU5fVFlQRV9VSU5UNjQQCBIWChJDT0xVTU5fVFlQRV9TVFJJTkcQCRIXChNDT0xVTU5fVFlQRV9CT09MRUFOEAoSGQoVQ09MVU1OX1RZUEVfVElNRVNUQU1QEAsSFQoRQ09MVU1OX1RZUEVfQllURVMQDCpoCg9Db21wYWN0aW9uTGV2ZWwSIAocQ09NUEFDVElPTl9MRVZFTF9VTlNQRUNJRklFRBAAEhkKFUNPTVBBQ1RJT05fTEVWRUxfWkVSTxABEhgKFENPTVBBQ1RJT05fTEVWRUxfT05FEAIqbQoLQ29tcHJlc3Npb24SGwoXQ09NUFJFU1NJT05fVU5TUEVDSUZJRUQQABIUChBDT01QUkVTU0lPTl9aU1REEAESEwoPQ09NUFJFU1NJT05fTFo0EAISFgoSQ09NUFJFU1NJT05fU05BUFBZEAMy2wEKDkNhdGFsb2dTZXJ2aWNlEmUKDkNyZWF0ZU1hbmlmZXN0EicubmV4dXMuY2F0YWxvZy52MS5DcmVhdGVNYW5pZmVzdFJlcXVlc3QaKC5uZXh1cy5jYXRhbG9nLnYxLkNyZWF0ZU1hbmlmZXN0UmVzcG9uc2UiABJiCg1MaXN0TWFuaWZlc3RzEiYubmV4dXMuY2F0YWxvZy52MS5MaXN0TWFuaWZlc3RzUmVxdWVzdBonLm5leHVzLmNhdGFsb2cudjEuTGlzdE1hbmlmZXN0c1Jlc3BvbnNlIgBCPFo6Z2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9uZXh1cy9jYXRhbG9nL3YxO2NhdGFsb2d2MWIGcHJvdG8z", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message nexus.catalog.v1.CreateManifestRequest
  */
 export type CreateManifestRequest = Message<"nexus.catalog.v1.CreateManifestRequest"> & {
   /**
-   * @generated from field: string cluster_pid = 1;
+   * @generated from field: string dataset_pid = 1;
    */
-  clusterPid: string;
+  datasetPid: string;
 
   /**
    * @generated from field: nexus.catalog.v1.Manifest manifest = 2;
@@ -46,9 +46,9 @@ export type CreateManifestResponse = Message<"nexus.catalog.v1.CreateManifestRes
   pid: string;
 
   /**
-   * @generated from field: string cluster_pid = 2;
+   * @generated from field: string dataset_pid = 2;
    */
-  clusterPid: string;
+  datasetPid: string;
 
   /**
    * @generated from field: nexus.catalog.v1.Manifest manifest = 3;
@@ -76,9 +76,9 @@ export const CreateManifestResponseSchema: GenMessage<CreateManifestResponse> = 
  */
 export type ListManifestsRequest = Message<"nexus.catalog.v1.ListManifestsRequest"> & {
   /**
-   * @generated from field: string cluster_pid = 1;
+   * @generated from field: string dataset_pid = 1;
    */
-  clusterPid: string;
+  datasetPid: string;
 
   /**
    * @generated from field: google.protobuf.Timestamp start_time = 2;
@@ -107,9 +107,9 @@ export const ListManifestsRequestSchema: GenMessage<ListManifestsRequest> = /*@_
  */
 export type ListManifestsResponse = Message<"nexus.catalog.v1.ListManifestsResponse"> & {
   /**
-   * @generated from field: string cluster_pid = 1;
+   * @generated from field: string dataset_pid = 1;
    */
-  clusterPid: string;
+  datasetPid: string;
 
   /**
    * @generated from field: google.protobuf.Timestamp start_time = 2;
@@ -166,41 +166,48 @@ export type Manifest = Message<"nexus.catalog.v1.Manifest"> & {
   pid: string;
 
   /**
+   * The ID of the Dataset that this Manifest belongs to
+   *
+   * @generated from field: string dataset_pid = 2;
+   */
+  datasetPid: string;
+
+  /**
    * The key used to cluster the data into Granules. This determines how data
    * is partitioned and enables efficient querying by time and device.
    * Data locality: Granules with similar cluster keys are stored together,
    * which helps query engines process related data faster.
    *
-   * @generated from field: nexus.catalog.v1.ClusterKey cluster_key = 2;
+   * @generated from field: nexus.catalog.v1.ClusteringKey clustering_key = 3;
    */
-  clusterKey?: ClusterKey;
+  clusteringKey?: ClusteringKey;
 
   /**
    * Storage location(s) for the Parquet file.
    * Multiple locations can be specified for redundancy/multi-region support.
    *
-   * @generated from field: repeated nexus.catalog.v1.StorageLocation locations = 3;
+   * @generated from field: repeated nexus.catalog.v1.StorageLocation locations = 4;
    */
   locations: StorageLocation[];
 
   /**
    * Physical size in bytes of the Parquet file in object storage
    *
-   * @generated from field: uint64 size = 4;
+   * @generated from field: uint64 size = 5;
    */
   size: bigint;
 
   /**
    * Total number of rows in the Parquet file
    *
-   * @generated from field: uint64 row_count = 5;
+   * @generated from field: uint64 row_count = 6;
    */
   rowCount: bigint;
 
   /**
    * Timestamp when the Granule was created and written to object storage
    *
-   * @generated from field: google.protobuf.Timestamp created_at = 6;
+   * @generated from field: google.protobuf.Timestamp created_at = 7;
    */
   createdAt?: Timestamp;
 
@@ -212,7 +219,7 @@ export type Manifest = Message<"nexus.catalog.v1.Manifest"> & {
    * - Min/max values for predicate pushdown
    * - Bloom filters for existence checks
    *
-   * @generated from field: map<string, nexus.catalog.v1.Column> columns = 7;
+   * @generated from field: map<string, nexus.catalog.v1.Column> columns = 8;
    */
   columns: { [key: string]: Column };
 };
@@ -571,8 +578,8 @@ export const StatisticsSchema: GenMessage<Statistics> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 10);
 
 /**
- * ClusterKey defines how data is partitioned and organized into Granules.
- * The cluster key creates a partitioning scheme:
+ * ClusteringKey defines how data is partitioned and organized into Granules.
+ * The clustering key creates a partitioning scheme:
  * 1. Temporal dimension (timestamp) - enables time-range queries
  *
  * DATA LOCALITY BENEFITS:
@@ -582,9 +589,9 @@ export const StatisticsSchema: GenMessage<Statistics> = /*@__PURE__*/
  * Granules with similar cluster keys are stored together in object storage,
  * improving cache locality and reducing the number of files that need to be read.
  *
- * @generated from message nexus.catalog.v1.ClusterKey
+ * @generated from message nexus.catalog.v1.ClusteringKey
  */
-export type ClusterKey = Message<"nexus.catalog.v1.ClusterKey"> & {
+export type ClusteringKey = Message<"nexus.catalog.v1.ClusteringKey"> & {
   /**
    * The timestamp when the flow was received by the system.
    * Used as the primary partitioning dimension for time-range queries.
@@ -595,10 +602,10 @@ export type ClusterKey = Message<"nexus.catalog.v1.ClusterKey"> & {
 };
 
 /**
- * Describes the message nexus.catalog.v1.ClusterKey.
- * Use `create(ClusterKeySchema)` to create a new message.
+ * Describes the message nexus.catalog.v1.ClusteringKey.
+ * Use `create(ClusteringKeySchema)` to create a new message.
  */
-export const ClusterKeySchema: GenMessage<ClusterKey> = /*@__PURE__*/
+export const ClusteringKeySchema: GenMessage<ClusteringKey> = /*@__PURE__*/
   messageDesc(file_nexus_catalog_v1_catalog, 11);
 
 /**

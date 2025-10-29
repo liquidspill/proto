@@ -12,6 +12,12 @@ option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;contr
 // owning the management of clusters, devices, queries, etc. Additionally, it manages the
 // lifecycle of our agents.
 service ControlPlaneService {
+  // Dataset management
+  rpc CreateDataset(CreateDatasetRequest) returns (CreateDatasetResponse) {}
+  rpc DeleteDataset(DeleteDatasetRequest) returns (DeleteDatasetResponse) {}
+  rpc ListDatasets(ListDatasetsRequest) returns (ListDatasetsResponse) {}
+  rpc GetDataset(GetDatasetRequest) returns (GetDatasetResponse) {}
+
   // Cluster management
   rpc CreateCluster(CreateClusterRequest) returns (CreateClusterResponse) {}
   rpc DeleteCluster(DeleteClusterRequest) returns (DeleteClusterResponse) {}
@@ -45,8 +51,62 @@ service ControlPlaneService {
   // Add a update config request
 }
 
+//===== DATASETS =====//
+
+message Dataset {
+  string pid = 1;
+  string team_pid = 2;
+  string name = 3;
+  string description = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateDatasetRequest {
+  string team_pid = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message CreateDatasetResponse {
+  string pid = 1;
+  Dataset dataset = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message DeleteDatasetRequest {
+  string pid = 1;
+}
+
+message DeleteDatasetResponse {
+  string pid = 1;
+  google.protobuf.Timestamp deleted_at = 2;
+}
+
+message ListDatasetsRequest {
+  string team_pid = 1;
+}
+
+message ListDatasetsResponse {
+  string team_pid = 1;
+  repeated Dataset datasets = 2;
+}
+
+message GetDatasetRequest {
+  string pid = 1;
+}
+
+message GetDatasetResponse {
+  string pid = 1;
+  Dataset dataset = 2;
+}
+
 //===== CLUSTERS =====//
 
+// Cluster represents the query/read side of the system
+// where a distributed query engine runs to query manifests
+// and calculate final results. Clusters can be either
+// BYOC (bring your own cloud) or serverless (managed in our cloud).
 message Cluster {
   string pid = 1;
   string team_pid = 2;
@@ -90,7 +150,8 @@ message ListClustersRequest {
 }
 
 message ListClustersResponse {
-  repeated Cluster clusters = 1;
+  string team_pid = 1;
+  repeated Cluster clusters = 2;
 }
 
 message GetClusterRequest {
@@ -201,7 +262,8 @@ message ListDevicesRequest {
 }
 
 message ListDevicesResponse {
-  repeated Device devices = 1;
+  string team_pid = 1;
+  repeated Device devices = 2;
 }
 
 //===== QUERIES =====//

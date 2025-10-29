@@ -208,7 +208,7 @@ func (Compression) EnumDescriptor() ([]byte, []int) {
 
 type CreateManifestRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	Manifest      *Manifest              `protobuf:"bytes,2,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -244,9 +244,9 @@ func (*CreateManifestRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateManifestRequest) GetClusterPid() string {
+func (x *CreateManifestRequest) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -261,7 +261,7 @@ func (x *CreateManifestRequest) GetManifest() *Manifest {
 type CreateManifestResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pid           string                 `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
-	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,2,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	Manifest      *Manifest              `protobuf:"bytes,3,opt,name=manifest,proto3" json:"manifest,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -305,9 +305,9 @@ func (x *CreateManifestResponse) GetPid() string {
 	return ""
 }
 
-func (x *CreateManifestResponse) GetClusterPid() string {
+func (x *CreateManifestResponse) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -330,7 +330,7 @@ func (x *CreateManifestResponse) GetCreatedAt() *timestamppb.Timestamp {
 // Used by query engines to discover which data files contain relevant data.
 type ListManifestsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -367,9 +367,9 @@ func (*ListManifestsRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListManifestsRequest) GetClusterPid() string {
+func (x *ListManifestsRequest) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -393,7 +393,7 @@ func (x *ListManifestsRequest) GetEndTime() *timestamppb.Timestamp {
 // query engines to perform predicate pushdown and skip irrelevant files.
 type ListManifestsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ClusterPid    string                 `protobuf:"bytes,1,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	DatasetPid    string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	Manifests     []*Manifest            `protobuf:"bytes,4,rep,name=manifests,proto3" json:"manifests,omitempty"`
@@ -431,9 +431,9 @@ func (*ListManifestsResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListManifestsResponse) GetClusterPid() string {
+func (x *ListManifestsResponse) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterPid
+		return x.DatasetPid
 	}
 	return ""
 }
@@ -482,27 +482,29 @@ type Manifest struct {
 	// NOTE: This should be left unset when creating a new Manifest, the control
 	// plane will create the pid and set it here, as well as returning it in the response
 	Pid string `protobuf:"bytes,1,opt,name=pid,proto3" json:"pid,omitempty"`
+	// The ID of the Dataset that this Manifest belongs to
+	DatasetPid string `protobuf:"bytes,2,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	// The key used to cluster the data into Granules. This determines how data
 	// is partitioned and enables efficient querying by time and device.
 	// Data locality: Granules with similar cluster keys are stored together,
 	// which helps query engines process related data faster.
-	ClusterKey *ClusterKey `protobuf:"bytes,2,opt,name=cluster_key,json=clusterKey,proto3" json:"cluster_key,omitempty"`
+	ClusteringKey *ClusteringKey `protobuf:"bytes,3,opt,name=clustering_key,json=clusteringKey,proto3" json:"clustering_key,omitempty"`
 	// Storage location(s) for the Parquet file.
 	// Multiple locations can be specified for redundancy/multi-region support.
-	Locations []*StorageLocation `protobuf:"bytes,3,rep,name=locations,proto3" json:"locations,omitempty"`
+	Locations []*StorageLocation `protobuf:"bytes,4,rep,name=locations,proto3" json:"locations,omitempty"`
 	// Physical size in bytes of the Parquet file in object storage
-	Size uint64 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
+	Size uint64 `protobuf:"varint,5,opt,name=size,proto3" json:"size,omitempty"`
 	// Total number of rows in the Parquet file
-	RowCount uint64 `protobuf:"varint,5,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
+	RowCount uint64 `protobuf:"varint,6,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
 	// Timestamp when the Granule was created and written to object storage
-	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Schema and statistics for each column in the Parquet file.
 	// Key: column name, Value: column metadata
 	// This enables query optimization without reading the actual file:
 	// - Type information for schema validation
 	// - Min/max values for predicate pushdown
 	// - Bloom filters for existence checks
-	Columns       map[string]*Column `protobuf:"bytes,7,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Columns       map[string]*Column `protobuf:"bytes,8,rep,name=columns,proto3" json:"columns,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -544,9 +546,16 @@ func (x *Manifest) GetPid() string {
 	return ""
 }
 
-func (x *Manifest) GetClusterKey() *ClusterKey {
+func (x *Manifest) GetDatasetPid() string {
 	if x != nil {
-		return x.ClusterKey
+		return x.DatasetPid
+	}
+	return ""
+}
+
+func (x *Manifest) GetClusteringKey() *ClusteringKey {
+	if x != nil {
+		return x.ClusteringKey
 	}
 	return nil
 }
@@ -1307,8 +1316,8 @@ func (*Statistics_MaxBytes) isStatistics_Max() {}
 
 func (*Statistics_MaxTimestamp) isStatistics_Max() {}
 
-// ClusterKey defines how data is partitioned and organized into Granules.
-// The cluster key creates a partitioning scheme:
+// ClusteringKey defines how data is partitioned and organized into Granules.
+// The clustering key creates a partitioning scheme:
 // 1. Temporal dimension (timestamp) - enables time-range queries
 //
 // DATA LOCALITY BENEFITS:
@@ -1317,7 +1326,7 @@ func (*Statistics_MaxTimestamp) isStatistics_Max() {}
 //
 // Granules with similar cluster keys are stored together in object storage,
 // improving cache locality and reducing the number of files that need to be read.
-type ClusterKey struct {
+type ClusteringKey struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The timestamp when the flow was received by the system.
 	// Used as the primary partitioning dimension for time-range queries.
@@ -1326,20 +1335,20 @@ type ClusterKey struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ClusterKey) Reset() {
-	*x = ClusterKey{}
+func (x *ClusteringKey) Reset() {
+	*x = ClusteringKey{}
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ClusterKey) String() string {
+func (x *ClusteringKey) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ClusterKey) ProtoMessage() {}
+func (*ClusteringKey) ProtoMessage() {}
 
-func (x *ClusterKey) ProtoReflect() protoreflect.Message {
+func (x *ClusteringKey) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_catalog_v1_catalog_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1351,12 +1360,12 @@ func (x *ClusterKey) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ClusterKey.ProtoReflect.Descriptor instead.
-func (*ClusterKey) Descriptor() ([]byte, []int) {
+// Deprecated: Use ClusteringKey.ProtoReflect.Descriptor instead.
+func (*ClusteringKey) Descriptor() ([]byte, []int) {
 	return file_nexus_catalog_v1_catalog_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ClusterKey) GetTimestamp() *timestamppb.Timestamp {
+func (x *ClusteringKey) GetTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamp
 	}
@@ -1778,39 +1787,40 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\n" +
 	"\x1enexus/catalog/v1/catalog.proto\x12\x10nexus.catalog.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"p\n" +
 	"\x15CreateManifestRequest\x12\x1f\n" +
-	"\vcluster_pid\x18\x01 \x01(\tR\n" +
-	"clusterPid\x126\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x126\n" +
 	"\bmanifest\x18\x02 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\"\xbe\x01\n" +
 	"\x16CreateManifestResponse\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\x126\n" +
+	"\vdataset_pid\x18\x02 \x01(\tR\n" +
+	"datasetPid\x126\n" +
 	"\bmanifest\x18\x03 \x01(\v2\x1a.nexus.catalog.v1.ManifestR\bmanifest\x129\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xa9\x01\n" +
 	"\x14ListManifestsRequest\x12\x1f\n" +
-	"\vcluster_pid\x18\x01 \x01(\tR\n" +
-	"clusterPid\x129\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xe4\x01\n" +
 	"\x15ListManifestsResponse\x12\x1f\n" +
-	"\vcluster_pid\x18\x01 \x01(\tR\n" +
-	"clusterPid\x129\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x128\n" +
-	"\tmanifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tmanifests\"\xa1\x03\n" +
+	"\tmanifests\x18\x04 \x03(\v2\x1a.nexus.catalog.v1.ManifestR\tmanifests\"\xcb\x03\n" +
 	"\bManifest\x12\x10\n" +
-	"\x03pid\x18\x01 \x01(\tR\x03pid\x12=\n" +
-	"\vcluster_key\x18\x02 \x01(\v2\x1c.nexus.catalog.v1.ClusterKeyR\n" +
-	"clusterKey\x12?\n" +
-	"\tlocations\x18\x03 \x03(\v2!.nexus.catalog.v1.StorageLocationR\tlocations\x12\x12\n" +
-	"\x04size\x18\x04 \x01(\x04R\x04size\x12\x1b\n" +
-	"\trow_count\x18\x05 \x01(\x04R\browCount\x129\n" +
+	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x1f\n" +
+	"\vdataset_pid\x18\x02 \x01(\tR\n" +
+	"datasetPid\x12F\n" +
+	"\x0eclustering_key\x18\x03 \x01(\v2\x1f.nexus.catalog.v1.ClusteringKeyR\rclusteringKey\x12?\n" +
+	"\tlocations\x18\x04 \x03(\v2!.nexus.catalog.v1.StorageLocationR\tlocations\x12\x12\n" +
+	"\x04size\x18\x05 \x01(\x04R\x04size\x12\x1b\n" +
+	"\trow_count\x18\x06 \x01(\x04R\browCount\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12A\n" +
-	"\acolumns\x18\a \x03(\v2'.nexus.catalog.v1.Manifest.ColumnsEntryR\acolumns\x1aT\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12A\n" +
+	"\acolumns\x18\b \x03(\v2'.nexus.catalog.v1.Manifest.ColumnsEntryR\acolumns\x1aT\n" +
 	"\fColumnsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12.\n" +
 	"\x05value\x18\x02 \x01(\v2\x18.nexus.catalog.v1.ColumnR\x05value:\x028\x01\"\x8c\x01\n" +
@@ -1866,9 +1876,8 @@ const file_nexus_catalog_v1_catalog_proto_rawDesc = "" +
 	"\rmax_timestamp\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\fmaxTimestamp\x12\x16\n" +
 	"\x06filter\x18\x11 \x01(\fR\x06filterB\x05\n" +
 	"\x03minB\x05\n" +
-	"\x03max\"F\n" +
-	"\n" +
-	"ClusterKey\x128\n" +
+	"\x03max\"I\n" +
+	"\rClusteringKey\x128\n" +
 	"\ttimestamp\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"\xc6\x01\n" +
 	"\n" +
 	"Compaction\x129\n" +
@@ -1957,7 +1966,7 @@ var file_nexus_catalog_v1_catalog_proto_goTypes = []any{
 	(*AzureBlobStorage)(nil),       // 11: nexus.catalog.v1.AzureBlobStorage
 	(*LocalStorage)(nil),           // 12: nexus.catalog.v1.LocalStorage
 	(*Statistics)(nil),             // 13: nexus.catalog.v1.Statistics
-	(*ClusterKey)(nil),             // 14: nexus.catalog.v1.ClusterKey
+	(*ClusteringKey)(nil),          // 14: nexus.catalog.v1.ClusteringKey
 	(*Compaction)(nil),             // 15: nexus.catalog.v1.Compaction
 	(*Window)(nil),                 // 16: nexus.catalog.v1.Window
 	(*Value)(nil),                  // 17: nexus.catalog.v1.Value
@@ -1974,7 +1983,7 @@ var file_nexus_catalog_v1_catalog_proto_depIdxs = []int32{
 	20, // 5: nexus.catalog.v1.ListManifestsResponse.start_time:type_name -> google.protobuf.Timestamp
 	20, // 6: nexus.catalog.v1.ListManifestsResponse.end_time:type_name -> google.protobuf.Timestamp
 	7,  // 7: nexus.catalog.v1.ListManifestsResponse.manifests:type_name -> nexus.catalog.v1.Manifest
-	14, // 8: nexus.catalog.v1.Manifest.cluster_key:type_name -> nexus.catalog.v1.ClusterKey
+	14, // 8: nexus.catalog.v1.Manifest.clustering_key:type_name -> nexus.catalog.v1.ClusteringKey
 	9,  // 9: nexus.catalog.v1.Manifest.locations:type_name -> nexus.catalog.v1.StorageLocation
 	20, // 10: nexus.catalog.v1.Manifest.created_at:type_name -> google.protobuf.Timestamp
 	19, // 11: nexus.catalog.v1.Manifest.columns:type_name -> nexus.catalog.v1.Manifest.ColumnsEntry
@@ -1985,7 +1994,7 @@ var file_nexus_catalog_v1_catalog_proto_depIdxs = []int32{
 	12, // 16: nexus.catalog.v1.StorageLocation.local:type_name -> nexus.catalog.v1.LocalStorage
 	20, // 17: nexus.catalog.v1.Statistics.min_timestamp:type_name -> google.protobuf.Timestamp
 	20, // 18: nexus.catalog.v1.Statistics.max_timestamp:type_name -> google.protobuf.Timestamp
-	20, // 19: nexus.catalog.v1.ClusterKey.timestamp:type_name -> google.protobuf.Timestamp
+	20, // 19: nexus.catalog.v1.ClusteringKey.timestamp:type_name -> google.protobuf.Timestamp
 	20, // 20: nexus.catalog.v1.Compaction.created_at:type_name -> google.protobuf.Timestamp
 	1,  // 21: nexus.catalog.v1.Compaction.level:type_name -> nexus.catalog.v1.CompactionLevel
 	16, // 22: nexus.catalog.v1.Compaction.window:type_name -> nexus.catalog.v1.Window

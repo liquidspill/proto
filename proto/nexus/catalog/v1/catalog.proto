@@ -39,13 +39,13 @@ service CatalogService {
 }
 
 message CreateManifestRequest {
-  string cluster_pid = 1;
+  string dataset_pid = 1;
   Manifest manifest = 2;
 }
 
 message CreateManifestResponse {
   string pid = 1;
-  string cluster_pid = 2;
+  string dataset_pid = 2;
   Manifest manifest = 3;
   google.protobuf.Timestamp created_at = 4;
 }
@@ -53,7 +53,7 @@ message CreateManifestResponse {
 // ListManifestsRequest queries for Manifests within a time range.
 // Used by query engines to discover which data files contain relevant data.
 message ListManifestsRequest {
-  string cluster_pid = 1;
+  string dataset_pid = 1;
 
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
@@ -63,7 +63,7 @@ message ListManifestsRequest {
 // The returned Manifest descriptors include column statistics that enable
 // query engines to perform predicate pushdown and skip irrelevant files.
 message ListManifestsResponse {
-  string cluster_pid = 1;
+  string dataset_pid = 1;
 
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
@@ -94,24 +94,27 @@ message Manifest {
   // plane will create the pid and set it here, as well as returning it in the response
   string pid = 1;
 
+  // The ID of the Dataset that this Manifest belongs to
+  string dataset_pid = 2;
+
   // The key used to cluster the data into Granules. This determines how data
   // is partitioned and enables efficient querying by time and device.
   // Data locality: Granules with similar cluster keys are stored together,
   // which helps query engines process related data faster.
-  ClusterKey cluster_key = 2;
+  ClusteringKey clustering_key = 3;
 
   // Storage location(s) for the Parquet file.
   // Multiple locations can be specified for redundancy/multi-region support.
-  repeated StorageLocation locations = 3;
+  repeated StorageLocation locations = 4;
 
   // Physical size in bytes of the Parquet file in object storage
-  uint64 size = 4;
+  uint64 size = 5;
 
   // Total number of rows in the Parquet file
-  uint64 row_count = 5;
+  uint64 row_count = 6;
 
   // Timestamp when the Granule was created and written to object storage
-  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp created_at = 7;
 
   // Schema and statistics for each column in the Parquet file.
   // Key: column name, Value: column metadata
@@ -119,7 +122,7 @@ message Manifest {
   // - Type information for schema validation
   // - Min/max values for predicate pushdown
   // - Bloom filters for existence checks
-  map<string, Column> columns = 7;
+  map<string, Column> columns = 8;
 }
 
 message Column {
@@ -148,9 +151,9 @@ enum ColumnType {
 // Supports multiple storage backends for flexibility across cloud providers and local development.
 message StorageLocation {
   oneof location {
-    S3CompatibleStorage s3_compatible = 1;  // AWS S3, GCS, MinIO, Ceph, etc.
-    AzureBlobStorage azure_blob = 2;        // Microsoft Azure Blob Storage
-    LocalStorage local = 3;                  // Local filesystem
+    S3CompatibleStorage s3_compatible = 1; // AWS S3, GCS, MinIO, Ceph, etc.
+    AzureBlobStorage azure_blob = 2; // Microsoft Azure Blob Storage
+    LocalStorage local = 3; // Local filesystem
   }
 }
 
@@ -255,8 +258,8 @@ message Statistics {
   bytes filter = 17;
 }
 
-// ClusterKey defines how data is partitioned and organized into Granules.
-// The cluster key creates a partitioning scheme:
+// ClusteringKey defines how data is partitioned and organized into Granules.
+// The clustering key creates a partitioning scheme:
 // 1. Temporal dimension (timestamp) - enables time-range queries
 //
 // DATA LOCALITY BENEFITS:
@@ -265,7 +268,7 @@ message Statistics {
 //
 // Granules with similar cluster keys are stored together in object storage,
 // improving cache locality and reducing the number of files that need to be read.
-message ClusterKey {
+message ClusteringKey {
   // The timestamp when the flow was received by the system.
   // Used as the primary partitioning dimension for time-range queries.
   google.protobuf.Timestamp timestamp = 1;
@@ -308,8 +311,8 @@ message Window {
 // Higher levels generally mean larger files with better organization.
 enum CompactionLevel {
   COMPACTION_LEVEL_UNSPECIFIED = 0;
-  COMPACTION_LEVEL_ZERO = 1;    // Initial write, no compaction
-  COMPACTION_LEVEL_ONE = 2;     // First compaction pass
+  COMPACTION_LEVEL_ZERO = 1; // Initial write, no compaction
+  COMPACTION_LEVEL_ONE = 2; // First compaction pass
 }
 
 // Value represents a generic container for storing raw data with metadata.
@@ -336,9 +339,9 @@ message Value {
 // Different algorithms offer different trade-offs between compression ratio and speed.
 enum Compression {
   COMPRESSION_UNSPECIFIED = 0;
-  COMPRESSION_ZSTD = 1;    // Zstandard: High compression ratio, good speed
-  COMPRESSION_LZ4 = 2;     // LZ4: Very fast, moderate compression
-  COMPRESSION_SNAPPY = 3;  // Snappy: Fast, moderate compression, widely used in Parquet
+  COMPRESSION_ZSTD = 1; // Zstandard: High compression ratio, good speed
+  COMPRESSION_LZ4 = 2; // LZ4: Very fast, moderate compression
+  COMPRESSION_SNAPPY = 3; // Snappy: Fast, moderate compression, widely used in Parquet
 }
 
 // Variant is a polymorphic value type that can hold different primitive types.
