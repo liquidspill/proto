@@ -423,7 +423,8 @@ message UpdateQueryExecutionResponse {
 }
 
 message PollQueryExecutionRequest {
-  string query_result_pid = 1;
+  string dataset_pid = 1;
+  string query_result_pid = 2;
 }
 
 message PollQueryExecutionResponse {

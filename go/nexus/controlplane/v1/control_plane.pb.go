@@ -3338,7 +3338,8 @@ func (x *UpdateQueryExecutionResponse) GetId() string {
 
 type PollQueryExecutionRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	DatasetPid     string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -3371,6 +3372,13 @@ func (x *PollQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use PollQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *PollQueryExecutionRequest) GetDatasetPid() string {
+	if x != nil {
+		return x.DatasetPid
+	}
+	return ""
 }
 
 func (x *PollQueryExecutionRequest) GetQueryResultPid() string {
@@ -4352,9 +4360,11 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"@\n" +
 	"\x1cUpdateQueryExecutionResponse\x12\x10\n" +
 	"\x03ack\x18\x01 \x01(\bR\x03ack\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"E\n" +
-	"\x19PollQueryExecutionRequest\x12(\n" +
-	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\"a\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"f\n" +
+	"\x19PollQueryExecutionRequest\x12\x1f\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"a\n" +
 	"\x1aPollQueryExecutionResponse\x12C\n" +
 	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"p\n" +
 	"\x10ExecQueryRequest\x12(\n" +
