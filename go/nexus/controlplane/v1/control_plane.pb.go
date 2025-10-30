@@ -3435,8 +3435,9 @@ func (x *PollQueryExecutionResponse) GetResult() *QueryExecutionResult {
 // The request message sent to fluid instances to perform a request
 type ExecQueryRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
-	Query          *Query                 `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	DatasetPid     string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
+	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
+	Query          *Query                 `protobuf:"bytes,3,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -3469,6 +3470,13 @@ func (x *ExecQueryRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ExecQueryRequest.ProtoReflect.Descriptor instead.
 func (*ExecQueryRequest) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *ExecQueryRequest) GetDatasetPid() string {
+	if x != nil {
+		return x.DatasetPid
+	}
+	return ""
 }
 
 func (x *ExecQueryRequest) GetQueryResultPid() string {
@@ -4366,10 +4374,12 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\"a\n" +
 	"\x1aPollQueryExecutionResponse\x12C\n" +
-	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"p\n" +
-	"\x10ExecQueryRequest\x12(\n" +
-	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x122\n" +
-	"\x05query\x18\x02 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xaf\x02\n" +
+	"\x06result\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\x06result\"\x91\x01\n" +
+	"\x10ExecQueryRequest\x12\x1f\n" +
+	"\vdataset_pid\x18\x01 \x01(\tR\n" +
+	"datasetPid\x12(\n" +
+	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x122\n" +
+	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xaf\x02\n" +
 	"\x14QueryExecutionResult\x12\x1f\n" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\x12(\n" +

@@ -441,8 +441,9 @@ enum QueryExecutionStatus {
 
 // The request message sent to fluid instances to perform a request
 message ExecQueryRequest {
-  string query_result_pid = 1;
-  Query query = 2;
+  string dataset_pid = 1;
+  string query_result_pid = 2;
+  Query query = 3;
 }
 
 message QueryExecutionResult {
