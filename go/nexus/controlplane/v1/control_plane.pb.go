@@ -2456,8 +2456,9 @@ type Query struct {
 	Having        *Clause                `protobuf:"bytes,9,opt,name=having,proto3" json:"having,omitempty"`
 	StartTime     int64                  `protobuf:"varint,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       int64                  `protobuf:"varint,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Granularity   int32                  `protobuf:"varint,12,opt,name=granularity,proto3" json:"granularity,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2565,6 +2566,13 @@ func (x *Query) GetStartTime() int64 {
 func (x *Query) GetEndTime() int64 {
 	if x != nil {
 		return x.EndTime
+	}
+	return 0
+}
+
+func (x *Query) GetGranularity() int32 {
+	if x != nil {
+		return x.Granularity
 	}
 	return 0
 }
@@ -4296,7 +4304,7 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"i\n" +
 	"\x13ListDevicesResponse\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x127\n" +
-	"\adevices\x18\x02 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\x9a\x04\n" +
+	"\adevices\x18\x02 \x03(\v2\x1d.nexus.controlplane.v1.DeviceR\adevices\"\xbc\x04\n" +
 	"\x05Query\x12\x10\n" +
 	"\x03pid\x18\x01 \x01(\tR\x03pid\x12\x19\n" +
 	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12\x1f\n" +
@@ -4311,11 +4319,12 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\n" +
 	"start_time\x18\n" +
 	" \x01(\x03R\tstartTime\x12\x19\n" +
-	"\bend_time\x18\v \x01(\x03R\aendTime\x129\n" +
+	"\bend_time\x18\v \x01(\x03R\aendTime\x12 \n" +
+	"\vgranularity\x18\f \x01(\x05R\vgranularity\x129\n" +
 	"\n" +
-	"created_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"U\n" +
+	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"U\n" +
 	"\tVisualise\x122\n" +
 	"\x02op\x18\x01 \x01(\x0e2\".nexus.controlplane.v1.VisualiseOpR\x02op\x12\x14\n" +
 	"\x05field\x18\x02 \x01(\tR\x05field\"p\n" +
