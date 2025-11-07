@@ -84,6 +84,9 @@ const (
 	// ControlPlaneServicePollQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's PollQueryExecution RPC.
 	ControlPlaneServicePollQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/PollQueryExecution"
+	// ControlPlaneServiceGetQueryableFieldsProcedure is the fully-qualified name of the
+	// ControlPlaneService's GetQueryableFields RPC.
+	ControlPlaneServiceGetQueryableFieldsProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetQueryableFields"
 	// ControlPlaneServiceHeartbeatProcedure is the fully-qualified name of the ControlPlaneService's
 	// Heartbeat RPC.
 	ControlPlaneServiceHeartbeatProcedure = "/nexus.controlplane.v1.ControlPlaneService/Heartbeat"
@@ -116,6 +119,8 @@ type ControlPlaneServiceClient interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
+	// Frontend
+	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 
@@ -232,6 +237,12 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 			connect.WithClientOptions(opts...),
 		),
+		getQueryableFields: connect.NewClient[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceGetQueryableFieldsProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
+			connect.WithClientOptions(opts...),
+		),
 		heartbeat: connect.NewClient[v1.HeartbeatRequest, v1.HeartbeatResponse](
 			httpClient,
 			baseURL+ControlPlaneServiceHeartbeatProcedure,
@@ -260,6 +271,7 @@ type controlPlaneServiceClient struct {
 	submitQueryExecution *connect.Client[v1.SubmitQueryExecutionRequest, v1.SubmitQueryExecutionResponse]
 	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
 	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
+	getQueryableFields   *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
 }
 
@@ -348,6 +360,11 @@ func (c *controlPlaneServiceClient) PollQueryExecution(ctx context.Context, req 
 	return c.pollQueryExecution.CallUnary(ctx, req)
 }
 
+// GetQueryableFields calls nexus.controlplane.v1.ControlPlaneService.GetQueryableFields.
+func (c *controlPlaneServiceClient) GetQueryableFields(ctx context.Context, req *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
+	return c.getQueryableFields.CallUnary(ctx, req)
+}
+
 // Heartbeat calls nexus.controlplane.v1.ControlPlaneService.Heartbeat.
 func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return c.heartbeat.CallUnary(ctx, req)
@@ -381,6 +398,8 @@ type ControlPlaneServiceHandler interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
+	// Frontend
+	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
 }
 
@@ -493,6 +512,12 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 		connect.WithHandlerOptions(opts...),
 	)
+	controlPlaneServiceGetQueryableFieldsHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceGetQueryableFieldsProcedure,
+		svc.GetQueryableFields,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
+		connect.WithHandlerOptions(opts...),
+	)
 	controlPlaneServiceHeartbeatHandler := connect.NewUnaryHandler(
 		ControlPlaneServiceHeartbeatProcedure,
 		svc.Heartbeat,
@@ -535,6 +560,8 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServiceUpdateQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServicePollQueryExecutionProcedure:
 			controlPlaneServicePollQueryExecutionHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceGetQueryableFieldsProcedure:
+			controlPlaneServiceGetQueryableFieldsHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceHeartbeatProcedure:
 			controlPlaneServiceHeartbeatHandler.ServeHTTP(w, r)
 		default:
@@ -612,6 +639,10 @@ func (UnimplementedControlPlaneServiceHandler) UpdateQueryExecution(context.Cont
 
 func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.PollQueryExecution is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetQueryableFields is not implemented"))
 }
 
 func (UnimplementedControlPlaneServiceHandler) Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {

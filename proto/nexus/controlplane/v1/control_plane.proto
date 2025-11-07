@@ -41,6 +41,8 @@ service ControlPlaneService {
   // a query. If it is complete, the result will be returned alongside it.
   rpc PollQueryExecution(PollQueryExecutionRequest) returns (PollQueryExecutionResponse) {}
 
+  // Frontend
+  rpc GetQueryableFields(GetQueryableFieldsRequest) returns (GetQueryableFieldsResponse) {}
 
   // Agent lifecycle
   // rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse) {}
@@ -541,4 +543,18 @@ message TelemetryControl {
 // Device control messages
 message DeviceControl {
   repeated Device devices = 1;
+}
+
+//===== FRONTEND =====//
+
+message GetQueryableFieldsRequest {
+  string dataset_pid = 1;
+}
+
+message GetQueryableFieldsResponse {
+  repeated Field fields = 1;
+}
+
+message Field {
+  string name = 1;
 }
