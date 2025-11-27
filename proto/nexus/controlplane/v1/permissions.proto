@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package nexus.controlplane.v1;
+
+option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1";
+
+// Permission defines the authorization capabilities for API tokens.
+// Each enum value corresponds to a permission string in the format:
+// action:resource:scope
+enum Permission {
+  PERMISSION_UNSPECIFIED = 0;
+
+  //===== Dataset Permissions =====//
+
+  // READ_DATASETS_MANIFESTS: "read:datasets:manifests"
+  // Allows reading granule descriptors, partition lists, and other metadata
+  // from the dataset catalog. Used by query agents to fetch manifest data
+  // for query planning.
+  READ_DATASETS_MANIFESTS = 1;
+
+  // WRITE_DATASETS_DATA: "write:datasets:data"
+  // Allows writing netflow data into datasets. Used by ingestion agents
+  // (collectors) to push data through the ingestion pipeline.
+  WRITE_DATASETS_DATA = 2;
+
+  //===== Query Permissions =====//
+
+  // WRITE_QUERIES_STATUS: "write:queries:status"
+  // Allows updating query execution status and pushing results back to the
+  // control plane. Used by query agents to report progress and completion.
+  WRITE_QUERIES_STATUS = 3;
+
+  // READ_QUERIES_RESULTS: "read:queries:results"
+  // Allows reading query results. Used by the web UI to fetch completed
+  // query results for display to users.
+  READ_QUERIES_RESULTS = 4;
+}
