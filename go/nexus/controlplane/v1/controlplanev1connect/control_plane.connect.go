@@ -84,33 +84,29 @@ const (
 	// ControlPlaneServicePollQueryExecutionProcedure is the fully-qualified name of the
 	// ControlPlaneService's PollQueryExecution RPC.
 	ControlPlaneServicePollQueryExecutionProcedure = "/nexus.controlplane.v1.ControlPlaneService/PollQueryExecution"
-	// ControlPlaneServiceGetQueryableFieldsProcedure is the fully-qualified name of the
-	// ControlPlaneService's GetQueryableFields RPC.
-	ControlPlaneServiceGetQueryableFieldsProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetQueryableFields"
 	// ControlPlaneServiceHeartbeatProcedure is the fully-qualified name of the ControlPlaneService's
 	// Heartbeat RPC.
 	ControlPlaneServiceHeartbeatProcedure = "/nexus.controlplane.v1.ControlPlaneService/Heartbeat"
+	// ControlPlaneServiceGetQueryableFieldsProcedure is the fully-qualified name of the
+	// ControlPlaneService's GetQueryableFields RPC.
+	ControlPlaneServiceGetQueryableFieldsProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetQueryableFields"
 )
 
 // ControlPlaneServiceClient is a client for the nexus.controlplane.v1.ControlPlaneService service.
 type ControlPlaneServiceClient interface {
-	// Dataset management
 	CreateDataset(context.Context, *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error)
 	DeleteDataset(context.Context, *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error)
 	ListDatasets(context.Context, *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error)
 	GetDataset(context.Context, *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error)
-	// Cluster management
 	CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error)
 	DeleteCluster(context.Context, *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error)
 	ListClusters(context.Context, *connect.Request[v1.ListClustersRequest]) (*connect.Response[v1.ListClustersResponse], error)
 	GetCluster(context.Context, *connect.Request[v1.GetClusterRequest]) (*connect.Response[v1.GetClusterResponse], error)
-	// Device management
 	CreateDevice(context.Context, *connect.Request[v1.CreateDeviceRequest]) (*connect.Response[v1.CreateDeviceResponse], error)
 	DeleteDevice(context.Context, *connect.Request[v1.DeleteDeviceRequest]) (*connect.Response[v1.DeleteDeviceResponse], error)
 	UpdateDevice(context.Context, *connect.Request[v1.UpdateDeviceRequest]) (*connect.Response[v1.UpdateDeviceResponse], error)
 	ListDevices(context.Context, *connect.Request[v1.ListDevicesRequest]) (*connect.Response[v1.ListDevicesResponse], error)
 	GetDevice(context.Context, *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error)
-	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
 	// Starts the execution of a given query (nexus -> fluid)
 	SubmitQueryExecution(context.Context, *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error)
@@ -119,9 +115,9 @@ type ControlPlaneServiceClient interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
-	// Frontend
-	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
+	// Handles heartbeats from Fluid collectors and query workers
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
+	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
 
 // NewControlPlaneServiceClient constructs a client for the
@@ -237,16 +233,16 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 			connect.WithClientOptions(opts...),
 		),
-		getQueryableFields: connect.NewClient[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceGetQueryableFieldsProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
-			connect.WithClientOptions(opts...),
-		),
 		heartbeat: connect.NewClient[v1.HeartbeatRequest, v1.HeartbeatResponse](
 			httpClient,
 			baseURL+ControlPlaneServiceHeartbeatProcedure,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("Heartbeat")),
+			connect.WithClientOptions(opts...),
+		),
+		getQueryableFields: connect.NewClient[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse](
+			httpClient,
+			baseURL+ControlPlaneServiceGetQueryableFieldsProcedure,
+			connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -271,8 +267,8 @@ type controlPlaneServiceClient struct {
 	submitQueryExecution *connect.Client[v1.SubmitQueryExecutionRequest, v1.SubmitQueryExecutionResponse]
 	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
 	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
-	getQueryableFields   *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
+	getQueryableFields   *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 }
 
 // CreateDataset calls nexus.controlplane.v1.ControlPlaneService.CreateDataset.
@@ -360,36 +356,32 @@ func (c *controlPlaneServiceClient) PollQueryExecution(ctx context.Context, req 
 	return c.pollQueryExecution.CallUnary(ctx, req)
 }
 
-// GetQueryableFields calls nexus.controlplane.v1.ControlPlaneService.GetQueryableFields.
-func (c *controlPlaneServiceClient) GetQueryableFields(ctx context.Context, req *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
-	return c.getQueryableFields.CallUnary(ctx, req)
-}
-
 // Heartbeat calls nexus.controlplane.v1.ControlPlaneService.Heartbeat.
 func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return c.heartbeat.CallUnary(ctx, req)
 }
 
+// GetQueryableFields calls nexus.controlplane.v1.ControlPlaneService.GetQueryableFields.
+func (c *controlPlaneServiceClient) GetQueryableFields(ctx context.Context, req *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
+	return c.getQueryableFields.CallUnary(ctx, req)
+}
+
 // ControlPlaneServiceHandler is an implementation of the nexus.controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
-	// Dataset management
 	CreateDataset(context.Context, *connect.Request[v1.CreateDatasetRequest]) (*connect.Response[v1.CreateDatasetResponse], error)
 	DeleteDataset(context.Context, *connect.Request[v1.DeleteDatasetRequest]) (*connect.Response[v1.DeleteDatasetResponse], error)
 	ListDatasets(context.Context, *connect.Request[v1.ListDatasetsRequest]) (*connect.Response[v1.ListDatasetsResponse], error)
 	GetDataset(context.Context, *connect.Request[v1.GetDatasetRequest]) (*connect.Response[v1.GetDatasetResponse], error)
-	// Cluster management
 	CreateCluster(context.Context, *connect.Request[v1.CreateClusterRequest]) (*connect.Response[v1.CreateClusterResponse], error)
 	DeleteCluster(context.Context, *connect.Request[v1.DeleteClusterRequest]) (*connect.Response[v1.DeleteClusterResponse], error)
 	ListClusters(context.Context, *connect.Request[v1.ListClustersRequest]) (*connect.Response[v1.ListClustersResponse], error)
 	GetCluster(context.Context, *connect.Request[v1.GetClusterRequest]) (*connect.Response[v1.GetClusterResponse], error)
-	// Device management
 	CreateDevice(context.Context, *connect.Request[v1.CreateDeviceRequest]) (*connect.Response[v1.CreateDeviceResponse], error)
 	DeleteDevice(context.Context, *connect.Request[v1.DeleteDeviceRequest]) (*connect.Response[v1.DeleteDeviceResponse], error)
 	UpdateDevice(context.Context, *connect.Request[v1.UpdateDeviceRequest]) (*connect.Response[v1.UpdateDeviceResponse], error)
 	ListDevices(context.Context, *connect.Request[v1.ListDevicesRequest]) (*connect.Response[v1.ListDevicesResponse], error)
 	GetDevice(context.Context, *connect.Request[v1.GetDeviceRequest]) (*connect.Response[v1.GetDeviceResponse], error)
-	// Query management
 	CreateQuery(context.Context, *connect.Request[v1.CreateQueryRequest]) (*connect.Response[v1.CreateQueryResponse], error)
 	// Starts the execution of a given query (nexus -> fluid)
 	SubmitQueryExecution(context.Context, *connect.Request[v1.SubmitQueryExecutionRequest]) (*connect.Response[v1.SubmitQueryExecutionResponse], error)
@@ -398,9 +390,9 @@ type ControlPlaneServiceHandler interface {
 	// Poll the query execution job. Used by the client to get the status of
 	// a query. If it is complete, the result will be returned alongside it.
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
-	// Frontend
-	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
+	// Handles heartbeats from Fluid collectors and query workers
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
+	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
 
 // NewControlPlaneServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -512,16 +504,16 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("PollQueryExecution")),
 		connect.WithHandlerOptions(opts...),
 	)
-	controlPlaneServiceGetQueryableFieldsHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceGetQueryableFieldsProcedure,
-		svc.GetQueryableFields,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
-		connect.WithHandlerOptions(opts...),
-	)
 	controlPlaneServiceHeartbeatHandler := connect.NewUnaryHandler(
 		ControlPlaneServiceHeartbeatProcedure,
 		svc.Heartbeat,
 		connect.WithSchema(controlPlaneServiceMethods.ByName("Heartbeat")),
+		connect.WithHandlerOptions(opts...),
+	)
+	controlPlaneServiceGetQueryableFieldsHandler := connect.NewUnaryHandler(
+		ControlPlaneServiceGetQueryableFieldsProcedure,
+		svc.GetQueryableFields,
+		connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/nexus.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -560,10 +552,10 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServiceUpdateQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServicePollQueryExecutionProcedure:
 			controlPlaneServicePollQueryExecutionHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceGetQueryableFieldsProcedure:
-			controlPlaneServiceGetQueryableFieldsHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceHeartbeatProcedure:
 			controlPlaneServiceHeartbeatHandler.ServeHTTP(w, r)
+		case ControlPlaneServiceGetQueryableFieldsProcedure:
+			controlPlaneServiceGetQueryableFieldsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -641,10 +633,10 @@ func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Contex
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.PollQueryExecution is not implemented"))
 }
 
-func (UnimplementedControlPlaneServiceHandler) GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetQueryableFields is not implemented"))
-}
-
 func (UnimplementedControlPlaneServiceHandler) Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.Heartbeat is not implemented"))
+}
+
+func (UnimplementedControlPlaneServiceHandler) GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetQueryableFields is not implemented"))
 }

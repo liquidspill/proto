@@ -454,63 +454,112 @@ func (QueryExecutionStatus) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{6}
 }
 
-type AgentStatus int32
+type ComponentType int32
 
 const (
-	AgentStatus_AGENT_STATUS_UNSPECIFIED AgentStatus = 0
-	// The last heartbeat was received within the last 5 minutes.
-	AgentStatus_AGENT_STATUS_ALIVE AgentStatus = 1
-	// The last heartbeat was received more than 5 minutes ago.
-	AgentStatus_AGENT_STATUS_STALE AgentStatus = 2
-	// The last heartbeat was received more than 30 minutes ago.
-	AgentStatus_AGENT_STATUS_UNRESPONSIVE AgentStatus = 3
-	// The agent has not been heard of in the last 8 hours.
-	AgentStatus_AGENT_STATUS_DEAD AgentStatus = 4
+	ComponentType_COMPONENT_TYPE_UNSPECIFIED ComponentType = 0
+	ComponentType_COMPONENT_TYPE_COLLECTOR   ComponentType = 1
+	ComponentType_COMPONENT_TYPE_TAP         ComponentType = 2
 )
 
-// Enum value maps for AgentStatus.
+// Enum value maps for ComponentType.
 var (
-	AgentStatus_name = map[int32]string{
-		0: "AGENT_STATUS_UNSPECIFIED",
-		1: "AGENT_STATUS_ALIVE",
-		2: "AGENT_STATUS_STALE",
-		3: "AGENT_STATUS_UNRESPONSIVE",
-		4: "AGENT_STATUS_DEAD",
+	ComponentType_name = map[int32]string{
+		0: "COMPONENT_TYPE_UNSPECIFIED",
+		1: "COMPONENT_TYPE_COLLECTOR",
+		2: "COMPONENT_TYPE_TAP",
 	}
-	AgentStatus_value = map[string]int32{
-		"AGENT_STATUS_UNSPECIFIED":  0,
-		"AGENT_STATUS_ALIVE":        1,
-		"AGENT_STATUS_STALE":        2,
-		"AGENT_STATUS_UNRESPONSIVE": 3,
-		"AGENT_STATUS_DEAD":         4,
+	ComponentType_value = map[string]int32{
+		"COMPONENT_TYPE_UNSPECIFIED": 0,
+		"COMPONENT_TYPE_COLLECTOR":   1,
+		"COMPONENT_TYPE_TAP":         2,
 	}
 )
 
-func (x AgentStatus) Enum() *AgentStatus {
-	p := new(AgentStatus)
+func (x ComponentType) Enum() *ComponentType {
+	p := new(ComponentType)
 	*p = x
 	return p
 }
 
-func (x AgentStatus) String() string {
+func (x ComponentType) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (AgentStatus) Descriptor() protoreflect.EnumDescriptor {
+func (ComponentType) Descriptor() protoreflect.EnumDescriptor {
 	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[7].Descriptor()
 }
 
-func (AgentStatus) Type() protoreflect.EnumType {
+func (ComponentType) Type() protoreflect.EnumType {
 	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[7]
 }
 
-func (x AgentStatus) Number() protoreflect.EnumNumber {
+func (x ComponentType) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use AgentStatus.Descriptor instead.
-func (AgentStatus) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ComponentType.Descriptor instead.
+func (ComponentType) EnumDescriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{7}
+}
+
+type ComponentHealthStatus int32
+
+const (
+	ComponentHealthStatus_COMPONENT_HEALTH_STATUS_UNSPECIFIED ComponentHealthStatus = 0
+	// The last heartbeat was received within the last 5 minutes.
+	ComponentHealthStatus_COMPONENT_HEALTH_STATUS_ALIVE ComponentHealthStatus = 1
+	// The last heartbeat was received more than 5 minutes ago.
+	ComponentHealthStatus_COMPONENT_HEALTH_STATUS_STALE ComponentHealthStatus = 2
+	// The last heartbeat was received more than 30 minutes ago.
+	ComponentHealthStatus_COMPONENT_HEALTH_STATUS_UNRESPONSIVE ComponentHealthStatus = 3
+	// The collector has not been heard of in the last 8 hours.
+	ComponentHealthStatus_COMPONENT_HEALTH_STATUS_DEAD ComponentHealthStatus = 4
+)
+
+// Enum value maps for ComponentHealthStatus.
+var (
+	ComponentHealthStatus_name = map[int32]string{
+		0: "COMPONENT_HEALTH_STATUS_UNSPECIFIED",
+		1: "COMPONENT_HEALTH_STATUS_ALIVE",
+		2: "COMPONENT_HEALTH_STATUS_STALE",
+		3: "COMPONENT_HEALTH_STATUS_UNRESPONSIVE",
+		4: "COMPONENT_HEALTH_STATUS_DEAD",
+	}
+	ComponentHealthStatus_value = map[string]int32{
+		"COMPONENT_HEALTH_STATUS_UNSPECIFIED":  0,
+		"COMPONENT_HEALTH_STATUS_ALIVE":        1,
+		"COMPONENT_HEALTH_STATUS_STALE":        2,
+		"COMPONENT_HEALTH_STATUS_UNRESPONSIVE": 3,
+		"COMPONENT_HEALTH_STATUS_DEAD":         4,
+	}
+)
+
+func (x ComponentHealthStatus) Enum() *ComponentHealthStatus {
+	p := new(ComponentHealthStatus)
+	*p = x
+	return p
+}
+
+func (x ComponentHealthStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ComponentHealthStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_nexus_controlplane_v1_control_plane_proto_enumTypes[8].Descriptor()
+}
+
+func (ComponentHealthStatus) Type() protoreflect.EnumType {
+	return &file_nexus_controlplane_v1_control_plane_proto_enumTypes[8]
+}
+
+func (x ComponentHealthStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ComponentHealthStatus.Descriptor instead.
+func (ComponentHealthStatus) EnumDescriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{8}
 }
 
 type Dataset struct {
@@ -3633,13 +3682,18 @@ func (x *QueryExecutionData) GetRows() []*Row {
 	return nil
 }
 
-// ===== AGENT LIFECYCLE =====//
 type HeartbeatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The agent ID. These are generated by the agent themselves.
-	// They are of the form agt_{nanoid}
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ClusterPid    string `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
+	// The ID of the component performing the heartbeat. These are generally
+	// generated by the component themselves.
+	// They are of the form {type}_{nanoid}
+	Id   string        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Type ComponentType `protobuf:"varint,2,opt,name=type,proto3,enum=nexus.controlplane.v1.ComponentType" json:"type,omitempty"`
+	// Types that are valid to be assigned to Metadata:
+	//
+	//	*HeartbeatRequest_Collector
+	//	*HeartbeatRequest_Tap
+	Metadata      isHeartbeatRequest_Metadata `protobuf_oneof:"metadata"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3681,17 +3735,57 @@ func (x *HeartbeatRequest) GetId() string {
 	return ""
 }
 
-func (x *HeartbeatRequest) GetClusterPid() string {
+func (x *HeartbeatRequest) GetType() ComponentType {
 	if x != nil {
-		return x.ClusterPid
+		return x.Type
 	}
-	return ""
+	return ComponentType_COMPONENT_TYPE_UNSPECIFIED
 }
+
+func (x *HeartbeatRequest) GetMetadata() isHeartbeatRequest_Metadata {
+	if x != nil {
+		return x.Metadata
+	}
+	return nil
+}
+
+func (x *HeartbeatRequest) GetCollector() *CollectorMetadata {
+	if x != nil {
+		if x, ok := x.Metadata.(*HeartbeatRequest_Collector); ok {
+			return x.Collector
+		}
+	}
+	return nil
+}
+
+func (x *HeartbeatRequest) GetTap() *TapMetadata {
+	if x != nil {
+		if x, ok := x.Metadata.(*HeartbeatRequest_Tap); ok {
+			return x.Tap
+		}
+	}
+	return nil
+}
+
+type isHeartbeatRequest_Metadata interface {
+	isHeartbeatRequest_Metadata()
+}
+
+type HeartbeatRequest_Collector struct {
+	Collector *CollectorMetadata `protobuf:"bytes,3,opt,name=collector,proto3,oneof"`
+}
+
+type HeartbeatRequest_Tap struct {
+	Tap *TapMetadata `protobuf:"bytes,4,opt,name=tap,proto3,oneof"`
+}
+
+func (*HeartbeatRequest_Collector) isHeartbeatRequest_Metadata() {}
+
+func (*HeartbeatRequest_Tap) isHeartbeatRequest_Metadata() {}
 
 type HeartbeatResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ClusterPid    string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3733,41 +3827,34 @@ func (x *HeartbeatResponse) GetId() string {
 	return ""
 }
 
-func (x *HeartbeatResponse) GetClusterPid() string {
-	if x != nil {
-		return x.ClusterPid
-	}
-	return ""
-}
-
-type AgentMetadata struct {
-	state      protoimpl.MessageState `protogen:"open.v1"`
-	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ClusterPid string                 `protobuf:"bytes,2,opt,name=cluster_pid,json=clusterPid,proto3" json:"cluster_pid,omitempty"`
-	Version    string                 `protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
-	// The status of the agent. The control plane manages this field.
+type CollectorMetadata struct {
+	state   protoimpl.MessageState `protogen:"open.v1"`
+	Id      string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Version string                 `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	// The status of the Fluid Collector. The control plane manages this field.
 	// It is determined by the heartbeat recency.
-	Status AgentStatus `protobuf:"varint,4,opt,name=status,proto3,enum=nexus.controlplane.v1.AgentStatus" json:"status,omitempty"`
+	Status ComponentHealthStatus `protobuf:"varint,3,opt,name=status,proto3,enum=nexus.controlplane.v1.ComponentHealthStatus" json:"status,omitempty"`
 	// The last heartbeat we received.
-	LastHeartbeat *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_heartbeat,json=lastHeartbeat,proto3" json:"last_heartbeat,omitempty"`
+	LastHeartbeat *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=last_heartbeat,json=lastHeartbeat,proto3" json:"last_heartbeat,omitempty"`
+	Metrics       *CollectorMetrics      `protobuf:"bytes,5,opt,name=metrics,proto3" json:"metrics,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AgentMetadata) Reset() {
-	*x = AgentMetadata{}
+func (x *CollectorMetadata) Reset() {
+	*x = CollectorMetadata{}
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AgentMetadata) String() string {
+func (x *CollectorMetadata) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AgentMetadata) ProtoMessage() {}
+func (*CollectorMetadata) ProtoMessage() {}
 
-func (x *AgentMetadata) ProtoReflect() protoreflect.Message {
+func (x *CollectorMetadata) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3779,68 +3866,89 @@ func (x *AgentMetadata) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AgentMetadata.ProtoReflect.Descriptor instead.
-func (*AgentMetadata) Descriptor() ([]byte, []int) {
+// Deprecated: Use CollectorMetadata.ProtoReflect.Descriptor instead.
+func (*CollectorMetadata) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{55}
 }
 
-func (x *AgentMetadata) GetId() string {
+func (x *CollectorMetadata) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *AgentMetadata) GetClusterPid() string {
-	if x != nil {
-		return x.ClusterPid
-	}
-	return ""
-}
-
-func (x *AgentMetadata) GetVersion() string {
+func (x *CollectorMetadata) GetVersion() string {
 	if x != nil {
 		return x.Version
 	}
 	return ""
 }
 
-func (x *AgentMetadata) GetStatus() AgentStatus {
+func (x *CollectorMetadata) GetStatus() ComponentHealthStatus {
 	if x != nil {
 		return x.Status
 	}
-	return AgentStatus_AGENT_STATUS_UNSPECIFIED
+	return ComponentHealthStatus_COMPONENT_HEALTH_STATUS_UNSPECIFIED
 }
 
-func (x *AgentMetadata) GetLastHeartbeat() *timestamppb.Timestamp {
+func (x *CollectorMetadata) GetLastHeartbeat() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastHeartbeat
 	}
 	return nil
 }
 
-type Heartbeat struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+func (x *CollectorMetadata) GetMetrics() *CollectorMetrics {
+	if x != nil {
+		return x.Metrics
+	}
+	return nil
 }
 
-func (x *Heartbeat) Reset() {
-	*x = Heartbeat{}
+type CollectorMetrics struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	CpuUsagePercent      float32                `protobuf:"fixed32,1,opt,name=cpu_usage_percent,json=cpuUsagePercent,proto3" json:"cpu_usage_percent,omitempty"`
+	MemoryUsagePercent   float32                `protobuf:"fixed32,2,opt,name=memory_usage_percent,json=memoryUsagePercent,proto3" json:"memory_usage_percent,omitempty"`
+	DiskUsagePercent     float32                `protobuf:"fixed32,3,opt,name=disk_usage_percent,json=diskUsagePercent,proto3" json:"disk_usage_percent,omitempty"`
+	MemoryUsedBytes      uint64                 `protobuf:"varint,4,opt,name=memory_used_bytes,json=memoryUsedBytes,proto3" json:"memory_used_bytes,omitempty"`
+	MemoryAvailableBytes uint64                 `protobuf:"varint,5,opt,name=memory_available_bytes,json=memoryAvailableBytes,proto3" json:"memory_available_bytes,omitempty"`
+	DiskUsedBytes        uint64                 `protobuf:"varint,6,opt,name=disk_used_bytes,json=diskUsedBytes,proto3" json:"disk_used_bytes,omitempty"`
+	DiskAvailableBytes   uint64                 `protobuf:"varint,7,opt,name=disk_available_bytes,json=diskAvailableBytes,proto3" json:"disk_available_bytes,omitempty"`
+	S3PutRequestsTotal   uint64                 `protobuf:"varint,8,opt,name=s3_put_requests_total,json=s3PutRequestsTotal,proto3" json:"s3_put_requests_total,omitempty"`
+	S3ErrorsTotal        uint64                 `protobuf:"varint,9,opt,name=s3_errors_total,json=s3ErrorsTotal,proto3" json:"s3_errors_total,omitempty"`
+	AvgS3PutLatencyMs    float64                `protobuf:"fixed64,10,opt,name=avg_s3_put_latency_ms,json=avgS3PutLatencyMs,proto3" json:"avg_s3_put_latency_ms,omitempty"`
+	P99S3PutLatencyMs    float64                `protobuf:"fixed64,11,opt,name=p99_s3_put_latency_ms,json=p99S3PutLatencyMs,proto3" json:"p99_s3_put_latency_ms,omitempty"`
+	S3BytesUploaded      uint64                 `protobuf:"varint,12,opt,name=s3_bytes_uploaded,json=s3BytesUploaded,proto3" json:"s3_bytes_uploaded,omitempty"`
+	RingBufferPercent    float32                `protobuf:"fixed32,13,opt,name=ring_buffer_percent,json=ringBufferPercent,proto3" json:"ring_buffer_percent,omitempty"`
+	// The number of flows we've received in totality. This should
+	// be: flows_written_total + flows_dropped_total
+	FlowsReceivedTotal uint64 `protobuf:"varint,14,opt,name=flows_received_total,json=flowsReceivedTotal,proto3" json:"flows_received_total,omitempty"`
+	// Total number of flows written to S3
+	FlowsWrittenTotal uint64 `protobuf:"varint,15,opt,name=flows_written_total,json=flowsWrittenTotal,proto3" json:"flows_written_total,omitempty"`
+	// Total number of flows we've dropped (due to a full ring buffer)
+	FlowsDroppedTotal uint64 `protobuf:"varint,16,opt,name=flows_dropped_total,json=flowsDroppedTotal,proto3" json:"flows_dropped_total,omitempty"`
+	// The ingestion rate
+	FlowsPerSecond float32                `protobuf:"fixed32,17,opt,name=flows_per_second,json=flowsPerSecond,proto3" json:"flows_per_second,omitempty"`
+	CollectedAt    *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=collected_at,json=collectedAt,proto3" json:"collected_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CollectorMetrics) Reset() {
+	*x = CollectorMetrics{}
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Heartbeat) String() string {
+func (x *CollectorMetrics) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Heartbeat) ProtoMessage() {}
+func (*CollectorMetrics) ProtoMessage() {}
 
-func (x *Heartbeat) ProtoReflect() protoreflect.Message {
+func (x *CollectorMetrics) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3852,21 +3960,201 @@ func (x *Heartbeat) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Heartbeat.ProtoReflect.Descriptor instead.
-func (*Heartbeat) Descriptor() ([]byte, []int) {
+// Deprecated: Use CollectorMetrics.ProtoReflect.Descriptor instead.
+func (*CollectorMetrics) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{56}
 }
 
-func (x *Heartbeat) GetAgentId() string {
+func (x *CollectorMetrics) GetCpuUsagePercent() float32 {
 	if x != nil {
-		return x.AgentId
+		return x.CpuUsagePercent
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetMemoryUsagePercent() float32 {
+	if x != nil {
+		return x.MemoryUsagePercent
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetDiskUsagePercent() float32 {
+	if x != nil {
+		return x.DiskUsagePercent
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetMemoryUsedBytes() uint64 {
+	if x != nil {
+		return x.MemoryUsedBytes
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetMemoryAvailableBytes() uint64 {
+	if x != nil {
+		return x.MemoryAvailableBytes
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetDiskUsedBytes() uint64 {
+	if x != nil {
+		return x.DiskUsedBytes
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetDiskAvailableBytes() uint64 {
+	if x != nil {
+		return x.DiskAvailableBytes
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetS3PutRequestsTotal() uint64 {
+	if x != nil {
+		return x.S3PutRequestsTotal
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetS3ErrorsTotal() uint64 {
+	if x != nil {
+		return x.S3ErrorsTotal
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetAvgS3PutLatencyMs() float64 {
+	if x != nil {
+		return x.AvgS3PutLatencyMs
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetP99S3PutLatencyMs() float64 {
+	if x != nil {
+		return x.P99S3PutLatencyMs
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetS3BytesUploaded() uint64 {
+	if x != nil {
+		return x.S3BytesUploaded
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetRingBufferPercent() float32 {
+	if x != nil {
+		return x.RingBufferPercent
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetFlowsReceivedTotal() uint64 {
+	if x != nil {
+		return x.FlowsReceivedTotal
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetFlowsWrittenTotal() uint64 {
+	if x != nil {
+		return x.FlowsWrittenTotal
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetFlowsDroppedTotal() uint64 {
+	if x != nil {
+		return x.FlowsDroppedTotal
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetFlowsPerSecond() float32 {
+	if x != nil {
+		return x.FlowsPerSecond
+	}
+	return 0
+}
+
+func (x *CollectorMetrics) GetCollectedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CollectedAt
+	}
+	return nil
+}
+
+type TapMetadata struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Version       string                 `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	Status        ComponentHealthStatus  `protobuf:"varint,3,opt,name=status,proto3,enum=nexus.controlplane.v1.ComponentHealthStatus" json:"status,omitempty"`
+	LastHeartbeat *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_heartbeat,json=lastHeartbeat,proto3" json:"last_heartbeat,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TapMetadata) Reset() {
+	*x = TapMetadata{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TapMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TapMetadata) ProtoMessage() {}
+
+func (x *TapMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TapMetadata.ProtoReflect.Descriptor instead.
+func (*TapMetadata) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *TapMetadata) GetId() string {
+	if x != nil {
+		return x.Id
 	}
 	return ""
 }
 
-func (x *Heartbeat) GetTimestamp() *timestamppb.Timestamp {
+func (x *TapMetadata) GetVersion() string {
 	if x != nil {
-		return x.Timestamp
+		return x.Version
+	}
+	return ""
+}
+
+func (x *TapMetadata) GetStatus() ComponentHealthStatus {
+	if x != nil {
+		return x.Status
+	}
+	return ComponentHealthStatus_COMPONENT_HEALTH_STATUS_UNSPECIFIED
+}
+
+func (x *TapMetadata) GetLastHeartbeat() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastHeartbeat
 	}
 	return nil
 }
@@ -3881,7 +4169,7 @@ type ControlMessageRequest struct {
 
 func (x *ControlMessageRequest) Reset() {
 	*x = ControlMessageRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[57]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3893,7 +4181,7 @@ func (x *ControlMessageRequest) String() string {
 func (*ControlMessageRequest) ProtoMessage() {}
 
 func (x *ControlMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[57]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3906,7 +4194,7 @@ func (x *ControlMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessageRequest.ProtoReflect.Descriptor instead.
 func (*ControlMessageRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{57}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *ControlMessageRequest) GetRequestId() string {
@@ -3935,7 +4223,7 @@ type ControlMessageResponse struct {
 
 func (x *ControlMessageResponse) Reset() {
 	*x = ControlMessageResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[58]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3947,7 +4235,7 @@ func (x *ControlMessageResponse) String() string {
 func (*ControlMessageResponse) ProtoMessage() {}
 
 func (x *ControlMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[58]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3960,7 +4248,7 @@ func (x *ControlMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessageResponse.ProtoReflect.Descriptor instead.
 func (*ControlMessageResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{58}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *ControlMessageResponse) GetRequestId() string {
@@ -4004,7 +4292,7 @@ type ControlMessage struct {
 
 func (x *ControlMessage) Reset() {
 	*x = ControlMessage{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[59]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4016,7 +4304,7 @@ func (x *ControlMessage) String() string {
 func (*ControlMessage) ProtoMessage() {}
 
 func (x *ControlMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[59]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4029,7 +4317,7 @@ func (x *ControlMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ControlMessage.ProtoReflect.Descriptor instead.
 func (*ControlMessage) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{59}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ControlMessage) GetMessage() isControlMessage_Message {
@@ -4086,7 +4374,7 @@ type TelemetryControl struct {
 
 func (x *TelemetryControl) Reset() {
 	*x = TelemetryControl{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[60]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4098,7 +4386,7 @@ func (x *TelemetryControl) String() string {
 func (*TelemetryControl) ProtoMessage() {}
 
 func (x *TelemetryControl) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[60]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4111,7 +4399,7 @@ func (x *TelemetryControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TelemetryControl.ProtoReflect.Descriptor instead.
 func (*TelemetryControl) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{60}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *TelemetryControl) GetExport() bool {
@@ -4131,7 +4419,7 @@ type DeviceControl struct {
 
 func (x *DeviceControl) Reset() {
 	*x = DeviceControl{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[61]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4143,7 +4431,7 @@ func (x *DeviceControl) String() string {
 func (*DeviceControl) ProtoMessage() {}
 
 func (x *DeviceControl) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[61]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4156,7 +4444,7 @@ func (x *DeviceControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceControl.ProtoReflect.Descriptor instead.
 func (*DeviceControl) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{61}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *DeviceControl) GetDevices() []*Device {
@@ -4175,7 +4463,7 @@ type GetQueryableFieldsRequest struct {
 
 func (x *GetQueryableFieldsRequest) Reset() {
 	*x = GetQueryableFieldsRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[62]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4187,7 +4475,7 @@ func (x *GetQueryableFieldsRequest) String() string {
 func (*GetQueryableFieldsRequest) ProtoMessage() {}
 
 func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[62]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4200,7 +4488,7 @@ func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsRequest.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{62}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *GetQueryableFieldsRequest) GetDatasetPid() string {
@@ -4219,7 +4507,7 @@ type GetQueryableFieldsResponse struct {
 
 func (x *GetQueryableFieldsResponse) Reset() {
 	*x = GetQueryableFieldsResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[63]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4231,7 +4519,7 @@ func (x *GetQueryableFieldsResponse) String() string {
 func (*GetQueryableFieldsResponse) ProtoMessage() {}
 
 func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[63]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4244,7 +4532,7 @@ func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsResponse.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{63}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *GetQueryableFieldsResponse) GetFields() []*Field {
@@ -4263,7 +4551,7 @@ type Field struct {
 
 func (x *Field) Reset() {
 	*x = Field{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[64]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4275,7 +4563,7 @@ func (x *Field) String() string {
 func (*Field) ProtoMessage() {}
 
 func (x *Field) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[64]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4288,7 +4576,7 @@ func (x *Field) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Field.ProtoReflect.Descriptor instead.
 func (*Field) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{64}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *Field) GetName() string {
@@ -4532,25 +4820,47 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x0e_error_message\"{\n" +
 	"\x12QueryExecutionData\x125\n" +
 	"\x06series\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x12.\n" +
-	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"C\n" +
+	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"\xea\x01\n" +
 	"\x10HeartbeatRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\"D\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x128\n" +
+	"\x04type\x18\x02 \x01(\x0e2$.nexus.controlplane.v1.ComponentTypeR\x04type\x12H\n" +
+	"\tcollector\x18\x03 \x01(\v2(.nexus.controlplane.v1.CollectorMetadataH\x00R\tcollector\x126\n" +
+	"\x03tap\x18\x04 \x01(\v2\".nexus.controlplane.v1.TapMetadataH\x00R\x03tapB\n" +
+	"\n" +
+	"\bmetadata\"#\n" +
 	"\x11HeartbeatResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\"\xd9\x01\n" +
-	"\rAgentMetadata\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vcluster_pid\x18\x02 \x01(\tR\n" +
-	"clusterPid\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\tR\aversion\x12:\n" +
-	"\x06status\x18\x04 \x01(\x0e2\".nexus.controlplane.v1.AgentStatusR\x06status\x12A\n" +
-	"\x0elast_heartbeat\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\rlastHeartbeat\"`\n" +
-	"\tHeartbeat\x12\x19\n" +
-	"\bagent_id\x18\x01 \x01(\tR\aagentId\x128\n" +
-	"\ttimestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\"w\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\x89\x02\n" +
+	"\x11CollectorMetadata\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
+	"\aversion\x18\x02 \x01(\tR\aversion\x12D\n" +
+	"\x06status\x18\x03 \x01(\x0e2,.nexus.controlplane.v1.ComponentHealthStatusR\x06status\x12A\n" +
+	"\x0elast_heartbeat\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\rlastHeartbeat\x12A\n" +
+	"\ametrics\x18\x05 \x01(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"\xf0\x06\n" +
+	"\x10CollectorMetrics\x12*\n" +
+	"\x11cpu_usage_percent\x18\x01 \x01(\x02R\x0fcpuUsagePercent\x120\n" +
+	"\x14memory_usage_percent\x18\x02 \x01(\x02R\x12memoryUsagePercent\x12,\n" +
+	"\x12disk_usage_percent\x18\x03 \x01(\x02R\x10diskUsagePercent\x12*\n" +
+	"\x11memory_used_bytes\x18\x04 \x01(\x04R\x0fmemoryUsedBytes\x124\n" +
+	"\x16memory_available_bytes\x18\x05 \x01(\x04R\x14memoryAvailableBytes\x12&\n" +
+	"\x0fdisk_used_bytes\x18\x06 \x01(\x04R\rdiskUsedBytes\x120\n" +
+	"\x14disk_available_bytes\x18\a \x01(\x04R\x12diskAvailableBytes\x121\n" +
+	"\x15s3_put_requests_total\x18\b \x01(\x04R\x12s3PutRequestsTotal\x12&\n" +
+	"\x0fs3_errors_total\x18\t \x01(\x04R\rs3ErrorsTotal\x120\n" +
+	"\x15avg_s3_put_latency_ms\x18\n" +
+	" \x01(\x01R\x11avgS3PutLatencyMs\x120\n" +
+	"\x15p99_s3_put_latency_ms\x18\v \x01(\x01R\x11p99S3PutLatencyMs\x12*\n" +
+	"\x11s3_bytes_uploaded\x18\f \x01(\x04R\x0fs3BytesUploaded\x12.\n" +
+	"\x13ring_buffer_percent\x18\r \x01(\x02R\x11ringBufferPercent\x120\n" +
+	"\x14flows_received_total\x18\x0e \x01(\x04R\x12flowsReceivedTotal\x12.\n" +
+	"\x13flows_written_total\x18\x0f \x01(\x04R\x11flowsWrittenTotal\x12.\n" +
+	"\x13flows_dropped_total\x18\x10 \x01(\x04R\x11flowsDroppedTotal\x12(\n" +
+	"\x10flows_per_second\x18\x11 \x01(\x02R\x0eflowsPerSecond\x12=\n" +
+	"\fcollected_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\vcollectedAt\"\xc0\x01\n" +
+	"\vTapMetadata\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
+	"\aversion\x18\x02 \x01(\tR\aversion\x12D\n" +
+	"\x06status\x18\x03 \x01(\x0e2,.nexus.controlplane.v1.ComponentHealthStatusR\x06status\x12A\n" +
+	"\x0elast_heartbeat\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\rlastHeartbeat\"w\n" +
 	"\x15ControlMessageRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\tR\trequestId\x12?\n" +
@@ -4633,13 +4943,17 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x1eQUERY_EXECUTION_STATUS_PENDING\x10\x01\x12\"\n" +
 	"\x1eQUERY_EXECUTION_STATUS_RUNNING\x10\x02\x12$\n" +
 	" QUERY_EXECUTION_STATUS_COMPLETED\x10\x03\x12!\n" +
-	"\x1dQUERY_EXECUTION_STATUS_FAILED\x10\x04*\x91\x01\n" +
-	"\vAgentStatus\x12\x1c\n" +
-	"\x18AGENT_STATUS_UNSPECIFIED\x10\x00\x12\x16\n" +
-	"\x12AGENT_STATUS_ALIVE\x10\x01\x12\x16\n" +
-	"\x12AGENT_STATUS_STALE\x10\x02\x12\x1d\n" +
-	"\x19AGENT_STATUS_UNRESPONSIVE\x10\x03\x12\x15\n" +
-	"\x11AGENT_STATUS_DEAD\x10\x042\xc4\x10\n" +
+	"\x1dQUERY_EXECUTION_STATUS_FAILED\x10\x04*e\n" +
+	"\rComponentType\x12\x1e\n" +
+	"\x1aCOMPONENT_TYPE_UNSPECIFIED\x10\x00\x12\x1c\n" +
+	"\x18COMPONENT_TYPE_COLLECTOR\x10\x01\x12\x16\n" +
+	"\x12COMPONENT_TYPE_TAP\x10\x02*\xd2\x01\n" +
+	"\x15ComponentHealthStatus\x12'\n" +
+	"#COMPONENT_HEALTH_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
+	"\x1dCOMPONENT_HEALTH_STATUS_ALIVE\x10\x01\x12!\n" +
+	"\x1dCOMPONENT_HEALTH_STATUS_STALE\x10\x02\x12(\n" +
+	"$COMPONENT_HEALTH_STATUS_UNRESPONSIVE\x10\x03\x12 \n" +
+	"\x1cCOMPONENT_HEALTH_STATUS_DEAD\x10\x042\xc4\x10\n" +
 	"\x13ControlPlaneService\x12l\n" +
 	"\rCreateDataset\x12+.nexus.controlplane.v1.CreateDatasetRequest\x1a,.nexus.controlplane.v1.CreateDatasetResponse\"\x00\x12l\n" +
 	"\rDeleteDataset\x12+.nexus.controlplane.v1.DeleteDatasetRequest\x1a,.nexus.controlplane.v1.DeleteDatasetResponse\"\x00\x12i\n" +
@@ -4659,9 +4973,9 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\vCreateQuery\x12).nexus.controlplane.v1.CreateQueryRequest\x1a*.nexus.controlplane.v1.CreateQueryResponse\"\x00\x12\x81\x01\n" +
 	"\x14SubmitQueryExecution\x122.nexus.controlplane.v1.SubmitQueryExecutionRequest\x1a3.nexus.controlplane.v1.SubmitQueryExecutionResponse\"\x00\x12\x81\x01\n" +
 	"\x14UpdateQueryExecution\x122.nexus.controlplane.v1.UpdateQueryExecutionRequest\x1a3.nexus.controlplane.v1.UpdateQueryExecutionResponse\"\x00\x12{\n" +
-	"\x12PollQueryExecution\x120.nexus.controlplane.v1.PollQueryExecutionRequest\x1a1.nexus.controlplane.v1.PollQueryExecutionResponse\"\x00\x12{\n" +
-	"\x12GetQueryableFields\x120.nexus.controlplane.v1.GetQueryableFieldsRequest\x1a1.nexus.controlplane.v1.GetQueryableFieldsResponse\"\x00\x12`\n" +
-	"\tHeartbeat\x12'.nexus.controlplane.v1.HeartbeatRequest\x1a(.nexus.controlplane.v1.HeartbeatResponse\"\x00BFZDgithub.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1b\x06proto3"
+	"\x12PollQueryExecution\x120.nexus.controlplane.v1.PollQueryExecutionRequest\x1a1.nexus.controlplane.v1.PollQueryExecutionResponse\"\x00\x12`\n" +
+	"\tHeartbeat\x12'.nexus.controlplane.v1.HeartbeatRequest\x1a(.nexus.controlplane.v1.HeartbeatResponse\"\x00\x12{\n" +
+	"\x12GetQueryableFields\x120.nexus.controlplane.v1.GetQueryableFieldsRequest\x1a1.nexus.controlplane.v1.GetQueryableFieldsResponse\"\x00BFZDgithub.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1b\x06proto3"
 
 var (
 	file_nexus_controlplane_v1_control_plane_proto_rawDescOnce sync.Once
@@ -4675,8 +4989,8 @@ func file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP() []byte {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescData
 }
 
-var file_nexus_controlplane_v1_control_plane_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
-var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 66)
+var file_nexus_controlplane_v1_control_plane_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
+var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 67)
 var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(ClusterType)(0),                     // 0: nexus.controlplane.v1.ClusterType
 	(IPVersion)(0),                       // 1: nexus.controlplane.v1.IPVersion
@@ -4685,194 +4999,202 @@ var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(CompareOp)(0),                       // 4: nexus.controlplane.v1.CompareOp
 	(OrderOp)(0),                         // 5: nexus.controlplane.v1.OrderOp
 	(QueryExecutionStatus)(0),            // 6: nexus.controlplane.v1.QueryExecutionStatus
-	(AgentStatus)(0),                     // 7: nexus.controlplane.v1.AgentStatus
-	(*Dataset)(nil),                      // 8: nexus.controlplane.v1.Dataset
-	(*CreateDatasetRequest)(nil),         // 9: nexus.controlplane.v1.CreateDatasetRequest
-	(*CreateDatasetResponse)(nil),        // 10: nexus.controlplane.v1.CreateDatasetResponse
-	(*DeleteDatasetRequest)(nil),         // 11: nexus.controlplane.v1.DeleteDatasetRequest
-	(*DeleteDatasetResponse)(nil),        // 12: nexus.controlplane.v1.DeleteDatasetResponse
-	(*ListDatasetsRequest)(nil),          // 13: nexus.controlplane.v1.ListDatasetsRequest
-	(*ListDatasetsResponse)(nil),         // 14: nexus.controlplane.v1.ListDatasetsResponse
-	(*GetDatasetRequest)(nil),            // 15: nexus.controlplane.v1.GetDatasetRequest
-	(*GetDatasetResponse)(nil),           // 16: nexus.controlplane.v1.GetDatasetResponse
-	(*Cluster)(nil),                      // 17: nexus.controlplane.v1.Cluster
-	(*CreateClusterRequest)(nil),         // 18: nexus.controlplane.v1.CreateClusterRequest
-	(*CreateClusterResponse)(nil),        // 19: nexus.controlplane.v1.CreateClusterResponse
-	(*DeleteClusterRequest)(nil),         // 20: nexus.controlplane.v1.DeleteClusterRequest
-	(*DeleteClusterResponse)(nil),        // 21: nexus.controlplane.v1.DeleteClusterResponse
-	(*ListClustersRequest)(nil),          // 22: nexus.controlplane.v1.ListClustersRequest
-	(*ListClustersResponse)(nil),         // 23: nexus.controlplane.v1.ListClustersResponse
-	(*GetClusterRequest)(nil),            // 24: nexus.controlplane.v1.GetClusterRequest
-	(*GetClusterResponse)(nil),           // 25: nexus.controlplane.v1.GetClusterResponse
-	(*Device)(nil),                       // 26: nexus.controlplane.v1.Device
-	(*GenericModel)(nil),                 // 27: nexus.controlplane.v1.GenericModel
-	(*Cisco)(nil),                        // 28: nexus.controlplane.v1.Cisco
-	(*Arista)(nil),                       // 29: nexus.controlplane.v1.Arista
-	(*IpAddress)(nil),                    // 30: nexus.controlplane.v1.IpAddress
-	(*CreateDeviceRequest)(nil),          // 31: nexus.controlplane.v1.CreateDeviceRequest
-	(*CreateDeviceResponse)(nil),         // 32: nexus.controlplane.v1.CreateDeviceResponse
-	(*DeleteDeviceRequest)(nil),          // 33: nexus.controlplane.v1.DeleteDeviceRequest
-	(*DeleteDeviceResponse)(nil),         // 34: nexus.controlplane.v1.DeleteDeviceResponse
-	(*UpdateDeviceRequest)(nil),          // 35: nexus.controlplane.v1.UpdateDeviceRequest
-	(*UpdateDeviceResponse)(nil),         // 36: nexus.controlplane.v1.UpdateDeviceResponse
-	(*GetDeviceRequest)(nil),             // 37: nexus.controlplane.v1.GetDeviceRequest
-	(*GetDeviceResponse)(nil),            // 38: nexus.controlplane.v1.GetDeviceResponse
-	(*ListDevicesRequest)(nil),           // 39: nexus.controlplane.v1.ListDevicesRequest
-	(*ListDevicesResponse)(nil),          // 40: nexus.controlplane.v1.ListDevicesResponse
-	(*Query)(nil),                        // 41: nexus.controlplane.v1.Query
-	(*Visualise)(nil),                    // 42: nexus.controlplane.v1.Visualise
-	(*Where)(nil),                        // 43: nexus.controlplane.v1.Where
-	(*Clause)(nil),                       // 44: nexus.controlplane.v1.Clause
-	(*Order)(nil),                        // 45: nexus.controlplane.v1.Order
-	(*Series)(nil),                       // 46: nexus.controlplane.v1.Series
-	(*SeriesData)(nil),                   // 47: nexus.controlplane.v1.SeriesData
-	(*Row)(nil),                          // 48: nexus.controlplane.v1.Row
-	(*RowValues)(nil),                    // 49: nexus.controlplane.v1.RowValues
-	(*CreateQueryRequest)(nil),           // 50: nexus.controlplane.v1.CreateQueryRequest
-	(*CreateQueryResponse)(nil),          // 51: nexus.controlplane.v1.CreateQueryResponse
-	(*SubmitQueryExecutionRequest)(nil),  // 52: nexus.controlplane.v1.SubmitQueryExecutionRequest
-	(*SubmitQueryExecutionResponse)(nil), // 53: nexus.controlplane.v1.SubmitQueryExecutionResponse
-	(*UpdateQueryExecutionRequest)(nil),  // 54: nexus.controlplane.v1.UpdateQueryExecutionRequest
-	(*UpdateQueryExecutionResponse)(nil), // 55: nexus.controlplane.v1.UpdateQueryExecutionResponse
-	(*PollQueryExecutionRequest)(nil),    // 56: nexus.controlplane.v1.PollQueryExecutionRequest
-	(*PollQueryExecutionResponse)(nil),   // 57: nexus.controlplane.v1.PollQueryExecutionResponse
-	(*ExecQueryRequest)(nil),             // 58: nexus.controlplane.v1.ExecQueryRequest
-	(*QueryExecutionResult)(nil),         // 59: nexus.controlplane.v1.QueryExecutionResult
-	(*QueryExecutionData)(nil),           // 60: nexus.controlplane.v1.QueryExecutionData
-	(*HeartbeatRequest)(nil),             // 61: nexus.controlplane.v1.HeartbeatRequest
-	(*HeartbeatResponse)(nil),            // 62: nexus.controlplane.v1.HeartbeatResponse
-	(*AgentMetadata)(nil),                // 63: nexus.controlplane.v1.AgentMetadata
-	(*Heartbeat)(nil),                    // 64: nexus.controlplane.v1.Heartbeat
-	(*ControlMessageRequest)(nil),        // 65: nexus.controlplane.v1.ControlMessageRequest
-	(*ControlMessageResponse)(nil),       // 66: nexus.controlplane.v1.ControlMessageResponse
-	(*ControlMessage)(nil),               // 67: nexus.controlplane.v1.ControlMessage
-	(*TelemetryControl)(nil),             // 68: nexus.controlplane.v1.TelemetryControl
-	(*DeviceControl)(nil),                // 69: nexus.controlplane.v1.DeviceControl
-	(*GetQueryableFieldsRequest)(nil),    // 70: nexus.controlplane.v1.GetQueryableFieldsRequest
-	(*GetQueryableFieldsResponse)(nil),   // 71: nexus.controlplane.v1.GetQueryableFieldsResponse
-	(*Field)(nil),                        // 72: nexus.controlplane.v1.Field
-	nil,                                  // 73: nexus.controlplane.v1.Series.DataEntry
-	(*timestamppb.Timestamp)(nil),        // 74: google.protobuf.Timestamp
-	(*v1.KeyValue)(nil),                  // 75: std.v1.KeyValue
-	(*fieldmaskpb.FieldMask)(nil),        // 76: google.protobuf.FieldMask
-	(*v1.Value)(nil),                     // 77: std.v1.Value
+	(ComponentType)(0),                   // 7: nexus.controlplane.v1.ComponentType
+	(ComponentHealthStatus)(0),           // 8: nexus.controlplane.v1.ComponentHealthStatus
+	(*Dataset)(nil),                      // 9: nexus.controlplane.v1.Dataset
+	(*CreateDatasetRequest)(nil),         // 10: nexus.controlplane.v1.CreateDatasetRequest
+	(*CreateDatasetResponse)(nil),        // 11: nexus.controlplane.v1.CreateDatasetResponse
+	(*DeleteDatasetRequest)(nil),         // 12: nexus.controlplane.v1.DeleteDatasetRequest
+	(*DeleteDatasetResponse)(nil),        // 13: nexus.controlplane.v1.DeleteDatasetResponse
+	(*ListDatasetsRequest)(nil),          // 14: nexus.controlplane.v1.ListDatasetsRequest
+	(*ListDatasetsResponse)(nil),         // 15: nexus.controlplane.v1.ListDatasetsResponse
+	(*GetDatasetRequest)(nil),            // 16: nexus.controlplane.v1.GetDatasetRequest
+	(*GetDatasetResponse)(nil),           // 17: nexus.controlplane.v1.GetDatasetResponse
+	(*Cluster)(nil),                      // 18: nexus.controlplane.v1.Cluster
+	(*CreateClusterRequest)(nil),         // 19: nexus.controlplane.v1.CreateClusterRequest
+	(*CreateClusterResponse)(nil),        // 20: nexus.controlplane.v1.CreateClusterResponse
+	(*DeleteClusterRequest)(nil),         // 21: nexus.controlplane.v1.DeleteClusterRequest
+	(*DeleteClusterResponse)(nil),        // 22: nexus.controlplane.v1.DeleteClusterResponse
+	(*ListClustersRequest)(nil),          // 23: nexus.controlplane.v1.ListClustersRequest
+	(*ListClustersResponse)(nil),         // 24: nexus.controlplane.v1.ListClustersResponse
+	(*GetClusterRequest)(nil),            // 25: nexus.controlplane.v1.GetClusterRequest
+	(*GetClusterResponse)(nil),           // 26: nexus.controlplane.v1.GetClusterResponse
+	(*Device)(nil),                       // 27: nexus.controlplane.v1.Device
+	(*GenericModel)(nil),                 // 28: nexus.controlplane.v1.GenericModel
+	(*Cisco)(nil),                        // 29: nexus.controlplane.v1.Cisco
+	(*Arista)(nil),                       // 30: nexus.controlplane.v1.Arista
+	(*IpAddress)(nil),                    // 31: nexus.controlplane.v1.IpAddress
+	(*CreateDeviceRequest)(nil),          // 32: nexus.controlplane.v1.CreateDeviceRequest
+	(*CreateDeviceResponse)(nil),         // 33: nexus.controlplane.v1.CreateDeviceResponse
+	(*DeleteDeviceRequest)(nil),          // 34: nexus.controlplane.v1.DeleteDeviceRequest
+	(*DeleteDeviceResponse)(nil),         // 35: nexus.controlplane.v1.DeleteDeviceResponse
+	(*UpdateDeviceRequest)(nil),          // 36: nexus.controlplane.v1.UpdateDeviceRequest
+	(*UpdateDeviceResponse)(nil),         // 37: nexus.controlplane.v1.UpdateDeviceResponse
+	(*GetDeviceRequest)(nil),             // 38: nexus.controlplane.v1.GetDeviceRequest
+	(*GetDeviceResponse)(nil),            // 39: nexus.controlplane.v1.GetDeviceResponse
+	(*ListDevicesRequest)(nil),           // 40: nexus.controlplane.v1.ListDevicesRequest
+	(*ListDevicesResponse)(nil),          // 41: nexus.controlplane.v1.ListDevicesResponse
+	(*Query)(nil),                        // 42: nexus.controlplane.v1.Query
+	(*Visualise)(nil),                    // 43: nexus.controlplane.v1.Visualise
+	(*Where)(nil),                        // 44: nexus.controlplane.v1.Where
+	(*Clause)(nil),                       // 45: nexus.controlplane.v1.Clause
+	(*Order)(nil),                        // 46: nexus.controlplane.v1.Order
+	(*Series)(nil),                       // 47: nexus.controlplane.v1.Series
+	(*SeriesData)(nil),                   // 48: nexus.controlplane.v1.SeriesData
+	(*Row)(nil),                          // 49: nexus.controlplane.v1.Row
+	(*RowValues)(nil),                    // 50: nexus.controlplane.v1.RowValues
+	(*CreateQueryRequest)(nil),           // 51: nexus.controlplane.v1.CreateQueryRequest
+	(*CreateQueryResponse)(nil),          // 52: nexus.controlplane.v1.CreateQueryResponse
+	(*SubmitQueryExecutionRequest)(nil),  // 53: nexus.controlplane.v1.SubmitQueryExecutionRequest
+	(*SubmitQueryExecutionResponse)(nil), // 54: nexus.controlplane.v1.SubmitQueryExecutionResponse
+	(*UpdateQueryExecutionRequest)(nil),  // 55: nexus.controlplane.v1.UpdateQueryExecutionRequest
+	(*UpdateQueryExecutionResponse)(nil), // 56: nexus.controlplane.v1.UpdateQueryExecutionResponse
+	(*PollQueryExecutionRequest)(nil),    // 57: nexus.controlplane.v1.PollQueryExecutionRequest
+	(*PollQueryExecutionResponse)(nil),   // 58: nexus.controlplane.v1.PollQueryExecutionResponse
+	(*ExecQueryRequest)(nil),             // 59: nexus.controlplane.v1.ExecQueryRequest
+	(*QueryExecutionResult)(nil),         // 60: nexus.controlplane.v1.QueryExecutionResult
+	(*QueryExecutionData)(nil),           // 61: nexus.controlplane.v1.QueryExecutionData
+	(*HeartbeatRequest)(nil),             // 62: nexus.controlplane.v1.HeartbeatRequest
+	(*HeartbeatResponse)(nil),            // 63: nexus.controlplane.v1.HeartbeatResponse
+	(*CollectorMetadata)(nil),            // 64: nexus.controlplane.v1.CollectorMetadata
+	(*CollectorMetrics)(nil),             // 65: nexus.controlplane.v1.CollectorMetrics
+	(*TapMetadata)(nil),                  // 66: nexus.controlplane.v1.TapMetadata
+	(*ControlMessageRequest)(nil),        // 67: nexus.controlplane.v1.ControlMessageRequest
+	(*ControlMessageResponse)(nil),       // 68: nexus.controlplane.v1.ControlMessageResponse
+	(*ControlMessage)(nil),               // 69: nexus.controlplane.v1.ControlMessage
+	(*TelemetryControl)(nil),             // 70: nexus.controlplane.v1.TelemetryControl
+	(*DeviceControl)(nil),                // 71: nexus.controlplane.v1.DeviceControl
+	(*GetQueryableFieldsRequest)(nil),    // 72: nexus.controlplane.v1.GetQueryableFieldsRequest
+	(*GetQueryableFieldsResponse)(nil),   // 73: nexus.controlplane.v1.GetQueryableFieldsResponse
+	(*Field)(nil),                        // 74: nexus.controlplane.v1.Field
+	nil,                                  // 75: nexus.controlplane.v1.Series.DataEntry
+	(*timestamppb.Timestamp)(nil),        // 76: google.protobuf.Timestamp
+	(*v1.KeyValue)(nil),                  // 77: std.v1.KeyValue
+	(*fieldmaskpb.FieldMask)(nil),        // 78: google.protobuf.FieldMask
+	(*v1.Value)(nil),                     // 79: std.v1.Value
 }
 var file_nexus_controlplane_v1_control_plane_proto_depIdxs = []int32{
-	74, // 0: nexus.controlplane.v1.Dataset.created_at:type_name -> google.protobuf.Timestamp
-	74, // 1: nexus.controlplane.v1.Dataset.updated_at:type_name -> google.protobuf.Timestamp
-	8,  // 2: nexus.controlplane.v1.CreateDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
-	74, // 3: nexus.controlplane.v1.CreateDatasetResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 4: nexus.controlplane.v1.DeleteDatasetResponse.deleted_at:type_name -> google.protobuf.Timestamp
-	8,  // 5: nexus.controlplane.v1.ListDatasetsResponse.datasets:type_name -> nexus.controlplane.v1.Dataset
-	8,  // 6: nexus.controlplane.v1.GetDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
+	76, // 0: nexus.controlplane.v1.Dataset.created_at:type_name -> google.protobuf.Timestamp
+	76, // 1: nexus.controlplane.v1.Dataset.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 2: nexus.controlplane.v1.CreateDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
+	76, // 3: nexus.controlplane.v1.CreateDatasetResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 4: nexus.controlplane.v1.DeleteDatasetResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	9,  // 5: nexus.controlplane.v1.ListDatasetsResponse.datasets:type_name -> nexus.controlplane.v1.Dataset
+	9,  // 6: nexus.controlplane.v1.GetDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
 	0,  // 7: nexus.controlplane.v1.Cluster.type:type_name -> nexus.controlplane.v1.ClusterType
-	74, // 8: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	74, // 9: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	76, // 8: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	76, // 9: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 10: nexus.controlplane.v1.CreateClusterRequest.type:type_name -> nexus.controlplane.v1.ClusterType
-	17, // 11: nexus.controlplane.v1.CreateClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
-	74, // 12: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 13: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
-	17, // 14: nexus.controlplane.v1.ListClustersResponse.clusters:type_name -> nexus.controlplane.v1.Cluster
-	17, // 15: nexus.controlplane.v1.GetClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
-	27, // 16: nexus.controlplane.v1.Device.generic:type_name -> nexus.controlplane.v1.GenericModel
-	30, // 17: nexus.controlplane.v1.Device.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	75, // 18: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
-	74, // 19: nexus.controlplane.v1.Device.created_at:type_name -> google.protobuf.Timestamp
-	74, // 20: nexus.controlplane.v1.Device.updated_at:type_name -> google.protobuf.Timestamp
-	28, // 21: nexus.controlplane.v1.GenericModel.cisco:type_name -> nexus.controlplane.v1.Cisco
-	29, // 22: nexus.controlplane.v1.GenericModel.arista:type_name -> nexus.controlplane.v1.Arista
+	18, // 11: nexus.controlplane.v1.CreateClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
+	76, // 12: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 13: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	18, // 14: nexus.controlplane.v1.ListClustersResponse.clusters:type_name -> nexus.controlplane.v1.Cluster
+	18, // 15: nexus.controlplane.v1.GetClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
+	28, // 16: nexus.controlplane.v1.Device.generic:type_name -> nexus.controlplane.v1.GenericModel
+	31, // 17: nexus.controlplane.v1.Device.addresses:type_name -> nexus.controlplane.v1.IpAddress
+	77, // 18: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
+	76, // 19: nexus.controlplane.v1.Device.created_at:type_name -> google.protobuf.Timestamp
+	76, // 20: nexus.controlplane.v1.Device.updated_at:type_name -> google.protobuf.Timestamp
+	29, // 21: nexus.controlplane.v1.GenericModel.cisco:type_name -> nexus.controlplane.v1.Cisco
+	30, // 22: nexus.controlplane.v1.GenericModel.arista:type_name -> nexus.controlplane.v1.Arista
 	1,  // 23: nexus.controlplane.v1.IpAddress.version:type_name -> nexus.controlplane.v1.IPVersion
-	27, // 24: nexus.controlplane.v1.CreateDeviceRequest.generic:type_name -> nexus.controlplane.v1.GenericModel
-	30, // 25: nexus.controlplane.v1.CreateDeviceRequest.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	75, // 26: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
-	26, // 27: nexus.controlplane.v1.CreateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	74, // 28: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
-	74, // 29: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
-	26, // 30: nexus.controlplane.v1.UpdateDeviceRequest.device:type_name -> nexus.controlplane.v1.Device
-	76, // 31: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
-	26, // 32: nexus.controlplane.v1.UpdateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	74, // 33: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
-	26, // 34: nexus.controlplane.v1.GetDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	26, // 35: nexus.controlplane.v1.ListDevicesResponse.devices:type_name -> nexus.controlplane.v1.Device
-	42, // 36: nexus.controlplane.v1.Query.visualise:type_name -> nexus.controlplane.v1.Visualise
-	43, // 37: nexus.controlplane.v1.Query.where:type_name -> nexus.controlplane.v1.Where
-	45, // 38: nexus.controlplane.v1.Query.order_by:type_name -> nexus.controlplane.v1.Order
-	44, // 39: nexus.controlplane.v1.Query.having:type_name -> nexus.controlplane.v1.Clause
-	74, // 40: nexus.controlplane.v1.Query.created_at:type_name -> google.protobuf.Timestamp
-	74, // 41: nexus.controlplane.v1.Query.updated_at:type_name -> google.protobuf.Timestamp
+	28, // 24: nexus.controlplane.v1.CreateDeviceRequest.generic:type_name -> nexus.controlplane.v1.GenericModel
+	31, // 25: nexus.controlplane.v1.CreateDeviceRequest.addresses:type_name -> nexus.controlplane.v1.IpAddress
+	77, // 26: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
+	27, // 27: nexus.controlplane.v1.CreateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	76, // 28: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
+	76, // 29: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	27, // 30: nexus.controlplane.v1.UpdateDeviceRequest.device:type_name -> nexus.controlplane.v1.Device
+	78, // 31: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
+	27, // 32: nexus.controlplane.v1.UpdateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	76, // 33: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 34: nexus.controlplane.v1.GetDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
+	27, // 35: nexus.controlplane.v1.ListDevicesResponse.devices:type_name -> nexus.controlplane.v1.Device
+	43, // 36: nexus.controlplane.v1.Query.visualise:type_name -> nexus.controlplane.v1.Visualise
+	44, // 37: nexus.controlplane.v1.Query.where:type_name -> nexus.controlplane.v1.Where
+	46, // 38: nexus.controlplane.v1.Query.order_by:type_name -> nexus.controlplane.v1.Order
+	45, // 39: nexus.controlplane.v1.Query.having:type_name -> nexus.controlplane.v1.Clause
+	76, // 40: nexus.controlplane.v1.Query.created_at:type_name -> google.protobuf.Timestamp
+	76, // 41: nexus.controlplane.v1.Query.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 42: nexus.controlplane.v1.Visualise.op:type_name -> nexus.controlplane.v1.VisualiseOp
 	3,  // 43: nexus.controlplane.v1.Where.op:type_name -> nexus.controlplane.v1.WhereOp
-	44, // 44: nexus.controlplane.v1.Where.clauses:type_name -> nexus.controlplane.v1.Clause
+	45, // 44: nexus.controlplane.v1.Where.clauses:type_name -> nexus.controlplane.v1.Clause
 	4,  // 45: nexus.controlplane.v1.Clause.op:type_name -> nexus.controlplane.v1.CompareOp
 	5,  // 46: nexus.controlplane.v1.Order.order:type_name -> nexus.controlplane.v1.OrderOp
-	74, // 47: nexus.controlplane.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
-	73, // 48: nexus.controlplane.v1.Series.data:type_name -> nexus.controlplane.v1.Series.DataEntry
-	77, // 49: nexus.controlplane.v1.SeriesData.values:type_name -> std.v1.Value
-	49, // 50: nexus.controlplane.v1.Row.row_values:type_name -> nexus.controlplane.v1.RowValues
-	77, // 51: nexus.controlplane.v1.RowValues.values:type_name -> std.v1.Value
-	41, // 52: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
-	41, // 53: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
-	74, // 54: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
-	59, // 55: nexus.controlplane.v1.UpdateQueryExecutionRequest.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	59, // 56: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	41, // 57: nexus.controlplane.v1.ExecQueryRequest.query:type_name -> nexus.controlplane.v1.Query
+	76, // 47: nexus.controlplane.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
+	75, // 48: nexus.controlplane.v1.Series.data:type_name -> nexus.controlplane.v1.Series.DataEntry
+	79, // 49: nexus.controlplane.v1.SeriesData.values:type_name -> std.v1.Value
+	50, // 50: nexus.controlplane.v1.Row.row_values:type_name -> nexus.controlplane.v1.RowValues
+	79, // 51: nexus.controlplane.v1.RowValues.values:type_name -> std.v1.Value
+	42, // 52: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
+	42, // 53: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
+	76, // 54: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
+	60, // 55: nexus.controlplane.v1.UpdateQueryExecutionRequest.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	60, // 56: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	42, // 57: nexus.controlplane.v1.ExecQueryRequest.query:type_name -> nexus.controlplane.v1.Query
 	6,  // 58: nexus.controlplane.v1.QueryExecutionResult.status:type_name -> nexus.controlplane.v1.QueryExecutionStatus
-	60, // 59: nexus.controlplane.v1.QueryExecutionResult.data:type_name -> nexus.controlplane.v1.QueryExecutionData
-	46, // 60: nexus.controlplane.v1.QueryExecutionData.series:type_name -> nexus.controlplane.v1.Series
-	48, // 61: nexus.controlplane.v1.QueryExecutionData.rows:type_name -> nexus.controlplane.v1.Row
-	7,  // 62: nexus.controlplane.v1.AgentMetadata.status:type_name -> nexus.controlplane.v1.AgentStatus
-	74, // 63: nexus.controlplane.v1.AgentMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
-	74, // 64: nexus.controlplane.v1.Heartbeat.timestamp:type_name -> google.protobuf.Timestamp
-	67, // 65: nexus.controlplane.v1.ControlMessageRequest.control:type_name -> nexus.controlplane.v1.ControlMessage
-	67, // 66: nexus.controlplane.v1.ControlMessageResponse.control:type_name -> nexus.controlplane.v1.ControlMessage
-	68, // 67: nexus.controlplane.v1.ControlMessage.telemetry:type_name -> nexus.controlplane.v1.TelemetryControl
-	69, // 68: nexus.controlplane.v1.ControlMessage.devices:type_name -> nexus.controlplane.v1.DeviceControl
-	26, // 69: nexus.controlplane.v1.DeviceControl.devices:type_name -> nexus.controlplane.v1.Device
-	72, // 70: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
-	47, // 71: nexus.controlplane.v1.Series.DataEntry.value:type_name -> nexus.controlplane.v1.SeriesData
-	9,  // 72: nexus.controlplane.v1.ControlPlaneService.CreateDataset:input_type -> nexus.controlplane.v1.CreateDatasetRequest
-	11, // 73: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:input_type -> nexus.controlplane.v1.DeleteDatasetRequest
-	13, // 74: nexus.controlplane.v1.ControlPlaneService.ListDatasets:input_type -> nexus.controlplane.v1.ListDatasetsRequest
-	15, // 75: nexus.controlplane.v1.ControlPlaneService.GetDataset:input_type -> nexus.controlplane.v1.GetDatasetRequest
-	18, // 76: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
-	20, // 77: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
-	22, // 78: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
-	24, // 79: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
-	31, // 80: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
-	33, // 81: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
-	35, // 82: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
-	39, // 83: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
-	37, // 84: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
-	50, // 85: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
-	52, // 86: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:input_type -> nexus.controlplane.v1.SubmitQueryExecutionRequest
-	54, // 87: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:input_type -> nexus.controlplane.v1.UpdateQueryExecutionRequest
-	56, // 88: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
-	70, // 89: nexus.controlplane.v1.ControlPlaneService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
-	61, // 90: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
-	10, // 91: nexus.controlplane.v1.ControlPlaneService.CreateDataset:output_type -> nexus.controlplane.v1.CreateDatasetResponse
-	12, // 92: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:output_type -> nexus.controlplane.v1.DeleteDatasetResponse
-	14, // 93: nexus.controlplane.v1.ControlPlaneService.ListDatasets:output_type -> nexus.controlplane.v1.ListDatasetsResponse
-	16, // 94: nexus.controlplane.v1.ControlPlaneService.GetDataset:output_type -> nexus.controlplane.v1.GetDatasetResponse
-	19, // 95: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
-	21, // 96: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
-	23, // 97: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
-	25, // 98: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
-	32, // 99: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
-	34, // 100: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
-	36, // 101: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
-	40, // 102: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
-	38, // 103: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
-	51, // 104: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
-	53, // 105: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:output_type -> nexus.controlplane.v1.SubmitQueryExecutionResponse
-	55, // 106: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:output_type -> nexus.controlplane.v1.UpdateQueryExecutionResponse
-	57, // 107: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
-	71, // 108: nexus.controlplane.v1.ControlPlaneService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
-	62, // 109: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
-	91, // [91:110] is the sub-list for method output_type
-	72, // [72:91] is the sub-list for method input_type
-	72, // [72:72] is the sub-list for extension type_name
-	72, // [72:72] is the sub-list for extension extendee
-	0,  // [0:72] is the sub-list for field type_name
+	61, // 59: nexus.controlplane.v1.QueryExecutionResult.data:type_name -> nexus.controlplane.v1.QueryExecutionData
+	47, // 60: nexus.controlplane.v1.QueryExecutionData.series:type_name -> nexus.controlplane.v1.Series
+	49, // 61: nexus.controlplane.v1.QueryExecutionData.rows:type_name -> nexus.controlplane.v1.Row
+	7,  // 62: nexus.controlplane.v1.HeartbeatRequest.type:type_name -> nexus.controlplane.v1.ComponentType
+	64, // 63: nexus.controlplane.v1.HeartbeatRequest.collector:type_name -> nexus.controlplane.v1.CollectorMetadata
+	66, // 64: nexus.controlplane.v1.HeartbeatRequest.tap:type_name -> nexus.controlplane.v1.TapMetadata
+	8,  // 65: nexus.controlplane.v1.CollectorMetadata.status:type_name -> nexus.controlplane.v1.ComponentHealthStatus
+	76, // 66: nexus.controlplane.v1.CollectorMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
+	65, // 67: nexus.controlplane.v1.CollectorMetadata.metrics:type_name -> nexus.controlplane.v1.CollectorMetrics
+	76, // 68: nexus.controlplane.v1.CollectorMetrics.collected_at:type_name -> google.protobuf.Timestamp
+	8,  // 69: nexus.controlplane.v1.TapMetadata.status:type_name -> nexus.controlplane.v1.ComponentHealthStatus
+	76, // 70: nexus.controlplane.v1.TapMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
+	69, // 71: nexus.controlplane.v1.ControlMessageRequest.control:type_name -> nexus.controlplane.v1.ControlMessage
+	69, // 72: nexus.controlplane.v1.ControlMessageResponse.control:type_name -> nexus.controlplane.v1.ControlMessage
+	70, // 73: nexus.controlplane.v1.ControlMessage.telemetry:type_name -> nexus.controlplane.v1.TelemetryControl
+	71, // 74: nexus.controlplane.v1.ControlMessage.devices:type_name -> nexus.controlplane.v1.DeviceControl
+	27, // 75: nexus.controlplane.v1.DeviceControl.devices:type_name -> nexus.controlplane.v1.Device
+	74, // 76: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
+	48, // 77: nexus.controlplane.v1.Series.DataEntry.value:type_name -> nexus.controlplane.v1.SeriesData
+	10, // 78: nexus.controlplane.v1.ControlPlaneService.CreateDataset:input_type -> nexus.controlplane.v1.CreateDatasetRequest
+	12, // 79: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:input_type -> nexus.controlplane.v1.DeleteDatasetRequest
+	14, // 80: nexus.controlplane.v1.ControlPlaneService.ListDatasets:input_type -> nexus.controlplane.v1.ListDatasetsRequest
+	16, // 81: nexus.controlplane.v1.ControlPlaneService.GetDataset:input_type -> nexus.controlplane.v1.GetDatasetRequest
+	19, // 82: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
+	21, // 83: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
+	23, // 84: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
+	25, // 85: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
+	32, // 86: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
+	34, // 87: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
+	36, // 88: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
+	40, // 89: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
+	38, // 90: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
+	51, // 91: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
+	53, // 92: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:input_type -> nexus.controlplane.v1.SubmitQueryExecutionRequest
+	55, // 93: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:input_type -> nexus.controlplane.v1.UpdateQueryExecutionRequest
+	57, // 94: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
+	62, // 95: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
+	72, // 96: nexus.controlplane.v1.ControlPlaneService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
+	11, // 97: nexus.controlplane.v1.ControlPlaneService.CreateDataset:output_type -> nexus.controlplane.v1.CreateDatasetResponse
+	13, // 98: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:output_type -> nexus.controlplane.v1.DeleteDatasetResponse
+	15, // 99: nexus.controlplane.v1.ControlPlaneService.ListDatasets:output_type -> nexus.controlplane.v1.ListDatasetsResponse
+	17, // 100: nexus.controlplane.v1.ControlPlaneService.GetDataset:output_type -> nexus.controlplane.v1.GetDatasetResponse
+	20, // 101: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
+	22, // 102: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
+	24, // 103: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
+	26, // 104: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
+	33, // 105: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
+	35, // 106: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
+	37, // 107: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
+	41, // 108: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
+	39, // 109: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
+	52, // 110: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
+	54, // 111: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:output_type -> nexus.controlplane.v1.SubmitQueryExecutionResponse
+	56, // 112: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:output_type -> nexus.controlplane.v1.UpdateQueryExecutionResponse
+	58, // 113: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
+	63, // 114: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
+	73, // 115: nexus.controlplane.v1.ControlPlaneService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
+	97, // [97:116] is the sub-list for method output_type
+	78, // [78:97] is the sub-list for method input_type
+	78, // [78:78] is the sub-list for extension type_name
+	78, // [78:78] is the sub-list for extension extendee
+	0,  // [0:78] is the sub-list for field type_name
 }
 
 func init() { file_nexus_controlplane_v1_control_plane_proto_init() }
@@ -4894,7 +5216,11 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 		(*CreateDeviceRequest_Generic)(nil),
 	}
 	file_nexus_controlplane_v1_control_plane_proto_msgTypes[51].OneofWrappers = []any{}
-	file_nexus_controlplane_v1_control_plane_proto_msgTypes[59].OneofWrappers = []any{
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[53].OneofWrappers = []any{
+		(*HeartbeatRequest_Collector)(nil),
+		(*HeartbeatRequest_Tap)(nil),
+	}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[60].OneofWrappers = []any{
 		(*ControlMessage_Telemetry)(nil),
 		(*ControlMessage_Devices)(nil),
 	}
@@ -4903,8 +5229,8 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_controlplane_v1_control_plane_proto_rawDesc), len(file_nexus_controlplane_v1_control_plane_proto_rawDesc)),
-			NumEnums:      8,
-			NumMessages:   66,
+			NumEnums:      9,
+			NumMessages:   67,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
