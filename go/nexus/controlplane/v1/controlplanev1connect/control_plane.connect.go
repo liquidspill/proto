@@ -87,9 +87,6 @@ const (
 	// ControlPlaneServiceHeartbeatProcedure is the fully-qualified name of the ControlPlaneService's
 	// Heartbeat RPC.
 	ControlPlaneServiceHeartbeatProcedure = "/nexus.controlplane.v1.ControlPlaneService/Heartbeat"
-	// ControlPlaneServiceGetQueryableFieldsProcedure is the fully-qualified name of the
-	// ControlPlaneService's GetQueryableFields RPC.
-	ControlPlaneServiceGetQueryableFieldsProcedure = "/nexus.controlplane.v1.ControlPlaneService/GetQueryableFields"
 )
 
 // ControlPlaneServiceClient is a client for the nexus.controlplane.v1.ControlPlaneService service.
@@ -117,7 +114,6 @@ type ControlPlaneServiceClient interface {
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Handles heartbeats from Fluid collectors and query workers
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
-	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
 
 // NewControlPlaneServiceClient constructs a client for the
@@ -239,12 +235,6 @@ func NewControlPlaneServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(controlPlaneServiceMethods.ByName("Heartbeat")),
 			connect.WithClientOptions(opts...),
 		),
-		getQueryableFields: connect.NewClient[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse](
-			httpClient,
-			baseURL+ControlPlaneServiceGetQueryableFieldsProcedure,
-			connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
@@ -268,7 +258,6 @@ type controlPlaneServiceClient struct {
 	updateQueryExecution *connect.Client[v1.UpdateQueryExecutionRequest, v1.UpdateQueryExecutionResponse]
 	pollQueryExecution   *connect.Client[v1.PollQueryExecutionRequest, v1.PollQueryExecutionResponse]
 	heartbeat            *connect.Client[v1.HeartbeatRequest, v1.HeartbeatResponse]
-	getQueryableFields   *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 }
 
 // CreateDataset calls nexus.controlplane.v1.ControlPlaneService.CreateDataset.
@@ -361,11 +350,6 @@ func (c *controlPlaneServiceClient) Heartbeat(ctx context.Context, req *connect.
 	return c.heartbeat.CallUnary(ctx, req)
 }
 
-// GetQueryableFields calls nexus.controlplane.v1.ControlPlaneService.GetQueryableFields.
-func (c *controlPlaneServiceClient) GetQueryableFields(ctx context.Context, req *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
-	return c.getQueryableFields.CallUnary(ctx, req)
-}
-
 // ControlPlaneServiceHandler is an implementation of the nexus.controlplane.v1.ControlPlaneService
 // service.
 type ControlPlaneServiceHandler interface {
@@ -392,7 +376,6 @@ type ControlPlaneServiceHandler interface {
 	PollQueryExecution(context.Context, *connect.Request[v1.PollQueryExecutionRequest]) (*connect.Response[v1.PollQueryExecutionResponse], error)
 	// Handles heartbeats from Fluid collectors and query workers
 	Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error)
-	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
 
 // NewControlPlaneServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -510,12 +493,6 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 		connect.WithSchema(controlPlaneServiceMethods.ByName("Heartbeat")),
 		connect.WithHandlerOptions(opts...),
 	)
-	controlPlaneServiceGetQueryableFieldsHandler := connect.NewUnaryHandler(
-		ControlPlaneServiceGetQueryableFieldsProcedure,
-		svc.GetQueryableFields,
-		connect.WithSchema(controlPlaneServiceMethods.ByName("GetQueryableFields")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/nexus.controlplane.v1.ControlPlaneService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ControlPlaneServiceCreateDatasetProcedure:
@@ -554,8 +531,6 @@ func NewControlPlaneServiceHandler(svc ControlPlaneServiceHandler, opts ...conne
 			controlPlaneServicePollQueryExecutionHandler.ServeHTTP(w, r)
 		case ControlPlaneServiceHeartbeatProcedure:
 			controlPlaneServiceHeartbeatHandler.ServeHTTP(w, r)
-		case ControlPlaneServiceGetQueryableFieldsProcedure:
-			controlPlaneServiceGetQueryableFieldsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -635,8 +610,4 @@ func (UnimplementedControlPlaneServiceHandler) PollQueryExecution(context.Contex
 
 func (UnimplementedControlPlaneServiceHandler) Heartbeat(context.Context, *connect.Request[v1.HeartbeatRequest]) (*connect.Response[v1.HeartbeatResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.Heartbeat is not implemented"))
-}
-
-func (UnimplementedControlPlaneServiceHandler) GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.ControlPlaneService.GetQueryableFields is not implemented"))
 }

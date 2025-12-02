@@ -50,13 +50,10 @@ service ControlPlaneService {
   // Handles heartbeats from Fluid collectors and query workers
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
 
+
   // Add a stop agent request which can hit a service running in the
   // agent that will cause it to quit
   // Add a update config request
-
-  //===== FRONTEND RPCS =====//
-
-  rpc GetQueryableFields(GetQueryableFieldsRequest) returns (GetQueryableFieldsResponse) {}
 }
 
 //===== DATASETS =====//
@@ -595,18 +592,4 @@ message TelemetryControl {
 // Device control messages
 message DeviceControl {
   repeated Device devices = 1;
-}
-
-//===== FRONTEND =====//
-
-message GetQueryableFieldsRequest {
-  string dataset_pid = 1;
-}
-
-message GetQueryableFieldsResponse {
-  repeated Field fields = 1;
-}
-
-message Field {
-  string name = 1;
 }

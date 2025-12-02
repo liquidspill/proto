@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package nexus.controlplane.v1;
+
+import "google/protobuf/timestamp.proto";
+import "nexus/controlplane/v1/control_plane.proto";
+
+option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1";
+
+
+// The frontend service handles RPCs specifically that the frontend uses. They still
+// interact with the control plane but are split out since they logically serve a
+// different purpose
+service FrontendService {
+  // Get metrics from a collector
+  rpc GetCollectorMetrics(GetCollectorMetricsRequest) returns (GetCollectorMetricsResponse) {}
+
+  // Get a list of queryable fields
+  rpc GetQueryableFields(GetQueryableFieldsRequest) returns (GetQueryableFieldsResponse) {}
+}
+
+message GetCollectorMetricsRequest {
+  string id = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+}
+
+message GetCollectorMetricsResponse {
+  string id = 1;
+  repeated CollectorMetrics metrics = 2;
+}
+
+message GetQueryableFieldsRequest {
+  string dataset_pid = 1;
+}
+
+message GetQueryableFieldsResponse {
+  repeated Field fields = 1;
+}
+
+message Field {
+  string name = 1;
+}
