@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/controlplane/v1/frontend.proto.
  */
 export const file_nexus_controlplane_v1_frontend: GenFile = /*@__PURE__*/
-  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKGAQoaR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QSCgoCaWQYASABKAkSLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wImMKG0dldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZRIKCgJpZBgBIAEoCRI4CgdtZXRyaWNzGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3Rvck1ldHJpY3MiMAoZR2V0UXVlcnlhYmxlRmllbGRzUmVxdWVzdBITCgtkYXRhc2V0X3BpZBgBIAEoCSJKChpHZXRRdWVyeWFibGVGaWVsZHNSZXNwb25zZRIsCgZmaWVsZHMYASADKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuRmllbGQiFQoFRmllbGQSDAoEbmFtZRgBIAEoCTKOAgoPRnJvbnRlbmRTZXJ2aWNlEn4KE0dldENvbGxlY3Rvck1ldHJpY3MSMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QaMi5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1Jlc3BvbnNlIgASewoSR2V0UXVlcnlhYmxlRmllbGRzEjAubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QaMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2UiAEJGWkRnaXRodWIuY29tL2xpcXVpZHNwaWxsL3Byb3RvL2dvL25leHVzL2NvbnRyb2xwbGFuZS92MTtjb250cm9scGxhbmV2MWIGcHJvdG8z", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
+  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKGAQoaR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QSCgoCaWQYASABKAkSLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wImMKG0dldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZRIKCgJpZBgBIAEoCRI4CgdtZXRyaWNzGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3Rvck1ldHJpY3MilgIKFUdldFRlYW1TdW1tYXJ5UmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCRIfChdhY3RpdmVfY29sbGVjdG9yc190b3RhbBgCIAEoBRIeChZzdGFsZV9jb2xsZWN0b3JzX3RvdGFsGAMgASgFEiUKHXVucmVzcG9uc2l2ZV9jb2xsZWN0b3JzX3RvdGFsGAQgASgFEh4KFmZsb3dzX3Blcl9zZWNvbmRfdG90YWwYBSABKAUSHQoVYXZnX3MzX3B1dF9sYXRlbmN5X21zGAYgASgBEiEKGWF2Z19wOTlfczNfcHV0X2xhdGVuY3lfbXMYByABKAESIQoZbWF4X3A5OV9zM19wdXRfbGF0ZW5jeV9tcxgIIAEoASIqChZHZXRUZWFtU3VtbWFyeVJlc3BvbnNlEhAKCHRlYW1fcGlkGAEgASgJIjAKGUdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QSEwoLZGF0YXNldF9waWQYASABKAkiSgoaR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2USLAoGZmllbGRzGAEgAygLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkZpZWxkIhUKBUZpZWxkEgwKBG5hbWUYASABKAky/wIKD0Zyb250ZW5kU2VydmljZRJ+ChNHZXRDb2xsZWN0b3JNZXRyaWNzEjEubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENvbGxlY3Rvck1ldHJpY3NSZXF1ZXN0GjIubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZSIAEm8KDkdldFRlYW1TdW1tYXJ5EiwubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFRlYW1TdW1tYXJ5UmVxdWVzdBotLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRUZWFtU3VtbWFyeVJlc3BvbnNlIgASewoSR2V0UXVlcnlhYmxlRmllbGRzEjAubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QaMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2UiAEJGWkRnaXRodWIuY29tL2xpcXVpZHNwaWxsL3Byb3RvL2dvL25leHVzL2NvbnRyb2xwbGFuZS92MTtjb250cm9scGxhbmV2MWIGcHJvdG8z", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
 
 /**
  * @generated from message nexus.controlplane.v1.GetCollectorMetricsRequest
@@ -66,6 +66,86 @@ export const GetCollectorMetricsResponseSchema: GenMessage<GetCollectorMetricsRe
   messageDesc(file_nexus_controlplane_v1_frontend, 1);
 
 /**
+ * @generated from message nexus.controlplane.v1.GetTeamSummaryRequest
+ */
+export type GetTeamSummaryRequest = Message<"nexus.controlplane.v1.GetTeamSummaryRequest"> & {
+  /**
+   * @generated from field: string team_pid = 1;
+   */
+  teamPid: string;
+
+  /**
+   * Collector statistics
+   *
+   * @generated from field: int32 active_collectors_total = 2;
+   */
+  activeCollectorsTotal: number;
+
+  /**
+   * @generated from field: int32 stale_collectors_total = 3;
+   */
+  staleCollectorsTotal: number;
+
+  /**
+   * @generated from field: int32 unresponsive_collectors_total = 4;
+   */
+  unresponsiveCollectorsTotal: number;
+
+  /**
+   * @generated from field: int32 flows_per_second_total = 5;
+   */
+  flowsPerSecondTotal: number;
+
+  /**
+   * Weighted average of avg_s3_put_latency_ms across collectors.
+   * Formula: sum(avg_s3_put_latency_ms * s3_put_requests_total) / sum(s3_put_requests_total)
+   *
+   * @generated from field: double avg_s3_put_latency_ms = 6;
+   */
+  avgS3PutLatencyMs: number;
+
+  /**
+   * Average of p99_s3_put_latency_ms across collectors.
+   * Formula: sum(p99_s3_put_latency_ms) / count(collectors)
+   *
+   * @generated from field: double avg_p99_s3_put_latency_ms = 7;
+   */
+  avgP99S3PutLatencyMs: number;
+
+  /**
+   * Maximum p99_s3_put_latency_ms across collectors.
+   * Formula: max(p99_s3_put_latency_ms)
+   *
+   * @generated from field: double max_p99_s3_put_latency_ms = 8;
+   */
+  maxP99S3PutLatencyMs: number;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.GetTeamSummaryRequest.
+ * Use `create(GetTeamSummaryRequestSchema)` to create a new message.
+ */
+export const GetTeamSummaryRequestSchema: GenMessage<GetTeamSummaryRequest> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 2);
+
+/**
+ * @generated from message nexus.controlplane.v1.GetTeamSummaryResponse
+ */
+export type GetTeamSummaryResponse = Message<"nexus.controlplane.v1.GetTeamSummaryResponse"> & {
+  /**
+   * @generated from field: string team_pid = 1;
+   */
+  teamPid: string;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.GetTeamSummaryResponse.
+ * Use `create(GetTeamSummaryResponseSchema)` to create a new message.
+ */
+export const GetTeamSummaryResponseSchema: GenMessage<GetTeamSummaryResponse> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 3);
+
+/**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsRequest
  */
 export type GetQueryableFieldsRequest = Message<"nexus.controlplane.v1.GetQueryableFieldsRequest"> & {
@@ -80,7 +160,7 @@ export type GetQueryableFieldsRequest = Message<"nexus.controlplane.v1.GetQuerya
  * Use `create(GetQueryableFieldsRequestSchema)` to create a new message.
  */
 export const GetQueryableFieldsRequestSchema: GenMessage<GetQueryableFieldsRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 2);
+  messageDesc(file_nexus_controlplane_v1_frontend, 4);
 
 /**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsResponse
@@ -97,7 +177,7 @@ export type GetQueryableFieldsResponse = Message<"nexus.controlplane.v1.GetQuery
  * Use `create(GetQueryableFieldsResponseSchema)` to create a new message.
  */
 export const GetQueryableFieldsResponseSchema: GenMessage<GetQueryableFieldsResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 3);
+  messageDesc(file_nexus_controlplane_v1_frontend, 5);
 
 /**
  * @generated from message nexus.controlplane.v1.Field
@@ -114,7 +194,7 @@ export type Field = Message<"nexus.controlplane.v1.Field"> & {
  * Use `create(FieldSchema)` to create a new message.
  */
 export const FieldSchema: GenMessage<Field> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 4);
+  messageDesc(file_nexus_controlplane_v1_frontend, 6);
 
 /**
  * The frontend service handles RPCs specifically that the frontend uses. They still
@@ -125,7 +205,7 @@ export const FieldSchema: GenMessage<Field> = /*@__PURE__*/
  */
 export const FrontendService: GenService<{
   /**
-   * Get metrics from a collector
+   * Get metrics for a collector
    *
    * @generated from rpc nexus.controlplane.v1.FrontendService.GetCollectorMetrics
    */
@@ -133,6 +213,16 @@ export const FrontendService: GenService<{
     methodKind: "unary";
     input: typeof GetCollectorMetricsRequestSchema;
     output: typeof GetCollectorMetricsResponseSchema;
+  },
+  /**
+   * Get summary stats for a team
+   *
+   * @generated from rpc nexus.controlplane.v1.FrontendService.GetTeamSummary
+   */
+  getTeamSummary: {
+    methodKind: "unary";
+    input: typeof GetTeamSummaryRequestSchema;
+    output: typeof GetTeamSummaryResponseSchema;
   },
   /**
    * Get a list of queryable fields

@@ -36,6 +36,9 @@ const (
 	// FrontendServiceGetCollectorMetricsProcedure is the fully-qualified name of the FrontendService's
 	// GetCollectorMetrics RPC.
 	FrontendServiceGetCollectorMetricsProcedure = "/nexus.controlplane.v1.FrontendService/GetCollectorMetrics"
+	// FrontendServiceGetTeamSummaryProcedure is the fully-qualified name of the FrontendService's
+	// GetTeamSummary RPC.
+	FrontendServiceGetTeamSummaryProcedure = "/nexus.controlplane.v1.FrontendService/GetTeamSummary"
 	// FrontendServiceGetQueryableFieldsProcedure is the fully-qualified name of the FrontendService's
 	// GetQueryableFields RPC.
 	FrontendServiceGetQueryableFieldsProcedure = "/nexus.controlplane.v1.FrontendService/GetQueryableFields"
@@ -43,8 +46,10 @@ const (
 
 // FrontendServiceClient is a client for the nexus.controlplane.v1.FrontendService service.
 type FrontendServiceClient interface {
-	// Get metrics from a collector
+	// Get metrics for a collector
 	GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error)
+	// Get summary stats for a team
+	GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error)
 	// Get a list of queryable fields
 	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
@@ -66,6 +71,12 @@ func NewFrontendServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			connect.WithSchema(frontendServiceMethods.ByName("GetCollectorMetrics")),
 			connect.WithClientOptions(opts...),
 		),
+		getTeamSummary: connect.NewClient[v1.GetTeamSummaryRequest, v1.GetTeamSummaryResponse](
+			httpClient,
+			baseURL+FrontendServiceGetTeamSummaryProcedure,
+			connect.WithSchema(frontendServiceMethods.ByName("GetTeamSummary")),
+			connect.WithClientOptions(opts...),
+		),
 		getQueryableFields: connect.NewClient[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse](
 			httpClient,
 			baseURL+FrontendServiceGetQueryableFieldsProcedure,
@@ -78,12 +89,18 @@ func NewFrontendServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 // frontendServiceClient implements FrontendServiceClient.
 type frontendServiceClient struct {
 	getCollectorMetrics *connect.Client[v1.GetCollectorMetricsRequest, v1.GetCollectorMetricsResponse]
+	getTeamSummary      *connect.Client[v1.GetTeamSummaryRequest, v1.GetTeamSummaryResponse]
 	getQueryableFields  *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 }
 
 // GetCollectorMetrics calls nexus.controlplane.v1.FrontendService.GetCollectorMetrics.
 func (c *frontendServiceClient) GetCollectorMetrics(ctx context.Context, req *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error) {
 	return c.getCollectorMetrics.CallUnary(ctx, req)
+}
+
+// GetTeamSummary calls nexus.controlplane.v1.FrontendService.GetTeamSummary.
+func (c *frontendServiceClient) GetTeamSummary(ctx context.Context, req *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error) {
+	return c.getTeamSummary.CallUnary(ctx, req)
 }
 
 // GetQueryableFields calls nexus.controlplane.v1.FrontendService.GetQueryableFields.
@@ -93,8 +110,10 @@ func (c *frontendServiceClient) GetQueryableFields(ctx context.Context, req *con
 
 // FrontendServiceHandler is an implementation of the nexus.controlplane.v1.FrontendService service.
 type FrontendServiceHandler interface {
-	// Get metrics from a collector
+	// Get metrics for a collector
 	GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error)
+	// Get summary stats for a team
+	GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error)
 	// Get a list of queryable fields
 	GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error)
 }
@@ -112,6 +131,12 @@ func NewFrontendServiceHandler(svc FrontendServiceHandler, opts ...connect.Handl
 		connect.WithSchema(frontendServiceMethods.ByName("GetCollectorMetrics")),
 		connect.WithHandlerOptions(opts...),
 	)
+	frontendServiceGetTeamSummaryHandler := connect.NewUnaryHandler(
+		FrontendServiceGetTeamSummaryProcedure,
+		svc.GetTeamSummary,
+		connect.WithSchema(frontendServiceMethods.ByName("GetTeamSummary")),
+		connect.WithHandlerOptions(opts...),
+	)
 	frontendServiceGetQueryableFieldsHandler := connect.NewUnaryHandler(
 		FrontendServiceGetQueryableFieldsProcedure,
 		svc.GetQueryableFields,
@@ -122,6 +147,8 @@ func NewFrontendServiceHandler(svc FrontendServiceHandler, opts ...connect.Handl
 		switch r.URL.Path {
 		case FrontendServiceGetCollectorMetricsProcedure:
 			frontendServiceGetCollectorMetricsHandler.ServeHTTP(w, r)
+		case FrontendServiceGetTeamSummaryProcedure:
+			frontendServiceGetTeamSummaryHandler.ServeHTTP(w, r)
 		case FrontendServiceGetQueryableFieldsProcedure:
 			frontendServiceGetQueryableFieldsHandler.ServeHTTP(w, r)
 		default:
@@ -135,6 +162,10 @@ type UnimplementedFrontendServiceHandler struct{}
 
 func (UnimplementedFrontendServiceHandler) GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.FrontendService.GetCollectorMetrics is not implemented"))
+}
+
+func (UnimplementedFrontendServiceHandler) GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.FrontendService.GetTeamSummary is not implemented"))
 }
 
 func (UnimplementedFrontendServiceHandler) GetQueryableFields(context.Context, *connect.Request[v1.GetQueryableFieldsRequest]) (*connect.Response[v1.GetQueryableFieldsResponse], error) {

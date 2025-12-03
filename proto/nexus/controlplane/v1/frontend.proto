@@ -12,8 +12,11 @@ option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;contr
 // interact with the control plane but are split out since they logically serve a
 // different purpose
 service FrontendService {
-  // Get metrics from a collector
+  // Get metrics for a collector
   rpc GetCollectorMetrics(GetCollectorMetricsRequest) returns (GetCollectorMetricsResponse) {}
+
+  // Get summary stats for a team
+  rpc GetTeamSummary(GetTeamSummaryRequest) returns (GetTeamSummaryResponse) {}
 
   // Get a list of queryable fields
   rpc GetQueryableFields(GetQueryableFieldsRequest) returns (GetQueryableFieldsResponse) {}
@@ -28,6 +31,30 @@ message GetCollectorMetricsRequest {
 message GetCollectorMetricsResponse {
   string id = 1;
   repeated CollectorMetrics metrics = 2;
+}
+
+message GetTeamSummaryRequest {
+  string team_pid = 1;
+
+  // Collector statistics
+  int32 active_collectors_total = 2;
+  int32 stale_collectors_total = 3;
+  int32 unresponsive_collectors_total = 4;
+  int32 flows_per_second_total = 5;
+
+  // Weighted average of avg_s3_put_latency_ms across collectors.
+  // Formula: sum(avg_s3_put_latency_ms * s3_put_requests_total) / sum(s3_put_requests_total)
+  double avg_s3_put_latency_ms = 6;
+  // Average of p99_s3_put_latency_ms across collectors.
+  // Formula: sum(p99_s3_put_latency_ms) / count(collectors)
+  double avg_p99_s3_put_latency_ms = 7;
+  // Maximum p99_s3_put_latency_ms across collectors.
+  // Formula: max(p99_s3_put_latency_ms)
+  double max_p99_s3_put_latency_ms = 8;
+}
+
+message GetTeamSummaryResponse {
+  string team_pid = 1;
 }
 
 message GetQueryableFieldsRequest {
