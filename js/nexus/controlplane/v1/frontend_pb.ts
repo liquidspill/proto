@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/controlplane/v1/frontend.proto.
  */
 export const file_nexus_controlplane_v1_frontend: GenFile = /*@__PURE__*/
-  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKGAQoaR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QSCgoCaWQYASABKAkSLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wImMKG0dldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZRIKCgJpZBgBIAEoCRI4CgdtZXRyaWNzGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3Rvck1ldHJpY3MilgIKFUdldFRlYW1TdW1tYXJ5UmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCRIfChdhY3RpdmVfY29sbGVjdG9yc190b3RhbBgCIAEoBRIeChZzdGFsZV9jb2xsZWN0b3JzX3RvdGFsGAMgASgFEiUKHXVucmVzcG9uc2l2ZV9jb2xsZWN0b3JzX3RvdGFsGAQgASgFEh4KFmZsb3dzX3Blcl9zZWNvbmRfdG90YWwYBSABKAUSHQoVYXZnX3MzX3B1dF9sYXRlbmN5X21zGAYgASgBEiEKGWF2Z19wOTlfczNfcHV0X2xhdGVuY3lfbXMYByABKAESIQoZbWF4X3A5OV9zM19wdXRfbGF0ZW5jeV9tcxgIIAEoASIqChZHZXRUZWFtU3VtbWFyeVJlc3BvbnNlEhAKCHRlYW1fcGlkGAEgASgJIjAKGUdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QSEwoLZGF0YXNldF9waWQYASABKAkiSgoaR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2USLAoGZmllbGRzGAEgAygLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkZpZWxkIhUKBUZpZWxkEgwKBG5hbWUYASABKAky/wIKD0Zyb250ZW5kU2VydmljZRJ+ChNHZXRDb2xsZWN0b3JNZXRyaWNzEjEubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENvbGxlY3Rvck1ldHJpY3NSZXF1ZXN0GjIubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZSIAEm8KDkdldFRlYW1TdW1tYXJ5EiwubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFRlYW1TdW1tYXJ5UmVxdWVzdBotLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRUZWFtU3VtbWFyeVJlc3BvbnNlIgASewoSR2V0UXVlcnlhYmxlRmllbGRzEjAubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QaMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2UiAEJGWkRnaXRodWIuY29tL2xpcXVpZHNwaWxsL3Byb3RvL2dvL25leHVzL2NvbnRyb2xwbGFuZS92MTtjb250cm9scGxhbmV2MWIGcHJvdG8z", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
+  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKGAQoaR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QSCgoCaWQYASABKAkSLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wImMKG0dldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZRIKCgJpZBgBIAEoCRI4CgdtZXRyaWNzGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3Rvck1ldHJpY3MiKQoVR2V0VGVhbVN1bW1hcnlSZXF1ZXN0EhAKCHRlYW1fcGlkGAEgASgJInkKFkdldFRlYW1TdW1tYXJ5UmVzcG9uc2USEAoIdGVhbV9waWQYASABKAkSTQoXY29sbGVjdG9yX3N1bW1hcnlfc3RhdHMYAiABKAsyLC5uZXh1cy5jb250cm9scGxhbmUudjEuQ29sbGVjdG9yU3VtbWFyeVN0YXRzIoQCChVDb2xsZWN0b3JTdW1tYXJ5U3RhdHMSHwoXYWN0aXZlX2NvbGxlY3RvcnNfdG90YWwYAiABKAUSHgoWc3RhbGVfY29sbGVjdG9yc190b3RhbBgDIAEoBRIlCh11bnJlc3BvbnNpdmVfY29sbGVjdG9yc190b3RhbBgEIAEoBRIeChZmbG93c19wZXJfc2Vjb25kX3RvdGFsGAUgASgFEh0KFWF2Z19zM19wdXRfbGF0ZW5jeV9tcxgGIAEoARIhChlhdmdfcDk5X3MzX3B1dF9sYXRlbmN5X21zGAcgASgBEiEKGW1heF9wOTlfczNfcHV0X2xhdGVuY3lfbXMYCCABKAEiMAoZR2V0UXVlcnlhYmxlRmllbGRzUmVxdWVzdBITCgtkYXRhc2V0X3BpZBgBIAEoCSJKChpHZXRRdWVyeWFibGVGaWVsZHNSZXNwb25zZRIsCgZmaWVsZHMYASADKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuRmllbGQiFQoFRmllbGQSDAoEbmFtZRgBIAEoCTL/AgoPRnJvbnRlbmRTZXJ2aWNlEn4KE0dldENvbGxlY3Rvck1ldHJpY3MSMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QaMi5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1Jlc3BvbnNlIgASbwoOR2V0VGVhbVN1bW1hcnkSLC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0VGVhbVN1bW1hcnlSZXF1ZXN0Gi0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFRlYW1TdW1tYXJ5UmVzcG9uc2UiABJ7ChJHZXRRdWVyeWFibGVGaWVsZHMSMC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0UXVlcnlhYmxlRmllbGRzUmVxdWVzdBoxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRRdWVyeWFibGVGaWVsZHNSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
 
 /**
  * @generated from message nexus.controlplane.v1.GetCollectorMetricsRequest
@@ -73,10 +73,42 @@ export type GetTeamSummaryRequest = Message<"nexus.controlplane.v1.GetTeamSummar
    * @generated from field: string team_pid = 1;
    */
   teamPid: string;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.GetTeamSummaryRequest.
+ * Use `create(GetTeamSummaryRequestSchema)` to create a new message.
+ */
+export const GetTeamSummaryRequestSchema: GenMessage<GetTeamSummaryRequest> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 2);
+
+/**
+ * @generated from message nexus.controlplane.v1.GetTeamSummaryResponse
+ */
+export type GetTeamSummaryResponse = Message<"nexus.controlplane.v1.GetTeamSummaryResponse"> & {
+  /**
+   * @generated from field: string team_pid = 1;
+   */
+  teamPid: string;
 
   /**
-   * Collector statistics
-   *
+   * @generated from field: nexus.controlplane.v1.CollectorSummaryStats collector_summary_stats = 2;
+   */
+  collectorSummaryStats?: CollectorSummaryStats;
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.GetTeamSummaryResponse.
+ * Use `create(GetTeamSummaryResponseSchema)` to create a new message.
+ */
+export const GetTeamSummaryResponseSchema: GenMessage<GetTeamSummaryResponse> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 3);
+
+/**
+ * @generated from message nexus.controlplane.v1.CollectorSummaryStats
+ */
+export type CollectorSummaryStats = Message<"nexus.controlplane.v1.CollectorSummaryStats"> & {
+  /**
    * @generated from field: int32 active_collectors_total = 2;
    */
   activeCollectorsTotal: number;
@@ -122,28 +154,11 @@ export type GetTeamSummaryRequest = Message<"nexus.controlplane.v1.GetTeamSummar
 };
 
 /**
- * Describes the message nexus.controlplane.v1.GetTeamSummaryRequest.
- * Use `create(GetTeamSummaryRequestSchema)` to create a new message.
+ * Describes the message nexus.controlplane.v1.CollectorSummaryStats.
+ * Use `create(CollectorSummaryStatsSchema)` to create a new message.
  */
-export const GetTeamSummaryRequestSchema: GenMessage<GetTeamSummaryRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 2);
-
-/**
- * @generated from message nexus.controlplane.v1.GetTeamSummaryResponse
- */
-export type GetTeamSummaryResponse = Message<"nexus.controlplane.v1.GetTeamSummaryResponse"> & {
-  /**
-   * @generated from field: string team_pid = 1;
-   */
-  teamPid: string;
-};
-
-/**
- * Describes the message nexus.controlplane.v1.GetTeamSummaryResponse.
- * Use `create(GetTeamSummaryResponseSchema)` to create a new message.
- */
-export const GetTeamSummaryResponseSchema: GenMessage<GetTeamSummaryResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 3);
+export const CollectorSummaryStatsSchema: GenMessage<CollectorSummaryStats> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 4);
 
 /**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsRequest
@@ -160,7 +175,7 @@ export type GetQueryableFieldsRequest = Message<"nexus.controlplane.v1.GetQuerya
  * Use `create(GetQueryableFieldsRequestSchema)` to create a new message.
  */
 export const GetQueryableFieldsRequestSchema: GenMessage<GetQueryableFieldsRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 4);
+  messageDesc(file_nexus_controlplane_v1_frontend, 5);
 
 /**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsResponse
@@ -177,7 +192,7 @@ export type GetQueryableFieldsResponse = Message<"nexus.controlplane.v1.GetQuery
  * Use `create(GetQueryableFieldsResponseSchema)` to create a new message.
  */
 export const GetQueryableFieldsResponseSchema: GenMessage<GetQueryableFieldsResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 5);
+  messageDesc(file_nexus_controlplane_v1_frontend, 6);
 
 /**
  * @generated from message nexus.controlplane.v1.Field
@@ -194,7 +209,7 @@ export type Field = Message<"nexus.controlplane.v1.Field"> & {
  * Use `create(FieldSchema)` to create a new message.
  */
 export const FieldSchema: GenMessage<Field> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 6);
+  messageDesc(file_nexus_controlplane_v1_frontend, 7);
 
 /**
  * The frontend service handles RPCs specifically that the frontend uses. They still

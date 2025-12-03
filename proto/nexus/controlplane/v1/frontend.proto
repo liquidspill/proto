@@ -35,8 +35,14 @@ message GetCollectorMetricsResponse {
 
 message GetTeamSummaryRequest {
   string team_pid = 1;
+}
 
-  // Collector statistics
+message GetTeamSummaryResponse {
+  string team_pid = 1;
+  CollectorSummaryStats collector_summary_stats = 2;
+}
+
+message CollectorSummaryStats {
   int32 active_collectors_total = 2;
   int32 stale_collectors_total = 3;
   int32 unresponsive_collectors_total = 4;
@@ -51,10 +57,6 @@ message GetTeamSummaryRequest {
   // Maximum p99_s3_put_latency_ms across collectors.
   // Formula: max(p99_s3_put_latency_ms)
   double max_p99_s3_put_latency_ms = 8;
-}
-
-message GetTeamSummaryResponse {
-  string team_pid = 1;
 }
 
 message GetQueryableFieldsRequest {

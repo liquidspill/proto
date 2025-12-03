@@ -135,24 +135,10 @@ func (x *GetCollectorMetricsResponse) GetMetrics() []*CollectorMetrics {
 }
 
 type GetTeamSummaryRequest struct {
-	state   protoimpl.MessageState `protogen:"open.v1"`
-	TeamPid string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
-	// Collector statistics
-	ActiveCollectorsTotal       int32 `protobuf:"varint,2,opt,name=active_collectors_total,json=activeCollectorsTotal,proto3" json:"active_collectors_total,omitempty"`
-	StaleCollectorsTotal        int32 `protobuf:"varint,3,opt,name=stale_collectors_total,json=staleCollectorsTotal,proto3" json:"stale_collectors_total,omitempty"`
-	UnresponsiveCollectorsTotal int32 `protobuf:"varint,4,opt,name=unresponsive_collectors_total,json=unresponsiveCollectorsTotal,proto3" json:"unresponsive_collectors_total,omitempty"`
-	FlowsPerSecondTotal         int32 `protobuf:"varint,5,opt,name=flows_per_second_total,json=flowsPerSecondTotal,proto3" json:"flows_per_second_total,omitempty"`
-	// Weighted average of avg_s3_put_latency_ms across collectors.
-	// Formula: sum(avg_s3_put_latency_ms * s3_put_requests_total) / sum(s3_put_requests_total)
-	AvgS3PutLatencyMs float64 `protobuf:"fixed64,6,opt,name=avg_s3_put_latency_ms,json=avgS3PutLatencyMs,proto3" json:"avg_s3_put_latency_ms,omitempty"`
-	// Average of p99_s3_put_latency_ms across collectors.
-	// Formula: sum(p99_s3_put_latency_ms) / count(collectors)
-	AvgP99S3PutLatencyMs float64 `protobuf:"fixed64,7,opt,name=avg_p99_s3_put_latency_ms,json=avgP99S3PutLatencyMs,proto3" json:"avg_p99_s3_put_latency_ms,omitempty"`
-	// Maximum p99_s3_put_latency_ms across collectors.
-	// Formula: max(p99_s3_put_latency_ms)
-	MaxP99S3PutLatencyMs float64 `protobuf:"fixed64,8,opt,name=max_p99_s3_put_latency_ms,json=maxP99S3PutLatencyMs,proto3" json:"max_p99_s3_put_latency_ms,omitempty"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetTeamSummaryRequest) Reset() {
@@ -192,60 +178,12 @@ func (x *GetTeamSummaryRequest) GetTeamPid() string {
 	return ""
 }
 
-func (x *GetTeamSummaryRequest) GetActiveCollectorsTotal() int32 {
-	if x != nil {
-		return x.ActiveCollectorsTotal
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetStaleCollectorsTotal() int32 {
-	if x != nil {
-		return x.StaleCollectorsTotal
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetUnresponsiveCollectorsTotal() int32 {
-	if x != nil {
-		return x.UnresponsiveCollectorsTotal
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetFlowsPerSecondTotal() int32 {
-	if x != nil {
-		return x.FlowsPerSecondTotal
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetAvgS3PutLatencyMs() float64 {
-	if x != nil {
-		return x.AvgS3PutLatencyMs
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetAvgP99S3PutLatencyMs() float64 {
-	if x != nil {
-		return x.AvgP99S3PutLatencyMs
-	}
-	return 0
-}
-
-func (x *GetTeamSummaryRequest) GetMaxP99S3PutLatencyMs() float64 {
-	if x != nil {
-		return x.MaxP99S3PutLatencyMs
-	}
-	return 0
-}
-
 type GetTeamSummaryResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	TeamPid               string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
+	CollectorSummaryStats *CollectorSummaryStats `protobuf:"bytes,2,opt,name=collector_summary_stats,json=collectorSummaryStats,proto3" json:"collector_summary_stats,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *GetTeamSummaryResponse) Reset() {
@@ -285,6 +223,111 @@ func (x *GetTeamSummaryResponse) GetTeamPid() string {
 	return ""
 }
 
+func (x *GetTeamSummaryResponse) GetCollectorSummaryStats() *CollectorSummaryStats {
+	if x != nil {
+		return x.CollectorSummaryStats
+	}
+	return nil
+}
+
+type CollectorSummaryStats struct {
+	state                       protoimpl.MessageState `protogen:"open.v1"`
+	ActiveCollectorsTotal       int32                  `protobuf:"varint,2,opt,name=active_collectors_total,json=activeCollectorsTotal,proto3" json:"active_collectors_total,omitempty"`
+	StaleCollectorsTotal        int32                  `protobuf:"varint,3,opt,name=stale_collectors_total,json=staleCollectorsTotal,proto3" json:"stale_collectors_total,omitempty"`
+	UnresponsiveCollectorsTotal int32                  `protobuf:"varint,4,opt,name=unresponsive_collectors_total,json=unresponsiveCollectorsTotal,proto3" json:"unresponsive_collectors_total,omitempty"`
+	FlowsPerSecondTotal         int32                  `protobuf:"varint,5,opt,name=flows_per_second_total,json=flowsPerSecondTotal,proto3" json:"flows_per_second_total,omitempty"`
+	// Weighted average of avg_s3_put_latency_ms across collectors.
+	// Formula: sum(avg_s3_put_latency_ms * s3_put_requests_total) / sum(s3_put_requests_total)
+	AvgS3PutLatencyMs float64 `protobuf:"fixed64,6,opt,name=avg_s3_put_latency_ms,json=avgS3PutLatencyMs,proto3" json:"avg_s3_put_latency_ms,omitempty"`
+	// Average of p99_s3_put_latency_ms across collectors.
+	// Formula: sum(p99_s3_put_latency_ms) / count(collectors)
+	AvgP99S3PutLatencyMs float64 `protobuf:"fixed64,7,opt,name=avg_p99_s3_put_latency_ms,json=avgP99S3PutLatencyMs,proto3" json:"avg_p99_s3_put_latency_ms,omitempty"`
+	// Maximum p99_s3_put_latency_ms across collectors.
+	// Formula: max(p99_s3_put_latency_ms)
+	MaxP99S3PutLatencyMs float64 `protobuf:"fixed64,8,opt,name=max_p99_s3_put_latency_ms,json=maxP99S3PutLatencyMs,proto3" json:"max_p99_s3_put_latency_ms,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *CollectorSummaryStats) Reset() {
+	*x = CollectorSummaryStats{}
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CollectorSummaryStats) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CollectorSummaryStats) ProtoMessage() {}
+
+func (x *CollectorSummaryStats) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CollectorSummaryStats.ProtoReflect.Descriptor instead.
+func (*CollectorSummaryStats) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CollectorSummaryStats) GetActiveCollectorsTotal() int32 {
+	if x != nil {
+		return x.ActiveCollectorsTotal
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetStaleCollectorsTotal() int32 {
+	if x != nil {
+		return x.StaleCollectorsTotal
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetUnresponsiveCollectorsTotal() int32 {
+	if x != nil {
+		return x.UnresponsiveCollectorsTotal
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetFlowsPerSecondTotal() int32 {
+	if x != nil {
+		return x.FlowsPerSecondTotal
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetAvgS3PutLatencyMs() float64 {
+	if x != nil {
+		return x.AvgS3PutLatencyMs
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetAvgP99S3PutLatencyMs() float64 {
+	if x != nil {
+		return x.AvgP99S3PutLatencyMs
+	}
+	return 0
+}
+
+func (x *CollectorSummaryStats) GetMaxP99S3PutLatencyMs() float64 {
+	if x != nil {
+		return x.MaxP99S3PutLatencyMs
+	}
+	return 0
+}
+
 type GetQueryableFieldsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	DatasetPid    string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
@@ -294,7 +337,7 @@ type GetQueryableFieldsRequest struct {
 
 func (x *GetQueryableFieldsRequest) Reset() {
 	*x = GetQueryableFieldsRequest{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -306,7 +349,7 @@ func (x *GetQueryableFieldsRequest) String() string {
 func (*GetQueryableFieldsRequest) ProtoMessage() {}
 
 func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -319,7 +362,7 @@ func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsRequest.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{4}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetQueryableFieldsRequest) GetDatasetPid() string {
@@ -338,7 +381,7 @@ type GetQueryableFieldsResponse struct {
 
 func (x *GetQueryableFieldsResponse) Reset() {
 	*x = GetQueryableFieldsResponse{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +393,7 @@ func (x *GetQueryableFieldsResponse) String() string {
 func (*GetQueryableFieldsResponse) ProtoMessage() {}
 
 func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +406,7 @@ func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsResponse.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{5}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetQueryableFieldsResponse) GetFields() []*Field {
@@ -382,7 +425,7 @@ type Field struct {
 
 func (x *Field) Reset() {
 	*x = Field{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -394,7 +437,7 @@ func (x *Field) String() string {
 func (*Field) ProtoMessage() {}
 
 func (x *Field) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -407,7 +450,7 @@ func (x *Field) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Field.ProtoReflect.Descriptor instead.
 func (*Field) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{6}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Field) GetName() string {
@@ -429,18 +472,20 @@ const file_nexus_controlplane_v1_frontend_proto_rawDesc = "" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"p\n" +
 	"\x1bGetCollectorMetricsResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12A\n" +
-	"\ametrics\x18\x02 \x03(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"\xbd\x03\n" +
+	"\ametrics\x18\x02 \x03(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"2\n" +
 	"\x15GetTeamSummaryRequest\x12\x19\n" +
-	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x126\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"\x99\x01\n" +
+	"\x16GetTeamSummaryResponse\x12\x19\n" +
+	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12d\n" +
+	"\x17collector_summary_stats\x18\x02 \x01(\v2,.nexus.controlplane.v1.CollectorSummaryStatsR\x15collectorSummaryStats\"\xa2\x03\n" +
+	"\x15CollectorSummaryStats\x126\n" +
 	"\x17active_collectors_total\x18\x02 \x01(\x05R\x15activeCollectorsTotal\x124\n" +
 	"\x16stale_collectors_total\x18\x03 \x01(\x05R\x14staleCollectorsTotal\x12B\n" +
 	"\x1dunresponsive_collectors_total\x18\x04 \x01(\x05R\x1bunresponsiveCollectorsTotal\x123\n" +
 	"\x16flows_per_second_total\x18\x05 \x01(\x05R\x13flowsPerSecondTotal\x120\n" +
 	"\x15avg_s3_put_latency_ms\x18\x06 \x01(\x01R\x11avgS3PutLatencyMs\x127\n" +
 	"\x19avg_p99_s3_put_latency_ms\x18\a \x01(\x01R\x14avgP99S3PutLatencyMs\x127\n" +
-	"\x19max_p99_s3_put_latency_ms\x18\b \x01(\x01R\x14maxP99S3PutLatencyMs\"3\n" +
-	"\x16GetTeamSummaryResponse\x12\x19\n" +
-	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"<\n" +
+	"\x19max_p99_s3_put_latency_ms\x18\b \x01(\x01R\x14maxP99S3PutLatencyMs\"<\n" +
 	"\x19GetQueryableFieldsRequest\x12\x1f\n" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\"R\n" +
@@ -465,34 +510,36 @@ func file_nexus_controlplane_v1_frontend_proto_rawDescGZIP() []byte {
 	return file_nexus_controlplane_v1_frontend_proto_rawDescData
 }
 
-var file_nexus_controlplane_v1_frontend_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_nexus_controlplane_v1_frontend_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_nexus_controlplane_v1_frontend_proto_goTypes = []any{
 	(*GetCollectorMetricsRequest)(nil),  // 0: nexus.controlplane.v1.GetCollectorMetricsRequest
 	(*GetCollectorMetricsResponse)(nil), // 1: nexus.controlplane.v1.GetCollectorMetricsResponse
 	(*GetTeamSummaryRequest)(nil),       // 2: nexus.controlplane.v1.GetTeamSummaryRequest
 	(*GetTeamSummaryResponse)(nil),      // 3: nexus.controlplane.v1.GetTeamSummaryResponse
-	(*GetQueryableFieldsRequest)(nil),   // 4: nexus.controlplane.v1.GetQueryableFieldsRequest
-	(*GetQueryableFieldsResponse)(nil),  // 5: nexus.controlplane.v1.GetQueryableFieldsResponse
-	(*Field)(nil),                       // 6: nexus.controlplane.v1.Field
-	(*timestamppb.Timestamp)(nil),       // 7: google.protobuf.Timestamp
-	(*CollectorMetrics)(nil),            // 8: nexus.controlplane.v1.CollectorMetrics
+	(*CollectorSummaryStats)(nil),       // 4: nexus.controlplane.v1.CollectorSummaryStats
+	(*GetQueryableFieldsRequest)(nil),   // 5: nexus.controlplane.v1.GetQueryableFieldsRequest
+	(*GetQueryableFieldsResponse)(nil),  // 6: nexus.controlplane.v1.GetQueryableFieldsResponse
+	(*Field)(nil),                       // 7: nexus.controlplane.v1.Field
+	(*timestamppb.Timestamp)(nil),       // 8: google.protobuf.Timestamp
+	(*CollectorMetrics)(nil),            // 9: nexus.controlplane.v1.CollectorMetrics
 }
 var file_nexus_controlplane_v1_frontend_proto_depIdxs = []int32{
-	7, // 0: nexus.controlplane.v1.GetCollectorMetricsRequest.start_time:type_name -> google.protobuf.Timestamp
-	7, // 1: nexus.controlplane.v1.GetCollectorMetricsRequest.end_time:type_name -> google.protobuf.Timestamp
-	8, // 2: nexus.controlplane.v1.GetCollectorMetricsResponse.metrics:type_name -> nexus.controlplane.v1.CollectorMetrics
-	6, // 3: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
-	0, // 4: nexus.controlplane.v1.FrontendService.GetCollectorMetrics:input_type -> nexus.controlplane.v1.GetCollectorMetricsRequest
-	2, // 5: nexus.controlplane.v1.FrontendService.GetTeamSummary:input_type -> nexus.controlplane.v1.GetTeamSummaryRequest
-	4, // 6: nexus.controlplane.v1.FrontendService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
-	1, // 7: nexus.controlplane.v1.FrontendService.GetCollectorMetrics:output_type -> nexus.controlplane.v1.GetCollectorMetricsResponse
-	3, // 8: nexus.controlplane.v1.FrontendService.GetTeamSummary:output_type -> nexus.controlplane.v1.GetTeamSummaryResponse
-	5, // 9: nexus.controlplane.v1.FrontendService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	8, // 0: nexus.controlplane.v1.GetCollectorMetricsRequest.start_time:type_name -> google.protobuf.Timestamp
+	8, // 1: nexus.controlplane.v1.GetCollectorMetricsRequest.end_time:type_name -> google.protobuf.Timestamp
+	9, // 2: nexus.controlplane.v1.GetCollectorMetricsResponse.metrics:type_name -> nexus.controlplane.v1.CollectorMetrics
+	4, // 3: nexus.controlplane.v1.GetTeamSummaryResponse.collector_summary_stats:type_name -> nexus.controlplane.v1.CollectorSummaryStats
+	7, // 4: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
+	0, // 5: nexus.controlplane.v1.FrontendService.GetCollectorMetrics:input_type -> nexus.controlplane.v1.GetCollectorMetricsRequest
+	2, // 6: nexus.controlplane.v1.FrontendService.GetTeamSummary:input_type -> nexus.controlplane.v1.GetTeamSummaryRequest
+	5, // 7: nexus.controlplane.v1.FrontendService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
+	1, // 8: nexus.controlplane.v1.FrontendService.GetCollectorMetrics:output_type -> nexus.controlplane.v1.GetCollectorMetricsResponse
+	3, // 9: nexus.controlplane.v1.FrontendService.GetTeamSummary:output_type -> nexus.controlplane.v1.GetTeamSummaryResponse
+	6, // 10: nexus.controlplane.v1.FrontendService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
+	8, // [8:11] is the sub-list for method output_type
+	5, // [5:8] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_nexus_controlplane_v1_frontend_proto_init() }
@@ -507,7 +554,7 @@ func file_nexus_controlplane_v1_frontend_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_controlplane_v1_frontend_proto_rawDesc), len(file_nexus_controlplane_v1_frontend_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
