@@ -14,16 +14,16 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file nexus/controlplane/v1/frontend.proto.
  */
 export const file_nexus_controlplane_v1_frontend: GenFile = /*@__PURE__*/
-  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKGAQoaR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QSCgoCaWQYASABKAkSLgoKc3RhcnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wImMKG0dldENvbGxlY3Rvck1ldHJpY3NSZXNwb25zZRIKCgJpZBgBIAEoCRI4CgdtZXRyaWNzGAIgAygLMicubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3Rvck1ldHJpY3MiKQoVR2V0VGVhbVN1bW1hcnlSZXF1ZXN0EhAKCHRlYW1fcGlkGAEgASgJInkKFkdldFRlYW1TdW1tYXJ5UmVzcG9uc2USEAoIdGVhbV9waWQYASABKAkSTQoXY29sbGVjdG9yX3N1bW1hcnlfc3RhdHMYAiABKAsyLC5uZXh1cy5jb250cm9scGxhbmUudjEuQ29sbGVjdG9yU3VtbWFyeVN0YXRzIoQCChVDb2xsZWN0b3JTdW1tYXJ5U3RhdHMSHwoXYWN0aXZlX2NvbGxlY3RvcnNfdG90YWwYAiABKAUSHgoWc3RhbGVfY29sbGVjdG9yc190b3RhbBgDIAEoBRIlCh11bnJlc3BvbnNpdmVfY29sbGVjdG9yc190b3RhbBgEIAEoBRIeChZmbG93c19wZXJfc2Vjb25kX3RvdGFsGAUgASgFEh0KFWF2Z19zM19wdXRfbGF0ZW5jeV9tcxgGIAEoARIhChlhdmdfcDk5X3MzX3B1dF9sYXRlbmN5X21zGAcgASgBEiEKGW1heF9wOTlfczNfcHV0X2xhdGVuY3lfbXMYCCABKAEiMAoZR2V0UXVlcnlhYmxlRmllbGRzUmVxdWVzdBITCgtkYXRhc2V0X3BpZBgBIAEoCSJKChpHZXRRdWVyeWFibGVGaWVsZHNSZXNwb25zZRIsCgZmaWVsZHMYASADKAsyHC5uZXh1cy5jb250cm9scGxhbmUudjEuRmllbGQiFQoFRmllbGQSDAoEbmFtZRgBIAEoCTL/AgoPRnJvbnRlbmRTZXJ2aWNlEn4KE0dldENvbGxlY3Rvck1ldHJpY3MSMS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QaMi5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0Q29sbGVjdG9yTWV0cmljc1Jlc3BvbnNlIgASbwoOR2V0VGVhbVN1bW1hcnkSLC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0VGVhbVN1bW1hcnlSZXF1ZXN0Gi0ubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFRlYW1TdW1tYXJ5UmVzcG9uc2UiABJ7ChJHZXRRdWVyeWFibGVGaWVsZHMSMC5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0UXVlcnlhYmxlRmllbGRzUmVxdWVzdBoxLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRRdWVyeWFibGVGaWVsZHNSZXNwb25zZSIAQkZaRGdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vbmV4dXMvY29udHJvbHBsYW5lL3YxO2NvbnRyb2xwbGFuZXYxYgZwcm90bzM", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
+  fileDesc("CiRuZXh1cy9jb250cm9scGxhbmUvdjEvZnJvbnRlbmQucHJvdG8SFW5leHVzLmNvbnRyb2xwbGFuZS52MSKLAQofQmF0Y2hHZXRDb2xsZWN0b3JNZXRyaWNzUmVxdWVzdBIKCgJpZBgBIAMoCRIuCgpzdGFydF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiYgogQmF0Y2hHZXRDb2xsZWN0b3JNZXRyaWNzUmVzcG9uc2USPgoHbWV0cmljcxgBIAMoCzItLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db2xsZWN0b3JNZXRyaWNzUmVzdWx0Il4KFkNvbGxlY3Rvck1ldHJpY3NSZXN1bHQSCgoCaWQYASABKAkSOAoHbWV0cmljcxgCIAMoCzInLm5leHVzLmNvbnRyb2xwbGFuZS52MS5Db2xsZWN0b3JNZXRyaWNzIikKFUdldFRlYW1TdW1tYXJ5UmVxdWVzdBIQCgh0ZWFtX3BpZBgBIAEoCSJ5ChZHZXRUZWFtU3VtbWFyeVJlc3BvbnNlEhAKCHRlYW1fcGlkGAEgASgJEk0KF2NvbGxlY3Rvcl9zdW1tYXJ5X3N0YXRzGAIgASgLMiwubmV4dXMuY29udHJvbHBsYW5lLnYxLkNvbGxlY3RvclN1bW1hcnlTdGF0cyKEAgoVQ29sbGVjdG9yU3VtbWFyeVN0YXRzEh8KF2FjdGl2ZV9jb2xsZWN0b3JzX3RvdGFsGAIgASgFEh4KFnN0YWxlX2NvbGxlY3RvcnNfdG90YWwYAyABKAUSJQoddW5yZXNwb25zaXZlX2NvbGxlY3RvcnNfdG90YWwYBCABKAUSHgoWZmxvd3NfcGVyX3NlY29uZF90b3RhbBgFIAEoBRIdChVhdmdfczNfcHV0X2xhdGVuY3lfbXMYBiABKAESIQoZYXZnX3A5OV9zM19wdXRfbGF0ZW5jeV9tcxgHIAEoARIhChltYXhfcDk5X3MzX3B1dF9sYXRlbmN5X21zGAggASgBIjAKGUdldFF1ZXJ5YWJsZUZpZWxkc1JlcXVlc3QSEwoLZGF0YXNldF9waWQYASABKAkiSgoaR2V0UXVlcnlhYmxlRmllbGRzUmVzcG9uc2USLAoGZmllbGRzGAEgAygLMhwubmV4dXMuY29udHJvbHBsYW5lLnYxLkZpZWxkIhUKBUZpZWxkEgwKBG5hbWUYASABKAkyjwMKD0Zyb250ZW5kU2VydmljZRKNAQoYQmF0Y2hHZXRDb2xsZWN0b3JNZXRyaWNzEjYubmV4dXMuY29udHJvbHBsYW5lLnYxLkJhdGNoR2V0Q29sbGVjdG9yTWV0cmljc1JlcXVlc3QaNy5uZXh1cy5jb250cm9scGxhbmUudjEuQmF0Y2hHZXRDb2xsZWN0b3JNZXRyaWNzUmVzcG9uc2UiABJvCg5HZXRUZWFtU3VtbWFyeRIsLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRUZWFtU3VtbWFyeVJlcXVlc3QaLS5uZXh1cy5jb250cm9scGxhbmUudjEuR2V0VGVhbVN1bW1hcnlSZXNwb25zZSIAEnsKEkdldFF1ZXJ5YWJsZUZpZWxkcxIwLm5leHVzLmNvbnRyb2xwbGFuZS52MS5HZXRRdWVyeWFibGVGaWVsZHNSZXF1ZXN0GjEubmV4dXMuY29udHJvbHBsYW5lLnYxLkdldFF1ZXJ5YWJsZUZpZWxkc1Jlc3BvbnNlIgBCRlpEZ2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9uZXh1cy9jb250cm9scGxhbmUvdjE7Y29udHJvbHBsYW5ldjFiBnByb3RvMw", [file_google_protobuf_timestamp, file_nexus_controlplane_v1_control_plane]);
 
 /**
- * @generated from message nexus.controlplane.v1.GetCollectorMetricsRequest
+ * @generated from message nexus.controlplane.v1.BatchGetCollectorMetricsRequest
  */
-export type GetCollectorMetricsRequest = Message<"nexus.controlplane.v1.GetCollectorMetricsRequest"> & {
+export type BatchGetCollectorMetricsRequest = Message<"nexus.controlplane.v1.BatchGetCollectorMetricsRequest"> & {
   /**
-   * @generated from field: string id = 1;
+   * @generated from field: repeated string id = 1;
    */
-  id: string;
+  id: string[];
 
   /**
    * @generated from field: google.protobuf.Timestamp start_time = 2;
@@ -37,16 +37,33 @@ export type GetCollectorMetricsRequest = Message<"nexus.controlplane.v1.GetColle
 };
 
 /**
- * Describes the message nexus.controlplane.v1.GetCollectorMetricsRequest.
- * Use `create(GetCollectorMetricsRequestSchema)` to create a new message.
+ * Describes the message nexus.controlplane.v1.BatchGetCollectorMetricsRequest.
+ * Use `create(BatchGetCollectorMetricsRequestSchema)` to create a new message.
  */
-export const GetCollectorMetricsRequestSchema: GenMessage<GetCollectorMetricsRequest> = /*@__PURE__*/
+export const BatchGetCollectorMetricsRequestSchema: GenMessage<BatchGetCollectorMetricsRequest> = /*@__PURE__*/
   messageDesc(file_nexus_controlplane_v1_frontend, 0);
 
 /**
- * @generated from message nexus.controlplane.v1.GetCollectorMetricsResponse
+ * @generated from message nexus.controlplane.v1.BatchGetCollectorMetricsResponse
  */
-export type GetCollectorMetricsResponse = Message<"nexus.controlplane.v1.GetCollectorMetricsResponse"> & {
+export type BatchGetCollectorMetricsResponse = Message<"nexus.controlplane.v1.BatchGetCollectorMetricsResponse"> & {
+  /**
+   * @generated from field: repeated nexus.controlplane.v1.CollectorMetricsResult metrics = 1;
+   */
+  metrics: CollectorMetricsResult[];
+};
+
+/**
+ * Describes the message nexus.controlplane.v1.BatchGetCollectorMetricsResponse.
+ * Use `create(BatchGetCollectorMetricsResponseSchema)` to create a new message.
+ */
+export const BatchGetCollectorMetricsResponseSchema: GenMessage<BatchGetCollectorMetricsResponse> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 1);
+
+/**
+ * @generated from message nexus.controlplane.v1.CollectorMetricsResult
+ */
+export type CollectorMetricsResult = Message<"nexus.controlplane.v1.CollectorMetricsResult"> & {
   /**
    * @generated from field: string id = 1;
    */
@@ -59,11 +76,11 @@ export type GetCollectorMetricsResponse = Message<"nexus.controlplane.v1.GetColl
 };
 
 /**
- * Describes the message nexus.controlplane.v1.GetCollectorMetricsResponse.
- * Use `create(GetCollectorMetricsResponseSchema)` to create a new message.
+ * Describes the message nexus.controlplane.v1.CollectorMetricsResult.
+ * Use `create(CollectorMetricsResultSchema)` to create a new message.
  */
-export const GetCollectorMetricsResponseSchema: GenMessage<GetCollectorMetricsResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 1);
+export const CollectorMetricsResultSchema: GenMessage<CollectorMetricsResult> = /*@__PURE__*/
+  messageDesc(file_nexus_controlplane_v1_frontend, 2);
 
 /**
  * @generated from message nexus.controlplane.v1.GetTeamSummaryRequest
@@ -80,7 +97,7 @@ export type GetTeamSummaryRequest = Message<"nexus.controlplane.v1.GetTeamSummar
  * Use `create(GetTeamSummaryRequestSchema)` to create a new message.
  */
 export const GetTeamSummaryRequestSchema: GenMessage<GetTeamSummaryRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 2);
+  messageDesc(file_nexus_controlplane_v1_frontend, 3);
 
 /**
  * @generated from message nexus.controlplane.v1.GetTeamSummaryResponse
@@ -102,7 +119,7 @@ export type GetTeamSummaryResponse = Message<"nexus.controlplane.v1.GetTeamSumma
  * Use `create(GetTeamSummaryResponseSchema)` to create a new message.
  */
 export const GetTeamSummaryResponseSchema: GenMessage<GetTeamSummaryResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 3);
+  messageDesc(file_nexus_controlplane_v1_frontend, 4);
 
 /**
  * @generated from message nexus.controlplane.v1.CollectorSummaryStats
@@ -158,7 +175,7 @@ export type CollectorSummaryStats = Message<"nexus.controlplane.v1.CollectorSumm
  * Use `create(CollectorSummaryStatsSchema)` to create a new message.
  */
 export const CollectorSummaryStatsSchema: GenMessage<CollectorSummaryStats> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 4);
+  messageDesc(file_nexus_controlplane_v1_frontend, 5);
 
 /**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsRequest
@@ -175,7 +192,7 @@ export type GetQueryableFieldsRequest = Message<"nexus.controlplane.v1.GetQuerya
  * Use `create(GetQueryableFieldsRequestSchema)` to create a new message.
  */
 export const GetQueryableFieldsRequestSchema: GenMessage<GetQueryableFieldsRequest> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 5);
+  messageDesc(file_nexus_controlplane_v1_frontend, 6);
 
 /**
  * @generated from message nexus.controlplane.v1.GetQueryableFieldsResponse
@@ -192,7 +209,7 @@ export type GetQueryableFieldsResponse = Message<"nexus.controlplane.v1.GetQuery
  * Use `create(GetQueryableFieldsResponseSchema)` to create a new message.
  */
 export const GetQueryableFieldsResponseSchema: GenMessage<GetQueryableFieldsResponse> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 6);
+  messageDesc(file_nexus_controlplane_v1_frontend, 7);
 
 /**
  * @generated from message nexus.controlplane.v1.Field
@@ -209,7 +226,7 @@ export type Field = Message<"nexus.controlplane.v1.Field"> & {
  * Use `create(FieldSchema)` to create a new message.
  */
 export const FieldSchema: GenMessage<Field> = /*@__PURE__*/
-  messageDesc(file_nexus_controlplane_v1_frontend, 7);
+  messageDesc(file_nexus_controlplane_v1_frontend, 8);
 
 /**
  * The frontend service handles RPCs specifically that the frontend uses. They still
@@ -222,12 +239,12 @@ export const FrontendService: GenService<{
   /**
    * Get metrics for a collector
    *
-   * @generated from rpc nexus.controlplane.v1.FrontendService.GetCollectorMetrics
+   * @generated from rpc nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics
    */
-  getCollectorMetrics: {
+  batchGetCollectorMetrics: {
     methodKind: "unary";
-    input: typeof GetCollectorMetricsRequestSchema;
-    output: typeof GetCollectorMetricsResponseSchema;
+    input: typeof BatchGetCollectorMetricsRequestSchema;
+    output: typeof BatchGetCollectorMetricsResponseSchema;
   },
   /**
    * Get summary stats for a team

@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// FrontendServiceGetCollectorMetricsProcedure is the fully-qualified name of the FrontendService's
-	// GetCollectorMetrics RPC.
-	FrontendServiceGetCollectorMetricsProcedure = "/nexus.controlplane.v1.FrontendService/GetCollectorMetrics"
+	// FrontendServiceBatchGetCollectorMetricsProcedure is the fully-qualified name of the
+	// FrontendService's BatchGetCollectorMetrics RPC.
+	FrontendServiceBatchGetCollectorMetricsProcedure = "/nexus.controlplane.v1.FrontendService/BatchGetCollectorMetrics"
 	// FrontendServiceGetTeamSummaryProcedure is the fully-qualified name of the FrontendService's
 	// GetTeamSummary RPC.
 	FrontendServiceGetTeamSummaryProcedure = "/nexus.controlplane.v1.FrontendService/GetTeamSummary"
@@ -47,7 +47,7 @@ const (
 // FrontendServiceClient is a client for the nexus.controlplane.v1.FrontendService service.
 type FrontendServiceClient interface {
 	// Get metrics for a collector
-	GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error)
+	BatchGetCollectorMetrics(context.Context, *connect.Request[v1.BatchGetCollectorMetricsRequest]) (*connect.Response[v1.BatchGetCollectorMetricsResponse], error)
 	// Get summary stats for a team
 	GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error)
 	// Get a list of queryable fields
@@ -65,10 +65,10 @@ func NewFrontendServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 	baseURL = strings.TrimRight(baseURL, "/")
 	frontendServiceMethods := v1.File_nexus_controlplane_v1_frontend_proto.Services().ByName("FrontendService").Methods()
 	return &frontendServiceClient{
-		getCollectorMetrics: connect.NewClient[v1.GetCollectorMetricsRequest, v1.GetCollectorMetricsResponse](
+		batchGetCollectorMetrics: connect.NewClient[v1.BatchGetCollectorMetricsRequest, v1.BatchGetCollectorMetricsResponse](
 			httpClient,
-			baseURL+FrontendServiceGetCollectorMetricsProcedure,
-			connect.WithSchema(frontendServiceMethods.ByName("GetCollectorMetrics")),
+			baseURL+FrontendServiceBatchGetCollectorMetricsProcedure,
+			connect.WithSchema(frontendServiceMethods.ByName("BatchGetCollectorMetrics")),
 			connect.WithClientOptions(opts...),
 		),
 		getTeamSummary: connect.NewClient[v1.GetTeamSummaryRequest, v1.GetTeamSummaryResponse](
@@ -88,14 +88,14 @@ func NewFrontendServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 
 // frontendServiceClient implements FrontendServiceClient.
 type frontendServiceClient struct {
-	getCollectorMetrics *connect.Client[v1.GetCollectorMetricsRequest, v1.GetCollectorMetricsResponse]
-	getTeamSummary      *connect.Client[v1.GetTeamSummaryRequest, v1.GetTeamSummaryResponse]
-	getQueryableFields  *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
+	batchGetCollectorMetrics *connect.Client[v1.BatchGetCollectorMetricsRequest, v1.BatchGetCollectorMetricsResponse]
+	getTeamSummary           *connect.Client[v1.GetTeamSummaryRequest, v1.GetTeamSummaryResponse]
+	getQueryableFields       *connect.Client[v1.GetQueryableFieldsRequest, v1.GetQueryableFieldsResponse]
 }
 
-// GetCollectorMetrics calls nexus.controlplane.v1.FrontendService.GetCollectorMetrics.
-func (c *frontendServiceClient) GetCollectorMetrics(ctx context.Context, req *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error) {
-	return c.getCollectorMetrics.CallUnary(ctx, req)
+// BatchGetCollectorMetrics calls nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics.
+func (c *frontendServiceClient) BatchGetCollectorMetrics(ctx context.Context, req *connect.Request[v1.BatchGetCollectorMetricsRequest]) (*connect.Response[v1.BatchGetCollectorMetricsResponse], error) {
+	return c.batchGetCollectorMetrics.CallUnary(ctx, req)
 }
 
 // GetTeamSummary calls nexus.controlplane.v1.FrontendService.GetTeamSummary.
@@ -111,7 +111,7 @@ func (c *frontendServiceClient) GetQueryableFields(ctx context.Context, req *con
 // FrontendServiceHandler is an implementation of the nexus.controlplane.v1.FrontendService service.
 type FrontendServiceHandler interface {
 	// Get metrics for a collector
-	GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error)
+	BatchGetCollectorMetrics(context.Context, *connect.Request[v1.BatchGetCollectorMetricsRequest]) (*connect.Response[v1.BatchGetCollectorMetricsResponse], error)
 	// Get summary stats for a team
 	GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error)
 	// Get a list of queryable fields
@@ -125,10 +125,10 @@ type FrontendServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewFrontendServiceHandler(svc FrontendServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	frontendServiceMethods := v1.File_nexus_controlplane_v1_frontend_proto.Services().ByName("FrontendService").Methods()
-	frontendServiceGetCollectorMetricsHandler := connect.NewUnaryHandler(
-		FrontendServiceGetCollectorMetricsProcedure,
-		svc.GetCollectorMetrics,
-		connect.WithSchema(frontendServiceMethods.ByName("GetCollectorMetrics")),
+	frontendServiceBatchGetCollectorMetricsHandler := connect.NewUnaryHandler(
+		FrontendServiceBatchGetCollectorMetricsProcedure,
+		svc.BatchGetCollectorMetrics,
+		connect.WithSchema(frontendServiceMethods.ByName("BatchGetCollectorMetrics")),
 		connect.WithHandlerOptions(opts...),
 	)
 	frontendServiceGetTeamSummaryHandler := connect.NewUnaryHandler(
@@ -145,8 +145,8 @@ func NewFrontendServiceHandler(svc FrontendServiceHandler, opts ...connect.Handl
 	)
 	return "/nexus.controlplane.v1.FrontendService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case FrontendServiceGetCollectorMetricsProcedure:
-			frontendServiceGetCollectorMetricsHandler.ServeHTTP(w, r)
+		case FrontendServiceBatchGetCollectorMetricsProcedure:
+			frontendServiceBatchGetCollectorMetricsHandler.ServeHTTP(w, r)
 		case FrontendServiceGetTeamSummaryProcedure:
 			frontendServiceGetTeamSummaryHandler.ServeHTTP(w, r)
 		case FrontendServiceGetQueryableFieldsProcedure:
@@ -160,8 +160,8 @@ func NewFrontendServiceHandler(svc FrontendServiceHandler, opts ...connect.Handl
 // UnimplementedFrontendServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedFrontendServiceHandler struct{}
 
-func (UnimplementedFrontendServiceHandler) GetCollectorMetrics(context.Context, *connect.Request[v1.GetCollectorMetricsRequest]) (*connect.Response[v1.GetCollectorMetricsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.FrontendService.GetCollectorMetrics is not implemented"))
+func (UnimplementedFrontendServiceHandler) BatchGetCollectorMetrics(context.Context, *connect.Request[v1.BatchGetCollectorMetricsRequest]) (*connect.Response[v1.BatchGetCollectorMetricsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics is not implemented"))
 }
 
 func (UnimplementedFrontendServiceHandler) GetTeamSummary(context.Context, *connect.Request[v1.GetTeamSummaryRequest]) (*connect.Response[v1.GetTeamSummaryResponse], error) {

@@ -13,7 +13,7 @@ option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;contr
 // different purpose
 service FrontendService {
   // Get metrics for a collector
-  rpc GetCollectorMetrics(GetCollectorMetricsRequest) returns (GetCollectorMetricsResponse) {}
+  rpc BatchGetCollectorMetrics(BatchGetCollectorMetricsRequest) returns (BatchGetCollectorMetricsResponse) {}
 
   // Get summary stats for a team
   rpc GetTeamSummary(GetTeamSummaryRequest) returns (GetTeamSummaryResponse) {}
@@ -22,13 +22,17 @@ service FrontendService {
   rpc GetQueryableFields(GetQueryableFieldsRequest) returns (GetQueryableFieldsResponse) {}
 }
 
-message GetCollectorMetricsRequest {
-  string id = 1;
+message BatchGetCollectorMetricsRequest {
+  repeated string id = 1;
   google.protobuf.Timestamp start_time = 2;
   google.protobuf.Timestamp end_time = 3;
 }
 
-message GetCollectorMetricsResponse {
+message BatchGetCollectorMetricsResponse {
+  repeated CollectorMetricsResult metrics = 1;
+}
+
+message CollectorMetricsResult {
   string id = 1;
   repeated CollectorMetrics metrics = 2;
 }
