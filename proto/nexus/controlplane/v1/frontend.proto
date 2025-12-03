@@ -29,7 +29,11 @@ message BatchGetCollectorMetricsRequest {
 }
 
 message BatchGetCollectorMetricsResponse {
-  map<string, CollectorMetrics> metrics = 1;
+  map<string, ListCollectorMetrics> metrics = 1;
+}
+
+message ListCollectorMetrics {
+  repeated CollectorMetrics metrics = 1;
 }
 
 message GetTeamSummaryRequest {

@@ -83,8 +83,8 @@ func (x *BatchGetCollectorMetricsRequest) GetEndTime() *timestamppb.Timestamp {
 }
 
 type BatchGetCollectorMetricsResponse struct {
-	state         protoimpl.MessageState       `protogen:"open.v1"`
-	Metrics       map[string]*CollectorMetrics `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	state         protoimpl.MessageState           `protogen:"open.v1"`
+	Metrics       map[string]*ListCollectorMetrics `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,7 +119,51 @@ func (*BatchGetCollectorMetricsResponse) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *BatchGetCollectorMetricsResponse) GetMetrics() map[string]*CollectorMetrics {
+func (x *BatchGetCollectorMetricsResponse) GetMetrics() map[string]*ListCollectorMetrics {
+	if x != nil {
+		return x.Metrics
+	}
+	return nil
+}
+
+type ListCollectorMetrics struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Metrics       []*CollectorMetrics    `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCollectorMetrics) Reset() {
+	*x = ListCollectorMetrics{}
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCollectorMetrics) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCollectorMetrics) ProtoMessage() {}
+
+func (x *ListCollectorMetrics) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCollectorMetrics.ProtoReflect.Descriptor instead.
+func (*ListCollectorMetrics) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListCollectorMetrics) GetMetrics() []*CollectorMetrics {
 	if x != nil {
 		return x.Metrics
 	}
@@ -135,7 +179,7 @@ type GetTeamSummaryRequest struct {
 
 func (x *GetTeamSummaryRequest) Reset() {
 	*x = GetTeamSummaryRequest{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[2]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -147,7 +191,7 @@ func (x *GetTeamSummaryRequest) String() string {
 func (*GetTeamSummaryRequest) ProtoMessage() {}
 
 func (x *GetTeamSummaryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[2]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +204,7 @@ func (x *GetTeamSummaryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTeamSummaryRequest.ProtoReflect.Descriptor instead.
 func (*GetTeamSummaryRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{2}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetTeamSummaryRequest) GetTeamPid() string {
@@ -180,7 +224,7 @@ type GetTeamSummaryResponse struct {
 
 func (x *GetTeamSummaryResponse) Reset() {
 	*x = GetTeamSummaryResponse{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[3]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +236,7 @@ func (x *GetTeamSummaryResponse) String() string {
 func (*GetTeamSummaryResponse) ProtoMessage() {}
 
 func (x *GetTeamSummaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[3]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +249,7 @@ func (x *GetTeamSummaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTeamSummaryResponse.ProtoReflect.Descriptor instead.
 func (*GetTeamSummaryResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{3}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetTeamSummaryResponse) GetTeamPid() string {
@@ -243,7 +287,7 @@ type CollectorSummaryStats struct {
 
 func (x *CollectorSummaryStats) Reset() {
 	*x = CollectorSummaryStats{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -255,7 +299,7 @@ func (x *CollectorSummaryStats) String() string {
 func (*CollectorSummaryStats) ProtoMessage() {}
 
 func (x *CollectorSummaryStats) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[4]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -268,7 +312,7 @@ func (x *CollectorSummaryStats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CollectorSummaryStats.ProtoReflect.Descriptor instead.
 func (*CollectorSummaryStats) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{4}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CollectorSummaryStats) GetActiveCollectorsTotal() int32 {
@@ -329,7 +373,7 @@ type GetQueryableFieldsRequest struct {
 
 func (x *GetQueryableFieldsRequest) Reset() {
 	*x = GetQueryableFieldsRequest{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -341,7 +385,7 @@ func (x *GetQueryableFieldsRequest) String() string {
 func (*GetQueryableFieldsRequest) ProtoMessage() {}
 
 func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[5]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -354,7 +398,7 @@ func (x *GetQueryableFieldsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsRequest.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{5}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetQueryableFieldsRequest) GetDatasetPid() string {
@@ -373,7 +417,7 @@ type GetQueryableFieldsResponse struct {
 
 func (x *GetQueryableFieldsResponse) Reset() {
 	*x = GetQueryableFieldsResponse{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -385,7 +429,7 @@ func (x *GetQueryableFieldsResponse) String() string {
 func (*GetQueryableFieldsResponse) ProtoMessage() {}
 
 func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[6]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -398,7 +442,7 @@ func (x *GetQueryableFieldsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQueryableFieldsResponse.ProtoReflect.Descriptor instead.
 func (*GetQueryableFieldsResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{6}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetQueryableFieldsResponse) GetFields() []*Field {
@@ -417,7 +461,7 @@ type Field struct {
 
 func (x *Field) Reset() {
 	*x = Field{}
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -429,7 +473,7 @@ func (x *Field) String() string {
 func (*Field) ProtoMessage() {}
 
 func (x *Field) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[7]
+	mi := &file_nexus_controlplane_v1_frontend_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -442,7 +486,7 @@ func (x *Field) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Field.ProtoReflect.Descriptor instead.
 func (*Field) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{7}
+	return file_nexus_controlplane_v1_frontend_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Field) GetName() string {
@@ -461,12 +505,14 @@ const file_nexus_controlplane_v1_frontend_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x03(\tR\x02id\x129\n" +
 	"\n" +
 	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xe7\x01\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xeb\x01\n" +
 	" BatchGetCollectorMetricsResponse\x12^\n" +
-	"\ametrics\x18\x01 \x03(\v2D.nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntryR\ametrics\x1ac\n" +
+	"\ametrics\x18\x01 \x03(\v2D.nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntryR\ametrics\x1ag\n" +
 	"\fMetricsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12=\n" +
-	"\x05value\x18\x02 \x01(\v2'.nexus.controlplane.v1.CollectorMetricsR\x05value:\x028\x01\"2\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12A\n" +
+	"\x05value\x18\x02 \x01(\v2+.nexus.controlplane.v1.ListCollectorMetricsR\x05value:\x028\x01\"Y\n" +
+	"\x14ListCollectorMetrics\x12A\n" +
+	"\ametrics\x18\x01 \x03(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"2\n" +
 	"\x15GetTeamSummaryRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\"\x99\x01\n" +
 	"\x16GetTeamSummaryResponse\x12\x19\n" +
@@ -504,38 +550,40 @@ func file_nexus_controlplane_v1_frontend_proto_rawDescGZIP() []byte {
 	return file_nexus_controlplane_v1_frontend_proto_rawDescData
 }
 
-var file_nexus_controlplane_v1_frontend_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_nexus_controlplane_v1_frontend_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_nexus_controlplane_v1_frontend_proto_goTypes = []any{
 	(*BatchGetCollectorMetricsRequest)(nil),  // 0: nexus.controlplane.v1.BatchGetCollectorMetricsRequest
 	(*BatchGetCollectorMetricsResponse)(nil), // 1: nexus.controlplane.v1.BatchGetCollectorMetricsResponse
-	(*GetTeamSummaryRequest)(nil),            // 2: nexus.controlplane.v1.GetTeamSummaryRequest
-	(*GetTeamSummaryResponse)(nil),           // 3: nexus.controlplane.v1.GetTeamSummaryResponse
-	(*CollectorSummaryStats)(nil),            // 4: nexus.controlplane.v1.CollectorSummaryStats
-	(*GetQueryableFieldsRequest)(nil),        // 5: nexus.controlplane.v1.GetQueryableFieldsRequest
-	(*GetQueryableFieldsResponse)(nil),       // 6: nexus.controlplane.v1.GetQueryableFieldsResponse
-	(*Field)(nil),                            // 7: nexus.controlplane.v1.Field
-	nil,                                      // 8: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry
-	(*timestamppb.Timestamp)(nil),            // 9: google.protobuf.Timestamp
-	(*CollectorMetrics)(nil),                 // 10: nexus.controlplane.v1.CollectorMetrics
+	(*ListCollectorMetrics)(nil),             // 2: nexus.controlplane.v1.ListCollectorMetrics
+	(*GetTeamSummaryRequest)(nil),            // 3: nexus.controlplane.v1.GetTeamSummaryRequest
+	(*GetTeamSummaryResponse)(nil),           // 4: nexus.controlplane.v1.GetTeamSummaryResponse
+	(*CollectorSummaryStats)(nil),            // 5: nexus.controlplane.v1.CollectorSummaryStats
+	(*GetQueryableFieldsRequest)(nil),        // 6: nexus.controlplane.v1.GetQueryableFieldsRequest
+	(*GetQueryableFieldsResponse)(nil),       // 7: nexus.controlplane.v1.GetQueryableFieldsResponse
+	(*Field)(nil),                            // 8: nexus.controlplane.v1.Field
+	nil,                                      // 9: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry
+	(*timestamppb.Timestamp)(nil),            // 10: google.protobuf.Timestamp
+	(*CollectorMetrics)(nil),                 // 11: nexus.controlplane.v1.CollectorMetrics
 }
 var file_nexus_controlplane_v1_frontend_proto_depIdxs = []int32{
-	9,  // 0: nexus.controlplane.v1.BatchGetCollectorMetricsRequest.start_time:type_name -> google.protobuf.Timestamp
-	9,  // 1: nexus.controlplane.v1.BatchGetCollectorMetricsRequest.end_time:type_name -> google.protobuf.Timestamp
-	8,  // 2: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.metrics:type_name -> nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry
-	4,  // 3: nexus.controlplane.v1.GetTeamSummaryResponse.collector_summary_stats:type_name -> nexus.controlplane.v1.CollectorSummaryStats
-	7,  // 4: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
-	10, // 5: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry.value:type_name -> nexus.controlplane.v1.CollectorMetrics
-	0,  // 6: nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics:input_type -> nexus.controlplane.v1.BatchGetCollectorMetricsRequest
-	2,  // 7: nexus.controlplane.v1.FrontendService.GetTeamSummary:input_type -> nexus.controlplane.v1.GetTeamSummaryRequest
-	5,  // 8: nexus.controlplane.v1.FrontendService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
-	1,  // 9: nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics:output_type -> nexus.controlplane.v1.BatchGetCollectorMetricsResponse
-	3,  // 10: nexus.controlplane.v1.FrontendService.GetTeamSummary:output_type -> nexus.controlplane.v1.GetTeamSummaryResponse
-	6,  // 11: nexus.controlplane.v1.FrontendService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
-	9,  // [9:12] is the sub-list for method output_type
-	6,  // [6:9] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	10, // 0: nexus.controlplane.v1.BatchGetCollectorMetricsRequest.start_time:type_name -> google.protobuf.Timestamp
+	10, // 1: nexus.controlplane.v1.BatchGetCollectorMetricsRequest.end_time:type_name -> google.protobuf.Timestamp
+	9,  // 2: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.metrics:type_name -> nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry
+	11, // 3: nexus.controlplane.v1.ListCollectorMetrics.metrics:type_name -> nexus.controlplane.v1.CollectorMetrics
+	5,  // 4: nexus.controlplane.v1.GetTeamSummaryResponse.collector_summary_stats:type_name -> nexus.controlplane.v1.CollectorSummaryStats
+	8,  // 5: nexus.controlplane.v1.GetQueryableFieldsResponse.fields:type_name -> nexus.controlplane.v1.Field
+	2,  // 6: nexus.controlplane.v1.BatchGetCollectorMetricsResponse.MetricsEntry.value:type_name -> nexus.controlplane.v1.ListCollectorMetrics
+	0,  // 7: nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics:input_type -> nexus.controlplane.v1.BatchGetCollectorMetricsRequest
+	3,  // 8: nexus.controlplane.v1.FrontendService.GetTeamSummary:input_type -> nexus.controlplane.v1.GetTeamSummaryRequest
+	6,  // 9: nexus.controlplane.v1.FrontendService.GetQueryableFields:input_type -> nexus.controlplane.v1.GetQueryableFieldsRequest
+	1,  // 10: nexus.controlplane.v1.FrontendService.BatchGetCollectorMetrics:output_type -> nexus.controlplane.v1.BatchGetCollectorMetricsResponse
+	4,  // 11: nexus.controlplane.v1.FrontendService.GetTeamSummary:output_type -> nexus.controlplane.v1.GetTeamSummaryResponse
+	7,  // 12: nexus.controlplane.v1.FrontendService.GetQueryableFields:output_type -> nexus.controlplane.v1.GetQueryableFieldsResponse
+	10, // [10:13] is the sub-list for method output_type
+	7,  // [7:10] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_nexus_controlplane_v1_frontend_proto_init() }
@@ -550,7 +598,7 @@ func file_nexus_controlplane_v1_frontend_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_controlplane_v1_frontend_proto_rawDesc), len(file_nexus_controlplane_v1_frontend_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
