@@ -544,10 +544,8 @@ message CollectorMetrics {
   uint64 flows_written_total = 15;
   // Total number of flows we've dropped (due to a full ring buffer)
   uint64 flows_dropped_total = 16;
-  // The ingestion rate
-  float flows_per_second = 17;
 
-  google.protobuf.Timestamp collected_at = 18;
+  google.protobuf.Timestamp collected_at = 17;
 }
 
 message TapMetadata {

@@ -3927,12 +3927,10 @@ type CollectorMetrics struct {
 	// Total number of flows written to S3
 	FlowsWrittenTotal uint64 `protobuf:"varint,15,opt,name=flows_written_total,json=flowsWrittenTotal,proto3" json:"flows_written_total,omitempty"`
 	// Total number of flows we've dropped (due to a full ring buffer)
-	FlowsDroppedTotal uint64 `protobuf:"varint,16,opt,name=flows_dropped_total,json=flowsDroppedTotal,proto3" json:"flows_dropped_total,omitempty"`
-	// The ingestion rate
-	FlowsPerSecond float32                `protobuf:"fixed32,17,opt,name=flows_per_second,json=flowsPerSecond,proto3" json:"flows_per_second,omitempty"`
-	CollectedAt    *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=collected_at,json=collectedAt,proto3" json:"collected_at,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	FlowsDroppedTotal uint64                 `protobuf:"varint,16,opt,name=flows_dropped_total,json=flowsDroppedTotal,proto3" json:"flows_dropped_total,omitempty"`
+	CollectedAt       *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=collected_at,json=collectedAt,proto3" json:"collected_at,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *CollectorMetrics) Reset() {
@@ -4073,13 +4071,6 @@ func (x *CollectorMetrics) GetFlowsWrittenTotal() uint64 {
 func (x *CollectorMetrics) GetFlowsDroppedTotal() uint64 {
 	if x != nil {
 		return x.FlowsDroppedTotal
-	}
-	return 0
-}
-
-func (x *CollectorMetrics) GetFlowsPerSecond() float32 {
-	if x != nil {
-		return x.FlowsPerSecond
 	}
 	return 0
 }
@@ -4703,7 +4694,7 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\aversion\x18\x02 \x01(\tR\aversion\x12D\n" +
 	"\x06status\x18\x03 \x01(\x0e2,.nexus.controlplane.v1.ComponentHealthStatusR\x06status\x12A\n" +
 	"\x0elast_heartbeat\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\rlastHeartbeat\x12A\n" +
-	"\ametrics\x18\x05 \x01(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"\xf0\x06\n" +
+	"\ametrics\x18\x05 \x01(\v2'.nexus.controlplane.v1.CollectorMetricsR\ametrics\"\xc6\x06\n" +
 	"\x10CollectorMetrics\x12*\n" +
 	"\x11cpu_usage_percent\x18\x01 \x01(\x02R\x0fcpuUsagePercent\x120\n" +
 	"\x14memory_usage_percent\x18\x02 \x01(\x02R\x12memoryUsagePercent\x12,\n" +
@@ -4721,9 +4712,8 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x13ring_buffer_percent\x18\r \x01(\x02R\x11ringBufferPercent\x120\n" +
 	"\x14flows_received_total\x18\x0e \x01(\x04R\x12flowsReceivedTotal\x12.\n" +
 	"\x13flows_written_total\x18\x0f \x01(\x04R\x11flowsWrittenTotal\x12.\n" +
-	"\x13flows_dropped_total\x18\x10 \x01(\x04R\x11flowsDroppedTotal\x12(\n" +
-	"\x10flows_per_second\x18\x11 \x01(\x02R\x0eflowsPerSecond\x12=\n" +
-	"\fcollected_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\vcollectedAt\"\xc0\x01\n" +
+	"\x13flows_dropped_total\x18\x10 \x01(\x04R\x11flowsDroppedTotal\x12=\n" +
+	"\fcollected_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\vcollectedAt\"\xc0\x01\n" +
 	"\vTapMetadata\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x02 \x01(\tR\aversion\x12D\n" +
