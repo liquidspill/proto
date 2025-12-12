@@ -368,32 +368,6 @@ enum OrderOp {
   ORDER_OP_DESC = 2;
 }
 
-message Series {
-  repeated google.protobuf.Timestamp timestamps = 1;
-  // The series of data returned by our query
-  map<string, SeriesData> data = 2;
-  // The name of the columns that are visualisations of the data (i.e the
-  // operation on the data)
-  repeated string visualisations = 3;
-  // The names of the columns that are used to group the data
-  repeated string groups = 4;
-}
-
-message SeriesData {
-  // The name of the series. This is the field that was queried
-  string name = 1;
-  repeated std.v1.Value values = 2;
-}
-
-message Row {
-  repeated string fields = 1;
-  repeated RowValues row_values = 2;
-}
-
-message RowValues {
-  repeated std.v1.Value values = 1;
-}
-
 message CreateQueryRequest {
   string team_pid = 1;
   string dataset_pid = 2;
@@ -456,17 +430,92 @@ message QueryExecutionResult {
   string dataset_pid = 1;
   string query_result_pid = 2;
   QueryExecutionStatus status = 3;
-  optional QueryExecutionData data = 4;
+  optional QueryResult results = 4;
   optional string error_message = 5;
 }
 
-message QueryExecutionData {
-  // The time series data. If many fields are queried at once
-  // e.g select bytes, src_ip each field will have its own series
-  Series series = 1;
-  // This the "raw" data i.e the rows returned by the query.
-  // Used to show the raw data in the UI
-  repeated Row rows = 2;
+// QueryResult holds the complete graph data from a single query.
+// Timestamps are shared across all visualisations since they come from one query.
+//
+// Example: Query "SELECT src_ip, SUM(bytes), COUNT(*) FROM flows GROUP BY src_ip, timestamp"
+//
+//   timestamps: [2024-01-01T00:00:00Z, 2024-01-01T00:01:00Z, 2024-01-01T00:02:00Z]
+//   groups: ["src_ip"]
+//
+//   series: [
+//     {
+//       visualisation: "sum_bytes",
+//       lines: [
+//         { group_values: ["192.168.1.10"], values: [1048576, 2097152, 524288] },
+//         { group_values: ["10.0.0.5"],     values: [524288, 524288, 1048576] },
+//       ]
+//     },
+//     {
+//       visualisation: "count",
+//       lines: [
+//         { group_values: ["192.168.1.10"], values: [150, 300, 75] },
+//         { group_values: ["10.0.0.5"],     values: [100, 100, 200] },
+//       ]
+//     },
+//   ]
+//
+// Renders as two graphs:
+//   Graph 1 (sum_bytes): 2 lines, one per src_ip
+//   Graph 2 (count): 2 lines, one per src_ip
+//
+message QueryResult {
+  // Shared x-axis timestamps for all series.
+  repeated google.protobuf.Timestamp timestamps = 1;
+
+  // GROUP BY column names, shared across all series.
+  repeated string groups = 2;
+
+  // One series per visualisation/aggregation.
+  repeated Series series = 3;
+
+  // Tabular view of the same data (for the overview table).
+  Table table = 4;
+}
+
+// Series represents a single graph for one aggregation metric.
+message Series {
+  // The aggregation being visualised (y-axis label / graph title).
+  string visualisation = 1;
+
+  // Each line on the graph.
+  repeated Line lines = 2;
+}
+
+// Line represents a single data series on the graph.
+message Line {
+  // Values for each group column, aligned with QueryResult.groups.
+  repeated string group_values = 1;
+
+  // Y-axis values, aligned with QueryResult.timestamps.
+  repeated std.v1.Value values = 2;
+}
+
+// Table represents tabular row data for display in a data grid.
+//
+// Example: Query "SELECT src_ip, region, SUM(bytes), COUNT(*) FROM flows GROUP BY src_ip, region"
+//
+//   columns: ["src_ip", "region", "sum_bytes", "count"]
+//   rows: [
+//     { values: ["192.168.1.10", "us-east", 1048576, 150] },
+//     { values: ["10.0.0.5", "eu-west", 524288, 75] },
+//   ]
+//
+message Table {
+  // Column names in order: [group_cols..., agg_cols...]
+  repeated string columns = 1;
+
+  // Each row of data.
+  repeated TableRow rows = 2;
+}
+
+// TableRow holds values for a single row, aligned with Table.columns.
+message TableRow {
+  repeated std.v1.Value values = 1;
 }
 
 //===== LIFECYCLE MANAGEMENT =====//

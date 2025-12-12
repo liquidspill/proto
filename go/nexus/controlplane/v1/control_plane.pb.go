@@ -2856,227 +2856,6 @@ func (x *Order) GetOrder() OrderOp {
 	return OrderOp_ORDER_OP_UNSPECIFIED
 }
 
-type Series struct {
-	state      protoimpl.MessageState   `protogen:"open.v1"`
-	Timestamps []*timestamppb.Timestamp `protobuf:"bytes,1,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
-	// The series of data returned by our query
-	Data map[string]*SeriesData `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// The name of the columns that are visualisations of the data (i.e the
-	// operation on the data)
-	Visualisations []string `protobuf:"bytes,3,rep,name=visualisations,proto3" json:"visualisations,omitempty"`
-	// The names of the columns that are used to group the data
-	Groups        []string `protobuf:"bytes,4,rep,name=groups,proto3" json:"groups,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Series) Reset() {
-	*x = Series{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Series) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Series) ProtoMessage() {}
-
-func (x *Series) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Series.ProtoReflect.Descriptor instead.
-func (*Series) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *Series) GetTimestamps() []*timestamppb.Timestamp {
-	if x != nil {
-		return x.Timestamps
-	}
-	return nil
-}
-
-func (x *Series) GetData() map[string]*SeriesData {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
-func (x *Series) GetVisualisations() []string {
-	if x != nil {
-		return x.Visualisations
-	}
-	return nil
-}
-
-func (x *Series) GetGroups() []string {
-	if x != nil {
-		return x.Groups
-	}
-	return nil
-}
-
-type SeriesData struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The name of the series. This is the field that was queried
-	Name          string      `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Values        []*v1.Value `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SeriesData) Reset() {
-	*x = SeriesData{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SeriesData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SeriesData) ProtoMessage() {}
-
-func (x *SeriesData) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SeriesData.ProtoReflect.Descriptor instead.
-func (*SeriesData) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *SeriesData) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SeriesData) GetValues() []*v1.Value {
-	if x != nil {
-		return x.Values
-	}
-	return nil
-}
-
-type Row struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Fields        []string               `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
-	RowValues     []*RowValues           `protobuf:"bytes,2,rep,name=row_values,json=rowValues,proto3" json:"row_values,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Row) Reset() {
-	*x = Row{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Row) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Row) ProtoMessage() {}
-
-func (x *Row) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Row.ProtoReflect.Descriptor instead.
-func (*Row) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *Row) GetFields() []string {
-	if x != nil {
-		return x.Fields
-	}
-	return nil
-}
-
-func (x *Row) GetRowValues() []*RowValues {
-	if x != nil {
-		return x.RowValues
-	}
-	return nil
-}
-
-type RowValues struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []*v1.Value            `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RowValues) Reset() {
-	*x = RowValues{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RowValues) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RowValues) ProtoMessage() {}
-
-func (x *RowValues) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RowValues.ProtoReflect.Descriptor instead.
-func (*RowValues) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{41}
-}
-
-func (x *RowValues) GetValues() []*v1.Value {
-	if x != nil {
-		return x.Values
-	}
-	return nil
-}
-
 type CreateQueryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TeamPid       string                 `protobuf:"bytes,1,opt,name=team_pid,json=teamPid,proto3" json:"team_pid,omitempty"`
@@ -3088,7 +2867,7 @@ type CreateQueryRequest struct {
 
 func (x *CreateQueryRequest) Reset() {
 	*x = CreateQueryRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3100,7 +2879,7 @@ func (x *CreateQueryRequest) String() string {
 func (*CreateQueryRequest) ProtoMessage() {}
 
 func (x *CreateQueryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3113,7 +2892,7 @@ func (x *CreateQueryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQueryRequest.ProtoReflect.Descriptor instead.
 func (*CreateQueryRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{42}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CreateQueryRequest) GetTeamPid() string {
@@ -3148,7 +2927,7 @@ type CreateQueryResponse struct {
 
 func (x *CreateQueryResponse) Reset() {
 	*x = CreateQueryResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3160,7 +2939,7 @@ func (x *CreateQueryResponse) String() string {
 func (*CreateQueryResponse) ProtoMessage() {}
 
 func (x *CreateQueryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3173,7 +2952,7 @@ func (x *CreateQueryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQueryResponse.ProtoReflect.Descriptor instead.
 func (*CreateQueryResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{43}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CreateQueryResponse) GetPid() string {
@@ -3209,7 +2988,7 @@ type SubmitQueryExecutionRequest struct {
 
 func (x *SubmitQueryExecutionRequest) Reset() {
 	*x = SubmitQueryExecutionRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3221,7 +3000,7 @@ func (x *SubmitQueryExecutionRequest) String() string {
 func (*SubmitQueryExecutionRequest) ProtoMessage() {}
 
 func (x *SubmitQueryExecutionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3234,7 +3013,7 @@ func (x *SubmitQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*SubmitQueryExecutionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{44}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SubmitQueryExecutionRequest) GetQueryPid() string {
@@ -3254,7 +3033,7 @@ type SubmitQueryExecutionResponse struct {
 
 func (x *SubmitQueryExecutionResponse) Reset() {
 	*x = SubmitQueryExecutionResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3266,7 +3045,7 @@ func (x *SubmitQueryExecutionResponse) String() string {
 func (*SubmitQueryExecutionResponse) ProtoMessage() {}
 
 func (x *SubmitQueryExecutionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3279,7 +3058,7 @@ func (x *SubmitQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*SubmitQueryExecutionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{45}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *SubmitQueryExecutionResponse) GetQueryPid() string {
@@ -3305,7 +3084,7 @@ type UpdateQueryExecutionRequest struct {
 
 func (x *UpdateQueryExecutionRequest) Reset() {
 	*x = UpdateQueryExecutionRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3317,7 +3096,7 @@ func (x *UpdateQueryExecutionRequest) String() string {
 func (*UpdateQueryExecutionRequest) ProtoMessage() {}
 
 func (x *UpdateQueryExecutionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3330,7 +3109,7 @@ func (x *UpdateQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateQueryExecutionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{46}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *UpdateQueryExecutionRequest) GetResult() *QueryExecutionResult {
@@ -3351,7 +3130,7 @@ type UpdateQueryExecutionResponse struct {
 
 func (x *UpdateQueryExecutionResponse) Reset() {
 	*x = UpdateQueryExecutionResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3363,7 +3142,7 @@ func (x *UpdateQueryExecutionResponse) String() string {
 func (*UpdateQueryExecutionResponse) ProtoMessage() {}
 
 func (x *UpdateQueryExecutionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3376,7 +3155,7 @@ func (x *UpdateQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*UpdateQueryExecutionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{47}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *UpdateQueryExecutionResponse) GetAck() bool {
@@ -3403,7 +3182,7 @@ type PollQueryExecutionRequest struct {
 
 func (x *PollQueryExecutionRequest) Reset() {
 	*x = PollQueryExecutionRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3415,7 +3194,7 @@ func (x *PollQueryExecutionRequest) String() string {
 func (*PollQueryExecutionRequest) ProtoMessage() {}
 
 func (x *PollQueryExecutionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3428,7 +3207,7 @@ func (x *PollQueryExecutionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollQueryExecutionRequest.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{48}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *PollQueryExecutionRequest) GetDatasetPid() string {
@@ -3454,7 +3233,7 @@ type PollQueryExecutionResponse struct {
 
 func (x *PollQueryExecutionResponse) Reset() {
 	*x = PollQueryExecutionResponse{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3466,7 +3245,7 @@ func (x *PollQueryExecutionResponse) String() string {
 func (*PollQueryExecutionResponse) ProtoMessage() {}
 
 func (x *PollQueryExecutionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3479,7 +3258,7 @@ func (x *PollQueryExecutionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PollQueryExecutionResponse.ProtoReflect.Descriptor instead.
 func (*PollQueryExecutionResponse) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{49}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *PollQueryExecutionResponse) GetResult() *QueryExecutionResult {
@@ -3501,7 +3280,7 @@ type ExecQueryRequest struct {
 
 func (x *ExecQueryRequest) Reset() {
 	*x = ExecQueryRequest{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3513,7 +3292,7 @@ func (x *ExecQueryRequest) String() string {
 func (*ExecQueryRequest) ProtoMessage() {}
 
 func (x *ExecQueryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3526,7 +3305,7 @@ func (x *ExecQueryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecQueryRequest.ProtoReflect.Descriptor instead.
 func (*ExecQueryRequest) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{50}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *ExecQueryRequest) GetDatasetPid() string {
@@ -3555,7 +3334,7 @@ type QueryExecutionResult struct {
 	DatasetPid     string                 `protobuf:"bytes,1,opt,name=dataset_pid,json=datasetPid,proto3" json:"dataset_pid,omitempty"`
 	QueryResultPid string                 `protobuf:"bytes,2,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
 	Status         QueryExecutionStatus   `protobuf:"varint,3,opt,name=status,proto3,enum=nexus.controlplane.v1.QueryExecutionStatus" json:"status,omitempty"`
-	Data           *QueryExecutionData    `protobuf:"bytes,4,opt,name=data,proto3,oneof" json:"data,omitempty"`
+	Results        *QueryResult           `protobuf:"bytes,4,opt,name=results,proto3,oneof" json:"results,omitempty"`
 	ErrorMessage   *string                `protobuf:"bytes,5,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -3563,7 +3342,7 @@ type QueryExecutionResult struct {
 
 func (x *QueryExecutionResult) Reset() {
 	*x = QueryExecutionResult{}
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[51]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3575,7 +3354,7 @@ func (x *QueryExecutionResult) String() string {
 func (*QueryExecutionResult) ProtoMessage() {}
 
 func (x *QueryExecutionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[51]
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3588,7 +3367,7 @@ func (x *QueryExecutionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryExecutionResult.ProtoReflect.Descriptor instead.
 func (*QueryExecutionResult) Descriptor() ([]byte, []int) {
-	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{51}
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *QueryExecutionResult) GetDatasetPid() string {
@@ -3612,9 +3391,9 @@ func (x *QueryExecutionResult) GetStatus() QueryExecutionStatus {
 	return QueryExecutionStatus_QUERY_EXECUTION_STATUS_UNSPECIFIED
 }
 
-func (x *QueryExecutionResult) GetData() *QueryExecutionData {
+func (x *QueryExecutionResult) GetResults() *QueryResult {
 	if x != nil {
-		return x.Data
+		return x.Results
 	}
 	return nil
 }
@@ -3626,32 +3405,302 @@ func (x *QueryExecutionResult) GetErrorMessage() string {
 	return ""
 }
 
-type QueryExecutionData struct {
+// QueryResult holds the complete graph data from a single query.
+// Timestamps are shared across all visualisations since they come from one query.
+//
+// Example: Query "SELECT src_ip, SUM(bytes), COUNT(*) FROM flows GROUP BY src_ip, timestamp"
+//
+//	timestamps: [2024-01-01T00:00:00Z, 2024-01-01T00:01:00Z, 2024-01-01T00:02:00Z]
+//	groups: ["src_ip"]
+//
+//	series: [
+//	  {
+//	    visualisation: "sum_bytes",
+//	    lines: [
+//	      { group_values: ["192.168.1.10"], values: [1048576, 2097152, 524288] },
+//	      { group_values: ["10.0.0.5"],     values: [524288, 524288, 1048576] },
+//	    ]
+//	  },
+//	  {
+//	    visualisation: "count",
+//	    lines: [
+//	      { group_values: ["192.168.1.10"], values: [150, 300, 75] },
+//	      { group_values: ["10.0.0.5"],     values: [100, 100, 200] },
+//	    ]
+//	  },
+//	]
+//
+// Renders as two graphs:
+//
+//	Graph 1 (sum_bytes): 2 lines, one per src_ip
+//	Graph 2 (count): 2 lines, one per src_ip
+type QueryResult struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// The time series data. If many fields are queried at once
-	// e.g select bytes, src_ip each field will have its own series
-	Series *Series `protobuf:"bytes,1,opt,name=series,proto3" json:"series,omitempty"`
-	// This the "raw" data i.e the rows returned by the query.
-	// Used to show the raw data in the UI
-	Rows          []*Row `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
+	// Shared x-axis timestamps for all series.
+	Timestamps []*timestamppb.Timestamp `protobuf:"bytes,1,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
+	// GROUP BY column names, shared across all series.
+	Groups []string `protobuf:"bytes,2,rep,name=groups,proto3" json:"groups,omitempty"`
+	// One series per visualisation/aggregation.
+	Series []*Series `protobuf:"bytes,3,rep,name=series,proto3" json:"series,omitempty"`
+	// Tabular view of the same data (for the overview table).
+	Table         *Table `protobuf:"bytes,4,opt,name=table,proto3" json:"table,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *QueryExecutionData) Reset() {
-	*x = QueryExecutionData{}
+func (x *QueryResult) Reset() {
+	*x = QueryResult{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QueryResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryResult) ProtoMessage() {}
+
+func (x *QueryResult) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryResult.ProtoReflect.Descriptor instead.
+func (*QueryResult) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *QueryResult) GetTimestamps() []*timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamps
+	}
+	return nil
+}
+
+func (x *QueryResult) GetGroups() []string {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
+func (x *QueryResult) GetSeries() []*Series {
+	if x != nil {
+		return x.Series
+	}
+	return nil
+}
+
+func (x *QueryResult) GetTable() *Table {
+	if x != nil {
+		return x.Table
+	}
+	return nil
+}
+
+// Series represents a single graph for one aggregation metric.
+type Series struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The aggregation being visualised (y-axis label / graph title).
+	Visualisation string `protobuf:"bytes,1,opt,name=visualisation,proto3" json:"visualisation,omitempty"`
+	// Each line on the graph.
+	Lines         []*Line `protobuf:"bytes,2,rep,name=lines,proto3" json:"lines,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Series) Reset() {
+	*x = Series{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Series) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Series) ProtoMessage() {}
+
+func (x *Series) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Series.ProtoReflect.Descriptor instead.
+func (*Series) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *Series) GetVisualisation() string {
+	if x != nil {
+		return x.Visualisation
+	}
+	return ""
+}
+
+func (x *Series) GetLines() []*Line {
+	if x != nil {
+		return x.Lines
+	}
+	return nil
+}
+
+// Line represents a single data series on the graph.
+type Line struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Values for each group column, aligned with QueryResult.groups.
+	GroupValues []string `protobuf:"bytes,1,rep,name=group_values,json=groupValues,proto3" json:"group_values,omitempty"`
+	// Y-axis values, aligned with QueryResult.timestamps.
+	Values        []*v1.Value `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Line) Reset() {
+	*x = Line{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Line) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Line) ProtoMessage() {}
+
+func (x *Line) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Line.ProtoReflect.Descriptor instead.
+func (*Line) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *Line) GetGroupValues() []string {
+	if x != nil {
+		return x.GroupValues
+	}
+	return nil
+}
+
+func (x *Line) GetValues() []*v1.Value {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
+// Table represents tabular row data for display in a data grid.
+//
+// Example: Query "SELECT src_ip, region, SUM(bytes), COUNT(*) FROM flows GROUP BY src_ip, region"
+//
+//	columns: ["src_ip", "region", "sum_bytes", "count"]
+//	rows: [
+//	  { values: ["192.168.1.10", "us-east", 1048576, 150] },
+//	  { values: ["10.0.0.5", "eu-west", 524288, 75] },
+//	]
+type Table struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Column names in order: [group_cols..., agg_cols...]
+	Columns []string `protobuf:"bytes,1,rep,name=columns,proto3" json:"columns,omitempty"`
+	// Each row of data.
+	Rows          []*TableRow `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Table) Reset() {
+	*x = Table{}
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Table) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Table) ProtoMessage() {}
+
+func (x *Table) ProtoReflect() protoreflect.Message {
+	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Table.ProtoReflect.Descriptor instead.
+func (*Table) Descriptor() ([]byte, []int) {
+	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *Table) GetColumns() []string {
+	if x != nil {
+		return x.Columns
+	}
+	return nil
+}
+
+func (x *Table) GetRows() []*TableRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+// TableRow holds values for a single row, aligned with Table.columns.
+type TableRow struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Values        []*v1.Value            `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TableRow) Reset() {
+	*x = TableRow{}
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *QueryExecutionData) String() string {
+func (x *TableRow) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryExecutionData) ProtoMessage() {}
+func (*TableRow) ProtoMessage() {}
 
-func (x *QueryExecutionData) ProtoReflect() protoreflect.Message {
+func (x *TableRow) ProtoReflect() protoreflect.Message {
 	mi := &file_nexus_controlplane_v1_control_plane_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3663,21 +3712,14 @@ func (x *QueryExecutionData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use QueryExecutionData.ProtoReflect.Descriptor instead.
-func (*QueryExecutionData) Descriptor() ([]byte, []int) {
+// Deprecated: Use TableRow.ProtoReflect.Descriptor instead.
+func (*TableRow) Descriptor() ([]byte, []int) {
 	return file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP(), []int{52}
 }
 
-func (x *QueryExecutionData) GetSeries() *Series {
+func (x *TableRow) GetValues() []*v1.Value {
 	if x != nil {
-		return x.Series
-	}
-	return nil
-}
-
-func (x *QueryExecutionData) GetRows() []*Row {
-	if x != nil {
-		return x.Rows
+		return x.Values
 	}
 	return nil
 }
@@ -4616,27 +4658,7 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\x02op\x18\x03 \x01(\x0e2 .nexus.controlplane.v1.CompareOpR\x02op\"S\n" +
 	"\x05Order\x12\x14\n" +
 	"\x05field\x18\x01 \x01(\tR\x05field\x124\n" +
-	"\x05order\x18\x02 \x01(\x0e2\x1e.nexus.controlplane.v1.OrderOpR\x05order\"\x9d\x02\n" +
-	"\x06Series\x12:\n" +
-	"\n" +
-	"timestamps\x18\x01 \x03(\v2\x1a.google.protobuf.TimestampR\n" +
-	"timestamps\x12;\n" +
-	"\x04data\x18\x02 \x03(\v2'.nexus.controlplane.v1.Series.DataEntryR\x04data\x12&\n" +
-	"\x0evisualisations\x18\x03 \x03(\tR\x0evisualisations\x12\x16\n" +
-	"\x06groups\x18\x04 \x03(\tR\x06groups\x1aZ\n" +
-	"\tDataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x127\n" +
-	"\x05value\x18\x02 \x01(\v2!.nexus.controlplane.v1.SeriesDataR\x05value:\x028\x01\"G\n" +
-	"\n" +
-	"SeriesData\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12%\n" +
-	"\x06values\x18\x02 \x03(\v2\r.std.v1.ValueR\x06values\"^\n" +
-	"\x03Row\x12\x16\n" +
-	"\x06fields\x18\x01 \x03(\tR\x06fields\x12?\n" +
-	"\n" +
-	"row_values\x18\x02 \x03(\v2 .nexus.controlplane.v1.RowValuesR\trowValues\"2\n" +
-	"\tRowValues\x12%\n" +
-	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"\x84\x01\n" +
+	"\x05order\x18\x02 \x01(\x0e2\x1e.nexus.controlplane.v1.OrderOpR\x05order\"\x84\x01\n" +
 	"\x12CreateQueryRequest\x12\x19\n" +
 	"\bteam_pid\x18\x01 \x01(\tR\ateamPid\x12\x1f\n" +
 	"\vdataset_pid\x18\x02 \x01(\tR\n" +
@@ -4667,19 +4689,35 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x122\n" +
-	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xaf\x02\n" +
+	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xb1\x02\n" +
 	"\x14QueryExecutionResult\x12\x1f\n" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x12C\n" +
-	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12B\n" +
-	"\x04data\x18\x04 \x01(\v2).nexus.controlplane.v1.QueryExecutionDataH\x00R\x04data\x88\x01\x01\x12(\n" +
-	"\rerror_message\x18\x05 \x01(\tH\x01R\ferrorMessage\x88\x01\x01B\a\n" +
-	"\x05_dataB\x10\n" +
-	"\x0e_error_message\"{\n" +
-	"\x12QueryExecutionData\x125\n" +
-	"\x06series\x18\x01 \x01(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x12.\n" +
-	"\x04rows\x18\x02 \x03(\v2\x1a.nexus.controlplane.v1.RowR\x04rows\"\xcb\x01\n" +
+	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12A\n" +
+	"\aresults\x18\x04 \x01(\v2\".nexus.controlplane.v1.QueryResultH\x00R\aresults\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\x05 \x01(\tH\x01R\ferrorMessage\x88\x01\x01B\n" +
+	"\n" +
+	"\b_resultsB\x10\n" +
+	"\x0e_error_message\"\xcc\x01\n" +
+	"\vQueryResult\x12:\n" +
+	"\n" +
+	"timestamps\x18\x01 \x03(\v2\x1a.google.protobuf.TimestampR\n" +
+	"timestamps\x12\x16\n" +
+	"\x06groups\x18\x02 \x03(\tR\x06groups\x125\n" +
+	"\x06series\x18\x03 \x03(\v2\x1d.nexus.controlplane.v1.SeriesR\x06series\x122\n" +
+	"\x05table\x18\x04 \x01(\v2\x1c.nexus.controlplane.v1.TableR\x05table\"a\n" +
+	"\x06Series\x12$\n" +
+	"\rvisualisation\x18\x01 \x01(\tR\rvisualisation\x121\n" +
+	"\x05lines\x18\x02 \x03(\v2\x1b.nexus.controlplane.v1.LineR\x05lines\"P\n" +
+	"\x04Line\x12!\n" +
+	"\fgroup_values\x18\x01 \x03(\tR\vgroupValues\x12%\n" +
+	"\x06values\x18\x02 \x03(\v2\r.std.v1.ValueR\x06values\"V\n" +
+	"\x05Table\x12\x18\n" +
+	"\acolumns\x18\x01 \x03(\tR\acolumns\x123\n" +
+	"\x04rows\x18\x02 \x03(\v2\x1f.nexus.controlplane.v1.TableRowR\x04rows\"1\n" +
+	"\bTableRow\x12%\n" +
+	"\x06values\x18\x01 \x03(\v2\r.std.v1.ValueR\x06values\"\xcb\x01\n" +
 	"\x10HeartbeatRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
 	"\bteam_pid\x18\x02 \x01(\tR\ateamPid\x12H\n" +
@@ -4840,7 +4878,7 @@ func file_nexus_controlplane_v1_control_plane_proto_rawDescGZIP() []byte {
 }
 
 var file_nexus_controlplane_v1_control_plane_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
-var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 64)
+var file_nexus_controlplane_v1_control_plane_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
 var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(ClusterType)(0),                     // 0: nexus.controlplane.v1.ClusterType
 	(IPVersion)(0),                       // 1: nexus.controlplane.v1.IPVersion
@@ -4889,21 +4927,21 @@ var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(*Where)(nil),                        // 44: nexus.controlplane.v1.Where
 	(*Clause)(nil),                       // 45: nexus.controlplane.v1.Clause
 	(*Order)(nil),                        // 46: nexus.controlplane.v1.Order
-	(*Series)(nil),                       // 47: nexus.controlplane.v1.Series
-	(*SeriesData)(nil),                   // 48: nexus.controlplane.v1.SeriesData
-	(*Row)(nil),                          // 49: nexus.controlplane.v1.Row
-	(*RowValues)(nil),                    // 50: nexus.controlplane.v1.RowValues
-	(*CreateQueryRequest)(nil),           // 51: nexus.controlplane.v1.CreateQueryRequest
-	(*CreateQueryResponse)(nil),          // 52: nexus.controlplane.v1.CreateQueryResponse
-	(*SubmitQueryExecutionRequest)(nil),  // 53: nexus.controlplane.v1.SubmitQueryExecutionRequest
-	(*SubmitQueryExecutionResponse)(nil), // 54: nexus.controlplane.v1.SubmitQueryExecutionResponse
-	(*UpdateQueryExecutionRequest)(nil),  // 55: nexus.controlplane.v1.UpdateQueryExecutionRequest
-	(*UpdateQueryExecutionResponse)(nil), // 56: nexus.controlplane.v1.UpdateQueryExecutionResponse
-	(*PollQueryExecutionRequest)(nil),    // 57: nexus.controlplane.v1.PollQueryExecutionRequest
-	(*PollQueryExecutionResponse)(nil),   // 58: nexus.controlplane.v1.PollQueryExecutionResponse
-	(*ExecQueryRequest)(nil),             // 59: nexus.controlplane.v1.ExecQueryRequest
-	(*QueryExecutionResult)(nil),         // 60: nexus.controlplane.v1.QueryExecutionResult
-	(*QueryExecutionData)(nil),           // 61: nexus.controlplane.v1.QueryExecutionData
+	(*CreateQueryRequest)(nil),           // 47: nexus.controlplane.v1.CreateQueryRequest
+	(*CreateQueryResponse)(nil),          // 48: nexus.controlplane.v1.CreateQueryResponse
+	(*SubmitQueryExecutionRequest)(nil),  // 49: nexus.controlplane.v1.SubmitQueryExecutionRequest
+	(*SubmitQueryExecutionResponse)(nil), // 50: nexus.controlplane.v1.SubmitQueryExecutionResponse
+	(*UpdateQueryExecutionRequest)(nil),  // 51: nexus.controlplane.v1.UpdateQueryExecutionRequest
+	(*UpdateQueryExecutionResponse)(nil), // 52: nexus.controlplane.v1.UpdateQueryExecutionResponse
+	(*PollQueryExecutionRequest)(nil),    // 53: nexus.controlplane.v1.PollQueryExecutionRequest
+	(*PollQueryExecutionResponse)(nil),   // 54: nexus.controlplane.v1.PollQueryExecutionResponse
+	(*ExecQueryRequest)(nil),             // 55: nexus.controlplane.v1.ExecQueryRequest
+	(*QueryExecutionResult)(nil),         // 56: nexus.controlplane.v1.QueryExecutionResult
+	(*QueryResult)(nil),                  // 57: nexus.controlplane.v1.QueryResult
+	(*Series)(nil),                       // 58: nexus.controlplane.v1.Series
+	(*Line)(nil),                         // 59: nexus.controlplane.v1.Line
+	(*Table)(nil),                        // 60: nexus.controlplane.v1.Table
+	(*TableRow)(nil),                     // 61: nexus.controlplane.v1.TableRow
 	(*HeartbeatRequest)(nil),             // 62: nexus.controlplane.v1.HeartbeatRequest
 	(*HeartbeatResponse)(nil),            // 63: nexus.controlplane.v1.HeartbeatResponse
 	(*CollectorMetadata)(nil),            // 64: nexus.controlplane.v1.CollectorMetadata
@@ -4914,130 +4952,128 @@ var file_nexus_controlplane_v1_control_plane_proto_goTypes = []any{
 	(*ControlMessage)(nil),               // 69: nexus.controlplane.v1.ControlMessage
 	(*TelemetryControl)(nil),             // 70: nexus.controlplane.v1.TelemetryControl
 	(*DeviceControl)(nil),                // 71: nexus.controlplane.v1.DeviceControl
-	nil,                                  // 72: nexus.controlplane.v1.Series.DataEntry
-	(*timestamppb.Timestamp)(nil),        // 73: google.protobuf.Timestamp
-	(*v1.KeyValue)(nil),                  // 74: std.v1.KeyValue
-	(*fieldmaskpb.FieldMask)(nil),        // 75: google.protobuf.FieldMask
-	(*v1.Value)(nil),                     // 76: std.v1.Value
+	(*timestamppb.Timestamp)(nil),        // 72: google.protobuf.Timestamp
+	(*v1.KeyValue)(nil),                  // 73: std.v1.KeyValue
+	(*fieldmaskpb.FieldMask)(nil),        // 74: google.protobuf.FieldMask
+	(*v1.Value)(nil),                     // 75: std.v1.Value
 }
 var file_nexus_controlplane_v1_control_plane_proto_depIdxs = []int32{
-	73, // 0: nexus.controlplane.v1.Dataset.created_at:type_name -> google.protobuf.Timestamp
-	73, // 1: nexus.controlplane.v1.Dataset.updated_at:type_name -> google.protobuf.Timestamp
+	72, // 0: nexus.controlplane.v1.Dataset.created_at:type_name -> google.protobuf.Timestamp
+	72, // 1: nexus.controlplane.v1.Dataset.updated_at:type_name -> google.protobuf.Timestamp
 	9,  // 2: nexus.controlplane.v1.CreateDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
-	73, // 3: nexus.controlplane.v1.CreateDatasetResponse.created_at:type_name -> google.protobuf.Timestamp
-	73, // 4: nexus.controlplane.v1.DeleteDatasetResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	72, // 3: nexus.controlplane.v1.CreateDatasetResponse.created_at:type_name -> google.protobuf.Timestamp
+	72, // 4: nexus.controlplane.v1.DeleteDatasetResponse.deleted_at:type_name -> google.protobuf.Timestamp
 	9,  // 5: nexus.controlplane.v1.ListDatasetsResponse.datasets:type_name -> nexus.controlplane.v1.Dataset
 	9,  // 6: nexus.controlplane.v1.GetDatasetResponse.dataset:type_name -> nexus.controlplane.v1.Dataset
 	0,  // 7: nexus.controlplane.v1.Cluster.type:type_name -> nexus.controlplane.v1.ClusterType
-	73, // 8: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
-	73, // 9: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
+	72, // 8: nexus.controlplane.v1.Cluster.created_at:type_name -> google.protobuf.Timestamp
+	72, // 9: nexus.controlplane.v1.Cluster.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 10: nexus.controlplane.v1.CreateClusterRequest.type:type_name -> nexus.controlplane.v1.ClusterType
 	18, // 11: nexus.controlplane.v1.CreateClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
-	73, // 12: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
-	73, // 13: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	72, // 12: nexus.controlplane.v1.CreateClusterResponse.created_at:type_name -> google.protobuf.Timestamp
+	72, // 13: nexus.controlplane.v1.DeleteClusterResponse.deleted_at:type_name -> google.protobuf.Timestamp
 	18, // 14: nexus.controlplane.v1.ListClustersResponse.clusters:type_name -> nexus.controlplane.v1.Cluster
 	18, // 15: nexus.controlplane.v1.GetClusterResponse.cluster:type_name -> nexus.controlplane.v1.Cluster
 	28, // 16: nexus.controlplane.v1.Device.generic:type_name -> nexus.controlplane.v1.GenericModel
 	31, // 17: nexus.controlplane.v1.Device.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	74, // 18: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
-	73, // 19: nexus.controlplane.v1.Device.created_at:type_name -> google.protobuf.Timestamp
-	73, // 20: nexus.controlplane.v1.Device.updated_at:type_name -> google.protobuf.Timestamp
+	73, // 18: nexus.controlplane.v1.Device.labels:type_name -> std.v1.KeyValue
+	72, // 19: nexus.controlplane.v1.Device.created_at:type_name -> google.protobuf.Timestamp
+	72, // 20: nexus.controlplane.v1.Device.updated_at:type_name -> google.protobuf.Timestamp
 	29, // 21: nexus.controlplane.v1.GenericModel.cisco:type_name -> nexus.controlplane.v1.Cisco
 	30, // 22: nexus.controlplane.v1.GenericModel.arista:type_name -> nexus.controlplane.v1.Arista
 	1,  // 23: nexus.controlplane.v1.IpAddress.version:type_name -> nexus.controlplane.v1.IPVersion
 	28, // 24: nexus.controlplane.v1.CreateDeviceRequest.generic:type_name -> nexus.controlplane.v1.GenericModel
 	31, // 25: nexus.controlplane.v1.CreateDeviceRequest.addresses:type_name -> nexus.controlplane.v1.IpAddress
-	74, // 26: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
+	73, // 26: nexus.controlplane.v1.CreateDeviceRequest.labels:type_name -> std.v1.KeyValue
 	27, // 27: nexus.controlplane.v1.CreateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	73, // 28: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
-	73, // 29: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
+	72, // 28: nexus.controlplane.v1.CreateDeviceResponse.created_at:type_name -> google.protobuf.Timestamp
+	72, // 29: nexus.controlplane.v1.DeleteDeviceResponse.deleted_at:type_name -> google.protobuf.Timestamp
 	27, // 30: nexus.controlplane.v1.UpdateDeviceRequest.device:type_name -> nexus.controlplane.v1.Device
-	75, // 31: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
+	74, // 31: nexus.controlplane.v1.UpdateDeviceRequest.update_mask:type_name -> google.protobuf.FieldMask
 	27, // 32: nexus.controlplane.v1.UpdateDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
-	73, // 33: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
+	72, // 33: nexus.controlplane.v1.UpdateDeviceResponse.updated_at:type_name -> google.protobuf.Timestamp
 	27, // 34: nexus.controlplane.v1.GetDeviceResponse.device:type_name -> nexus.controlplane.v1.Device
 	27, // 35: nexus.controlplane.v1.ListDevicesResponse.devices:type_name -> nexus.controlplane.v1.Device
 	43, // 36: nexus.controlplane.v1.Query.visualise:type_name -> nexus.controlplane.v1.Visualise
 	44, // 37: nexus.controlplane.v1.Query.where:type_name -> nexus.controlplane.v1.Where
 	46, // 38: nexus.controlplane.v1.Query.order_by:type_name -> nexus.controlplane.v1.Order
 	45, // 39: nexus.controlplane.v1.Query.having:type_name -> nexus.controlplane.v1.Clause
-	73, // 40: nexus.controlplane.v1.Query.created_at:type_name -> google.protobuf.Timestamp
-	73, // 41: nexus.controlplane.v1.Query.updated_at:type_name -> google.protobuf.Timestamp
+	72, // 40: nexus.controlplane.v1.Query.created_at:type_name -> google.protobuf.Timestamp
+	72, // 41: nexus.controlplane.v1.Query.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 42: nexus.controlplane.v1.Visualise.op:type_name -> nexus.controlplane.v1.VisualiseOp
 	3,  // 43: nexus.controlplane.v1.Where.op:type_name -> nexus.controlplane.v1.WhereOp
 	45, // 44: nexus.controlplane.v1.Where.clauses:type_name -> nexus.controlplane.v1.Clause
 	4,  // 45: nexus.controlplane.v1.Clause.op:type_name -> nexus.controlplane.v1.CompareOp
 	5,  // 46: nexus.controlplane.v1.Order.order:type_name -> nexus.controlplane.v1.OrderOp
-	73, // 47: nexus.controlplane.v1.Series.timestamps:type_name -> google.protobuf.Timestamp
-	72, // 48: nexus.controlplane.v1.Series.data:type_name -> nexus.controlplane.v1.Series.DataEntry
-	76, // 49: nexus.controlplane.v1.SeriesData.values:type_name -> std.v1.Value
-	50, // 50: nexus.controlplane.v1.Row.row_values:type_name -> nexus.controlplane.v1.RowValues
-	76, // 51: nexus.controlplane.v1.RowValues.values:type_name -> std.v1.Value
-	42, // 52: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
-	42, // 53: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
-	73, // 54: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
-	60, // 55: nexus.controlplane.v1.UpdateQueryExecutionRequest.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	60, // 56: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	42, // 57: nexus.controlplane.v1.ExecQueryRequest.query:type_name -> nexus.controlplane.v1.Query
-	6,  // 58: nexus.controlplane.v1.QueryExecutionResult.status:type_name -> nexus.controlplane.v1.QueryExecutionStatus
-	61, // 59: nexus.controlplane.v1.QueryExecutionResult.data:type_name -> nexus.controlplane.v1.QueryExecutionData
-	47, // 60: nexus.controlplane.v1.QueryExecutionData.series:type_name -> nexus.controlplane.v1.Series
-	49, // 61: nexus.controlplane.v1.QueryExecutionData.rows:type_name -> nexus.controlplane.v1.Row
+	42, // 47: nexus.controlplane.v1.CreateQueryRequest.query:type_name -> nexus.controlplane.v1.Query
+	42, // 48: nexus.controlplane.v1.CreateQueryResponse.query:type_name -> nexus.controlplane.v1.Query
+	72, // 49: nexus.controlplane.v1.CreateQueryResponse.created_at:type_name -> google.protobuf.Timestamp
+	56, // 50: nexus.controlplane.v1.UpdateQueryExecutionRequest.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	56, // 51: nexus.controlplane.v1.PollQueryExecutionResponse.result:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	42, // 52: nexus.controlplane.v1.ExecQueryRequest.query:type_name -> nexus.controlplane.v1.Query
+	6,  // 53: nexus.controlplane.v1.QueryExecutionResult.status:type_name -> nexus.controlplane.v1.QueryExecutionStatus
+	57, // 54: nexus.controlplane.v1.QueryExecutionResult.results:type_name -> nexus.controlplane.v1.QueryResult
+	72, // 55: nexus.controlplane.v1.QueryResult.timestamps:type_name -> google.protobuf.Timestamp
+	58, // 56: nexus.controlplane.v1.QueryResult.series:type_name -> nexus.controlplane.v1.Series
+	60, // 57: nexus.controlplane.v1.QueryResult.table:type_name -> nexus.controlplane.v1.Table
+	59, // 58: nexus.controlplane.v1.Series.lines:type_name -> nexus.controlplane.v1.Line
+	75, // 59: nexus.controlplane.v1.Line.values:type_name -> std.v1.Value
+	61, // 60: nexus.controlplane.v1.Table.rows:type_name -> nexus.controlplane.v1.TableRow
+	75, // 61: nexus.controlplane.v1.TableRow.values:type_name -> std.v1.Value
 	64, // 62: nexus.controlplane.v1.HeartbeatRequest.collector:type_name -> nexus.controlplane.v1.CollectorMetadata
 	66, // 63: nexus.controlplane.v1.HeartbeatRequest.tap:type_name -> nexus.controlplane.v1.TapMetadata
 	8,  // 64: nexus.controlplane.v1.CollectorMetadata.status:type_name -> nexus.controlplane.v1.ComponentHealthStatus
-	73, // 65: nexus.controlplane.v1.CollectorMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
+	72, // 65: nexus.controlplane.v1.CollectorMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
 	65, // 66: nexus.controlplane.v1.CollectorMetadata.metrics:type_name -> nexus.controlplane.v1.CollectorMetrics
-	73, // 67: nexus.controlplane.v1.CollectorMetrics.collected_at:type_name -> google.protobuf.Timestamp
+	72, // 67: nexus.controlplane.v1.CollectorMetrics.collected_at:type_name -> google.protobuf.Timestamp
 	8,  // 68: nexus.controlplane.v1.TapMetadata.status:type_name -> nexus.controlplane.v1.ComponentHealthStatus
-	73, // 69: nexus.controlplane.v1.TapMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
+	72, // 69: nexus.controlplane.v1.TapMetadata.last_heartbeat:type_name -> google.protobuf.Timestamp
 	69, // 70: nexus.controlplane.v1.ControlMessageRequest.control:type_name -> nexus.controlplane.v1.ControlMessage
 	69, // 71: nexus.controlplane.v1.ControlMessageResponse.control:type_name -> nexus.controlplane.v1.ControlMessage
 	70, // 72: nexus.controlplane.v1.ControlMessage.telemetry:type_name -> nexus.controlplane.v1.TelemetryControl
 	71, // 73: nexus.controlplane.v1.ControlMessage.devices:type_name -> nexus.controlplane.v1.DeviceControl
 	27, // 74: nexus.controlplane.v1.DeviceControl.devices:type_name -> nexus.controlplane.v1.Device
-	48, // 75: nexus.controlplane.v1.Series.DataEntry.value:type_name -> nexus.controlplane.v1.SeriesData
-	10, // 76: nexus.controlplane.v1.ControlPlaneService.CreateDataset:input_type -> nexus.controlplane.v1.CreateDatasetRequest
-	12, // 77: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:input_type -> nexus.controlplane.v1.DeleteDatasetRequest
-	14, // 78: nexus.controlplane.v1.ControlPlaneService.ListDatasets:input_type -> nexus.controlplane.v1.ListDatasetsRequest
-	16, // 79: nexus.controlplane.v1.ControlPlaneService.GetDataset:input_type -> nexus.controlplane.v1.GetDatasetRequest
-	19, // 80: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
-	21, // 81: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
-	23, // 82: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
-	25, // 83: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
-	32, // 84: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
-	34, // 85: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
-	36, // 86: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
-	40, // 87: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
-	38, // 88: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
-	51, // 89: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
-	53, // 90: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:input_type -> nexus.controlplane.v1.SubmitQueryExecutionRequest
-	55, // 91: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:input_type -> nexus.controlplane.v1.UpdateQueryExecutionRequest
-	57, // 92: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
-	62, // 93: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
-	11, // 94: nexus.controlplane.v1.ControlPlaneService.CreateDataset:output_type -> nexus.controlplane.v1.CreateDatasetResponse
-	13, // 95: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:output_type -> nexus.controlplane.v1.DeleteDatasetResponse
-	15, // 96: nexus.controlplane.v1.ControlPlaneService.ListDatasets:output_type -> nexus.controlplane.v1.ListDatasetsResponse
-	17, // 97: nexus.controlplane.v1.ControlPlaneService.GetDataset:output_type -> nexus.controlplane.v1.GetDatasetResponse
-	20, // 98: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
-	22, // 99: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
-	24, // 100: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
-	26, // 101: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
-	33, // 102: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
-	35, // 103: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
-	37, // 104: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
-	41, // 105: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
-	39, // 106: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
-	52, // 107: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
-	54, // 108: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:output_type -> nexus.controlplane.v1.SubmitQueryExecutionResponse
-	56, // 109: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:output_type -> nexus.controlplane.v1.UpdateQueryExecutionResponse
-	58, // 110: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
-	63, // 111: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
-	94, // [94:112] is the sub-list for method output_type
-	76, // [76:94] is the sub-list for method input_type
-	76, // [76:76] is the sub-list for extension type_name
-	76, // [76:76] is the sub-list for extension extendee
-	0,  // [0:76] is the sub-list for field type_name
+	10, // 75: nexus.controlplane.v1.ControlPlaneService.CreateDataset:input_type -> nexus.controlplane.v1.CreateDatasetRequest
+	12, // 76: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:input_type -> nexus.controlplane.v1.DeleteDatasetRequest
+	14, // 77: nexus.controlplane.v1.ControlPlaneService.ListDatasets:input_type -> nexus.controlplane.v1.ListDatasetsRequest
+	16, // 78: nexus.controlplane.v1.ControlPlaneService.GetDataset:input_type -> nexus.controlplane.v1.GetDatasetRequest
+	19, // 79: nexus.controlplane.v1.ControlPlaneService.CreateCluster:input_type -> nexus.controlplane.v1.CreateClusterRequest
+	21, // 80: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:input_type -> nexus.controlplane.v1.DeleteClusterRequest
+	23, // 81: nexus.controlplane.v1.ControlPlaneService.ListClusters:input_type -> nexus.controlplane.v1.ListClustersRequest
+	25, // 82: nexus.controlplane.v1.ControlPlaneService.GetCluster:input_type -> nexus.controlplane.v1.GetClusterRequest
+	32, // 83: nexus.controlplane.v1.ControlPlaneService.CreateDevice:input_type -> nexus.controlplane.v1.CreateDeviceRequest
+	34, // 84: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:input_type -> nexus.controlplane.v1.DeleteDeviceRequest
+	36, // 85: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:input_type -> nexus.controlplane.v1.UpdateDeviceRequest
+	40, // 86: nexus.controlplane.v1.ControlPlaneService.ListDevices:input_type -> nexus.controlplane.v1.ListDevicesRequest
+	38, // 87: nexus.controlplane.v1.ControlPlaneService.GetDevice:input_type -> nexus.controlplane.v1.GetDeviceRequest
+	47, // 88: nexus.controlplane.v1.ControlPlaneService.CreateQuery:input_type -> nexus.controlplane.v1.CreateQueryRequest
+	49, // 89: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:input_type -> nexus.controlplane.v1.SubmitQueryExecutionRequest
+	51, // 90: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:input_type -> nexus.controlplane.v1.UpdateQueryExecutionRequest
+	53, // 91: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:input_type -> nexus.controlplane.v1.PollQueryExecutionRequest
+	62, // 92: nexus.controlplane.v1.ControlPlaneService.Heartbeat:input_type -> nexus.controlplane.v1.HeartbeatRequest
+	11, // 93: nexus.controlplane.v1.ControlPlaneService.CreateDataset:output_type -> nexus.controlplane.v1.CreateDatasetResponse
+	13, // 94: nexus.controlplane.v1.ControlPlaneService.DeleteDataset:output_type -> nexus.controlplane.v1.DeleteDatasetResponse
+	15, // 95: nexus.controlplane.v1.ControlPlaneService.ListDatasets:output_type -> nexus.controlplane.v1.ListDatasetsResponse
+	17, // 96: nexus.controlplane.v1.ControlPlaneService.GetDataset:output_type -> nexus.controlplane.v1.GetDatasetResponse
+	20, // 97: nexus.controlplane.v1.ControlPlaneService.CreateCluster:output_type -> nexus.controlplane.v1.CreateClusterResponse
+	22, // 98: nexus.controlplane.v1.ControlPlaneService.DeleteCluster:output_type -> nexus.controlplane.v1.DeleteClusterResponse
+	24, // 99: nexus.controlplane.v1.ControlPlaneService.ListClusters:output_type -> nexus.controlplane.v1.ListClustersResponse
+	26, // 100: nexus.controlplane.v1.ControlPlaneService.GetCluster:output_type -> nexus.controlplane.v1.GetClusterResponse
+	33, // 101: nexus.controlplane.v1.ControlPlaneService.CreateDevice:output_type -> nexus.controlplane.v1.CreateDeviceResponse
+	35, // 102: nexus.controlplane.v1.ControlPlaneService.DeleteDevice:output_type -> nexus.controlplane.v1.DeleteDeviceResponse
+	37, // 103: nexus.controlplane.v1.ControlPlaneService.UpdateDevice:output_type -> nexus.controlplane.v1.UpdateDeviceResponse
+	41, // 104: nexus.controlplane.v1.ControlPlaneService.ListDevices:output_type -> nexus.controlplane.v1.ListDevicesResponse
+	39, // 105: nexus.controlplane.v1.ControlPlaneService.GetDevice:output_type -> nexus.controlplane.v1.GetDeviceResponse
+	48, // 106: nexus.controlplane.v1.ControlPlaneService.CreateQuery:output_type -> nexus.controlplane.v1.CreateQueryResponse
+	50, // 107: nexus.controlplane.v1.ControlPlaneService.SubmitQueryExecution:output_type -> nexus.controlplane.v1.SubmitQueryExecutionResponse
+	52, // 108: nexus.controlplane.v1.ControlPlaneService.UpdateQueryExecution:output_type -> nexus.controlplane.v1.UpdateQueryExecutionResponse
+	54, // 109: nexus.controlplane.v1.ControlPlaneService.PollQueryExecution:output_type -> nexus.controlplane.v1.PollQueryExecutionResponse
+	63, // 110: nexus.controlplane.v1.ControlPlaneService.Heartbeat:output_type -> nexus.controlplane.v1.HeartbeatResponse
+	93, // [93:111] is the sub-list for method output_type
+	75, // [75:93] is the sub-list for method input_type
+	75, // [75:75] is the sub-list for extension type_name
+	75, // [75:75] is the sub-list for extension extendee
+	0,  // [0:75] is the sub-list for field type_name
 }
 
 func init() { file_nexus_controlplane_v1_control_plane_proto_init() }
@@ -5058,7 +5094,7 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 	file_nexus_controlplane_v1_control_plane_proto_msgTypes[23].OneofWrappers = []any{
 		(*CreateDeviceRequest_Generic)(nil),
 	}
-	file_nexus_controlplane_v1_control_plane_proto_msgTypes[51].OneofWrappers = []any{}
+	file_nexus_controlplane_v1_control_plane_proto_msgTypes[47].OneofWrappers = []any{}
 	file_nexus_controlplane_v1_control_plane_proto_msgTypes[53].OneofWrappers = []any{
 		(*HeartbeatRequest_Collector)(nil),
 		(*HeartbeatRequest_Tap)(nil),
@@ -5073,7 +5109,7 @@ func file_nexus_controlplane_v1_control_plane_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_nexus_controlplane_v1_control_plane_proto_rawDesc), len(file_nexus_controlplane_v1_control_plane_proto_rawDesc)),
 			NumEnums:      9,
-			NumMessages:   64,
+			NumMessages:   63,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
