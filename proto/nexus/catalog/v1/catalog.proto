@@ -39,15 +39,17 @@ service CatalogService {
 }
 
 message CreateManifestRequest {
-  string dataset_pid = 1;
-  Manifest manifest = 2;
+  string team_pid = 1;
+  string dataset_pid = 2;
+  Manifest manifest = 3;
 }
 
 message CreateManifestResponse {
   string pid = 1;
-  string dataset_pid = 2;
-  Manifest manifest = 3;
-  google.protobuf.Timestamp created_at = 4;
+  string team_pid = 2;
+  string dataset_pid = 3;
+  Manifest manifest = 4;
+  google.protobuf.Timestamp created_at = 5;
 }
 
 // ListManifestsRequest queries for Manifests within a time range.
