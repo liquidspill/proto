@@ -532,12 +532,14 @@ message Line {
 //   ]
 //
 message Table {
+  // The timestamp column
+  TableColumn timestamps = 1;
   // The aggregation columns, what we end up visualising e.g COUNT(*)
-  repeated TableColumn visualisations = 1;
+  repeated TableColumn visualisations = 2;
   // The columns that are used for grouping e.g src_ip, region
-  repeated TableColumn groups = 2;
+  repeated TableColumn groups = 3;
   // Each row of data.
-  repeated TableRow rows = 3;
+  repeated TableRow rows = 4;
 }
 
 message TableColumn {
