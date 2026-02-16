@@ -7,7 +7,6 @@ import "nexus/controlplane/v1/control_plane.proto";
 
 option go_package = "github.com/liquidspill/proto/go/nexus/controlplane/v1;controlplanev1";
 
-
 // The frontend service handles RPCs specifically that the frontend uses. They still
 // interact with the control plane but are split out since they logically serve a
 // different purpose

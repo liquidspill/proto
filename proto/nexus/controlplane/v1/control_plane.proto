@@ -50,7 +50,6 @@ service ControlPlaneService {
   // Handles heartbeats from Fluid collectors and query workers
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
 
-
   // Add a stop agent request which can hit a service running in the
   // agent that will cause it to quit
   // Add a update config request
@@ -465,16 +464,43 @@ message QueryExecutionResult {
 //
 message QueryResult {
   // Shared x-axis timestamps for all series.
+  // This field is populated by the Nexus control plane before
+  // passing it onto the client
   repeated google.protobuf.Timestamp timestamps = 1;
 
   // GROUP BY column names, shared across all series.
   repeated string groups = 2;
 
   // One series per visualisation/aggregation.
+  // This field is populated by the Nexus control plane before
+  // passing it onto the client
   repeated Series series = 3;
 
   // Tabular view of the same data (for the overview table).
+  // This field is populated by the fluid query engine after
+  // a query is successfully executed.
   Table table = 4;
+}
+
+message QueryResultSchema {
+  repeated string visualisations = 1;
+  repeated string groups = 2;
+  repeated string aggregates = 3;
+  repeated QueryResultSchemaField fields = 4;
+}
+
+message QueryResultSchemaField {
+  QueryResultColumnType type = 1;
+  string name = 2;
+  int32 column_index = 3;
+}
+
+enum QueryResultColumnType {
+  QUERY_RESULT_COLUMN_TYPE_UNSPECIFIED = 0;
+  QUERY_RESULT_COLUMN_TYPE_VISUALISATION = 1;
+  QUERY_RESULT_COLUMN_TYPE_GROUP = 2;
+  QUERY_RESULT_COLUMN_TYPE_AGGREGATE = 3;
+  QUERY_RESULT_COLUMN_TYPE_TIMESTAMP = 4;
 }
 
 // Series represents a single graph for one aggregation metric.
@@ -506,11 +532,17 @@ message Line {
 //   ]
 //
 message Table {
-  // Column names in order: [group_cols..., agg_cols...]
-  repeated string columns = 1;
-
+  // The aggregation columns, what we end up visualising e.g COUNT(*)
+  repeated TableColumn visualisations = 1;
+  // The columns that are used for grouping e.g src_ip, region
+  repeated TableColumn groups = 2;
   // Each row of data.
-  repeated TableRow rows = 2;
+  repeated TableRow rows = 3;
+}
+
+message TableColumn {
+  string name = 1;
+  int32 index = 2;
 }
 
 // TableRow holds values for a single row, aligned with Table.columns.
@@ -589,7 +621,7 @@ message CollectorMetrics {
   // The number of flows we've received in totality. This should
   // be: flows_written_total + flows_dropped_total
   uint64 flows_received_total = 14;
-    // Total number of flows written to S3
+  // Total number of flows written to S3
   uint64 flows_written_total = 15;
   // Total number of flows we've dropped (due to a full ring buffer)
   uint64 flows_dropped_total = 16;
