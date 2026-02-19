@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file std/v1/std.proto.
  */
 export const file_std_v1_std: GenFile = /*@__PURE__*/
-  fileDesc("ChBzdGQvdjEvc3RkLnByb3RvEgZzdGQudjEi6QEKBVZhbHVlEhUKC2ludDMyX3ZhbHVlGAEgASgFSAASFQoLaW50NjRfdmFsdWUYAiABKANIABIWCgx1aW50MzJfdmFsdWUYAyABKA1IABIWCgx1aW50NjRfdmFsdWUYBCABKARIABIUCgpib29sX3ZhbHVlGAUgASgISAASFgoMc3RyaW5nX3ZhbHVlGAYgASgJSAASFQoLYnl0ZXNfdmFsdWUYByABKAxIABI1Cg90aW1lc3RhbXBfdmFsdWUYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSABCBgoEa2luZCI1CghLZXlWYWx1ZRILCgNrZXkYASABKAkSHAoFdmFsdWUYAiABKAsyDS5zdGQudjEuVmFsdWVCLlosZ2l0aHViLmNvbS9saXF1aWRzcGlsbC9wcm90by9nby9zdGQvdjE7c3RkdjFiBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("ChBzdGQvdjEvc3RkLnByb3RvEgZzdGQudjEimAIKBVZhbHVlEhUKC2ludDMyX3ZhbHVlGAEgASgFSAASFQoLaW50NjRfdmFsdWUYAiABKANIABIWCgx1aW50MzJfdmFsdWUYAyABKA1IABIWCgx1aW50NjRfdmFsdWUYBCABKARIABIUCgpib29sX3ZhbHVlGAUgASgISAASFgoMc3RyaW5nX3ZhbHVlGAYgASgJSAASFQoLYnl0ZXNfdmFsdWUYByABKAxIABIVCgtmbG9hdF92YWx1ZRgIIAEoAkgAEhYKDGRvdWJsZV92YWx1ZRgJIAEoAUgAEjUKD3RpbWVzdGFtcF92YWx1ZRgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAEIGCgRraW5kIjUKCEtleVZhbHVlEgsKA2tleRgBIAEoCRIcCgV2YWx1ZRgCIAEoCzINLnN0ZC52MS5WYWx1ZUIuWixnaXRodWIuY29tL2xpcXVpZHNwaWxsL3Byb3RvL2dvL3N0ZC92MTtzdGR2MWIGcHJvdG8z", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message std.v1.Value
@@ -65,7 +65,19 @@ export type Value = Message<"std.v1.Value"> & {
     case: "bytesValue";
   } | {
     /**
-     * @generated from field: google.protobuf.Timestamp timestamp_value = 8;
+     * @generated from field: float float_value = 8;
+     */
+    value: number;
+    case: "floatValue";
+  } | {
+    /**
+     * @generated from field: double double_value = 9;
+     */
+    value: number;
+    case: "doubleValue";
+  } | {
+    /**
+     * @generated from field: google.protobuf.Timestamp timestamp_value = 10;
      */
     value: Timestamp;
     case: "timestampValue";

@@ -15,7 +15,9 @@ message Value {
     bool bool_value = 5;
     string string_value = 6;
     bytes bytes_value = 7;
-    google.protobuf.Timestamp timestamp_value = 8;
+    float float_value = 8;
+    double double_value = 9;
+    google.protobuf.Timestamp timestamp_value = 10;
   }
 }
 

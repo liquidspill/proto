@@ -9,3 +9,5 @@ node_modules
 
 **/*.old
 scourpb
+
+**/*.DS_Store

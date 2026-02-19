@@ -33,6 +33,8 @@ type Value struct {
 	//	*Value_BoolValue
 	//	*Value_StringValue
 	//	*Value_BytesValue
+	//	*Value_FloatValue
+	//	*Value_DoubleValue
 	//	*Value_TimestampValue
 	Kind          isValue_Kind `protobuf_oneof:"kind"`
 	unknownFields protoimpl.UnknownFields
@@ -139,6 +141,24 @@ func (x *Value) GetBytesValue() []byte {
 	return nil
 }
 
+func (x *Value) GetFloatValue() float32 {
+	if x != nil {
+		if x, ok := x.Kind.(*Value_FloatValue); ok {
+			return x.FloatValue
+		}
+	}
+	return 0
+}
+
+func (x *Value) GetDoubleValue() float64 {
+	if x != nil {
+		if x, ok := x.Kind.(*Value_DoubleValue); ok {
+			return x.DoubleValue
+		}
+	}
+	return 0
+}
+
 func (x *Value) GetTimestampValue() *timestamppb.Timestamp {
 	if x != nil {
 		if x, ok := x.Kind.(*Value_TimestampValue); ok {
@@ -180,8 +200,16 @@ type Value_BytesValue struct {
 	BytesValue []byte `protobuf:"bytes,7,opt,name=bytes_value,json=bytesValue,proto3,oneof"`
 }
 
+type Value_FloatValue struct {
+	FloatValue float32 `protobuf:"fixed32,8,opt,name=float_value,json=floatValue,proto3,oneof"`
+}
+
+type Value_DoubleValue struct {
+	DoubleValue float64 `protobuf:"fixed64,9,opt,name=double_value,json=doubleValue,proto3,oneof"`
+}
+
 type Value_TimestampValue struct {
-	TimestampValue *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
+	TimestampValue *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
 
 func (*Value_Int32Value) isValue_Kind() {}
@@ -197,6 +225,10 @@ func (*Value_BoolValue) isValue_Kind() {}
 func (*Value_StringValue) isValue_Kind() {}
 
 func (*Value_BytesValue) isValue_Kind() {}
+
+func (*Value_FloatValue) isValue_Kind() {}
+
+func (*Value_DoubleValue) isValue_Kind() {}
 
 func (*Value_TimestampValue) isValue_Kind() {}
 
@@ -256,7 +288,7 @@ var File_std_v1_std_proto protoreflect.FileDescriptor
 
 const file_std_v1_std_proto_rawDesc = "" +
 	"\n" +
-	"\x10std/v1/std.proto\x12\x06std.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xcf\x02\n" +
+	"\x10std/v1/std.proto\x12\x06std.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x97\x03\n" +
 	"\x05Value\x12!\n" +
 	"\vint32_value\x18\x01 \x01(\x05H\x00R\n" +
 	"int32Value\x12!\n" +
@@ -268,8 +300,12 @@ const file_std_v1_std_proto_rawDesc = "" +
 	"bool_value\x18\x05 \x01(\bH\x00R\tboolValue\x12#\n" +
 	"\fstring_value\x18\x06 \x01(\tH\x00R\vstringValue\x12!\n" +
 	"\vbytes_value\x18\a \x01(\fH\x00R\n" +
-	"bytesValue\x12E\n" +
-	"\x0ftimestamp_value\x18\b \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x0etimestampValueB\x06\n" +
+	"bytesValue\x12!\n" +
+	"\vfloat_value\x18\b \x01(\x02H\x00R\n" +
+	"floatValue\x12#\n" +
+	"\fdouble_value\x18\t \x01(\x01H\x00R\vdoubleValue\x12E\n" +
+	"\x0ftimestamp_value\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x0etimestampValueB\x06\n" +
 	"\x04kind\"A\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12#\n" +
@@ -316,6 +352,8 @@ func file_std_v1_std_proto_init() {
 		(*Value_BoolValue)(nil),
 		(*Value_StringValue)(nil),
 		(*Value_BytesValue)(nil),
+		(*Value_FloatValue)(nil),
+		(*Value_DoubleValue)(nil),
 		(*Value_TimestampValue)(nil),
 	}
 	type x struct{}
