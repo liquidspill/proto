@@ -3392,7 +3392,7 @@ type QueryExecutionResult struct {
 	// The path on object storage where the query results are stored
 	// for long term retention. This is only populated if the status
 	// is set to completed.
-	DataPath string `protobuf:"bytes,4,opt,name=data_path,json=dataPath,proto3" json:"data_path,omitempty"`
+	DataPath *string `protobuf:"bytes,4,opt,name=data_path,json=dataPath,proto3,oneof" json:"data_path,omitempty"`
 	// The results of the query. This is only populated if the status
 	// is set to completed.
 	Results       *QueryResult `protobuf:"bytes,5,opt,name=results,proto3,oneof" json:"results,omitempty"`
@@ -3453,8 +3453,8 @@ func (x *QueryExecutionResult) GetStatus() QueryExecutionStatus {
 }
 
 func (x *QueryExecutionResult) GetDataPath() string {
-	if x != nil {
-		return x.DataPath
+	if x != nil && x.DataPath != nil {
+		return *x.DataPath
 	}
 	return ""
 }
@@ -4961,15 +4961,17 @@ const file_nexus_controlplane_v1_control_plane_proto_rawDesc = "" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x122\n" +
-	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xce\x02\n" +
+	"\x05query\x18\x03 \x01(\v2\x1c.nexus.controlplane.v1.QueryR\x05query\"\xe1\x02\n" +
 	"\x14QueryExecutionResult\x12\x1f\n" +
 	"\vdataset_pid\x18\x01 \x01(\tR\n" +
 	"datasetPid\x12(\n" +
 	"\x10query_result_pid\x18\x02 \x01(\tR\x0equeryResultPid\x12C\n" +
-	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12\x1b\n" +
-	"\tdata_path\x18\x04 \x01(\tR\bdataPath\x12A\n" +
-	"\aresults\x18\x05 \x01(\v2\".nexus.controlplane.v1.QueryResultH\x00R\aresults\x88\x01\x01\x12(\n" +
-	"\rerror_message\x18\x06 \x01(\tH\x01R\ferrorMessage\x88\x01\x01B\n" +
+	"\x06status\x18\x03 \x01(\x0e2+.nexus.controlplane.v1.QueryExecutionStatusR\x06status\x12 \n" +
+	"\tdata_path\x18\x04 \x01(\tH\x00R\bdataPath\x88\x01\x01\x12A\n" +
+	"\aresults\x18\x05 \x01(\v2\".nexus.controlplane.v1.QueryResultH\x01R\aresults\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\x06 \x01(\tH\x02R\ferrorMessage\x88\x01\x01B\f\n" +
+	"\n" +
+	"_data_pathB\n" +
 	"\n" +
 	"\b_resultsB\x10\n" +
 	"\x0e_error_message\"\xcc\x01\n" +

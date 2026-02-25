@@ -432,7 +432,7 @@ message QueryExecutionResult {
   // The path on object storage where the query results are stored
   // for long term retention. This is only populated if the status
   // is set to completed.
-  string data_path = 4;
+  optional string data_path = 4;
   // The results of the query. This is only populated if the status
   // is set to completed.
   optional QueryResult results = 5;
