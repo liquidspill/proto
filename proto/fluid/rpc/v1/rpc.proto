@@ -18,7 +18,8 @@ message GetQueryResultRequest {
 }
 
 message GetQueryResultResponse {
-  nexus.controlplane.v1.QueryExecutionResult results = 1;
+  Error error = 1;
+  nexus.controlplane.v1.QueryExecutionResult results = 2;
 }
 
 message Error {

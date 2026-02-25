@@ -138,7 +138,8 @@ func (x *GetQueryResultRequest) GetDataPath() string {
 
 type GetQueryResultResponse struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Results       *v1.QueryExecutionResult `protobuf:"bytes,1,opt,name=results,proto3" json:"results,omitempty"`
+	Error         *Error                   `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	Results       *v1.QueryExecutionResult `protobuf:"bytes,2,opt,name=results,proto3" json:"results,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -171,6 +172,13 @@ func (x *GetQueryResultResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetQueryResultResponse.ProtoReflect.Descriptor instead.
 func (*GetQueryResultResponse) Descriptor() ([]byte, []int) {
 	return file_fluid_rpc_v1_rpc_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetQueryResultResponse) GetError() *Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
 }
 
 func (x *GetQueryResultResponse) GetResults() *v1.QueryExecutionResult {
@@ -239,9 +247,10 @@ const file_fluid_rpc_v1_rpc_proto_rawDesc = "" +
 	"\x16fluid/rpc/v1/rpc.proto\x12\ffluid.rpc.v1\x1a)nexus/controlplane/v1/control_plane.proto\"^\n" +
 	"\x15GetQueryResultRequest\x12(\n" +
 	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12\x1b\n" +
-	"\tdata_path\x18\x02 \x01(\tR\bdataPath\"_\n" +
-	"\x16GetQueryResultResponse\x12E\n" +
-	"\aresults\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\aresults\"N\n" +
+	"\tdata_path\x18\x02 \x01(\tR\bdataPath\"\x8a\x01\n" +
+	"\x16GetQueryResultResponse\x12)\n" +
+	"\x05error\x18\x01 \x01(\v2\x13.fluid.rpc.v1.ErrorR\x05error\x12E\n" +
+	"\aresults\x18\x02 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\aresults\"N\n" +
 	"\x05Error\x12+\n" +
 	"\x04kind\x18\x01 \x01(\x0e2\x17.fluid.rpc.v1.ErrorKindR\x04kind\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage*R\n" +
@@ -273,13 +282,14 @@ var file_fluid_rpc_v1_rpc_proto_goTypes = []any{
 	(*v1.QueryExecutionResult)(nil), // 4: nexus.controlplane.v1.QueryExecutionResult
 }
 var file_fluid_rpc_v1_rpc_proto_depIdxs = []int32{
-	4, // 0: fluid.rpc.v1.GetQueryResultResponse.results:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	0, // 1: fluid.rpc.v1.Error.kind:type_name -> fluid.rpc.v1.ErrorKind
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 0: fluid.rpc.v1.GetQueryResultResponse.error:type_name -> fluid.rpc.v1.Error
+	4, // 1: fluid.rpc.v1.GetQueryResultResponse.results:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	0, // 2: fluid.rpc.v1.Error.kind:type_name -> fluid.rpc.v1.ErrorKind
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_fluid_rpc_v1_rpc_proto_init() }

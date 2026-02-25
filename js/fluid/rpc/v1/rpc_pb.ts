@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file fluid/rpc/v1/rpc.proto.
  */
 export const file_fluid_rpc_v1_rpc: GenFile = /*@__PURE__*/
-  fileDesc("ChZmbHVpZC9ycGMvdjEvcnBjLnByb3RvEgxmbHVpZC5ycGMudjEiRAoVR2V0UXVlcnlSZXN1bHRSZXF1ZXN0EhgKEHF1ZXJ5X3Jlc3VsdF9waWQYASABKAkSEQoJZGF0YV9wYXRoGAIgASgJIlYKFkdldFF1ZXJ5UmVzdWx0UmVzcG9uc2USPAoHcmVzdWx0cxgBIAEoCzIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblJlc3VsdCI/CgVFcnJvchIlCgRraW5kGAEgASgOMhcuZmx1aWQucnBjLnYxLkVycm9yS2luZBIPCgdtZXNzYWdlGAIgASgJKlIKCUVycm9yS2luZBILCgdVTktOT1dOEAASDwoLQkFEX1JFUVVFU1QQARINCglSUENfRVJST1IQAhIYChRPQkpFQ1RfU1RPUkFHRV9FUlJPUhADQjRaMmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvcnBjL3YxO3JwY3YxYgZwcm90bzM", [file_nexus_controlplane_v1_control_plane]);
+  fileDesc("ChZmbHVpZC9ycGMvdjEvcnBjLnByb3RvEgxmbHVpZC5ycGMudjEiRAoVR2V0UXVlcnlSZXN1bHRSZXF1ZXN0EhgKEHF1ZXJ5X3Jlc3VsdF9waWQYASABKAkSEQoJZGF0YV9wYXRoGAIgASgJInoKFkdldFF1ZXJ5UmVzdWx0UmVzcG9uc2USIgoFZXJyb3IYASABKAsyEy5mbHVpZC5ycGMudjEuRXJyb3ISPAoHcmVzdWx0cxgCIAEoCzIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblJlc3VsdCI/CgVFcnJvchIlCgRraW5kGAEgASgOMhcuZmx1aWQucnBjLnYxLkVycm9yS2luZBIPCgdtZXNzYWdlGAIgASgJKlIKCUVycm9yS2luZBILCgdVTktOT1dOEAASDwoLQkFEX1JFUVVFU1QQARINCglSUENfRVJST1IQAhIYChRPQkpFQ1RfU1RPUkFHRV9FUlJPUhADQjRaMmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvcnBjL3YxO3JwY3YxYgZwcm90bzM", [file_nexus_controlplane_v1_control_plane]);
 
 /**
  * @generated from message fluid.rpc.v1.GetQueryResultRequest
@@ -49,7 +49,12 @@ export const GetQueryResultRequestSchema: GenMessage<GetQueryResultRequest> = /*
  */
 export type GetQueryResultResponse = Message<"fluid.rpc.v1.GetQueryResultResponse"> & {
   /**
-   * @generated from field: nexus.controlplane.v1.QueryExecutionResult results = 1;
+   * @generated from field: fluid.rpc.v1.Error error = 1;
+   */
+  error?: Error;
+
+  /**
+   * @generated from field: nexus.controlplane.v1.QueryExecutionResult results = 2;
    */
   results?: QueryExecutionResult;
 };
