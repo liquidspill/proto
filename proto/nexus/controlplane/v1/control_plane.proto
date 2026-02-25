@@ -429,8 +429,14 @@ message QueryExecutionResult {
   string dataset_pid = 1;
   string query_result_pid = 2;
   QueryExecutionStatus status = 3;
-  optional QueryResult results = 4;
-  optional string error_message = 5;
+  // The path on object storage where the query results are stored
+  // for long term retention. This is only populated if the status
+  // is set to completed.
+  string data_path = 4;
+  // The results of the query. This is only populated if the status
+  // is set to completed.
+  optional QueryResult results = 5;
+  optional string error_message = 6;
 }
 
 // QueryResult holds the complete graph data from a single query.
