@@ -20,3 +20,30 @@ message GetQueryResultRequest {
 message GetQueryResultResponse {
   nexus.controlplane.v1.QueryExecutionResult results = 1;
 }
+
+message Error {
+  ErrorKind kind = 1;
+  string message = 2;
+}
+
+enum ErrorKind {
+  UNKNOWN = 0;
+  // The request is malformed and was unable to be decoded by the server
+  BAD_REQUEST = 1;
+  // An error encountered while responding to the client
+  RPC_ERROR = 2;
+  // An error while interacting with object storage
+  OBJECT_STORAGE_ERROR = 3;
+
+  // NOT_FOUND = 2;
+  // ALREADY_EXISTS = 3;
+  // PERMISSION_DENIED = 4;
+  // RESOURCE_EXHAUSTED = 5;
+  // FAILED_PRECONDITION = 6;
+  // ABORTED = 7;
+  // OUT_OF_RANGE = 8;
+  // UNIMPLEMENTED = 9;
+  // INTERNAL = 10;
+  // UNAVAILABLE = 11;
+  // DATA_LOSS = 12;
+}

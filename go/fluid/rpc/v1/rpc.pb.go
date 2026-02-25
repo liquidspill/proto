@@ -26,12 +26,70 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ErrorKind int32
+
+const (
+	ErrorKind_UNKNOWN ErrorKind = 0
+	// The request is malformed and was unable to be decoded by the server
+	ErrorKind_BAD_REQUEST ErrorKind = 1
+	// An error encountered while responding to the client
+	ErrorKind_RPC_ERROR ErrorKind = 2
+	// An error while interacting with object storage
+	ErrorKind_OBJECT_STORAGE_ERROR ErrorKind = 3
+)
+
+// Enum value maps for ErrorKind.
+var (
+	ErrorKind_name = map[int32]string{
+		0: "UNKNOWN",
+		1: "BAD_REQUEST",
+		2: "RPC_ERROR",
+		3: "OBJECT_STORAGE_ERROR",
+	}
+	ErrorKind_value = map[string]int32{
+		"UNKNOWN":              0,
+		"BAD_REQUEST":          1,
+		"RPC_ERROR":            2,
+		"OBJECT_STORAGE_ERROR": 3,
+	}
+)
+
+func (x ErrorKind) Enum() *ErrorKind {
+	p := new(ErrorKind)
+	*p = x
+	return p
+}
+
+func (x ErrorKind) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ErrorKind) Descriptor() protoreflect.EnumDescriptor {
+	return file_fluid_rpc_v1_rpc_proto_enumTypes[0].Descriptor()
+}
+
+func (ErrorKind) Type() protoreflect.EnumType {
+	return &file_fluid_rpc_v1_rpc_proto_enumTypes[0]
+}
+
+func (x ErrorKind) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ErrorKind.Descriptor instead.
+func (ErrorKind) EnumDescriptor() ([]byte, []int) {
+	return file_fluid_rpc_v1_rpc_proto_rawDescGZIP(), []int{0}
+}
+
 type GetQueryResultRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	QueryResultPid string                 `protobuf:"bytes,1,opt,name=query_result_pid,json=queryResultPid,proto3" json:"query_result_pid,omitempty"`
-	DataPath       string                 `protobuf:"bytes,2,opt,name=data_path,json=dataPath,proto3" json:"data_path,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// The path on object storage where the query result is stored.
+	// This is expected to be a bucket that the Fluid instance has
+	// access to.
+	DataPath      string `protobuf:"bytes,2,opt,name=data_path,json=dataPath,proto3" json:"data_path,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetQueryResultRequest) Reset() {
@@ -122,6 +180,58 @@ func (x *GetQueryResultResponse) GetResults() *v1.QueryExecutionResult {
 	return nil
 }
 
+type Error struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Kind          ErrorKind              `protobuf:"varint,1,opt,name=kind,proto3,enum=fluid.rpc.v1.ErrorKind" json:"kind,omitempty"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Error) Reset() {
+	*x = Error{}
+	mi := &file_fluid_rpc_v1_rpc_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Error) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Error) ProtoMessage() {}
+
+func (x *Error) ProtoReflect() protoreflect.Message {
+	mi := &file_fluid_rpc_v1_rpc_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Error.ProtoReflect.Descriptor instead.
+func (*Error) Descriptor() ([]byte, []int) {
+	return file_fluid_rpc_v1_rpc_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Error) GetKind() ErrorKind {
+	if x != nil {
+		return x.Kind
+	}
+	return ErrorKind_UNKNOWN
+}
+
+func (x *Error) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_fluid_rpc_v1_rpc_proto protoreflect.FileDescriptor
 
 const file_fluid_rpc_v1_rpc_proto_rawDesc = "" +
@@ -131,7 +241,15 @@ const file_fluid_rpc_v1_rpc_proto_rawDesc = "" +
 	"\x10query_result_pid\x18\x01 \x01(\tR\x0equeryResultPid\x12\x1b\n" +
 	"\tdata_path\x18\x02 \x01(\tR\bdataPath\"_\n" +
 	"\x16GetQueryResultResponse\x12E\n" +
-	"\aresults\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\aresultsB4Z2github.com/liquidspill/proto/go/fluid/rpc/v1;rpcv1b\x06proto3"
+	"\aresults\x18\x01 \x01(\v2+.nexus.controlplane.v1.QueryExecutionResultR\aresults\"N\n" +
+	"\x05Error\x12+\n" +
+	"\x04kind\x18\x01 \x01(\x0e2\x17.fluid.rpc.v1.ErrorKindR\x04kind\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage*R\n" +
+	"\tErrorKind\x12\v\n" +
+	"\aUNKNOWN\x10\x00\x12\x0f\n" +
+	"\vBAD_REQUEST\x10\x01\x12\r\n" +
+	"\tRPC_ERROR\x10\x02\x12\x18\n" +
+	"\x14OBJECT_STORAGE_ERROR\x10\x03B4Z2github.com/liquidspill/proto/go/fluid/rpc/v1;rpcv1b\x06proto3"
 
 var (
 	file_fluid_rpc_v1_rpc_proto_rawDescOnce sync.Once
@@ -145,19 +263,23 @@ func file_fluid_rpc_v1_rpc_proto_rawDescGZIP() []byte {
 	return file_fluid_rpc_v1_rpc_proto_rawDescData
 }
 
-var file_fluid_rpc_v1_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_fluid_rpc_v1_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_fluid_rpc_v1_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_fluid_rpc_v1_rpc_proto_goTypes = []any{
-	(*GetQueryResultRequest)(nil),   // 0: fluid.rpc.v1.GetQueryResultRequest
-	(*GetQueryResultResponse)(nil),  // 1: fluid.rpc.v1.GetQueryResultResponse
-	(*v1.QueryExecutionResult)(nil), // 2: nexus.controlplane.v1.QueryExecutionResult
+	(ErrorKind)(0),                  // 0: fluid.rpc.v1.ErrorKind
+	(*GetQueryResultRequest)(nil),   // 1: fluid.rpc.v1.GetQueryResultRequest
+	(*GetQueryResultResponse)(nil),  // 2: fluid.rpc.v1.GetQueryResultResponse
+	(*Error)(nil),                   // 3: fluid.rpc.v1.Error
+	(*v1.QueryExecutionResult)(nil), // 4: nexus.controlplane.v1.QueryExecutionResult
 }
 var file_fluid_rpc_v1_rpc_proto_depIdxs = []int32{
-	2, // 0: fluid.rpc.v1.GetQueryResultResponse.results:type_name -> nexus.controlplane.v1.QueryExecutionResult
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: fluid.rpc.v1.GetQueryResultResponse.results:type_name -> nexus.controlplane.v1.QueryExecutionResult
+	0, // 1: fluid.rpc.v1.Error.kind:type_name -> fluid.rpc.v1.ErrorKind
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_fluid_rpc_v1_rpc_proto_init() }
@@ -170,13 +292,14 @@ func file_fluid_rpc_v1_rpc_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fluid_rpc_v1_rpc_proto_rawDesc), len(file_fluid_rpc_v1_rpc_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   2,
+			NumEnums:      1,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_fluid_rpc_v1_rpc_proto_goTypes,
 		DependencyIndexes: file_fluid_rpc_v1_rpc_proto_depIdxs,
+		EnumInfos:         file_fluid_rpc_v1_rpc_proto_enumTypes,
 		MessageInfos:      file_fluid_rpc_v1_rpc_proto_msgTypes,
 	}.Build()
 	File_fluid_rpc_v1_rpc_proto = out.File

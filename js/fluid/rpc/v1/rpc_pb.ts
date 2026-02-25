@@ -6,8 +6,8 @@
 // @generated from file fluid/rpc/v1/rpc.proto (package fluid.rpc.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import type { QueryExecutionResult } from "../../../nexus/controlplane/v1/control_plane_pb";
 import { file_nexus_controlplane_v1_control_plane } from "../../../nexus/controlplane/v1/control_plane_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file fluid/rpc/v1/rpc.proto.
  */
 export const file_fluid_rpc_v1_rpc: GenFile = /*@__PURE__*/
-  fileDesc("ChZmbHVpZC9ycGMvdjEvcnBjLnByb3RvEgxmbHVpZC5ycGMudjEiRAoVR2V0UXVlcnlSZXN1bHRSZXF1ZXN0EhgKEHF1ZXJ5X3Jlc3VsdF9waWQYASABKAkSEQoJZGF0YV9wYXRoGAIgASgJIlYKFkdldFF1ZXJ5UmVzdWx0UmVzcG9uc2USPAoHcmVzdWx0cxgBIAEoCzIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblJlc3VsdEI0WjJnaXRodWIuY29tL2xpcXVpZHNwaWxsL3Byb3RvL2dvL2ZsdWlkL3JwYy92MTtycGN2MWIGcHJvdG8z", [file_nexus_controlplane_v1_control_plane]);
+  fileDesc("ChZmbHVpZC9ycGMvdjEvcnBjLnByb3RvEgxmbHVpZC5ycGMudjEiRAoVR2V0UXVlcnlSZXN1bHRSZXF1ZXN0EhgKEHF1ZXJ5X3Jlc3VsdF9waWQYASABKAkSEQoJZGF0YV9wYXRoGAIgASgJIlYKFkdldFF1ZXJ5UmVzdWx0UmVzcG9uc2USPAoHcmVzdWx0cxgBIAEoCzIrLm5leHVzLmNvbnRyb2xwbGFuZS52MS5RdWVyeUV4ZWN1dGlvblJlc3VsdCI/CgVFcnJvchIlCgRraW5kGAEgASgOMhcuZmx1aWQucnBjLnYxLkVycm9yS2luZBIPCgdtZXNzYWdlGAIgASgJKlIKCUVycm9yS2luZBILCgdVTktOT1dOEAASDwoLQkFEX1JFUVVFU1QQARINCglSUENfRVJST1IQAhIYChRPQkpFQ1RfU1RPUkFHRV9FUlJPUhADQjRaMmdpdGh1Yi5jb20vbGlxdWlkc3BpbGwvcHJvdG8vZ28vZmx1aWQvcnBjL3YxO3JwY3YxYgZwcm90bzM", [file_nexus_controlplane_v1_control_plane]);
 
 /**
  * @generated from message fluid.rpc.v1.GetQueryResultRequest
@@ -28,6 +28,10 @@ export type GetQueryResultRequest = Message<"fluid.rpc.v1.GetQueryResultRequest"
   queryResultPid: string;
 
   /**
+   * The path on object storage where the query result is stored.
+   * This is expected to be a bucket that the Fluid instance has
+   * access to.
+   *
    * @generated from field: string data_path = 2;
    */
   dataPath: string;
@@ -56,4 +60,63 @@ export type GetQueryResultResponse = Message<"fluid.rpc.v1.GetQueryResultRespons
  */
 export const GetQueryResultResponseSchema: GenMessage<GetQueryResultResponse> = /*@__PURE__*/
   messageDesc(file_fluid_rpc_v1_rpc, 1);
+
+/**
+ * @generated from message fluid.rpc.v1.Error
+ */
+export type Error = Message<"fluid.rpc.v1.Error"> & {
+  /**
+   * @generated from field: fluid.rpc.v1.ErrorKind kind = 1;
+   */
+  kind: ErrorKind;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message fluid.rpc.v1.Error.
+ * Use `create(ErrorSchema)` to create a new message.
+ */
+export const ErrorSchema: GenMessage<Error> = /*@__PURE__*/
+  messageDesc(file_fluid_rpc_v1_rpc, 2);
+
+/**
+ * @generated from enum fluid.rpc.v1.ErrorKind
+ */
+export enum ErrorKind {
+  /**
+   * @generated from enum value: UNKNOWN = 0;
+   */
+  UNKNOWN = 0,
+
+  /**
+   * The request is malformed and was unable to be decoded by the server
+   *
+   * @generated from enum value: BAD_REQUEST = 1;
+   */
+  BAD_REQUEST = 1,
+
+  /**
+   * An error encountered while responding to the client
+   *
+   * @generated from enum value: RPC_ERROR = 2;
+   */
+  RPC_ERROR = 2,
+
+  /**
+   * An error while interacting with object storage
+   *
+   * @generated from enum value: OBJECT_STORAGE_ERROR = 3;
+   */
+  OBJECT_STORAGE_ERROR = 3,
+}
+
+/**
+ * Describes the enum fluid.rpc.v1.ErrorKind.
+ */
+export const ErrorKindSchema: GenEnum<ErrorKind> = /*@__PURE__*/
+  enumDesc(file_fluid_rpc_v1_rpc, 0);
 
