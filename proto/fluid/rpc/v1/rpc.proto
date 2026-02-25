@@ -1,0 +1,22 @@
+// RPC defines RPC messages that can be received by the Fluid instance.
+// These are not actually RPC endpoints since we send them over NATS, we
+// just define the messages here for versioning purposes.
+syntax = "proto3";
+
+package fluid.rpc.v1;
+
+option go_package = "github.com/liquidspill/proto/go/fluid/rpc/v1;rpcv1";
+
+import "nexus/controlplane/v1/control_plane.proto";
+
+message GetQueryResultRequest {
+  string query_result_pid = 1;
+  // The path on object storage where the query result is stored.
+  // This is expected to be a bucket that the Fluid instance has
+  // access to.
+  string data_path = 2;
+}
+
+message GetQueryResultResponse {
+  nexus.controlplane.v1.QueryExecutionResult results = 1;
+}
