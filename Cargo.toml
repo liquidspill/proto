@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "rust/fluidpb",
+  "rust/nexuspb",
+  "rust/stdpb",
+]
