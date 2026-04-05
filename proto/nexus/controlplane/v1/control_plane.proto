@@ -482,10 +482,15 @@ message QueryResult {
   // passing it onto the client
   repeated Series series = 3;
 
+  // Tabular view of the same data (for the raw data table).
+  // This field is populated by the fluid query engine after
+  // a query is successfully executed.
+  Table raw_data = 4;
+
   // Tabular view of the same data (for the overview table).
   // This field is populated by the fluid query engine after
   // a query is successfully executed.
-  Table table = 4;
+  Table summary_data = 5;
 }
 
 message QueryResultSchema {
